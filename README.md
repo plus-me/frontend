@@ -1,24 +1,12 @@
-# Ionic-app
+# +me app
 
 ## Project Setup
-- Install node.js https://nodejs.org/en/
-- ```npm install -g cordova ionic```
+
+- Install node.js 14.17.1 ([nvm](https://github.com/nvm-sh/nvm) is recommended)
 - Clone this repository
 - Navigate to the repository location
-- ```npm install```
+- `npm ci`
+- npm run start
+- open your favorite browser at http://localhost:4200
+- happy hacking
 
-## Developing
-To start developing in a browser (Google Chrome recommended!):
-- ```ionic serve [--lab]```
-- Enter dev mode by pressing ```ctrl-shift-i```
-
-## Deploying
-To run the app on your phone, change the API_ENDPOINT in app.config.ts to https://api.wepublic.me/v1.
-Then run the commands in https://ionicframework.com/docs/intro/deploying/
-
-## Programming environment
-- OS: Win 8.1/10
-- IDE: IntelliJ idealU-2017.1.2
-- node: v7.10.1
-- cordova: 7.0.1
-- ionic: 3.9.2

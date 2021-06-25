@@ -1,8 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'SIGNUP.TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content text-center>
   <div class="logo-area">
     <custom-icon set="logo" name="me-logo" padding text-center></custom-icon>
   </div>
-  <div class="title">{{ 'SIGNUP.WELCOME' | translate }}<br>{{ 'SIGNUP.GREETER' | translate }}</div>
+  <div class="title">
+    {{ 'SIGNUP.WELCOME' | translate }}<br>{{ 'SIGNUP.GREETER' | translate }}
+  </div>
   <div class="subtitle">{{ 'SIGNUP.SUBTITLE' | translate }}</div>
   <ion-list class="input-area" middle no-lines>
     <ion-item class="input-item" no-lines>
@@ -31,7 +42,7 @@
     <button ion-button block (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">
       {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
     </button>
-    <button ion-button block outline [navPush]="welcomeView">
+    <button ion-button block outline (click)="goToWelcome()">
       {{ 'SIGNUP.CANCEL' | translate }}
     </button>
   </div>

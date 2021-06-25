@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content, Refresher } from 'ionic-angular';
+import { NavController, IonContent, IonRefresher } from '@ionic/angular';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import {TagsHelper} from "../../utils/TagsHelper";
 import {AnswersPage} from "../answers/answers";
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
+import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
   selector: 'page-answeredQuestions',
@@ -12,31 +13,33 @@ import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
   templateUrl: 'answeredQuestions.html'
 })
 export class AnsweredQuestionsPage {
-  @ViewChild(Content) content: Content;
-  @ViewChild(Refresher) refresher: Refresher;
+  @ViewChild(IonContent) content: IonContent;
+  @ViewChild(IonRefresher) refresher: IonRefresher;
 
   public questions: any;
   connectionErrorMsg: string;
 
-  constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider,
-              public notifier: TranslatedNotificationController, public tagsHelper: TagsHelper) {
+  constructor(
+    public navCtrl: NavController,
+    public questionService: QuestionServiceProvider,
+    public notifier: TranslatedNotificationController,
+    public tagsHelper: TagsHelper,
+  ) {
   }
 
   ionViewDidEnter() {
-    this.refresher._top = this.content.contentTop + 'px';
-    this.refresher.state = 'ready';
-    this.refresher._onEnd();
+    this.loadQuestions();
   }
 
-  loadQuestions(refresher: Refresher) {
+  loadQuestions() {
     this.questionService.loadAnsweredQuestions().subscribe(
       data => {
-        refresher.complete();
+        this.refresher.complete();
         this.questions = data;
-        if (data.length) this.questionService.updateSeenAnsweredQuestions(data.map(d => d.id));
+        if (data.length) this.questionService.updateSeenAnsweredQuestions(data.map(d => d.next));
       },
-      err => {
-        refresher.complete();
+      () => {
+        this.refresher.complete();
         this.notifier.showToast('CONNERROR');
       }
     );
@@ -47,10 +50,12 @@ export class AnsweredQuestionsPage {
   }
 
   loadAnswerPage(question) {
-    this.navCtrl.push(AnswersPage, {question: question});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.Answers); //, {question: question});
   }
 
   loadSearchPage(tag) {
-    this.navCtrl.push(SearchQuestionsPage, {tag: tag});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.SearchQuestions); // SearchQuestionsPage, {tag: tag});
   }
 }

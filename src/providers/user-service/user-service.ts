@@ -1,9 +1,19 @@
-import { Injectable } from '@angular/core';
-import {Headers, Http, RequestOptions} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import {
+  Injectable,
+} from '@angular/core';
+import {
+  HttpHeaders,
+  HttpClient,
+} from '@angular/common/http';
+import {
+    BehaviorSubject,
+  from, Subject,
+} from 'rxjs';
+import {
+  mergeMap,
+  map,
+  tap,
+} from 'rxjs/operators';
 import {API_ENDPOINT} from '../../app/app.config';
 import {Storage} from "@ionic/storage";
 
@@ -14,72 +24,52 @@ import {Storage} from "@ionic/storage";
 @Injectable()
 export class UserServiceProvider {
 
-  constructor(public http: Http, public storage: Storage) {
+  public static readonly TOKEN_KEY = 'localUserToken';
+  public static readonly EMAIL_KEY = 'localUserEmail';
+
+  public constructor(
+    public http: HttpClient,
+    public storage: Storage,
+  ) { }
+
+
+  public async getToken() {
+    const token = await this.storage.get(UserServiceProvider.TOKEN_KEY);
+
+    if (typeof token !== 'string') {
+      return undefined;
+    }
+
+    return token;
   }
 
-  getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
-  getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
-
-  loadMe() {
-    return this.getToken()
-    .mergeMap(token => this.http.get(API_ENDPOINT + '/Users/me/', this.getHeaders(token)))
-    .map(res => res.json());
+  public loadMe() {
+    return this
+      .http
+      .get(`${API_ENDPOINT}/Users/me/`);
   }
 
-  createNewUser(username: string, email: string, password: string) {
-    console.log("Create user " + username);
-    const headers = new Headers({ 'Content-Type': 'application/json'});
-    const options = new RequestOptions({ headers: headers });
-    var toSend = {
-      email: email,
-      password: password,
-      username: username
-    };
-    var res = this.http.post(API_ENDPOINT + '/Users/', JSON.stringify(toSend), options).share();
-    res.subscribe(
-      data => {
-        this.storage.set('localUserToken', data.json().token);
-        this.storage.set('localUserEmail', data.json().email);
-      }
-    );
-    return res;
+  public createNewUser(username: string, email: string, password: string) {
+    return this
+      .http
+      .post<{ token: string, email: string }>(
+        `${API_ENDPOINT}/Users/`,
+        JSON.stringify({
+          email: email,
+          password: password,
+          username: username
+        }),
+      )
+      .pipe(
+        tap((data) => {
+          this.storage.set(UserServiceProvider.TOKEN_KEY, data.token);
+          this.storage.set(UserServiceProvider.EMAIL_KEY, data.email);
+        })
+      );
   }
 
-  login(userEmail: string, userPassword: string) {
-    var param = {
-      email: userEmail,
-      password: userPassword
-    };
-    var res = this.http.post(API_ENDPOINT + '/Users/token/', param).share();
-    res.subscribe(
-      data => {
-        console.log("Logged in:");
-        console.log(data.json());
-        this.storage.set('localUserToken', data.json().Token);
-        this.storage.set('localUserEmail', userEmail);
-      },
-      err => { console.log("Login error"); }
-    );
-    return res;
-  }
-
-  logout() {
-    var res = this.getToken()
-    .mergeMap(token => this.http.get(API_ENDPOINT + '/Users/logout/', this.getHeaders(token))).share();
-    res.subscribe(
-      data => {
-        console.log("Logged out:");
-        console.log(data.json());
-        this.storage.remove('localUserEmail');
-        this.storage.remove('localUserToken');
-      },
-      err => { console.log("Login error"); }
-    );
-    return res;
-  }
-
-  forgotPW(userEmail) {
-    return this.http.post(API_ENDPOINT + '/Users/reset_password/', {email: userEmail});
+  public forgotPW(email: string) {
+    return this.http.post(API_ENDPOINT + '/Users/reset_password/', { email });
   }
 
 }

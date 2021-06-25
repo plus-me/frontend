@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { AlertController, LoadingController, NavController, ToastController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { TranslateService } from "@ngx-translate/core";
+import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 import { UserServiceProvider } from "../../providers/user-service/user-service";
 import { ContactPage } from "../contact/contact";
 import { LoginPage } from '../login/login';
@@ -26,10 +27,15 @@ export class SignUpPage {
 
   msgs: string[];
 
-  constructor(private alertCtrl: AlertController, private loadCtrl: LoadingController,
-              public navCtrl: NavController, public toastCtrl: ToastController,
-              public storage: Storage, public translate: TranslateService,
-              public userService: UserServiceProvider) {
+  constructor(
+    private alertCtrl: AlertController,
+    private loadCtrl: LoadingController,
+    public navCtrl: NavController,
+    public toastCtrl: ToastController,
+    public storage: Storage,
+    public translate: TranslateService,
+    public userService: UserServiceProvider)
+  {
     const transKeys = ['SIGNUP.OK', 'SIGNUP.WRONGINPUTS', 'SIGNUP.CHECKEMAIL', 'AGB.TITLE', 'AGB.MESSAGE', 'PRIVACY.TITLE', 'PRIVACY.MESSAGE'];
     translate.get(transKeys, {value: 'world'}).subscribe((res: string[]) => this.msgs = res);
   }
@@ -40,58 +46,68 @@ export class SignUpPage {
     return isValidEmail && (this.password.length >= 8) && (this.passwordRepeat === this.password);
   }
 
-  signUp() {
+  public async signUp() {
     if (!this.checkInputs()) {
-      let toast = this.toastCtrl.create({
+      const toast = await this.toastCtrl.create({
         message: this.msgs['SIGNUP.WRONGINPUTS'],
         duration: 3000
       });
-      toast.present();
+      await toast.present();
       return;
     }
-    var loading = this.loadCtrl.create();
-    loading.present();
+    var loading = await this.loadCtrl.create();
+    await loading.present();
     const username = this.email.replace(/@.*/i, "");
     this.userService.createNewUser(username, this.email, this.password)
-    .subscribe(() => {
+    .subscribe(async () => {
       loading.dismiss();
-      this.alertCtrl.create({
+      const alert = await this.alertCtrl.create({
         message: this.msgs['SIGNUP.CHECKEMAIL'],
-        enableBackdropDismiss: false,
+        backdropDismiss: false,
         buttons: [ {
             text: this.msgs['SIGNUP.OK'],
-            handler: () => { this.navCtrl.push(this.loginView); } 
+            handler: () => {
+              this.navCtrl.navigateForward(FrontendRoutes.Login);
+            }
         }]
-      }).present();
-    }, err => {
+      });
+
+      await alert.present();
+    }, async (err) => {
       console.log(err);
       loading.dismiss();
       if (err.hasOwnProperty('_body')) {
         err = err._body;
       }
-      this.toastCtrl.create({
+      const toast = await this.toastCtrl.create({
         message: err,
         duration: 3000
-      }).present();
-      this.navCtrl.push(this.contactView);
+      });
+
+      await toast.present();
+      this.navCtrl.navigateForward(FrontendRoutes.Contact);
     });
   }
 
-  showUsageConditions() {
-    let alert = this.alertCtrl.create({
-      title: this.msgs['AGB.TITLE'],
+  public async showUsageConditions() {
+    let alert = await this.alertCtrl.create({
+      header: this.msgs['AGB.TITLE'],
       message: this.msgs['AGB.MESSAGE'],
       buttons: [this.msgs['SIGNUP.OK']]
     });
-    alert.present();
+    await alert.present();
   }
 
-  showPrivacy() {
-    let alert = this.alertCtrl.create({
-      title: this.msgs['PRIVACY.TITLE'],
+  public async showPrivacy() {
+    let alert = await this.alertCtrl.create({
+      header: this.msgs['PRIVACY.TITLE'],
       message: this.msgs['PRIVACY.MESSAGE'],
       buttons: [this.msgs['SIGNUP.OK']]
     });
-    alert.present();
+    await alert.present();
+  }
+
+  public goToWelcome() {
+    this.navCtrl.navigateForward(FrontendRoutes.Welcome);
   }
 }

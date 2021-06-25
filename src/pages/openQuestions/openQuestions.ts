@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Content, Refresher } from 'ionic-angular';
+import { NavController, IonContent, IonRefresher } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
 import {QuestionServiceProvider} from "../../providers/question-service/question-service";
 import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import {TagsHelper} from "../../utils/TagsHelper";
-import {AnswersPage} from "../answers/answers";
-import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
+import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
   selector: 'page-open-questions',
@@ -14,33 +13,43 @@ import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
   templateUrl: 'openQuestions.html'
 })
 export class OpenQuestionsPage {
-  @ViewChild(Content) content: Content;
-  @ViewChild(Refresher) refresher: Refresher;
+  @ViewChild(IonContent) content: IonContent;
+  @ViewChild(IonRefresher) refresher: IonRefresher;
 
   enterQuestionView = EnterQuestionPage;
   public questions: Array<any>;
   public allTags;
 
-  constructor(public navCtrl: NavController, public questionService: QuestionServiceProvider, public storage: Storage,
-              private notifier: TranslatedNotificationController, public tagsHelper: TagsHelper) {
+  constructor(
+    public navCtrl: NavController,
+    public questionService: QuestionServiceProvider,
+    public storage: Storage,
+    private notifier: TranslatedNotificationController,
+    public tagsHelper: TagsHelper,
+  ) {
     this.allTags = this.storage.get('allTags');
   }
 
   ionViewDidEnter() {
-    this.refresher._top = this.content.contentTop + 'px';
-    this.refresher.state = 'ready';
-    this.refresher._onEnd();
+    this.loadQuestions();
   }
 
-  loadQuestions(refresher: Refresher) {
-    this.questionService.loadOpenQuestions().subscribe(
+  loadQuestions(refresher?: IonRefresher) {
+    this
+      .questionService
+      .loadOpenQuestions()
+      .subscribe(
       data => {
-        refresher.complete();
+        if (typeof refresher !== 'undefined') {
+          refresher.complete();
+        }
         data.sort((a, b) => b.upvotes - a.upvotes);
         this.questions = data;
       },
       err => {
-        refresher.complete();
+        if (typeof refresher !== 'undefined') {
+          refresher.complete();
+        }
         this.notifier.showToast('CONNERROR');
       }
     );
@@ -51,10 +60,12 @@ export class OpenQuestionsPage {
   }
 
   loadAnswerPage(question) {
-    this.navCtrl.push(AnswersPage, {question: question});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.Answers) //, {question: question});
   }
 
   loadSearchPage(tag) {
-    this.navCtrl.push(SearchQuestionsPage, {tag: tag});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.SearchQuestions); //, {tag: tag});
   }
 }

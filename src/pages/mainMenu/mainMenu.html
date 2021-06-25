@@ -1,14 +1,15 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title text-center><img class="logo" src="assets/icon/me-logo.svg"></ion-title>
-    <button ion-button menuToggle="right" end>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title text-center>
+      <img class="logo" src="/assets/icons/logo/me-logo.svg"></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg class="hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
       <linearGradient id="gradient1" gradientUnits="userSpaceOnUse" x1="-887.0156" y1="-4.5938" x2="-886.0156" y2="-4.5938" gradientTransform="matrix(128 0 0 128 113538 652)">
         <stop offset="0" style="stop-color:#1DE9B6"/>
@@ -27,16 +28,16 @@
   <ion-grid ion-fixed>
     <ion-row class="spacer"></ion-row>
     <ion-row class="buttons">
-      <ion-col col-6 align-self-start text-center [navPush]="openQuestionsView">
+      <ion-col col-6 align-self-start text-center [click]="goToOpenQuestionsView()">
         <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 128 128">
           <circle id="path-2_1_" class="st0" cx="64" cy="64" r="64 "fill="url(#gradient1)"/>
           <circle cx="64" cy="64" r="63.5" fill="none" stroke="#000000" stroke-opacity="0.05"/>
           <path fill="url(#gradient3)" d="M99.2,32.7H23.8c-3.1,0-5.7,2.5-5.7,5.7v38.2c0,3.1,2.5,5.7,5.7,5.7h65.1c1.9,0.1,3.6,1.2,4.5,2.8l8.2,13.7c0.3,0.6,0.9,0.9,1.6,0.9c1,0,1.8-0.8,1.8-1.8V76.6v-1.4V38.4C104.9,35.2,102.4,32.7,99.2,32.7z"/>
           <path class="icon-character" d="M71.6,52.6c0,1.6-0.6,3.2-1.7,4.4c-1.4,1.6-3.2,2.7-5.2,3.4l-0.6,4.9l-5-1.6l-0.3-6.5c1.6-0.5,3.1-1.2,4.5-2.2c1.2-0.9,1.7-1.7,1.7-2.6c0-0.6-0.2-1.1-0.7-1.5s-1.1-0.6-1.8-0.6c-1,0.1-1.9,0.2-2.8,0.5c-1.4,0.4-2.7,1-3.9,1.8L55,47.1c1.2-0.7,2.5-1.3,3.9-1.6c1.2-0.3,2.5-0.5,3.8-0.5c2.4-0.1,4.7,0.6,6.5,2.1C70.8,48.5,71.7,50.5,71.6,52.6L71.6,52.6z M64.7,69.7c0,0.9-0.3,1.8-1,2.4c-0.7,0.6-1.5,1-2.4,1s-1.8-0.3-2.4-1c-0.7-0.6-1-1.5-1-2.4s0.3-1.8,1-2.4c0.6-0.6,1.5-1,2.4-1s1.8,0.4,2.4,1C64.4,67.9,64.7,68.8,64.7,69.7z"/>
-        </svg><br>
-        <label>{{ 'MAINMENU.OPENQUESTIONS' | translate }}</label>
+        </svg>
+        <div>{{ 'MAINMENU.OPENQUESTIONS' | translate }}</div>
       </ion-col>
-      <ion-col col-6 align-self-start text-center [navPush]="answeredQuestionsView">
+      <ion-col col-6 align-self-start text-center [click]="goToAnsweredQuestionsView()">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 128 128">
         <circle cx="64" cy="64" r="64" fill="url(#gradient1)"/>
         <circle cx="64" cy="64" r="63.5" fill="none" stroke="#000000" stroke-opacity="0.05"/>
@@ -46,22 +47,22 @@
             <circle class="answered-badge" cx="110" cy="18" r="15"/>
             <text x="110" y="18" text-anchor="middle" dominant-baseline="middle" fill="white">{{unseenAnswered}}</text>
           </g>
-      </svg><br>
-        <label>{{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}</label>
+      </svg>
+        <div>{{ 'MAINMENU.ANSWEREDQUESTIONS' | translate }}</div>
       </ion-col>
     </ion-row>
     <ion-row class="spacer"></ion-row>
     <ion-row class="buttons">
-      <ion-col col-6 align-self-start text-center [navPush]="enterQuestionView">
+      <ion-col col-6 align-self-start text-center [click]="goToEnterQuestionView()">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 128 128">
           <circle cx="64" cy="64" r="64" fill="url(#gradient1)"/>
           <circle cx="64" cy="64" r="63.5" fill="none" stroke="#000000" stroke-opacity="0.05"/>
           <path fill="url(#gradient3)" d="M99.2,33H23.7c-3.1,0-5.7,2.5-5.7,5.7v38.2c0,3.1,2.5,5.7,5.7,5.7h65.2c1.9,0.1,3.6,1.2,4.5,2.8l8.2,13.7c0.3,0.6,0.9,0.9,1.6,0.9c1,0,1.8-0.8,1.8-1.8V76.9v-1.4V38.7C104.9,35.5,102.4,33,99.2,33z"/>
           <polygon class="icon-character" points="71,60.5 64,60.5 64,69 58.4,68.8 58.4,60.5 51.3,60.5 51,56 58.4,56 58.4,48 64,48 64,56 70.7,56"/>
-        </svg><br>
-        <label>{{ 'MAINMENU.ASK' | translate }}</label>
+        </svg>
+        <div>{{ 'MAINMENU.ASK' | translate }}</div>
       </ion-col>
-      <ion-col col-6 align-self-start text-center [navPush]="newsView">
+      <ion-col col-6 align-self-start text-center [click]="goToNewsView()">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 128 128">
           <circle cx="64" cy="64" r="64" fill="url(#gradient1)"/>
           <circle cx="64" cy="64" r="63.5" fill="none" stroke="#000000" stroke-opacity="0.05"/>
@@ -72,8 +73,8 @@
             <circle class="news-badge" cx="110" cy="18" r="15"/>
             <text x="110" y="18" text-anchor="middle" dominant-baseline="middle" fill="white">{{unseenNews}}</text>
           </g>
-        </svg><br>
-        <label>{{ 'MAINMENU.NEWS' | translate }}</label>
+        </svg>
+        <div>{{ 'MAINMENU.NEWS' | translate }}</div>
       </ion-col>
     </ion-row>
     <ion-row class="spacer"></ion-row>

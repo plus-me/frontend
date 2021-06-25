@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from '@ionic/angular';
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
 import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
 import { TagsHelper } from "../../utils/TagsHelper";
 import { SearchQuestionsPage } from '../searchQuestions/searchQuestions';
+import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
   selector: 'page-answers',
@@ -15,13 +16,17 @@ export class AnswersPage {
 
   public questions: any;
   connectionErrorMsg: string;
-  question;
+  question: any;
   answers: any[] = [];
   likePerc = 66;
 
-  constructor(private navParams: NavParams, private navCtrl: NavController,
-              private notifier: TranslatedNotificationController,
-              private questionService: QuestionServiceProvider, private tagsHelper: TagsHelper) {
+  constructor(
+    private navParams: NavParams,
+    private navCtrl: NavController,
+    private notifier: TranslatedNotificationController,
+    private questionService: QuestionServiceProvider,
+    private tagsHelper: TagsHelper,
+  ) {
     this.question = navParams.get('question');
     console.log(this.question);
     this.loadTags();
@@ -34,9 +39,12 @@ export class AnswersPage {
 
   loadAnswers() {
     if (this.question !== undefined && this.question !== []) {
-      this.questionService.getAnswersForQuestion(this.question.id).subscribe(
-        data => { console.log(data); this.answers = data;},
-        err => this.notifier.showToast('CONNERROR')
+      this
+        .questionService
+        .getAnswersForQuestion(this.question.id)
+        .subscribe(
+          (data: any) => { console.log(data); this.answers = data;},
+          err => this.notifier.showToast('CONNERROR')
       );
     };
   }
@@ -63,13 +71,17 @@ export class AnswersPage {
   }
 
   loadSearchPage(tag) {
-    this.navCtrl.push(SearchQuestionsPage, {tag: tag});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.SearchQuestions); // SearchQuestionsPage, {tag: tag});
   }
 
   reportQuestion(question) {
-    this.questionService.reportQuestion(question.id)
-    .subscribe(
-      () => this.notifier.showAlert('', 'QUESTION.REPORT_CONFIRM', 'OK'),
-      err => this.notifier.showToast('CONNERROR'));
+    this
+      .questionService
+      .reportQuestion(question.id)
+      .subscribe(
+        () => this.notifier.showAlert('', 'QUESTION.REPORT_CONFIRM', 'OK'),
+        () => this.notifier.showToast('CONNERROR'),
+      );
   }
 }

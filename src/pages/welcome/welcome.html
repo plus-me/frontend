@@ -2,15 +2,25 @@
   <ion-grid no-padding ion-fixed>
     <ion-row class="logo-area">
       <ion-col></ion-col>
-      <ion-col align-self-end><img class="logo" src="assets/icon/me-logo.svg"></ion-col>
+      <ion-col align-self-end><img class="logo" src="/assets/icons/logo/me-logo.svg"></ion-col>
       <ion-col></ion-col>
     </ion-row>
     <ion-row class="subtitle">
-      <ion-col text-center align-self-center>{{ 'WELCOME.SUBTITLE' | translate }}</ion-col>
+      <ion-col text-center align-self-center>
+        {{ 'WELCOME.SUBTITLE' | translate }}
+      </ion-col>
     </ion-row>
     <ion-row class="button-area">
-      <button ion-button block [navPush]="signUpView">{{ 'WELCOME.SIGNUP' | translate }}</button>
-      <button ion-button block outline [navPush]="loginView">{{ 'WELCOME.LOGIN' | translate }}</button>
+      <ion-col>
+        <ion-button expand="block" (click)="goToSignup()">
+          {{ 'WELCOME.SIGNUP' | translate }}
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button ion-button expand="block" fill="outline" (click)="goToLogin()">
+          {{ 'WELCOME.LOGIN' | translate }}
+        </ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

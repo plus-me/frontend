@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController } from '@ionic/angular';
 import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
 import { TagsHelper } from "../../utils/TagsHelper";
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
-import { MainMenuPage } from "../mainMenu/mainMenu";
+import { TagModel } from 'src/models/tag.model';
+import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-enterQuestion',
@@ -13,12 +15,16 @@ export class EnterQuestionPage {
 
   public maxTags = 3;
   public maxTextLength = 250;
-  public tags = [];
+  public tags: Observable<TagModel[]>;
   public selectedTags: number[] = [];
   public questionText: string = "";
 
-  constructor(private navCtrl: NavController, private notifier: TranslatedNotificationController,
-              private tagsHelper: TagsHelper, private questionService: QuestionServiceProvider) {
+  constructor(
+    private navCtrl: NavController,
+    private notifier: TranslatedNotificationController,
+    private tagsHelper: TagsHelper,
+    private questionService: QuestionServiceProvider,
+  ) {
     this.tags = this.tagsHelper.getAllTagObjectsSorted();
   }
 
@@ -38,11 +44,11 @@ export class EnterQuestionPage {
       this.notifier.showToast('ENTERQUESTION.ERROR_SHORT_TEXT');
       return;
     } 
-    this.questionService.publishQuestion(this.questionText, this.selectedTags)
+    this.questionService.publishQuestion(this.questionText, this.selectedTags.join(','))
     .subscribe(
       data => {
         this.notifier.showAlert('ENTERQUESTION.POSTED_TITLE', 'ENTERQUESTION.POSTED', 'OK')
-        this.navCtrl.setRoot(MainMenuPage);
+        this.navCtrl.navigateForward(FrontendRoutes.MainMenu);
       },
       err => {
         this.notifier.showToast('CONNERROR');

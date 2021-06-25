@@ -21,7 +21,7 @@
                 [selectOptions]="{ title: 'ENTERQUESTION.TAG_QUESTION' | translate }"
                 placeholder="{{ 'ENTERQUESTION.TAG_QUESTION' | translate }}"
                 cancelText="{{ 'CANCEL' | translate }}">
-      <ion-option *ngFor="let tag of tags" value="{{tag.id}}">#{{tag.text}}</ion-option>
+      <ion-option *ngFor="let tag of tags | async" value="{{tag.id}}">#{{tag.text}}</ion-option>
     </ion-select>
     <ion-textarea [(ngModel)]="questionText" placeholder="{{ 'ENTERQUESTION.YOUR_QUESTION' | translate }}"
                   type="text" wrap="soft" rows="8" [attr.maxlength]="maxTextLength">

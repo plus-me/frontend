@@ -1,17 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { Http, HttpModule } from "@angular/http";
-import { FormsModule } from '@angular/forms';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { IonicStorageModule } from '@ionic/storage';
-import { CacheModule } from "ionic-cache";
+import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { CustomIconsModule } from "ionic2-custom-icons";
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
-import { MyApp } from './app.component';
+import { AppComponent } from './app.component';
 import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
 import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
 
@@ -37,14 +40,19 @@ import { TagsServiceProvider } from '../providers/tags-service/tags-service';
 
 import { TagsHelper } from "../utils/TagsHelper";
 import { TranslatedNotificationController } from "../utils/TranslatedNotificationController";
+import { AppRoutes } from './app-routing';
+import { AppInterceptor } from '../libs/interceptors/app.interceptor';
+import { Drivers } from '@ionic/storage';
+import { NgxsModule } from '@ngxs/store';
+import { UserState } from 'src/libs/states/user.state';
 
-export function createTranslateLoader(http: Http) {
+export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
 }
 
 @NgModule({
   declarations: [
-    MyApp,
+    AppComponent,
     AnswerBubbleComponent,
     QuestionBubbleComponent,
     AnsweredQuestionsPage,
@@ -64,28 +72,39 @@ export function createTranslateLoader(http: Http) {
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
-    IonicModule.forRoot(MyApp, {
+    ReactiveFormsModule,
+    IonicModule.forRoot({
       backButtonText: '',
       scrollPadding: false,
       scrollAssist: false,
-      autoFocusAssist: false,
     }),
-    IonicStorageModule.forRoot(),
-    CacheModule.forRoot(),
-    CustomIconsModule,
+    IonicStorageModule.forRoot({
+      driverOrder: [Drivers.IndexedDB],
+      dbKey: 'plusme',
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [Http],
+        deps: [HttpClient],
       },
-    })
+    }),
+    RouterModule.forRoot(
+      AppRoutes,
+      {
+        enableTracing: true,
+      }
+    ),
+    NgxsModule.forRoot([
+      UserState,
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [AppComponent],
   entryComponents: [
-    MyApp,
+    AppComponent,
     AnsweredQuestionsPage,
     AnswersPage,
     ContactPage,
@@ -105,12 +124,20 @@ export function createTranslateLoader(http: Http) {
     StatusBar,
     SplashScreen,
     TagsHelper,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
     QuestionServiceProvider,
     TagsServiceProvider,
     NewsServiceProvider,
     TranslatedNotificationController,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useFactory: function(userService: UserServiceProvider) {
+        return new AppInterceptor(userService);
+      },
+      multi: true,
+      deps: [UserServiceProvider],
+    },
   ]
 })
 export class AppModule {}

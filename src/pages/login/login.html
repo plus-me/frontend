@@ -1,23 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'LOGIN.LOGIN' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content text-center>
-  <div class="logo-area">
-    <custom-icon set="logo" name="me-logo" padding text-center></custom-icon>
-  </div>
-  <div class="title">{{ 'LOGIN.LOGIN' | translate }}</div>
   <form [formGroup]="authForm" (ngSubmit)="login()">
     <ion-list class="input-area">
       <ion-item [class.error]="!email.valid && email.touched">
-        <ion-label stacked>{{ 'LOGIN.EMAIL' | translate }}</ion-label>
-        <ion-input formControlName="email" type="email"></ion-input>
+        <ion-label stacked>
+          {{ 'LOGIN.EMAIL' | translate   }}
+        </ion-label>
+        <ion-input
+          formControlName="email"
+          type="email">
+        </ion-input>
       </ion-item>
-      <ion-item [class.error]="!password.valid && password.touched">
+      <ion-item
+        [class.error]="!password.valid && password.touched">
         <ion-label stacked>{{ 'LOGIN.PASSWORD' | translate }}</ion-label>
         <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
     </ion-list>
     <div class="button-area">
-      <button ion-button block type="submit" [disabled]="!authForm.valid">{{ 'LOGIN.SIGNIN' | translate }}</button>
-      <button ion-button block type="button" (click)="forgotPW()">{{ 'LOGIN.FORGOTPW' | translate }}</button>
-      <button ion-button block outline type="reset" navPop>{{ 'CANCEL' | translate }}</button>
+      <ion-button
+        expand="block"
+        type="submit"
+        [disabled]="!authForm.valid">
+        {{ 'LOGIN.SIGNIN' | translate }}
+      </ion-button>
+      <ion-button
+        expand="block"
+        type="button"
+        (click)="forgotPW()">
+        {{ 'LOGIN.FORGOTPW' | translate }}
+      </ion-button>
+      <ion-button
+        expand="block"
+        fill="outline"
+        type="reset">
+        {{ 'CANCEL' | translate }}
+      </ion-button>
     </div>
   </form>
 </ion-content>

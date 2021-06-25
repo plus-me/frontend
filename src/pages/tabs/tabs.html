@@ -1,4 +1,4 @@
-<ion-menu [content]="content" side="right" swipeEnabled="false">
+<ion-menu side="start" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
       <ion-title>{{ 'MENU.MENU' | translate }}</ion-title>
@@ -6,46 +6,74 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button menuClose ion-item [navPush]="contactPage">{{ 'MENU.CONTACT' | translate }}</button>
-      <button menuClose ion-item [navPush]="faqPage">{{ 'MENU.FAQ' | translate }}</button>
-      <button menuClose ion-item (click)="showOnboarding()">{{ 'MENU.ONBOARDING' | translate }}</button>
-      <button menuClose ion-item (click)="showUsageConditions()">{{ 'AGB.TITLE' | translate }}</button>
-      <button menuClose ion-item (click)="showPrivacy()">{{ 'PRIVACY.TITLE' | translate }}</button>
-      <button menuClose ion-item (click)="showImprint()">{{ 'MENU.IMPRINT' | translate }}</button>
-      <button menuClose ion-item (click)="logout()">{{ 'MENU.LOGOUT' | translate }}</button>
+      <ion-menu-button menuClose (click)="goToContact()">
+        {{ 'MENU.CONTACT' | translate }}
+      </ion-menu-button>
+      <ion-menu-button menuClose (click)="goToFaq()">
+        {{ 'MENU.FAQ' | translate }}
+      </ion-menu-button>
+      <ion-menu-button menuClose (click)="showOnboarding()">{{ 'MENU.ONBOARDING' | translate }}</ion-menu-button>
+      <ion-menu-button menuClose (click)="showUsageConditions()">{{ 'AGB.TITLE' | translate }}</ion-menu-button>
+      <ion-menu-button menuClose (click)="showPrivacy()">{{ 'PRIVACY.TITLE' | translate }}</ion-menu-button>
+      <ion-menu-button menuClose (click)="showImprint()">{{ 'MENU.IMPRINT' | translate }}</ion-menu-button>
+      <ion-menu-button menuClose (click)="logout()">{{ 'MENU.LOGOUT' | translate }}</ion-menu-button>
     </ion-list>
   </ion-content>
 </ion-menu>
 
-<ion-tabs selectedIndex="1" #content>
-  <ion-tab customIconSet="tabs" customIconName="find-questions" tabTitle="{{ 'TABS.MATCH' | translate }}" [root]="tab1Root" primary></ion-tab>
-  <ion-tab customIconSet="tabs" customIconName="home" tabTitle="{{ 'TABS.HOME' | translate }}" [root]="tab2Root"></ion-tab>
-  <ion-tab tabIcon="search" tabTitle="{{ 'TABS.SEARCH' | translate }}" [root]="tab3Root"></ion-tab>
+<ion-tabs #content>
+  <ion-tab-bar>
+    <ion-tab-button
+      tab="random-question">
+      <ion-icon src="/assets/icons/tabs/search-questions.svg"></ion-icon>
+      <ion-label>{{ 'TABS.MATCH' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="start">
+      <ion-icon src="/assets/icons/tabs/home.svg"></ion-icon>
+      <ion-label>{{ 'TABS.HOME' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="search-questions">
+      <ion-icon src="/assets/icons/tabs/find-questions.svg"></ion-icon>
+      <ion-label>{{ 'TABS.SEARCH' | translate }}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
 </ion-tabs>
 
-<div id="onboarding" *ngIf="onboardingVisible">
+<ion-content fullscreen class="onboarding" *ngIf="onboardingVisible">
   <ion-card>
     <ion-slides pager="true">
       <ion-slide>
-        <img src="assets/icon/onboarding/page1.svg">
-        <span [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
+        <div class="slide">
+          <img src="assets/icon/onboarding/page1.svg">
+          <span [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
+        </div>
       </ion-slide>
       <ion-slide>
+        <div class="slide">
         <img src="assets/icon/onboarding/page2.svg">
         <span [innerHTML]="'ONBOARDING.PAGE2' | translate"></span>
+        </div>
       </ion-slide>
       <ion-slide>
-        <img src="assets/icon/onboarding/page3.svg">
-        <span [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
+        <div class="slide">
+          <img src="assets/icon/onboarding/page3.svg">
+          <span [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
+        </div>
       </ion-slide>
       <ion-slide>
-        <img src="assets/icon/onboarding/page4.svg">
-        <span [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
-        <button ion-button block (click)="hideOnboarding()">{{ 'ONBOARDING.OK_GO' | translate }}</button>
+        <div class="slide">
+          <img src="assets/icon/onboarding/page4.svg">
+          <span [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
+          <ion-button
+            block
+            (click)="hideOnboarding()">
+            {{ 'ONBOARDING.OK_GO' | translate }}
+          </ion-button>
+        </div>
       </ion-slide>
     </ion-slides>
   </ion-card>
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="blur-svg">
     <defs><filter id="blur-filter"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
   </svg>
-</div>
+</ion-content>

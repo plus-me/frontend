@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
+
+  <base href="/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
@@ -22,20 +25,10 @@
         .catch(err => console.error('Error', err));
     }
   </script>-->
-
-  <link href="build/main.css" rel="stylesheet">
-
 </head>
 <body>
 
   <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
-
-  <!-- The polyfills js is generated during the build process -->
-  <script src="build/polyfills.js"></script>
-
-  <!-- The bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
-
+  <app-root></app-root>
 </body>
 </html>

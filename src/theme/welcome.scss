@@ -1,0 +1,25 @@
+page-welcome {
+  ion-grid {
+    height: 100%;
+  }
+
+  .logo-area {
+    flex: 1;
+    font-size: 11vw;
+  }
+
+  .subtitle {
+    flex: 1;
+    padding: 2em;
+    font-size: 1.6em;
+    color: var(--ion-color-primary-contrast);
+    background-color: var(--ion-color-primary);
+  }
+
+  .button-area {
+    flex: 1;
+    padding-top: 4em;
+    padding-bottom: 2em;
+    background-color: var(--ion-color-secondary);
+  }
+}

@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 import {API_ENDPOINT} from '../../app/app.config';
+import {
+  plainToClass,
+} from 'class-transformer';
+import { TagModel } from 'src/models/tag.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TagsServiceProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello TagsServiceProvider Provider');
-  }
+  public constructor(public http: HttpClient) {}
 
-  loadAllTags() {
-    //Todo: onError!!!
-    return this.http.get(API_ENDPOINT + '/Tags/')
-      .map(res => res.json());
+  public loadAllTags() {
+    return this
+      .http
+      .get<unknown[]>(API_ENDPOINT + '/Tags/')
+      .pipe(
+        map(data => {
+          return plainToClass(TagModel, data, {
+            excludeExtraneousValues: true,
+          });
+        })
+      );
   }
 
 }

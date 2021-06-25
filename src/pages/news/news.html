@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <button ion-button menuToggle="right" end>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>{{ 'MAINMENU.NEWS' | translate }}</ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -14,9 +14,16 @@
   <ion-list no-lines>
     <ion-item *ngFor="let article of news">
       <ion-card padding>
-        <ion-card-header>{{article.last_modified | date:'dd.MM.yyyy'}}</ion-card-header>
-        <ion-card-title padding-left text-wrap>{{article.title}}</ion-card-title>
-        <ion-card-content text-wrap [innerHTML]="article.content">
+        <ion-card-header>
+          {{article.last_modified | date:'dd.MM.yyyy'}}
+
+          <ion-card-title padding-left text-wrap>
+            {{article.title}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content
+          text-wrap
+          [innerHTML]="article.content">
         </ion-card-content>
       </ion-card>
     </ion-item>
