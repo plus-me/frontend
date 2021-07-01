@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { LoadingController, NavController } from 'ionic-angular';
-import { Observable } from 'rxjs/Rx';
+import { LoadingController, NavController } from '@ionic/angular';
+import { forkJoin, timer } from 'rxjs';
 import { QuestionServiceProvider } from "../../providers/question-service/question-service";
 import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
 import { TagsHelper } from "../../utils/TagsHelper";
 import { AnswersPage } from "../answers/answers";
 import { SearchQuestionsPage } from '../searchQuestions/searchQuestions';
+import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
   selector: 'page-randomQuestions',
@@ -31,14 +32,15 @@ export class RandomQuestionsPage {
     }
   }
 
-  ionViewDidEnter() {
-    let loading = this.loadCtrl.create();
+  public async ionViewDidEnter() {
+    let loading = await this.loadCtrl.create();
     loading.present();
     this.questions = [];
     this.seenQuestionIDs.clear();
-    Observable.forkJoin(
+    forkJoin(
       this.questionService.loadRandomQuestion(),
-      this.questionService.loadRandomQuestion())
+      this.questionService.loadRandomQuestion(),
+    )
     .subscribe(
       res => res.forEach(this.addQuestion, this),
       err => { loading.dismiss(); if (err.status != 429) this.notifier.showToast('CONNERROR'); },
@@ -51,16 +53,18 @@ export class RandomQuestionsPage {
   }
 
   loadAnswerPage(question) {
-    this.navCtrl.push(AnswersPage, {question: question});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.Answers); //, {question: question});
   }
 
   loadSearchPage(tag) {
-    this.navCtrl.push(SearchQuestionsPage, {tag: tag});
+    // TODO
+    this.navCtrl.navigateForward(FrontendRoutes.SearchQuestions); //, {tag: tag});
   }
 
   downvote(question) {
     console.log('thumbs down for ' + question.id);
-    Observable.timer(1000).subscribe(res => this.questions.shift());
+    timer(1000).subscribe(res => this.questions.shift());
     this.questionService.downvoteQuestion(question.id)
     .subscribe(null, err => this.notifier.showToast('CONNERROR'));
     this.questionService.loadRandomQuestion().subscribe(q => { this.addQuestion(q); });
@@ -68,7 +72,7 @@ export class RandomQuestionsPage {
 
   upvote(question) {
     console.log('thumbs up for ' + question.id);
-    Observable.timer(1000).subscribe(res => this.questions.shift());
+    timer(1000).subscribe(res => this.questions.shift());
     this.questionService.upvoteQuestion(question.id)
     .subscribe(null, err => this.notifier.showToast('CONNERROR'));
     this.questionService.loadRandomQuestion().subscribe(q => { this.addQuestion(q); });

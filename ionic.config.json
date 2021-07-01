@@ -1,6 +1,8 @@
 {
   "name": "wepublic",
-  "app_id": "2dc2eb8a",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "proxies": [
     {
@@ -8,7 +10,5 @@
       "proxyUrl": "https://api.wepublic.me/v1"
     }
   ],
-  "integrations": {
-    "cordova": {}
-  }
+  "id": "2dc2eb8a"
 }

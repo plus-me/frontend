@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from "@ionic/storage";
-import { CacheService } from "ionic-cache";
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import {
+  Observable,
+  zip,
+  from,
+} from 'rxjs';
 import {API_ENDPOINT} from '../../app/app.config';
 
 /*
@@ -14,114 +14,79 @@ import {API_ENDPOINT} from '../../app/app.config';
 @Injectable()
 export class QuestionServiceProvider {
 
-  constructor(public http: Http, public storage: Storage, private cache: CacheService) {
+  constructor(
+    public http: HttpClient,
+    public storage: Storage,
+  ) {}
+
+  public loadAllQuestions(params: string) {
+    return this.http.get(API_ENDPOINT + '/Questions/' + params);
   }
 
-  getToken() { return Observable.fromPromise(this.storage.get('localUserToken')); }
-  getHeaders(token) { return {headers: new Headers({Authorization: 'Token ' + token})}; }
-
-  loadAllQuestions(params: string) {
-    return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/' + params, this.getHeaders(token))
-        .map(res => res.json().results)
-    );
+  public unseenAnsweredQuestions() {
+    return this.loadAnsweredQuestions();
   }
 
-  unseenAnsweredQuestions() {
-    return Observable.zip(
-      Observable.fromPromise(this.storage.get('seenAnsweredQuestions')),
-      this.loadAnsweredQuestions(),
-      (seenQuestions: number[], questions) =>
-        questions.reduce((res, e) => { if (seenQuestions == null || !seenQuestions.includes(e.id)) res++; return res; }, 0)
-    );
-  }
-
-  updateSeenAnsweredQuestions(ids: number[]) {
+  public updateSeenAnsweredQuestions(ids: number[]) {
     this.storage.set('seenAnsweredQuestions', ids);
   }
 
-  loadAnsweredQuestions() {
-    let request = this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/?answered=true&ordering=-closed_date', this.getHeaders(token))
-        .map(res => res.json().results)
-    );
-    return this.cache.loadFromDelayedObservable('answeredQuestions', request, undefined, undefined, 'all');
+  public loadAnsweredQuestions() {
+    return this.http.get<Array<{ count: number, next: null, previous: null, result: unknown[]}>>(API_ENDPOINT + '/Questions/?answered=true&ordering=-closed_date');
   }
 
   loadOpenQuestions() {
-    let request = this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/upvotes/?answered=false', this.getHeaders(token))
-        .map(res => res.json())
-    );
-    return this.cache.loadFromDelayedObservable('openQuestions', request, undefined, undefined, 'all');
+    return this.http.get<any[]>(API_ENDPOINT + '/Questions/upvotes/?answered=false');
   }
 
   loadRandomQuestion() {
-    return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/random/', this.getHeaders(token))
-        .map(res => res.json())
-    );
+    return this.http.get<any>(API_ENDPOINT + '/Questions/random/');
   }
 
   loadQuestionByTagId(tagId: number) {
-    return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/', this.getHeaders(token))
-        .map(res => res.json())
+    return this.http.get(API_ENDPOINT + '/Tags/' + tagId + '/Questions/');
+  }
+
+  publishQuestion(nText: string, nTags: string) {
+    return this
+      .http
+      .post(
+      API_ENDPOINT + '/Questions/',
+      {
+        text: nText,
+        tags: nTags
+      },
     );
   }
 
-  publishQuestion(nText, nTags) {
-    return this.getToken().mergeMap(
-      token => this.http.post(API_ENDPOINT + '/Questions/',
-        {
-          text: nText,
-          tags: nTags
-        },
-        this.getHeaders(token)
-      )
-    );
+  reportQuestion(questionID: number) {
+    return this
+      .http
+      .post(
+        API_ENDPOINT + '/Questions/' + questionID + '/report/',
+        { reason: "unbekannt" },
+      );
+
   }
 
-  reportQuestion(questionID) {
-    return this.getToken().mergeMap(
-      token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/report/', { reason: "unbekannt" }, this.getHeaders(token))
-        .map(res => res.json())
-    );
+  downvoteQuestion(questionID: number) {
+    return this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { });
   }
 
-  downvoteQuestion(questionID) {
-    return this.getToken().mergeMap(
-      token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/downvote/', { }, this.getHeaders(token))
-        .map(res => res.json())
-    );
+  upvoteQuestion(questionID: number) {
+    return this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/upvote/', { });
   }
 
-  upvoteQuestion(questionID) : Observable<any> {
-    return this.getToken().mergeMap(
-      token => this.http.post(API_ENDPOINT + '/Questions/' + questionID + '/upvote/', { }, this.getHeaders(token))
-        .map(res => res.json())
-    );
+  getAnswersForQuestion(questionID: number) {
+    return this.http.get(API_ENDPOINT + '/Questions/' + questionID + '/answers/');
   }
 
-  getAnswersForQuestion(questionID) {
-    return this.getToken().mergeMap(
-      token => this.http.get(API_ENDPOINT + '/Questions/' + questionID + '/answers/', this.getHeaders(token))
-        .map(res => res.json())
-    );
+  downvoteAnswer(answerID: number) {
+    return this.http.post(API_ENDPOINT + '/Answers/' + answerID + '/downvote/', { });
   }
 
-  downvoteAnswer(answerID) {
-    return this.getToken().mergeMap(
-      token => this.http.post(API_ENDPOINT + '/Answers/' + answerID + '/downvote/', { }, this.getHeaders(token))
-        .map(res => res.json())
-    );
-  }
-
-  upvoteAnswer(answerID) {
-    return this.getToken().mergeMap(
-      token => this.http.post(API_ENDPOINT + '/Answers/' + answerID + '/upvote/', { }, this.getHeaders(token))
-        .map(res => res.json())
-    );
+  upvoteAnswer(answerID: number) {
+    return this.http.post(API_ENDPOINT + '/Answers/' + answerID + '/upvote/', { });
   }
 
 }

@@ -1,0 +1,37 @@
+page-main {
+  .logo {
+    height: 1.8em;
+    margin: auto;
+  }
+
+  .grid {
+    height: 100%;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .buttons {
+    flex: 4;
+  }
+
+  img, svg {
+    width: 80%;
+    margin-bottom: 1em;
+  }
+
+  .icon-character {
+    fill: var(--green-dark);
+  }
+
+  .answered-badge, .news-badge {
+    fill: var(--ion-color-danger);
+  }
+
+  .hidden {
+    visibility: hidden;
+    height: 0;
+  }
+
+}
