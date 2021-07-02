@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
-import { UserServiceProvider } from '../../providers/user-service/user-service';
 import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
 import { WelcomePage } from '../welcome/welcome';
+import { Store } from '@ngxs/store';
+import { UserActions } from 'src/libs/actions/users.actions';
 
 @Component({
   selector: 'app-page-signup',
@@ -25,92 +25,50 @@ export class SignUpPage {
   loginView = LoginPage;
   welcomeView = WelcomePage;
 
-  msgs: string[];
-
-  constructor(
+  public constructor(
     private alertCtrl: AlertController,
     private loadCtrl: LoadingController,
-    public navCtrl: NavController,
-    public toastCtrl: ToastController,
-    public storage: Storage,
-    public translate: TranslateService,
-    public userService: UserServiceProvider)
-  {
-    // TODO move to translate.instant
-    const transKeys = [
-      'SIGNUP.OK',
-      'SIGNUP.WRONGINPUTS',
-      'SIGNUP.CHECKEMAIL',
-      'AGB.TITLE',
-      'AGB.MESSAGE',
-      'PRIVACY.TITLE',
-      'PRIVACY.MESSAGE',
-    ];
-    translate.get(transKeys, {value: 'world'}).subscribe((res: string[]) => this.msgs = res);
-  }
+    private navCtrl: NavController,
+    private toastCtrl: ToastController,
+    private translate: TranslateService,
+    private store: Store,
+  ) { }
 
   checkInputs(){
-    // TODO dont do that, us [isEmail](https://www.npmjs.com/package/isemail)
-    // const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|
-      // (([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const isValidEmail = false; // re.test(this.email);
+    const isValidEmail = this.email.length >= 1;
     return isValidEmail && (this.password.length >= 8) && (this.passwordRepeat === this.password);
   }
 
   public async signUp() {
     if (!this.checkInputs()) {
       const toast = await this.toastCtrl.create({
-        message: this.msgs['SIGNUP.WRONGINPUTS'],
+        message: this.translate.instant('SIGNUP.WRONGINPUTS'),
         duration: 3000
       });
       await toast.present();
       return;
     }
-    const loading = await this.loadCtrl.create();
-    await loading.present();
-    const username = this.email.replace(/@.*/i, '');
-    this.userService.createNewUser(username, this.email, this.password)
-    .subscribe(async () => {
-      loading.dismiss();
-      const alert = await this.alertCtrl.create({
-        message: this.msgs['SIGNUP.CHECKEMAIL'],
-        backdropDismiss: false,
-        buttons: [ {
-            text: this.msgs['SIGNUP.OK'],
-            handler: () => {
-              this.navCtrl.navigateForward(FrontendRoutes.Login);
-            }
-        }]
-      });
 
-      await alert.present();
-    }, async (err) => {
-      console.log(err);
-      loading.dismiss();
-      const toast = await this.toastCtrl.create({
-        message: err,
-        duration: 3000
-      });
-
-      await toast.present();
-      this.navCtrl.navigateForward(FrontendRoutes.Contact);
-    });
+    this.store.dispatch(new UserActions.RegisterAction(
+      this.email,
+      this.password,
+    ));
   }
 
   public async showUsageConditions() {
     const alert = await this.alertCtrl.create({
-      header: this.msgs['AGB.TITLE'],
-      message: this.msgs['AGB.MESSAGE'],
-      buttons: [this.msgs['SIGNUP.OK']]
+      header: this.translate.instant('AGB.TITLE'),
+      message: this.translate.instant('AGB.MESSAGE'),
+      buttons: [this.translate.instant('SIGNUP.OK')]
     });
     await alert.present();
   }
 
   public async showPrivacy() {
     const alert = await this.alertCtrl.create({
-      header: this.msgs['PRIVACY.TITLE'],
-      message: this.msgs['PRIVACY.MESSAGE'],
-      buttons: [this.msgs['SIGNUP.OK']]
+      header: this.translate.instant('PRIVACY.TITLE'),
+      message: this.translate.instant('PRIVACY.MESSAGE'),
+      buttons: [this.translate.instant('SIGNUP.OK')]
     });
     await alert.present();
   }
