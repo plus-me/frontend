@@ -17,11 +17,9 @@ export class TagsServiceProvider {
       .http
       .get<unknown[]>(API_ENDPOINT + '/Tags/')
       .pipe(
-        map(data => {
-          return plainToClass(TagModel, data, {
+        map(data => plainToClass(TagModel, data, {
             excludeExtraneousValues: true,
-          });
-        })
+          }))
       );
   }
 

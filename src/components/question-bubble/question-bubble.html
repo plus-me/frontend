@@ -11,7 +11,7 @@
   <div class="message" (click)="textClick.emit(question)">{{question.text}}</div>
 </div>
 <div class="answers" *ngIf="question.answers.length > 0" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">
-  {{question.answers.length == 1 ? 'QUESTION.ANSWER' : 'QUESTION.ANSWERS'}}
+  {{question.answers.length === 1 ? 'QUESTION.ANSWER' : 'QUESTION.ANSWERS'}}
 </div>
 <div class="votebar" [class.downvoted]="question.voted === undefined" [class.upvoted]="question.voted" (pan)="panEvent($event)" #votebar>
   <a class="downvote" (click)="downvoteQuestion()" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'answer-bubble',
+  selector: 'app-answer-bubble',
   templateUrl: 'answer-bubble.html'
 })
 
@@ -20,9 +20,9 @@ export class AnswerBubbleComponent {
       const acceptDelta = this.votebar.nativeElement.offsetWidth * 0.25;
       if      (e.deltaX >  acceptDelta) { this.upvote.emit(this.answer); }
       else if (e.deltaX < -acceptDelta) { this.downvote.emit(this.answer); }
-      else                              { this.turnable.nativeElement.style.transform = ""; }
+      else                              { this.turnable.nativeElement.style.transform = ''; }
     } else if (e.distance > 10) {
-      this.turnable.nativeElement.style.transform = "scaleX(" + (1 / (e.distance / 10)) + ")";
+      this.turnable.nativeElement.style.transform = 'scaleX(' + (1 / (e.distance / 10)) + ')';
     }
   }
 }

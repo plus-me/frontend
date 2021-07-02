@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
-import { Storage } from "@ionic/storage";
-import { TranslateService } from "@ngx-translate/core";
+import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
-import { UserServiceProvider } from "../../providers/user-service/user-service";
-import { ContactPage } from "../contact/contact";
+import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
-import { WelcomePage } from "../welcome/welcome";
+import { WelcomePage } from '../welcome/welcome';
 
 @Component({
-  selector: 'page-signUp',
+  selector: 'app-page-signup',
   templateUrl: 'signUp.html'
 })
 export class SignUpPage {
@@ -36,13 +36,24 @@ export class SignUpPage {
     public translate: TranslateService,
     public userService: UserServiceProvider)
   {
-    const transKeys = ['SIGNUP.OK', 'SIGNUP.WRONGINPUTS', 'SIGNUP.CHECKEMAIL', 'AGB.TITLE', 'AGB.MESSAGE', 'PRIVACY.TITLE', 'PRIVACY.MESSAGE'];
+    // TODO move to translate.instant
+    const transKeys = [
+      'SIGNUP.OK',
+      'SIGNUP.WRONGINPUTS',
+      'SIGNUP.CHECKEMAIL',
+      'AGB.TITLE',
+      'AGB.MESSAGE',
+      'PRIVACY.TITLE',
+      'PRIVACY.MESSAGE',
+    ];
     translate.get(transKeys, {value: 'world'}).subscribe((res: string[]) => this.msgs = res);
   }
 
   checkInputs(){
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    var isValidEmail = re.test(this.email);
+    // TODO dont do that, us [isEmail](https://www.npmjs.com/package/isemail)
+    // const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|
+      // (([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const isValidEmail = false; // re.test(this.email);
     return isValidEmail && (this.password.length >= 8) && (this.passwordRepeat === this.password);
   }
 
@@ -55,9 +66,9 @@ export class SignUpPage {
       await toast.present();
       return;
     }
-    var loading = await this.loadCtrl.create();
+    const loading = await this.loadCtrl.create();
     await loading.present();
-    const username = this.email.replace(/@.*/i, "");
+    const username = this.email.replace(/@.*/i, '');
     this.userService.createNewUser(username, this.email, this.password)
     .subscribe(async () => {
       loading.dismiss();
@@ -76,9 +87,6 @@ export class SignUpPage {
     }, async (err) => {
       console.log(err);
       loading.dismiss();
-      if (err.hasOwnProperty('_body')) {
-        err = err._body;
-      }
       const toast = await this.toastCtrl.create({
         message: err,
         duration: 3000
@@ -90,7 +98,7 @@ export class SignUpPage {
   }
 
   public async showUsageConditions() {
-    let alert = await this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
       header: this.msgs['AGB.TITLE'],
       message: this.msgs['AGB.MESSAGE'],
       buttons: [this.msgs['SIGNUP.OK']]
@@ -99,7 +107,7 @@ export class SignUpPage {
   }
 
   public async showPrivacy() {
-    let alert = await this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
       header: this.msgs['PRIVACY.TITLE'],
       message: this.msgs['PRIVACY.MESSAGE'],
       buttons: [this.msgs['SIGNUP.OK']]

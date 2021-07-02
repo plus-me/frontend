@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 
-import { NewsServiceProvider } from "../../providers/news-service/news-service";
-import { QuestionServiceProvider } from "../../providers/question-service/question-service";
+import { NewsServiceProvider } from '../../providers/news-service/news-service';
+import { QuestionServiceProvider } from '../../providers/question-service/question-service';
 
-import { OpenQuestionsPage } from "../openQuestions/openQuestions";
-import { NewsPage } from "../news/news";
-import { EnterQuestionPage } from "../enterQuestion/enterQuestion";
-import { AnsweredQuestionsPage } from "../answeredQuestions/answeredQuestions";
+import { OpenQuestionsPage } from '../openQuestions/openQuestions';
+import { NewsPage } from '../news/news';
+import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
+import { AnsweredQuestionsPage } from '../answeredQuestions/answeredQuestions';
 import { NavController } from '@ionic/angular';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
-  selector: 'page-main',
+  selector: 'app-page-main',
   templateUrl: 'mainMenu.html'
 })
 export class MainMenuPage {
@@ -20,8 +20,8 @@ export class MainMenuPage {
   answeredQuestionsView = AnsweredQuestionsPage;
   enterQuestionView = EnterQuestionPage;
   newsView = NewsPage;
-  unseenAnswered: number = 0;
-  unseenNews: number = 0;
+  unseenAnswered = 0;
+  unseenNews = 0;
 
   constructor(
     private newsService: NewsServiceProvider,

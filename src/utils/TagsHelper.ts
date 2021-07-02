@@ -1,8 +1,8 @@
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
-import { TagsServiceProvider } from "../providers/tags-service/tags-service";
-import { Injectable } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
+import { TagsServiceProvider } from '../providers/tags-service/tags-service';
+import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import {
   switchMap,
   tap,
@@ -56,15 +56,15 @@ export class TagsHelper {
           return this
             .loadAllTagObjects()
             .pipe(
-              tap(async (tags) => {
-                if (!Array.isArray(tags) || tags.length === 0) {
+              tap(async (innerTags) => {
+                if (!Array.isArray(innerTags) || innerTags.length === 0) {
                   const toast = await this.toastCtrl.create({
                     message: this.messageConnectionError,
                     duration: 3000
                   });
                   await toast.present();
                 } else {
-                  this.allTagObjects = tags;
+                  this.allTagObjects = innerTags;
                 }
               }),
             );
@@ -77,9 +77,7 @@ export class TagsHelper {
     return this
       .getAllTagObjects()
       .pipe(
-        map(tags => {
-          return tags.filter(tag => tagIds.includes(tag.id));
-        }),
+        map(tags => tags.filter(tag => tagIds.includes(tag.id))),
       );
   }
 
@@ -88,7 +86,7 @@ export class TagsHelper {
       .getAllTagObjects()
       .pipe(
         map(tags => {
-          tags.sort(function(a, b) {
+          tags.sort((a, b) => {
             const tagA = a.text.toUpperCase(); // ignore upper and lowercase
             const tagB = b.text.toUpperCase(); // ignore upper and lowercase
             if (tagA < tagB) {
@@ -102,7 +100,7 @@ export class TagsHelper {
 
           return tags;
         })
-      )
+      );
   }
 
 }

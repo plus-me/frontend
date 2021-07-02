@@ -1,35 +1,35 @@
 import { Component, ViewChild } from '@angular/core';
-import { AlertController, NavController, IonTabs } from "@ionic/angular";
+import { AlertController, NavController, IonTabs } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { TranslateService } from "@ngx-translate/core";
+import { TranslateService } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 import { UserActions } from 'src/libs/actions/users.actions';
 import { GlobalState } from 'src/libs/interfaces/global.state';
-import { UserState } from 'src/libs/states/user.state';
 
-import { UserServiceProvider } from "../../providers/user-service/user-service";
+import { UserServiceProvider } from '../../providers/user-service/user-service';
 
-import { ContactPage } from "../contact/contact";
-import { FaqPage } from "../faq/faq";
+import { ContactPage } from '../contact/contact';
+import { FaqPage } from '../faq/faq';
 
 @Component({
   templateUrl: './tabs.html',
   styleUrls: ['./tabs.scss'],
 })
 export class TabsPage {
-  @ViewChild(IonTabs) tabs: IonTabs;
-
-  tab1Root = FrontendRoutes.RandomQuestion;
-  tab2Root = FrontendRoutes.MainMenu;
-  tab3Root = FrontendRoutes.SearchQuestions;
-  contactPage = ContactPage;
-  faqPage = FaqPage;
-  onboardingVisible: boolean = false;
-
   @Select((state: GlobalState) => state.user.isLoggedIn)
   public isLoggedIn: Observable<boolean>;
+
+  @ViewChild(IonTabs)
+  public tabs: IonTabs;
+
+  public tab1Root = FrontendRoutes.RandomQuestion;
+  public tab2Root = FrontendRoutes.MainMenu;
+  public tab3Root = FrontendRoutes.SearchQuestions;
+  public contactPage = ContactPage;
+  public faqPage = FaqPage;
+  public onboardingVisible = false;
 
   constructor(
     private storage: Storage,
@@ -41,11 +41,11 @@ export class TabsPage {
   ) {}
 
   ionViewWillEnter() {
-    this.storage.get('showedOnboarding').then(val => { if (!val) this.showOnboarding(); });
+    this.storage.get('showedOnboarding').then(val => { if (!val) {this.showOnboarding();} });
   }
 
   logout() {
-    this.store.dispatch(new UserActions.LogoutAction())
+    this.store.dispatch(new UserActions.LogoutAction());
   }
 
   public async showUsageConditions() {
@@ -73,14 +73,14 @@ export class TabsPage {
   }
 
   showOnboarding() {
-    console.log("Show onboarding");
+    console.log('Show onboarding');
     // TODO
     //this.tabs.setElementClass('blurred', true);
     this.onboardingVisible = true;
   }
 
   hideOnboarding() {
-    console.log("Hide onboarding");
+    console.log('Hide onboarding');
     // TODO
     // this.tabs.setElementClass('blurred', false);
     this.onboardingVisible = false;
@@ -92,6 +92,6 @@ export class TabsPage {
   }
 
   public goToFaq() {
-    this.navCtrl.navigateForward(FrontendRoutes.FAQ)
+    this.navCtrl.navigateForward(FrontendRoutes.FAQ);
   }
 }

@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { TranslateService } from "@ngx-translate/core";
+import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage-angular';
 
-import { UserServiceProvider } from "../providers/user-service/user-service";
-import { TagsHelper } from "../utils/TagsHelper";
-import { TabsPage } from "../pages/tabs/tabs";
-import { WelcomePage } from "../pages/welcome/welcome";
+import { UserServiceProvider } from '../providers/user-service/user-service';
+import { TagsHelper } from '../utils/TagsHelper';
+import { TabsPage } from '../pages/tabs/tabs';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { Router } from '@angular/router';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
@@ -47,12 +47,12 @@ export class AppComponent {
     // Test if user logged in -> Skip login page
     this.userService.loadMe().subscribe(
       me => {
-        console.log("Hello: ", me);
+        console.log('Hello: ', me);
         this.router.navigate([FrontendRoutes.Tabs, FrontendRoutes.MainMenu]);
         setTimeout(() => this.splashScreen.hide(), 1000);
       },
       err => {
-        console.log("Error logging in: ", err);
+        console.log('Error logging in: ', err);
         this.router.navigate([FrontendRoutes.Tabs, FrontendRoutes.Welcome]);
         this.splashScreen.hide();
       }

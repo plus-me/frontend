@@ -1,15 +1,15 @@
-<div class="answer-bubble {{(answer.voted == null) ? 'unvoted' : answer.voted ? 'upvoted' : 'downvoted'}}">
+<div class="answer-bubble {{(answer.voted === null) ? 'unvoted' : answer.voted ? 'upvoted' : 'downvoted'}}">
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="23" width="32" class="lasche">
     <path d="m 0,0.5 c 1.92479,0 4.07945,1.28443 5,3 l 9,17 c 0,0 0.95392,2 2,2 1.00424,0 2,-2 2,-2 l 9,-17 c 1.08369,-1.62341 3.28443,-3 5,-3"/>
   </svg>
   <div class="message-answer">{{answer.text}}</div>
 </div>
-<div class="vote-bar" *ngIf="answer.voted == null" (pan)="panEvent($event)" #votebar>
+<div class="vote-bar" *ngIf="answer.voted === null" (pan)="panEvent($event)" #votebar>
   <a class="vote-button downvote" (click)="downvote.emit(answer)" translate>ANSWERS.BAD</a>
   <img class="author" src="assets/icon/parties/unbekannt.svg" #turnable>
   <a class="vote-button upvote" (click)="upvote.emit(answer)" translate>ANSWERS.GOOD</a>
 </div>
-<div class="vote-bar" *ngIf="answer.voted != null">
+<div class="vote-bar" *ngIf="answer.voted !== null">
   <span class="vote-button downvote" *ngIf="!answer.voted">+me</span>
   <img class="author" src="assets/icon/parties/{{answer.party.short_name}}.svg">
   <span class="vote-button upvote" *ngIf="answer.voted">+me</span>

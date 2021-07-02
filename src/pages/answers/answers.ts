@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
-import { QuestionServiceProvider } from "../../providers/question-service/question-service";
-import { TranslatedNotificationController } from "../../utils/TranslatedNotificationController";
-import { TagsHelper } from "../../utils/TagsHelper";
+import { QuestionServiceProvider } from '../../providers/question-service/question-service';
+import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
+import { TagsHelper } from '../../utils/TagsHelper';
 import { SearchQuestionsPage } from '../searchQuestions/searchQuestions';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
-  selector: 'page-answers',
+  selector: 'app-page-answers',
   providers: [QuestionServiceProvider],
   templateUrl: 'answers.html'
 })
@@ -64,9 +64,9 @@ export class AnswersPage {
   upvoteQuestion(question) {
     console.log('thumbs up for question ' + question.id);
     this.questionService.upvoteQuestion(question.id)
-    .subscribe(question => {
-       console.log(question);
-       this.question = question;
+      .subscribe(innerQuestion => {
+       console.log(innerQuestion);
+       this.question = innerQuestion;
      });
   }
 

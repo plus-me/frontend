@@ -17,14 +17,14 @@
 </ion-header>
 
 <ion-content>
-  <h2 class="hint" translate ion-fixed *ngIf="refresher.state == 'inactive' && (selectedTags && selectedTags.length) && !(questions && questions.length)">SEARCH.EMPTY</h2>
+  <h2 class="hint" translate ion-fixed *ngIf="refresher.state === 'inactive' && (selectedTags && selectedTags.length) && !(questions && questions.length)">SEARCH.EMPTY</h2>
 
   <ion-refresher (ionRefresh)="loadQuestionsForTags()" [enabled]="!voting">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list no-lines>
     <ion-item *ngFor="let question of questions">
-      <question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="refresher.state == 'inactive'"
+      <question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="refresher.state === 'inactive'"
                        (tagClick)="selectedTags = [$event.id]" (upvote)="upvoteQuestion($event)" (voting)="voting=$event">
       </question-bubble>
     </ion-item>

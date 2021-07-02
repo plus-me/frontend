@@ -15,7 +15,7 @@ import {
   tap,
 } from 'rxjs/operators';
 import {API_ENDPOINT} from '../../app/app.config';
-import {Storage} from "@ionic/storage";
+import {Storage} from '@ionic/storage';
 
 /*
  * User service provider
@@ -24,8 +24,8 @@ import {Storage} from "@ionic/storage";
 @Injectable()
 export class UserServiceProvider {
 
-  public static readonly TOKEN_KEY = 'localUserToken';
-  public static readonly EMAIL_KEY = 'localUserEmail';
+  public static readonly tokenKey = 'localUserToken';
+  public static readonly emailKey = 'localUserEmail';
 
   public constructor(
     public http: HttpClient,
@@ -34,7 +34,7 @@ export class UserServiceProvider {
 
 
   public async getToken() {
-    const token = await this.storage.get(UserServiceProvider.TOKEN_KEY);
+    const token = await this.storage.get(UserServiceProvider.tokenKey);
 
     if (typeof token !== 'string') {
       return undefined;
@@ -52,18 +52,18 @@ export class UserServiceProvider {
   public createNewUser(username: string, email: string, password: string) {
     return this
       .http
-      .post<{ token: string, email: string }>(
+      .post<{ token: string; email: string }>(
         `${API_ENDPOINT}/Users/`,
         JSON.stringify({
-          email: email,
-          password: password,
-          username: username
+          email,
+          password,
+          username
         }),
       )
       .pipe(
         tap((data) => {
-          this.storage.set(UserServiceProvider.TOKEN_KEY, data.token);
-          this.storage.set(UserServiceProvider.EMAIL_KEY, data.email);
+          this.storage.set(UserServiceProvider.tokenKey, data.token);
+          this.storage.set(UserServiceProvider.emailKey, data.email);
         })
       );
   }

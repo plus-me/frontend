@@ -7,7 +7,7 @@ import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'page-welcome',
+  selector: 'app-page-welcome',
   templateUrl: 'welcome.html'
 })
 export class WelcomePage {

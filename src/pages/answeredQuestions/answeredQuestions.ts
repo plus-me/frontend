@@ -1,14 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonContent, IonRefresher } from '@ionic/angular';
-import {QuestionServiceProvider} from "../../providers/question-service/question-service";
+import {QuestionServiceProvider} from '../../providers/question-service/question-service';
 import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
-import {TagsHelper} from "../../utils/TagsHelper";
-import {AnswersPage} from "../answers/answers";
+import {TagsHelper} from '../../utils/TagsHelper';
+import {AnswersPage} from '../answers/answers';
 import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
-  selector: 'page-answeredQuestions',
+  selector: 'app-page-answeredquestions',
   providers: [QuestionServiceProvider],
   templateUrl: 'answeredQuestions.html'
 })
@@ -36,7 +36,7 @@ export class AnsweredQuestionsPage {
       data => {
         this.refresher.complete();
         this.questions = data;
-        if (data.length) this.questionService.updateSeenAnsweredQuestions(data.map(d => d.next));
+        if (data.length) {this.questionService.updateSeenAnsweredQuestions(data.map(d => d.next));}
       },
       () => {
         this.refresher.complete();

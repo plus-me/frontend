@@ -1,7 +1,3 @@
-/**
- * @copyright FLYACTS GmbH 2020
- */
-
 import {
   HttpEvent,
   HttpHandler,
@@ -25,13 +21,14 @@ export class AppInterceptor implements HttpInterceptor {
 
   /**
    * Add authentication token to every request
+   *
    * @param req http request
    * @param next http handler
    */
   public intercept(
-    req: HttpRequest<{}>,
+    req: HttpRequest<unknown>,
     next: HttpHandler,
-  ): Observable<HttpEvent<{}>> {
+  ): Observable<HttpEvent<unknown>> {
     if (req.url.startsWith('./assets/lang/')) {
       return next.handle(req);
     }
@@ -45,14 +42,12 @@ export class AppInterceptor implements HttpInterceptor {
                 setHeaders: {
                   authorization: token,
                 },
-              })
+              });
           } else {
             return req;
           }
         }),
-        switchMap(req => {
-          return next.handle(req);
-        })
+        switchMap(switchReq => next.handle(switchReq))
       );
   }
 }

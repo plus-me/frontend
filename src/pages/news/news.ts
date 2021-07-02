@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController, IonContent, IonRefresher } from '@ionic/angular';
-import { TranslateService } from "@ngx-translate/core";
-import {NewsServiceProvider} from "../../providers/news-service/news-service";
+import { TranslateService } from '@ngx-translate/core';
+import {NewsServiceProvider} from '../../providers/news-service/news-service';
 
 @Component({
   templateUrl: 'news.html',
-  selector: 'page-news',
+  selector: 'app-page-news',
   providers: [NewsServiceProvider],
 })
 export class NewsPage {
@@ -41,7 +41,7 @@ export class NewsPage {
         data => {
           this.refresher.complete();
           this.news = data;
-          if (data.length) this.newsService.updateSeenNews(data.map(d => d.id));
+          if (data.length) {this.newsService.updateSeenNews(data.map(d => d.id));}
         },
         () => {
           this.refresher.complete();

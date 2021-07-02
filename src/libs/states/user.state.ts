@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Action, State, StateContext } from '@ngxs/store';
-import {Storage} from "@ionic/storage";
+import {Storage} from '@ionic/storage';
 import { API_ENDPOINT } from 'src/app/app.config';
 import {
   catchError,
@@ -26,8 +26,8 @@ export interface UserStateInterface {
 })
 @Injectable()
 export class UserState {
-  public static readonly TOKEN_KEY = 'localUserToken';
-  public static readonly EMAIL_KEY = 'localUserEmail';
+  public static readonly tokenKey = 'localUserToken';
+  public static readonly emailKey = 'localUserEmail';
 
   public constructor(
     private storage: Storage,
@@ -56,13 +56,13 @@ export class UserState {
           ctx.setState({
             isLoggedIn: true,
             token: data.Token,
-          })
-          this.storage.set(UserState.TOKEN_KEY, data.Token);
-          this.storage.set(UserState.EMAIL_KEY, action.email);
+          });
+          this.storage.set(UserState.tokenKey, data.Token);
+          this.storage.set(UserState.emailKey, action.email);
           this.router.navigate([
             FrontendRoutes.Tabs,
             FrontendRoutes.MainMenu,
-          ])
+          ]);
         }),
         catchError (async (_err) => {
           ctx.setState({
@@ -90,15 +90,15 @@ export class UserState {
           ctx.setState({
             isLoggedIn: false,
             token: undefined,
-          })
-          this.storage.remove(UserState.TOKEN_KEY);
-          this.storage.remove(UserState.EMAIL_KEY);
+          });
+          this.storage.remove(UserState.tokenKey);
+          this.storage.remove(UserState.emailKey);
 
           this.router.navigate([
             FrontendRoutes.Tabs,
             FrontendRoutes.Welcome,
           ]);
         })
-      )
+      );
   }
 }

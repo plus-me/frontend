@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Storage } from "@ionic/storage";
+import { Storage } from '@ionic/storage';
 import {
   Observable,
   zip,
@@ -32,7 +32,9 @@ export class QuestionServiceProvider {
   }
 
   public loadAnsweredQuestions() {
-    return this.http.get<Array<{ count: number, next: null, previous: null, result: unknown[]}>>(API_ENDPOINT + '/Questions/?answered=true&ordering=-closed_date');
+    return this.http.get<Array<{ count: number; next: null; previous: null; result: unknown[]}>>(
+      API_ENDPOINT + '/Questions/?answered=true&ordering=-closed_date',
+    );
   }
 
   loadOpenQuestions() {
@@ -64,7 +66,7 @@ export class QuestionServiceProvider {
       .http
       .post(
         API_ENDPOINT + '/Questions/' + questionID + '/report/',
-        { reason: "unbekannt" },
+        { reason: 'unbekannt' },
       );
 
   }
