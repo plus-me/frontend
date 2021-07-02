@@ -15,5 +15,5 @@ jobs:
         node-version: 14.17.1
         cache: 'npm'
     - run: npm ci
-    - run: npm lint
+    - run: npm run lint
     - run: npm run build
