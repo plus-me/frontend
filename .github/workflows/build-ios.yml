@@ -1,0 +1,26 @@
+name: Build iOS
+
+on:
+  push:
+    branches: [ develop, main, feature/ios-build ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.17.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.17.1
+    - run: npm ci
+    # create www folder to satisfy cordova
+    - run: mkdir -p www
+    - run: npm run cordova -- platform add ios
+    - run: npm run ionic -- cordova build ios
+    - run: find platforms/ios/build
+    # - name: Archive Artifacts
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: "Android Debug APK"
+    #     path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
