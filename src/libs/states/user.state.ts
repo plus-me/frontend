@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Action, State, StateContext, Store } from '@ngxs/store';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {Storage} from '@ionic/storage';
+
 import { API_ENDPOINT } from 'src/app/app.config';
 import {
   catchError,
@@ -14,7 +16,8 @@ import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 import { UserActions } from '../actions/users.actions';
 import { plainToClass } from 'class-transformer';
 import { UserModel } from 'src/models/user.model';
-
+import { TranslateService } from '@ngx-translate/core';
+import { AlertController, ToastController } from '@ionic/angular';
 
 export interface UserStateInterface {
   isLoggedIn: boolean;
@@ -35,6 +38,9 @@ export class UserState {
     private router: Router,
     private notifier: TranslatedNotificationController,
     private store: Store,
+    private translate: TranslateService,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
   ) { }
 
   @Action(UserActions.LoginAction)
@@ -100,32 +106,89 @@ export class UserState {
       );
   }
 
-  @Action(UserActions.ValidateToken)
-  public validateToken(
-    ctx: StateContext<UserStateInterface>,
-  ) {
-    return this
-      .http
-      .get<unknown>(`${API_ENDPOINT}/Users/me/`)
-      .pipe(
-        map(data => plainToClass(
-          UserModel,
-          data,
-        )),
-        tap((user) => {
-          ctx.patchState({
-            user,
-          });
-        }),
-        catchError((error: unknown) => {
-          ctx.setState({
-            isLoggedIn: false,
-            user: undefined,
-            token: undefined,
-          });
+    @Action(UserActions.ValidateToken)
+    public validateToken(
+        ctx: StateContext<UserStateInterface>,
+    ) {
+        return this
+            .http
+            .get<unknown>(`${API_ENDPOINT}/Users/me/`)
+            .pipe(
+                map(data => plainToClass(
+                    UserModel,
+                    data,
+                )),
+                tap((user) => {
+                    ctx.patchState({
+                        user,
+                    });
+                }),
+                catchError((error: unknown) => {
+                    ctx.setState({
+                        isLoggedIn: false,
+                        user: undefined,
+                        token: undefined,
+                    });
 
-          return of(error);
-        })
-      );
-  }
+                    return of(error);
+                })
+            );
+    }
+
+    @Action(UserActions.RegisterAction)
+    public register(
+        _ctx: StateContext<UserStateInterface>,
+        action: UserActions.RegisterAction,
+    ) {
+        return this
+            .http
+            .post<any>(
+                API_ENDPOINT + '/Users/',
+                JSON.stringify({
+                    email: action.email,
+                    password: action.password,
+                }),
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                },
+            )
+            .pipe(
+                tap(async () => {
+                    const alert = await this.alertCtrl.create({
+                        message: this.translate.instant('SIGNUP.CHECKEMAIL'),
+                        backdropDismiss: false,
+                        buttons: [{
+                            text: this.translate.instant('SIGNUP.OK'),
+                            handler: () => {
+                                this.router.navigate([
+                                    FrontendRoutes.Tabs,
+                                    FrontendRoutes.Login,
+                                ]);
+                            }
+                        }]
+                    });
+
+                    await alert.present();
+                }),
+                catchError(async (error: Error | HttpErrorResponse) => {
+                        const message = (error instanceof HttpErrorResponse ?
+                            error.error.message :
+                            error.message);
+
+                        const toast = await this.toastCtrl.create({
+                            message,
+                            duration: 3000
+                        });
+
+                        await toast.present();
+
+                        this.router.navigate([
+                            FrontendRoutes.Tabs,
+                            FrontendRoutes.Contact,
+                        ]);
+                    }
+                ));
+    }
 }

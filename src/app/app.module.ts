@@ -46,6 +46,7 @@ import { AppInterceptor } from '../libs/interceptors/app.interceptor';
 import { Drivers } from '@ionic/storage';
 import { NgxsModule, Store } from '@ngxs/store';
 import { UserState } from 'src/libs/states/user.state';
+import { TagState } from 'src/libs/states/tag.state';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
@@ -95,6 +96,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ),
     NgxsModule.forRoot([
       UserState,
+      TagState,
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({

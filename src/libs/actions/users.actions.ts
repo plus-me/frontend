@@ -10,7 +10,15 @@ export namespace UserActions {
 
   export class LogoutAction {
     public static readonly type = '[Users] Logout';
+  }
 
+  export class RegisterAction {
+    public static readonly type = '[Users] Register';
+
+    public constructor(
+      public email: string,
+      public password: string,
+    ) {}
   }
 
   export class ValidateToken {

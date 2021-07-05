@@ -1,0 +1,13 @@
+diff --git a/node_modules/cordova-android/bin/templates/cordova/lib/check_reqs.js b/node_modules/cordova-android/bin/templates/cordova/lib/check_reqs.js
+index 82827ac..8b0d794 100644
+--- a/node_modules/cordova-android/bin/templates/cordova/lib/check_reqs.js
++++ b/node_modules/cordova-android/bin/templates/cordova/lib/check_reqs.js
+@@ -29,7 +29,7 @@ var android_sdk = require('./android_sdk');
+ const { createEditor } = require('properties-parser');
+ const semver = require('semver');
+ 
+-const EXPECTED_JAVA_VERSION = '1.8.x';
++const EXPECTED_JAVA_VERSION = '11.x.x';
+ 
+ // Re-exporting these for backwards compatibility and for unit testing.
+ // TODO: Remove uses and use the ./utils module directly.
