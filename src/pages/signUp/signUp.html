@@ -39,11 +39,18 @@
     <a (click)="showPrivacy()">{{ 'PRIVACY.TITLE' | translate }}</a>
   </ion-label>
   <div class="button-area">
-    <button ion-button block (repeat)="checkEntries()" (change)="checkEntries()" (click)="signUp()">
+    <ion-button
+      expand="block"
+      (repeat)="checkEntries()"
+      (change)="checkEntries()"
+      (click)="signUp()">
       {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
-    </button>
-    <button ion-button block outline (click)="goToWelcome()">
+    </ion-button>
+    <ion-button
+      expand="block"
+      fill="outline"
+      (click)="goToWelcome()">
       {{ 'SIGNUP.CANCEL' | translate }}
-    </button>
+    </ion-button>
   </div>
 </ion-content>
