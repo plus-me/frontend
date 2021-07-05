@@ -3,12 +3,5 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "https://api.wepublic.me/v1"
-    }
-  ],
-  "id": "2dc2eb8a"
+  "type": "angular"
 }
