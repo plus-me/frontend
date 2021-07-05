@@ -1,23 +1,28 @@
+import { Action, State, StateContext, Store } from '@ngxs/store';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Action, State, StateContext } from '@ngxs/store';
 import {Storage} from '@ionic/storage';
+
 import { API_ENDPOINT } from 'src/app/app.config';
 import {
   catchError,
   tap,
+  map,
 } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslatedNotificationController } from 'src/utils/TranslatedNotificationController';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 import { UserActions } from '../actions/users.actions';
+import { plainToClass } from 'class-transformer';
+import { UserModel } from 'src/models/user.model';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController, ToastController } from '@ionic/angular';
-
 
 export interface UserStateInterface {
   isLoggedIn: boolean;
   token?: string;
+  user?: UserModel;
 }
 
 @State<UserStateInterface>({
@@ -28,14 +33,11 @@ export interface UserStateInterface {
 })
 @Injectable()
 export class UserState {
-  public static readonly tokenKey = 'localUserToken';
-  public static readonly emailKey = 'localUserEmail';
-
   public constructor(
-    private storage: Storage,
     private http: HttpClient,
     private router: Router,
     private notifier: TranslatedNotificationController,
+    private store: Store,
     private translate: TranslateService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
@@ -57,13 +59,11 @@ export class UserState {
       )
       .pipe(
         tap(data => {
-          console.dir(data);
           ctx.setState({
             isLoggedIn: true,
             token: data.Token,
           });
-          this.storage.set(UserState.tokenKey, data.Token);
-          this.storage.set(UserState.emailKey, action.email);
+          this.store.dispatch(new UserActions.ValidateToken());
           this.router.navigate([
             FrontendRoutes.Tabs,
             FrontendRoutes.MainMenu,
@@ -95,9 +95,8 @@ export class UserState {
           ctx.setState({
             isLoggedIn: false,
             token: undefined,
+            user: undefined,
           });
-          this.storage.remove(UserState.tokenKey);
-          this.storage.remove(UserState.emailKey);
 
           this.router.navigate([
             FrontendRoutes.Tabs,
@@ -107,60 +106,89 @@ export class UserState {
       );
   }
 
-  @Action(UserActions.RegisterAction)
-  public register(
-    _ctx: StateContext<UserStateInterface>,
-    action: UserActions.RegisterAction,
-  ) {
-    return this
-      .http
-      .post<any>(
-        API_ENDPOINT + '/Users/',
-        JSON.stringify({
-          email: action.email,
-          password: action.password,
-        }),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
-      .pipe(
-        tap(async () => {
-          const alert = await this.alertCtrl.create({
-            message: this.translate.instant('SIGNUP.CHECKEMAIL'),
-            backdropDismiss: false,
-            buttons: [ {
-              text: this.translate.instant('SIGNUP.OK'),
-              handler: () => {
-                this.router.navigate([
-                  FrontendRoutes.Tabs,
-                  FrontendRoutes.Login,
-                ]);
-              }
-            }]
-          });
+    @Action(UserActions.ValidateToken)
+    public validateToken(
+        ctx: StateContext<UserStateInterface>,
+    ) {
+        return this
+            .http
+            .get<unknown>(`${API_ENDPOINT}/Users/me/`)
+            .pipe(
+                map(data => plainToClass(
+                    UserModel,
+                    data,
+                )),
+                tap((user) => {
+                    ctx.patchState({
+                        user,
+                    });
+                }),
+                catchError((error: unknown) => {
+                    ctx.setState({
+                        isLoggedIn: false,
+                        user: undefined,
+                        token: undefined,
+                    });
 
-          await alert.present();
-        }),
-        catchError(async (error: Error | HttpErrorResponse) => {
-          const message = (error instanceof HttpErrorResponse ?
-            error.error.message :
-            error.message);
+                    return of(error);
+                })
+            );
+    }
 
-          const toast = await this.toastCtrl.create({
-            message,
-            duration: 3000
-          });
+    @Action(UserActions.RegisterAction)
+    public register(
+        _ctx: StateContext<UserStateInterface>,
+        action: UserActions.RegisterAction,
+    ) {
+        return this
+            .http
+            .post<any>(
+                API_ENDPOINT + '/Users/',
+                JSON.stringify({
+                    email: action.email,
+                    password: action.password,
+                }),
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                },
+            )
+            .pipe(
+                tap(async () => {
+                    const alert = await this.alertCtrl.create({
+                        message: this.translate.instant('SIGNUP.CHECKEMAIL'),
+                        backdropDismiss: false,
+                        buttons: [{
+                            text: this.translate.instant('SIGNUP.OK'),
+                            handler: () => {
+                                this.router.navigate([
+                                    FrontendRoutes.Tabs,
+                                    FrontendRoutes.Login,
+                                ]);
+                            }
+                        }]
+                    });
 
-          await toast.present();
+                    await alert.present();
+                }),
+                catchError(async (error: Error | HttpErrorResponse) => {
+                        const message = (error instanceof HttpErrorResponse ?
+                            error.error.message :
+                            error.message);
 
-          this.router.navigate([
-            FrontendRoutes.Tabs,
-            FrontendRoutes.Contact,
-          ]);
-        })
-      );
-  }
+                        const toast = await this.toastCtrl.create({
+                            message,
+                            duration: 3000
+                        });
+
+                        await toast.present();
+
+                        this.router.navigate([
+                            FrontendRoutes.Tabs,
+                            FrontendRoutes.Contact,
+                        ]);
+                    }
+                ));
+    }
 }

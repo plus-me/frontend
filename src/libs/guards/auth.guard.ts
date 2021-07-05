@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
-import { NavController } from '@ionic/angular';
-import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { Store } from '@ngxs/store';
+import { GlobalState } from '../interfaces/global.state';
 
 
 /**
@@ -16,8 +16,8 @@ export class AuthGuard implements CanActivate {
      * creates a new instance of AuthGuard
      */
     public constructor(
-      private userService: UserServiceProvider,
-      private navCtrl: NavController,
+      private router: Router,
+      private store: Store,
     ) { }
 
     /**
@@ -28,11 +28,14 @@ export class AuthGuard implements CanActivate {
         let canActivate: boolean;
 
         if (route instanceof ActivatedRouteSnapshot) {
-          const token = await this.userService.getToken();
-            if (typeof token === 'string') {
+          const isLoggedIn = this.store.selectSnapshot((store: GlobalState) => store.user.isLoggedIn);
+            if (isLoggedIn) {
                 canActivate = true;
             } else {
-                await this.navCtrl.navigateRoot(FrontendRoutes.Welcome);
+                await this.router.navigate([
+                  FrontendRoutes.Tabs,
+                  FrontendRoutes.Welcome,
+                ]);
                 canActivate = false;
             }
         } else {

@@ -20,4 +20,8 @@ export namespace UserActions {
       public password: string,
     ) {}
   }
+
+  export class ValidateToken {
+    public static readonly type = '[Users] Validate Token';
+  }
 }

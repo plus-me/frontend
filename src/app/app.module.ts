@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 import { AppComponent } from './app.component';
 import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
@@ -43,7 +44,7 @@ import { TranslatedNotificationController } from '../utils/TranslatedNotificatio
 import { AppRoutes } from './app-routing';
 import { AppInterceptor } from '../libs/interceptors/app.interceptor';
 import { Drivers } from '@ionic/storage';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, Store } from '@ngxs/store';
 import { UserState } from 'src/libs/states/user.state';
 import { TagState } from 'src/libs/states/tag.state';
 
@@ -98,6 +99,11 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
       TagState,
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key: [
+        UserState,
+      ]
+    })
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -129,9 +135,9 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS,
-      useFactory: (userService: UserServiceProvider) => new AppInterceptor(userService),
+      useFactory: (store: Store) => new AppInterceptor(store),
       multi: true,
-      deps: [UserServiceProvider],
+      deps: [Store],
     },
   ]
 })
