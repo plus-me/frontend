@@ -22,7 +22,7 @@
 </ion-menu>
 
 <ion-tabs #content>
-  <ion-tab-bar>
+  <ion-tab-bar *ngIf="isLoggedIn | async">
     <ion-tab-button
       tab="random-question">
       <ion-icon src="/assets/icons/tabs/search-questions.svg"></ion-icon>

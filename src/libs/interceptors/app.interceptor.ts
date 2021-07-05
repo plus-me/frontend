@@ -5,9 +5,10 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { of, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { GlobalState } from '../interfaces/global.state';
 
 /**
  * Interceptor for authentication
@@ -16,7 +17,7 @@ import { UserServiceProvider } from '../../providers/user-service/user-service';
 export class AppInterceptor implements HttpInterceptor {
 
   public constructor(
-    private userService: UserServiceProvider,
+    private store: Store,
   ) { }
 
   /**
@@ -29,18 +30,21 @@ export class AppInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    if (req.url.startsWith('./assets/lang/')) {
+    if (req.url.startsWith('./assets')) {
       return next.handle(req);
     }
 
-    return from(this.userService.getToken())
+    return of(
+      this
+        .store
+        .selectSnapshot((state: GlobalState) => state.user.token))
       .pipe(
         map((token) => {
           if (typeof token === 'string') {
             return req
               .clone({
                 setHeaders: {
-                  authorization: token,
+                  authorization: `Token ${token}`,
                 },
               });
           } else {

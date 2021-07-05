@@ -12,4 +12,8 @@ export namespace UserActions {
     public static readonly type = '[Users] Logout';
 
   }
+
+  export class ValidateToken {
+    public static readonly type = '[Users] Validate Token';
+  }
 }
