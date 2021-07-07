@@ -62,6 +62,8 @@ export class AppComponent {
               FrontendRoutes.Welcome,
             ]);
           }
+
+          this.splashScreen.hide();
         }
       );
   }
