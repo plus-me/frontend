@@ -3,9 +3,7 @@ import { NavController, IonContent, IonRefresher } from '@ionic/angular';
 import {QuestionServiceProvider} from '../../providers/question-service/question-service';
 import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import {TagsHelper} from '../../utils/TagsHelper';
-import {AnswersPage} from '../answers/answers';
-import {SearchQuestionsPage} from '../searchQuestions/searchQuestions';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
 
 @Component({
   selector: 'app-page-answeredquestions',

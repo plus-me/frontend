@@ -11,7 +11,7 @@ import {
 import {
   of,
 } from 'rxjs';
-import { TagModel } from 'src/models/tag.model';
+import { TagModel } from '../libs/models/tag.model';
 
 @Injectable()
 export class TagsHelper {

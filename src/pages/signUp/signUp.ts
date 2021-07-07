@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
 import { ContactPage } from '../contact/contact';
 import { LoginPage } from '../login/login';
 import { WelcomePage } from '../welcome/welcome';

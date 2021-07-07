@@ -9,7 +9,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
 import { TagsHelper } from '../utils/TagsHelper';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { Router } from '@angular/router';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '../libs/enums/frontend-routes.enum';
 import { Store } from '@ngxs/store';
 import { UserActions } from 'src/libs/actions/users.actions';
 import { GlobalState } from 'src/libs/interfaces/global.state';

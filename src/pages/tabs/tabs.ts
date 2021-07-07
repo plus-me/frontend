@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
 import { UserActions } from 'src/libs/actions/users.actions';
 import { GlobalState } from 'src/libs/interfaces/global.state';
 

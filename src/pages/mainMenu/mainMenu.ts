@@ -8,7 +8,6 @@ import { NewsPage } from '../news/news';
 import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
 import { AnsweredQuestionsPage } from '../answeredQuestions/answeredQuestions';
 import { NavController } from '@ionic/angular';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
 
 @Component({
   selector: 'app-page-main',

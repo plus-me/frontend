@@ -1,4 +1,4 @@
-import { TagModel } from '../../models/tag.model';
+import { TagModel } from '../models/tag.model';
 import { QuestionModel } from '../models/question.model';
 
 export namespace QuestionActions {

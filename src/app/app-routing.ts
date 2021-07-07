@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
-import { AuthGuard } from 'src/libs/guards/auth.guard';
+import { FrontendRoutes } from '../libs//enums/frontend-routes.enum';
+import { AuthGuard } from '../libs/guards/auth.guard';
 import { ContactPage } from 'src/pages/contact/contact';
 import { EnterQuestionPage } from 'src/pages/enterQuestion/enterQuestion';
 import { FaqPage } from 'src/pages/faq/faq';
