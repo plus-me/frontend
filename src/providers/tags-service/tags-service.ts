@@ -4,7 +4,7 @@ import {API_ENDPOINT} from '../../app/app.config';
 import {
   plainToClass,
 } from 'class-transformer';
-import { TagModel } from 'src/models/tag.model';
+import { TagModel } from '../../libs/models/tag.model';
 import { map } from 'rxjs/operators';
 
 @Injectable()

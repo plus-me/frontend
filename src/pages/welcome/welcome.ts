@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-
 import { SignUpPage } from '../signUp/signUp';
 import { LoginPage } from '../login/login';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
 import { Router } from '@angular/router';
 
 @Component({

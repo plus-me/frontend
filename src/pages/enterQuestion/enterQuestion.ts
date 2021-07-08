@@ -3,8 +3,8 @@ import { NavController } from '@ionic/angular';
 import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import { TagsHelper } from '../../utils/TagsHelper';
 import { QuestionServiceProvider } from '../../providers/question-service/question-service';
-import { TagModel } from 'src/models/tag.model';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { TagModel } from '../../libs/models/tag.model';
+import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
 import { Observable } from 'rxjs';
 
 @Component({

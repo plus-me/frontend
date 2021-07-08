@@ -5,7 +5,7 @@ import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
 import {QuestionServiceProvider} from '../../providers/question-service/question-service';
 import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
 import {TagsHelper} from '../../utils/TagsHelper';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
 
 @Component({
   selector: 'app-page-open-questions',
