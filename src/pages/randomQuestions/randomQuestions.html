@@ -14,10 +14,10 @@
     </ion-row>
     <ion-row class="spacer"></ion-row>
     <ion-row>
-      <question-bubble [question]="questions[0]" *ngIf="questions.length > 0"
+      <app-question-bubble [question]="questions[0]" *ngIf="questions.length > 0"
                        (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)"
                        (downvote)="downvote($event)" (upvote)="upvote($event)">
-      </question-bubble>
+      </app-question-bubble>
       <h2 class="hint" translate *ngIf="!(questions && questions.length)">RANDOM.EMPTY</h2>
     </ion-row>
     <ion-row class="spacer"></ion-row>

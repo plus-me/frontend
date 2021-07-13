@@ -15,9 +15,9 @@
   </ion-refresher>
   <ion-list no-lines>
     <ion-item *ngFor="let question of questions">
-      <question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="false"
+      <app-question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="false"
                        (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)">
-      </question-bubble>
+      </app-question-bubble>
     </ion-item>
   </ion-list>
 </ion-content>
