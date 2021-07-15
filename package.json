@@ -1,8 +1,8 @@
 {
-  "name": "wepublic",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "plusme",
+  "version": "2.0",
+  "author": "plusme development team",
+  "homepage": "http://plus-me.de/",
   "private": true,
   "scripts": {
     "start": "ng serve",
@@ -75,7 +75,7 @@
     "patch-package": "6.4.7",
     "typescript": "4.3.4"
   },
-  "description": "An Ionic project",
+  "description": "Making democracy digital",
   "cordova": {
     "plugins": {
       "cordova-plugin-device": {},
