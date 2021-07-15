@@ -1,5 +1,5 @@
-import { TagModel } from '../models/tag.model';
-import { QuestionModel } from '../models/question.model';
+import { TagModel } from '@plusme/libs/models/tag.model';
+import { QuestionModel } from '@plusme/libs/models/question.model';
 
 export namespace QuestionActions {
   export class CreateQuestionAction {

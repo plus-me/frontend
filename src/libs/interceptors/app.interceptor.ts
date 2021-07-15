@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { of, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { GlobalState } from '../interfaces/global.state';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
 /**
  * Interceptor for authentication

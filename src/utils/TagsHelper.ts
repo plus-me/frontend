@@ -1,6 +1,6 @@
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
-import { TagsServiceProvider } from '../providers/tags-service/tags-service';
+import { TagsServiceProvider } from '@plusme/providers/tags-service/tags-service';
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -11,7 +11,7 @@ import {
 import {
   of,
 } from 'rxjs';
-import { TagModel } from '../libs/models/tag.model';
+import { TagModel } from '@plusme/libs/models/tag.model';
 
 @Injectable()
 export class TagsHelper {

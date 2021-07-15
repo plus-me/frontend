@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
-import { FrontendRoutes } from '../enums/frontend-routes.enum';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { Store } from '@ngxs/store';
-import { GlobalState } from '../interfaces/global.state';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
 
 /**

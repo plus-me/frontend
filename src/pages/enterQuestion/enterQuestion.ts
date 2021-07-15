@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
-import { TagsHelper } from '../../utils/TagsHelper';
-import { QuestionServiceProvider } from '../../providers/question-service/question-service';
-import { TagModel } from '../../libs/models/tag.model';
-import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
+import { TagsHelper } from '@plusme/utils/TagsHelper';
+import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
+import { TagModel } from '@plusme/libs/models/tag.model';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { Observable } from 'rxjs';
 
 @Component({

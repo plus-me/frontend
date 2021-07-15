@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { NewsServiceProvider } from '../../providers/news-service/news-service';
-import { QuestionServiceProvider } from '../../providers/question-service/question-service';
+import { NewsServiceProvider } from '@plusme/providers/news-service/news-service';
+import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
 
-import { OpenQuestionsPage } from '../openQuestions/openQuestions';
-import { NewsPage } from '../news/news';
-import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
-import { AnsweredQuestionsPage } from '../answeredQuestions/answeredQuestions';
+import { OpenQuestionsPage } from '@plusme/pages/openQuestions/openQuestions';
+import { NewsPage } from '@plusme/pages/news/news';
+import { EnterQuestionPage } from '@plusme/pages/enterQuestion/enterQuestion';
+import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
 import { NavController } from '@ionic/angular';
 
 @Component({
