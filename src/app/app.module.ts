@@ -16,37 +16,37 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 import { AppComponent } from './app.component';
-import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
-import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
+import { AnswerBubbleComponent } from '@plusme/components/answer-bubble/answer-bubble';
+import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
 
-import { AnsweredQuestionsPage } from '../pages/answeredQuestions/answeredQuestions';
-import { AnswersPage} from '../pages/answers/answers';
-import { ContactPage } from '../pages/contact/contact';
-import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
-import { FaqPage } from '../pages/faq/faq';
-import { LoginPage } from '../pages/login/login';
-import { MainMenuPage } from '../pages/mainMenu/mainMenu';
-import { OpenQuestionsPage } from '../pages/openQuestions/openQuestions';
-import { NewsPage } from '../pages/news/news';
-import { RandomQuestionsPage } from '../pages/randomQuestions/randomQuestions';
-import { SearchQuestionsPage } from '../pages/searchQuestions/searchQuestions';
-import { SignUpPage } from '../pages/signUp/signUp';
-import { TabsPage } from '../pages/tabs/tabs';
-import { WelcomePage } from '../pages/welcome/welcome';
+import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
+import { AnswersPage} from '@plusme/pages/answers/answers';
+import { ContactPage } from '@plusme/pages/contact/contact';
+import { EnterQuestionPage } from '@plusme/pages/enterQuestion/enterQuestion';
+import { FaqPage } from '@plusme/pages/faq/faq';
+import { LoginPage } from '@plusme/pages/login/login';
+import { MainMenuPage } from '@plusme/pages/mainMenu/mainMenu';
+import { OpenQuestionsPage } from '@plusme/pages/openQuestions/openQuestions';
+import { NewsPage } from '@plusme/pages/news/news';
+import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
+import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
+import { SignUpPage } from '@plusme/pages/signUp/signUp';
+import { TabsPage } from '@plusme/pages/tabs/tabs';
+import { WelcomePage } from '@plusme/pages/welcome/welcome';
 
-import { NewsServiceProvider } from '../providers/news-service/news-service';
-import { QuestionServiceProvider } from '../providers/question-service/question-service';
-import { UserServiceProvider } from '../providers/user-service/user-service';
-import { TagsServiceProvider } from '../providers/tags-service/tags-service';
+import { NewsServiceProvider } from '@plusme/providers/news-service/news-service';
+import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
+import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
+import { TagsServiceProvider } from '@plusme/providers/tags-service/tags-service';
 
-import { TagsHelper } from '../utils/TagsHelper';
-import { TranslatedNotificationController } from '../utils/TranslatedNotificationController';
+import { TagsHelper } from '@plusme/utils/TagsHelper';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { AppRoutes } from './app-routing';
-import { AppInterceptor } from '../libs/interceptors/app.interceptor';
+import { AppInterceptor } from '@plusme/libs/interceptors/app.interceptor';
 import { Drivers } from '@ionic/storage';
 import { NgxsModule, Store } from '@ngxs/store';
-import { UserState } from 'src/libs/states/user.state';
-import { TagState } from 'src/libs/states/tag.state';
+import { UserState } from '@plusme/libs/states/user.state';
+import { TagState } from '@plusme/libs/states/tag.state';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Store } from '@ngxs/store';
-import { API_ENDPOINT } from 'src/app/app.config';
-import { TagModel } from '../models/tag.model';
-import { TagsActions } from '../actions/tags.actions';
+import { API_ENDPOINT } from '@plusme/app/app.config';
+import { TagModel } from '@plusme/libs/models/tag.model';
+import { TagsActions } from '@plusme/libs/actions/tags.actions';
 import { map, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 

@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
-import { FrontendRoutes } from '../libs//enums/frontend-routes.enum';
-import { AuthGuard } from '../libs/guards/auth.guard';
-import { ContactPage } from 'src/pages/contact/contact';
-import { EnterQuestionPage } from 'src/pages/enterQuestion/enterQuestion';
-import { FaqPage } from 'src/pages/faq/faq';
-import { LoginPage } from 'src/pages/login/login';
-import { MainMenuPage } from 'src/pages/mainMenu/mainMenu';
-import { NewsPage } from 'src/pages/news/news';
-import { RandomQuestionsPage } from 'src/pages/randomQuestions/randomQuestions';
-import { SearchQuestionsPage } from 'src/pages/searchQuestions/searchQuestions';
-import { SignUpPage } from 'src/pages/signUp/signUp';
-import { TabsPage } from 'src/pages/tabs/tabs';
-import { WelcomePage } from 'src/pages/welcome/welcome';
+import { FrontendRoutes } from '@plusme/libs//enums/frontend-routes.enum';
+import { AuthGuard } from '@plusme/libs/guards/auth.guard';
+import { ContactPage } from '@plusme/pages/contact/contact';
+import { EnterQuestionPage } from '@plusme/pages/enterQuestion/enterQuestion';
+import { FaqPage } from '@plusme/pages/faq/faq';
+import { LoginPage } from '@plusme/pages/login/login';
+import { MainMenuPage } from '@plusme/pages/mainMenu/mainMenu';
+import { NewsPage } from '@plusme/pages/news/news';
+import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
+import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
+import { SignUpPage } from '@plusme/pages/signUp/signUp';
+import { TabsPage } from '@plusme/pages/tabs/tabs';
+import { WelcomePage } from '@plusme/pages/welcome/welcome';
 
 export const AppRoutes: Routes = [
   {

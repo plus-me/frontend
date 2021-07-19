@@ -5,14 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage-angular';
 
-import { UserServiceProvider } from '../providers/user-service/user-service';
-import { TagsHelper } from '../utils/TagsHelper';
-import { WelcomePage } from '../pages/welcome/welcome';
+import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
+import { TagsHelper } from '@plusme/utils/TagsHelper';
+import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { Router } from '@angular/router';
-import { FrontendRoutes } from '../libs/enums/frontend-routes.enum';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { Store } from '@ngxs/store';
-import { UserActions } from 'src/libs/actions/users.actions';
-import { GlobalState } from 'src/libs/interfaces/global.state';
+import { UserActions } from '@plusme/libs/actions/users.actions';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
 @Component({
   selector: 'app-root',

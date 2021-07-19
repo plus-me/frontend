@@ -1,6 +1,6 @@
 import { Action, State, StateContext, Store } from '@ngxs/store';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { API_ENDPOINT } from 'src/app/app.config';
+import { API_ENDPOINT } from '@plusme/app/app.config';
 import {
   catchError,
   tap,
@@ -9,11 +9,11 @@ import {
 import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslatedNotificationController } from 'src/utils/TranslatedNotificationController';
-import { FrontendRoutes } from '../enums/frontend-routes.enum';
-import { UserActions } from '../actions/users.actions';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { UserActions } from '@plusme/libs/actions/users.actions';
 import { plainToClass } from 'class-transformer';
-import { UserModel } from '../models/user.model';
+import { UserModel } from '@plusme/libs/models/user.model';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController, ToastController } from '@ionic/angular';
 

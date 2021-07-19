@@ -4,14 +4,14 @@ import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
-import { UserActions } from 'src/libs/actions/users.actions';
-import { GlobalState } from 'src/libs/interfaces/global.state';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { UserActions } from '@plusme/libs/actions/users.actions';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
-import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
 
-import { ContactPage } from '../contact/contact';
-import { FaqPage } from '../faq/faq';
+import { ContactPage } from '@plusme/pages/contact/contact';
+import { FaqPage } from '@plusme/pages/faq/faq';
 
 @Component({
   templateUrl: './tabs.html',

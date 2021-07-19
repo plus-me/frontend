@@ -6,7 +6,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { UserActions } from '../../libs/actions/users.actions';
+import { UserActions } from '@plusme/libs/actions/users.actions';
 
 @Component({
   selector: 'app-page-login',

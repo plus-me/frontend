@@ -6,7 +6,7 @@ import {
   zip,
   from,
 } from 'rxjs';
-import {API_ENDPOINT} from '../../app/app.config';
+import {API_ENDPOINT} from '@plusme/app/app.config';
 
 /*
  * Question service provider
