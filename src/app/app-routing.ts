@@ -12,6 +12,7 @@ import { SearchQuestionsPage } from 'src/pages/searchQuestions/searchQuestions';
 import { SignUpPage } from 'src/pages/signUp/signUp';
 import { TabsPage } from 'src/pages/tabs/tabs';
 import { WelcomePage } from 'src/pages/welcome/welcome';
+import { OnboardingComponent } from 'src/pages/onboarding/onboarding.component';
 
 export const AppRoutes: Routes = [
   {
@@ -38,7 +39,7 @@ export const AppRoutes: Routes = [
       {
         path: FrontendRoutes.RandomQuestion,
         component: RandomQuestionsPage,
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: FrontendRoutes.SearchQuestions,
@@ -61,6 +62,10 @@ export const AppRoutes: Routes = [
       {
         path: FrontendRoutes.News,
         component: NewsPage,
+      },
+      {
+        path: FrontendRoutes.Onboarding,
+        component: OnboardingComponent,
       }
     ],
   },

@@ -21,12 +21,14 @@ export interface UserStateInterface {
   isLoggedIn: boolean;
   token?: string;
   user?: UserModel;
+  hasOnboardingFinished: boolean;
 }
 
 @State<UserStateInterface>({
   name: 'user',
   defaults: {
     isLoggedIn: false,
+    hasOnboardingFinished: false,
   }
 })
 @Injectable()
@@ -57,18 +59,18 @@ export class UserState {
       )
       .pipe(
         tap(data => {
-          ctx.setState({
+          ctx.patchState({
             isLoggedIn: true,
             token: data.Token,
           });
           this.store.dispatch(new UserActions.ValidateToken());
           this.router.navigate([
             FrontendRoutes.Tabs,
-            FrontendRoutes.MainMenu,
+            FrontendRoutes.RandomQuestion,
           ]);
         }),
         catchError (async (_err) => {
-          ctx.setState({
+          ctx.patchState({
             isLoggedIn: false,
             token: undefined,
           });
@@ -90,7 +92,7 @@ export class UserState {
       )
       .pipe(
         tap(() => {
-          ctx.setState({
+          ctx.patchState({
             isLoggedIn: false,
             token: undefined,
             user: undefined,
@@ -122,7 +124,7 @@ export class UserState {
                     });
                 }),
                 catchError((error: unknown) => {
-                    ctx.setState({
+                    ctx.patchState({
                         isLoggedIn: false,
                         user: undefined,
                         token: undefined,
@@ -189,4 +191,18 @@ export class UserState {
                     }
                 ));
     }
+
+  @Action(UserActions.FinishedOnboarding)
+  public finishedOnboarding(
+    ctx: StateContext<UserStateInterface>,
+  ) {
+    ctx.patchState({
+      hasOnboardingFinished: true,
+    });
+
+    this.router.navigate([
+      FrontendRoutes.Tabs,
+      FrontendRoutes.RandomQuestion,
+    ]);
+  }
 }
