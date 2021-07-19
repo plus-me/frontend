@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { Store } from "@ngxs/store";
-import { UserActions } from "src/libs/actions/users.actions";
+import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { UserActions } from 'src/libs/actions/users.actions';
 
 @Component({
   templateUrl: './onboarding.component.html',
