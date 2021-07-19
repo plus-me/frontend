@@ -1,0 +1,36 @@
+.title-image {
+  vertical-align: middle;
+  padding-right: 0.5em;
+}
+
+.title-header {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.title-header::after {
+  background-image: none !important;
+  border-bottom: 1px solid #D7DCE1;
+}
+
+.incoming {
+  font-weight: bolder;
+  color: #0E9976;
+  --ion-background-color: rgba(21, 225, 174, 0.08) !important
+}
+
+.main-navigation {
+  font-weight: bolder;
+}
+
+ion-item {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+ion-item-divider {
+  min-height: 0.5em !important;
+}
+
+.list-md {
+  padding-top: 4px !important;
+}

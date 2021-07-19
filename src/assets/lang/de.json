@@ -67,11 +67,16 @@
   },
 
   "MENU": {
+    "INBOX": "Neue Fragen für dich",
+    "MINE": "Meine Fragen",
+    "DISMISSED": "Abgelehnte Fragen",
+    "PRIVACY": "Datenschutz",
+    "LICENSES": "Lizenzen",
     "ANSWERS": "Antworten",
     "CONTACT": "Kontakt",
     "FAQ": "Häufig gestellte Fragen",
     "IMPRINT": "Impressum",
-    "MENU": "Menü",
+    "MENU": "Mein Profil",
     "ONBOARDING": "Einführung",
     "LOGOUT": "Abmelden"
   },
