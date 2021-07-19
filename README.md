@@ -10,3 +10,6 @@
 - open your favorite browser at http://localhost:4200
 - happy hacking
 
+## Want to help?
+
+WiP! You could create an [issue here](https://github.com/plusme/meta/issues) and let us know about that!

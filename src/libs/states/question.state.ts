@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
-import { QuestionActions } from '../actions/questions.action';
+import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import urlcat from 'urlcat';
-import { API_ENDPOINT } from 'src/app/app.config';
-import { BackendRoutes } from '../enums/backend-routes.enum';
+import { API_ENDPOINT } from '@plusme/app/app.config';
+import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
 import { map, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
-import { QuestionModel } from '../models/question.model';
+import { QuestionModel } from '@plusme/libs/models/question.model';
 
 interface QuestionStateInterface {
   randomQuestion: QuestionModel;

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { TagsHelper } from '../../utils/TagsHelper';
+import { TagsHelper } from '@plusme/utils/TagsHelper';
 
 /*eslint no-underscore-dangle: [0]*/
 

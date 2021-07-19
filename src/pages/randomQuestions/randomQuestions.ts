@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { LoadingController, NavController } from '@ionic/angular';
 import { forkJoin, timer } from 'rxjs';
-import { QuestionServiceProvider } from '../../providers/question-service/question-service';
-import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
-import { TagsHelper } from '../../utils/TagsHelper';
-import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
+import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
+import { TagsHelper } from '@plusme/utils/TagsHelper';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 @Component({
   selector: 'app-page-randomquestions',

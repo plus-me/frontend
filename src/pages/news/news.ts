@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, ToastController, IonContent, IonRefresher } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import {NewsServiceProvider} from '../../providers/news-service/news-service';
+import {NewsServiceProvider} from '@plusme/providers/news-service/news-service';
 
 @Component({
   templateUrl: 'news.html',

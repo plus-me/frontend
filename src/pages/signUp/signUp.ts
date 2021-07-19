@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { FrontendRoutes } from '../../libs/enums/frontend-routes.enum';
-import { ContactPage } from '../contact/contact';
-import { LoginPage } from '../login/login';
-import { WelcomePage } from '../welcome/welcome';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { ContactPage } from '@plusme/pages/contact/contact';
+import { LoginPage } from '@plusme/pages/login/login';
+import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { Store } from '@ngxs/store';
-import { UserActions } from 'src/libs/actions/users.actions';
+import { UserActions } from '@plusme/libs/actions/users.actions';
 
 @Component({
   selector: 'app-page-signup',

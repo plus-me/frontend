@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {API_ENDPOINT} from '../../app/app.config';
+import {API_ENDPOINT} from '@plusme/app/app.config';
 import {
   plainToClass,
 } from 'class-transformer';
-import { TagModel } from '../../libs/models/tag.model';
+import { TagModel } from '@plusme/libs/models/tag.model';
 import { map } from 'rxjs/operators';
 
 @Injectable()
