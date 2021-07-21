@@ -47,6 +47,9 @@ import { Drivers } from '@ionic/storage';
 import { NgxsModule, Store } from '@ngxs/store';
 import { UserState } from '@plusme/libs/states/user.state';
 import { TagState } from '@plusme/libs/states/tag.state';
+import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
@@ -69,6 +72,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     SignUpPage,
     TabsPage,
     WelcomePage,
+    OnboardingComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +97,9 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     }),
     RouterModule.forRoot(
       AppRoutes,
+      {
+        useHash: true,
+      }
     ),
     NgxsModule.forRoot([
       UserState,
@@ -103,7 +110,8 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
       key: [
         UserState,
       ]
-    })
+    }),
+    NgxsRouterPluginModule.forRoot(),
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -122,6 +130,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     SignUpPage,
     TabsPage,
     WelcomePage,
+    OnboardingComponent,
   ],
   providers: [
     StatusBar,

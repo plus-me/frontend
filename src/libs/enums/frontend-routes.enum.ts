@@ -11,4 +11,5 @@ export enum FrontendRoutes {
   FAQ = 'faq',
   SignUp = 'signup',
   News = 'news',
+  Onboarding = 'onboarding',
 }

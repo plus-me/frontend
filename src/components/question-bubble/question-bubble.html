@@ -7,7 +7,7 @@
     <path d="m 1,0 H 18.5 V 1 H 1 z" style="stroke:none" />
     <path d="m 19.779181,0.5004292 v 0 c -2.50318,0.1043 -4.69502,1.53631 -5.92219,3.76774 l -2.525,4.825 C 8.3861611,14.722329 8.3861611,14.722329 3.7658811,23.551929 c -0.34061,0.59607 -0.89967,0.94807 -1.56588,0.94807 -0.92386,0 -1.70106173,-0.776141 -1.69999999,-1.7 L 0.52562438,0.5041545"/>
   </svg>
-  <div class="tags"><span *ngFor="let tag of loadTags(question)" (click)="tagClick.emit(tag)">#{{tag.text}} </span></div>
+  <div class="tags"><span *ngFor="let tag of loadTags(question) | async" (click)="tagClick.emit(tag)">#{{tag.text}} </span></div>
   <div class="message" (click)="textClick.emit(question)">{{question.text}}</div>
 </div>
 <div class="answers" *ngIf="question.answers.length > 0" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">

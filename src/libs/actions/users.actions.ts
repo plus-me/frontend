@@ -24,4 +24,8 @@ export namespace UserActions {
   export class ValidateToken {
     public static readonly type = '[Users] Validate Token';
   }
+
+  export class FinishedOnboarding {
+    public static readonly type = '[Users] Finished Onboarding';
+  }
 }

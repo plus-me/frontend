@@ -1,0 +1,38 @@
+<ion-content fullscreen class="onboarding">
+  <ion-card>
+    <ion-slides pager="true">
+      <ion-slide>
+        <div class="slide">
+          <img src="assets/icon/onboarding/page1.svg">
+          <span [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+        <img src="assets/icon/onboarding/page2.svg">
+        <span [innerHTML]="'ONBOARDING.PAGE2' | translate"></span>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          <img src="assets/icon/onboarding/page3.svg">
+          <span [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          <img src="assets/icon/onboarding/page4.svg">
+          <span [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
+          <ion-button
+            block
+            (click)="finish()">
+            {{ 'ONBOARDING.OK_GO' | translate }}
+          </ion-button>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="blur-svg">
+    <defs><filter id="blur-filter"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+  </svg>
+</ion-content>
