@@ -157,5 +157,19 @@
   "PRIVACY": {
     "TITLE": "Datenschutzrichtlinien",
     "MESSAGE": "<p>Die Betreiber dieser App nehmen den Schutz deiner persönlichen Daten sehr ernst. Wir behandeln deine personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Damit du dich bei der Nutzung unserer App sicher fühlst, möchten wir dich hier zusätzlich zu den gesetzlichen Bestimmungen darüber informieren, welche Daten wir erheben und wie wir diese verarbeiten und nutzen.</p><h3>Verantwortliche Stelle</h3><p>Verantwortliche Stelle für die Erhebung, Verarbeitung und Nutzung deier personenbezogenen Daten im Sinne des Bundesdatenschutzgesetzes ist die Initiative wepublic, wie im Impressum angegeben. Sofern du der Erhebung, Verarbeitung oder Nutzung deiner Daten durch wepublic nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen willst, kannst du deinen Widerspruch per E-Mail oder Brief an folgende Kontaktdaten senden: Simon Gogolin, Adriana Groh, Julia Riederer, Cornelia Kolb, Alex Bär, Marius Schulz, Tim Zeidler, GbR: Schloßstraße 96, 60486 Frankfurt/M; Mobil: 0176-82979447; E-Mail: hello@wepublic.me.</p><h3>Personenbezogene Daten</h3><p>Personenbezogene Daten sind Einzelangaben über sachliche oder persönliche Verhältnisse einer bestimmten oder bestimmbaren natürlichen Person. Unser Ziel ist es so wenig wie möglich personenbezogene Daten zu erheben, zu verarbeiten und zu nutzen.</p><p>Wir bieten bieten nach Registrierung einen individuellen, direkten und passwortgeschützen Zugang zu unserer App +me. Du verpflichtest dich, die persönlichen Zugangsdaten vertraulich zu behandeln und keinem unbefugten Dritten zugänglich zu machen. Wepublic kann keine Haftung für missbräuchlich verwendete Passwörter übernehmen, es sei denn, der Missbrauch ist von uns zu vertreten. Sofern du dich nicht abmeldest, bleibst du automatisch eingeloggt. Diese Funktion ermöglicht dir die Nutzung eines Teils unserer Dienste ohne dich jedes Mal erneut einloggen zu müssen. Aus Sicherheitsgründen könntest du jedoch nochmals zur Eingabe deines Passworts aufgefordert werden.</p><p>Deine personenbezogenen Daten werden ohne deine ausdrückliche Zustimmung nicht an Dritte weitergegeben. Deine E-Mail-Adresse benötigen wir, damit wir mit dir kommunizieren können. Wir nutzen diese zudem für deine Identifikation für die Benutzung unserer App +me. Eine Löschung deiner personenbezogenen Daten erfolgt, sofern gesetzliche Aufbewahrungspflichten dem nicht entgegenstehen und du einen Löschungsanspruch geltend gemacht hast, wenn die Daten zur Erfüllung des mit der Speicherung verfolgten Zwecks nicht mehr erforderlich sind oder wenn deine Speicherung aus sonstigen gesetzlichen Gründen unzulässig ist.</p><p>22.08.2017</p>"
+  },
+  "createQuestion": {
+    "title": "Deine Frage an alle Parteien",
+    "question": "Stelle deine Frage",
+    "tags": "#Schlagwörter",
+    "tagsHelp": "Damit andere deine Frage besser finden",
+    "submit": "Senden",
+    "respect": "Bitte sei freundlich und respektvoll, denn kein Mensch mag Trolle 😉",
+    "success": "Deine Frage wurde erfolgreich eingereicht.",
+    "errors": {
+      "text": "Deine Frage ist zu lange. Bitte gebe maximal 250 Zeichen für die Frage an.",
+      "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
+      "unknownError": "Irgendwas ist schief gegangen 🤷"
+    }
   }
 }

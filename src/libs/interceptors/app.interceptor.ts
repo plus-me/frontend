@@ -34,6 +34,8 @@ export class AppInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
+    req.headers.set('Content-Type', 'application/json');
+
     return of(
       this
         .store
@@ -44,6 +46,7 @@ export class AppInterceptor implements HttpInterceptor {
             return req
               .clone({
                 setHeaders: {
+                  'content-type': 'application/json',
                   authorization: `Token ${token}`,
                 },
               });
