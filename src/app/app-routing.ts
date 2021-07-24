@@ -11,6 +11,7 @@ import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestio
 import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
 import { SignUpPage } from '@plusme/pages/signUp/signUp';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
+import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
 
 export const AppRoutes: Routes = [
   {
@@ -55,5 +56,9 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.Onboarding,
     component: OnboardingComponent,
+  },
+  {
+    path: FrontendRoutes.Imprint,
+    component: ImprintPage,
   }
 ];
