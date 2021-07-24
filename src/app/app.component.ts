@@ -38,6 +38,10 @@ export class AppComponent {
       lines: 'full',
     },
     {
+      title: 'sidebar.terms',
+      url: FrontendRoutes.Terms,
+    },
+    {
       title: 'sidebar.privacy',
       url: FrontendRoutes.Privacy,
     },

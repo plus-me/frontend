@@ -154,9 +154,9 @@
     "ME": "Ich"
   },
 
-  "AGB": {
-    "TITLE": "Nutzungsbedingungen",
-    "MESSAGE": "<h3>+me Codex</h3><p>Auf +me geht es um Dialog und konstruktiven Austausch. Das wollen wir durch das Frage-Antwort-Prinzip der App ermöglichen. Am Ende soll die App dir helfen, Antworten auf für dich wichtige Fragen zu bekommen und dir deine Wahlentscheidung  bei der Bundestagswahl 2017 zu erleichtern.</p><p>Damit das funktioniert, müssen alle Nutzer ein paar Regeln einhalten. Bitte <ul><li>stell keine Fragen, die sexistisch, gewaltverherrlichend, rassistisch, homophob, diskriminierend oder beleidigend sind</li><li>stell keine Fragen mit Beschimpfungen, Bedrohungen oder menschenverachtenden Inhalt</li><li>stell keine Fragen zum Privatleben oder Fragen, die unter die berufliche Schweigepflicht fallen</li><li>triff keine bloße Meinungsäußerung. Stell eine  Frage, für deren Antwort du dich wirklich interessierst</li></ul></p><p>Wie stelle ich eine gute Frage?<ul><li>formuliere möglichst kurz und knapp eine konkrete Frage</li><li>stelle deine Frage zu einem konkreten Thema, aber nicht an eine konkrete Person oder Partei. Bei +me geht es darum, von allen Parteien vergleichbare Antworten zu bekommen</li><li>stelle keine Suggestivfrage, also unterstelle nicht, dass du die Antwort bereits weißt</li><li>es geht nicht um die eigene Meinung, sondern um die Antworten auf Fragen, die dir wichtig sind</li><li>auf gute Fragen gibt es auch oft bessere Antworten</li></ul></p>"
+  "terms": {
+    "title": "+me codex",
+    "content": "<p>Auf +me geht es um Dialog und konstruktiven Austausch. Das wollen wir durch das Frage-Antwort-Prinzip der App ermöglichen. Am Ende soll die App dir helfen, Antworten auf für dich wichtige Fragen zu bekommen und dir deine Wahlentscheidung  bei der Bundestagswahl 2017 zu erleichtern.</p><p>Damit das funktioniert, müssen alle Nutzer ein paar Regeln einhalten. Bitte <ul><li>stell keine Fragen, die sexistisch, gewaltverherrlichend, rassistisch, homophob, diskriminierend oder beleidigend sind</li><li>stell keine Fragen mit Beschimpfungen, Bedrohungen oder menschenverachtenden Inhalt</li><li>stell keine Fragen zum Privatleben oder Fragen, die unter die berufliche Schweigepflicht fallen</li><li>triff keine bloße Meinungsäußerung. Stell eine  Frage, für deren Antwort du dich wirklich interessierst</li></ul></p><p>Wie stelle ich eine gute Frage?<ul><li>formuliere möglichst kurz und knapp eine konkrete Frage</li><li>stelle deine Frage zu einem konkreten Thema, aber nicht an eine konkrete Person oder Partei. Bei +me geht es darum, von allen Parteien vergleichbare Antworten zu bekommen</li><li>stelle keine Suggestivfrage, also unterstelle nicht, dass du die Antwort bereits weißt</li><li>es geht nicht um die eigene Meinung, sondern um die Antworten auf Fragen, die dir wichtig sind</li><li>auf gute Fragen gibt es auch oft bessere Antworten</li></ul></p>"
   },
 
   "privacy": {
@@ -172,6 +172,7 @@
     "randomQuestion": "Neue Fragen für dich",
     "myQuestions": "Meine Fragen",
     "rejectedQuestions": "Abgelehnte Fragen",
+    "terms": "+me codex",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "licenses": "Lizenzen"

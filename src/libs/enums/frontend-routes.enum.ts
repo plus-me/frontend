@@ -15,4 +15,5 @@ export enum FrontendRoutes {
   Privacy = 'privacy',
   Imprint = 'imprint',
   Licenses = 'licenses',
+  Terms = 'terms',
 }

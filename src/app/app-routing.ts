@@ -13,6 +13,7 @@ import { SignUpPage } from '@plusme/pages/signUp/signUp';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
 import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
+import { TermsPage } from '@plusme/pages/terms/terms.page';
 
 export const AppRoutes: Routes = [
   {
@@ -65,6 +66,9 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.Privacy,
     component: PrivacyPage,
+  },
+  {
+    path: FrontendRoutes.Terms,
+    component: TermsPage,
   }
-
 ];
