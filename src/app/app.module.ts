@@ -43,6 +43,7 @@ import { UserState } from '@plusme/libs/states/user.state';
 import { TagState } from '@plusme/libs/states/tag.state';
 import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NavbarCompontent } from '@plusme/components/navbar/navbar.component';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -65,6 +66,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     SignUpPage,
     WelcomePage,
     OnboardingComponent,
+    NavbarCompontent,
   ],
   imports: [
     BrowserModule,
