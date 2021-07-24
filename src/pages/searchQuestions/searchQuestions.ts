@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { IonContent, NavController, NavParams, IonRefresher } from '@ionic/angular';
 import { forkJoin, Observable } from 'rxjs';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
-import { TagsHelper } from '@plusme/utils/TagsHelper';
 import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
 import { TagModel } from '@plusme/libs/models/tag.model';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
@@ -23,11 +22,9 @@ export class SearchQuestionsPage {
   constructor(
     private navCtrl: NavController,
     navParams: NavParams,
-    private tagsHelper: TagsHelper,
     private notifier: TranslatedNotificationController,
     private questionService: QuestionServiceProvider,
   ) {
-    this.tags = this.tagsHelper.getAllTagObjectsSorted();
     const tag = navParams.get('tag');
     console.log('Search questions for tag: ' + tag);
     if (tag !== undefined) {

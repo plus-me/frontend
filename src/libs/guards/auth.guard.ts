@@ -33,7 +33,6 @@ export class AuthGuard implements CanActivate {
                 canActivate = true;
             } else {
                 await this.router.navigate([
-                  FrontendRoutes.Tabs,
                   FrontendRoutes.Welcome,
                 ]);
                 canActivate = false;

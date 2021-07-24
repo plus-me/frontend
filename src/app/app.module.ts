@@ -14,7 +14,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-
 import { AppComponent } from './app.component';
 import { AnswerBubbleComponent } from '@plusme/components/answer-bubble/answer-bubble';
 import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
@@ -22,7 +21,6 @@ import { QuestionBubbleComponent } from '@plusme/components/question-bubble/ques
 import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
 import { AnswersPage} from '@plusme/pages/answers/answers';
 import { ContactPage } from '@plusme/pages/contact/contact';
-import { EnterQuestionPage } from '@plusme/pages/enterQuestion/enterQuestion';
 import { FaqPage } from '@plusme/pages/faq/faq';
 import { LoginPage } from '@plusme/pages/login/login';
 import { MainMenuPage } from '@plusme/pages/mainMenu/mainMenu';
@@ -31,15 +29,11 @@ import { NewsPage } from '@plusme/pages/news/news';
 import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
 import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
 import { SignUpPage } from '@plusme/pages/signUp/signUp';
-import { TabsPage } from '@plusme/pages/tabs/tabs';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 
 import { NewsServiceProvider } from '@plusme/providers/news-service/news-service';
 import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
 import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
-import { TagsServiceProvider } from '@plusme/providers/tags-service/tags-service';
-
-import { TagsHelper } from '@plusme/utils/TagsHelper';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { AppRoutes } from './app-routing';
 import { AppInterceptor } from '@plusme/libs/interceptors/app.interceptor';
@@ -61,7 +55,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AnsweredQuestionsPage,
     AnswersPage,
     ContactPage,
-    EnterQuestionPage,
     FaqPage,
     LoginPage,
     MainMenuPage,
@@ -70,7 +63,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     RandomQuestionsPage,
     SearchQuestionsPage,
     SignUpPage,
-    TabsPage,
     WelcomePage,
     OnboardingComponent,
   ],
@@ -119,7 +111,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AnsweredQuestionsPage,
     AnswersPage,
     ContactPage,
-    EnterQuestionPage,
     FaqPage,
     LoginPage,
     MainMenuPage,
@@ -128,17 +119,14 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     RandomQuestionsPage,
     SearchQuestionsPage,
     SignUpPage,
-    TabsPage,
     WelcomePage,
     OnboardingComponent,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    TagsHelper,
     UserServiceProvider,
     QuestionServiceProvider,
-    TagsServiceProvider,
     NewsServiceProvider,
     TranslatedNotificationController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

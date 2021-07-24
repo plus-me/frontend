@@ -6,10 +6,11 @@
   /** primary **/
   --ion-color-primary: #15E1AE;
   --ion-color-primary-rgb: 21, 225, 174;
+  --ion-color-primary-hsl: hsl(165, 83%, 48%);
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #11B28A;
-  --ion-color-primary-tint: #3CEDC1;
+  --ion-color-primary-tint: rgba(21, 225, 174, 0.08);
 
   /** secondary **/
   --ion-color-secondary: #FFDD5A;

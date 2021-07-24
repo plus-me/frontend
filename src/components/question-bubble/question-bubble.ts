@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { TagsHelper } from '@plusme/utils/TagsHelper';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -24,11 +23,11 @@ export class QuestionBubbleComponent {
 
   private _panState = 'idle';
 
-  constructor(public tagsHelper: TagsHelper) {
+  constructor() {
   }
 
   loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
+
   }
 
   resetPan() {

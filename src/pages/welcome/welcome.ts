@@ -18,11 +18,11 @@ export class WelcomePage {
   ) {}
 
   public goToSignup() {
-    this.router.navigate([FrontendRoutes.Tabs, FrontendRoutes.SignUp]);
+    this.router.navigate([FrontendRoutes.SignUp]);
   }
 
   public goToLogin() {
-    this.router.navigate([FrontendRoutes.Tabs, FrontendRoutes.Login]);
+    this.router.navigate([FrontendRoutes.Login]);
   }
 
 }

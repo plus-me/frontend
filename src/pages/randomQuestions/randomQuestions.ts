@@ -3,7 +3,6 @@ import { LoadingController, NavController } from '@ionic/angular';
 import { forkJoin, timer } from 'rxjs';
 import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
-import { TagsHelper } from '@plusme/utils/TagsHelper';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 @Component({
@@ -20,7 +19,6 @@ export class RandomQuestionsPage {
     private loadCtrl: LoadingController,
     private notifier: TranslatedNotificationController,
     private questionService: QuestionServiceProvider,
-    private tagsHelper: TagsHelper,
   ) { }
 
   public async ionViewDidEnter() {
@@ -47,7 +45,7 @@ export class RandomQuestionsPage {
   }
 
   public loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
+
   }
 
   public loadAnswerPage(question) {

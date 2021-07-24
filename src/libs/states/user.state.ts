@@ -9,7 +9,6 @@ import {
 } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { UserActions } from '@plusme/libs/actions/users.actions';
@@ -37,7 +36,6 @@ export interface UserStateInterface {
 export class UserState {
   public constructor(
     private http: HttpClient,
-    private router: Router,
     private notifier: TranslatedNotificationController,
     private store: Store,
     private translate: TranslateService,
@@ -69,7 +67,6 @@ export class UserState {
         }),
         tap(() => {
           this.store.dispatch(new Navigate([
-            FrontendRoutes.Tabs,
             FrontendRoutes.RandomQuestion,
           ]));
         }),
@@ -103,7 +100,6 @@ export class UserState {
           });
 
           this.store.dispatch(new Navigate([
-            FrontendRoutes.Tabs,
             FrontendRoutes.Welcome,
           ]));
         })
@@ -167,7 +163,6 @@ export class UserState {
               text: this.translate.instant('SIGNUP.OK'),
               handler: () => {
                 this.store.dispatch(new Navigate([
-                  FrontendRoutes.Tabs,
                   FrontendRoutes.Login,
                 ]));
               }
@@ -189,24 +184,9 @@ export class UserState {
           await toast.present();
 
           this.store.dispatch(new Navigate([
-            FrontendRoutes.Tabs,
             FrontendRoutes.Contact,
           ]));
-        }
-        ));
-  }
-
-  @Action(UserActions.FinishedOnboarding)
-  public finishedOnboarding(
-    ctx: StateContext<UserStateInterface>,
-  ) {
-    ctx.patchState({
-      hasOnboardingFinished: true,
-    });
-
-    this.store.dispatch(new Navigate([
-      FrontendRoutes.Tabs,
-      FrontendRoutes.RandomQuestion,
-    ]));
+        }),
+      );
   }
 }
