@@ -45,6 +45,7 @@ import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.compone
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NavbarCompontent } from '@plusme/components/navbar/navbar.component';
 import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
+import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -69,6 +70,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     OnboardingComponent,
     NavbarCompontent,
     ImprintPage,
+    PrivacyPage,
   ],
   imports: [
     BrowserModule,
@@ -126,6 +128,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     WelcomePage,
     OnboardingComponent,
     ImprintPage,
+    PrivacyPage,
   ],
   providers: [
     StatusBar,

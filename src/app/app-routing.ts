@@ -12,6 +12,7 @@ import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestio
 import { SignUpPage } from '@plusme/pages/signUp/signUp';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
+import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 
 export const AppRoutes: Routes = [
   {
@@ -60,5 +61,10 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.Imprint,
     component: ImprintPage,
+  },
+  {
+    path: FrontendRoutes.Privacy,
+    component: PrivacyPage,
   }
+
 ];
