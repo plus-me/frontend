@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage-angular';
 
-import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
+
 import { TagsHelper } from '@plusme/utils/TagsHelper';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { Router } from '@angular/router';
@@ -16,7 +16,6 @@ import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
 @Component({
   selector: 'app-root',
-  providers: [UserServiceProvider],
   templateUrl: 'app.html'
 })
 export class AppComponent {
@@ -27,7 +26,6 @@ export class AppComponent {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public translate: TranslateService,
-    public userService: UserServiceProvider,
     public tagsHelper: TagsHelper,
     private storage: Storage,
     private router: Router,
@@ -42,29 +40,29 @@ export class AppComponent {
     await this.platform.ready();
     await this.storage.create();
     this.statusBar.styleDefault();
-    this.checkLoggedInStatus();
-  }
 
-  checkLoggedInStatus() {
-    this
+    const hasOnboardingFinished = this
       .store
-      .dispatch(new UserActions.ValidateToken())
-      .subscribe(
-        (state: GlobalState) => {
-          if (state.user.isLoggedIn) {
-            this.router.navigate([
-              FrontendRoutes.Tabs,
-              FrontendRoutes.MainMenu,
-            ]);
-          } else {
-            this.router.navigate([
-              FrontendRoutes.Tabs,
-              FrontendRoutes.Welcome,
-            ]);
-          }
-
-          this.splashScreen.hide();
-        }
+      .selectSnapshot(
+        (state: GlobalState) => state.user.hasOnboardingFinished
       );
+
+    if (hasOnboardingFinished) {
+      this
+        .store
+        .dispatch(new UserActions.ValidateToken());
+
+      this.router.navigate([
+        FrontendRoutes.Tabs,
+        FrontendRoutes.RandomQuestion,
+      ]);
+    } else {
+      this.router.navigate([
+        FrontendRoutes.Tabs,
+        FrontendRoutes.Onboarding,
+      ]);
+    }
+
+    this.splashScreen.hide();
   }
 }

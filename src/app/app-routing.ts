@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
 import { FrontendRoutes } from '@plusme/libs//enums/frontend-routes.enum';
 import { AuthGuard } from '@plusme/libs/guards/auth.guard';
 import { ContactPage } from '@plusme/pages/contact/contact';
@@ -38,7 +39,7 @@ export const AppRoutes: Routes = [
       {
         path: FrontendRoutes.RandomQuestion,
         component: RandomQuestionsPage,
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: FrontendRoutes.SearchQuestions,
@@ -61,6 +62,10 @@ export const AppRoutes: Routes = [
       {
         path: FrontendRoutes.News,
         component: NewsPage,
+      },
+      {
+        path: FrontendRoutes.Onboarding,
+        component: OnboardingComponent,
       }
     ],
   },

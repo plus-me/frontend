@@ -34,7 +34,14 @@ export class RandomQuestionsPage {
     )
     .subscribe(
       res => res.forEach(this.addQuestion, this),
-      err => { loading.dismiss(); if (err.status !== 429) {this.notifier.showToast('CONNERROR');} },
+      err => {
+          loading.dismiss();
+          if (err.status === 204) {
+              this.notifier.showToast('NOMOREQUESTIONS');
+          } else {
+              this.notifier.showToast('CONNERROR');
+          }
+          },
       () => loading.dismiss()
     );
   }

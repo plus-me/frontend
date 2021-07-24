@@ -31,6 +31,7 @@
     "@ionic/storage-angular": "3.0.6",
     "@ngx-translate/core": "13.0.0",
     "@ngx-translate/http-loader": "6.0.0",
+    "@ngxs/router-plugin": "3.7.2",
     "@ngxs/storage-plugin": "3.7.2",
     "@ngxs/store": "3.7.2",
     "class-transformer": "0.4.0",
