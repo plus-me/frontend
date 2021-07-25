@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-navbar',
   templateUrl: 'navbar.component.html',
 })
-export class NavbarCompontent {
+export class NavbarComponent {
   @Input()
   public title = '';
 }
