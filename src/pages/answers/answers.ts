@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from '@ionic/angular';
 import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
-import { TagsHelper } from '@plusme/utils/TagsHelper';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 @Component({
@@ -24,16 +23,10 @@ export class AnswersPage {
     private navCtrl: NavController,
     private notifier: TranslatedNotificationController,
     private questionService: QuestionServiceProvider,
-    private tagsHelper: TagsHelper,
   ) {
     this.question = navParams.get('question');
     console.log(this.question);
-    this.loadTags();
     this.loadAnswers();
-  }
-
-  loadTags(){
-    return this.tagsHelper.getTagObjects(this.question.tags);
   }
 
   loadAnswers() {

@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage-angular';
 
-
-import { TagsHelper } from '@plusme/utils/TagsHelper';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { Router } from '@angular/router';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
@@ -19,20 +17,54 @@ import { TagsActions } from '@plusme/libs/actions/tags.actions';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  styleUrls: ['app.scss'],
 })
 export class AppComponent {
   @Select((state: GlobalState) => state.user.isLoggedIn)
   public isLoggedIn: Observable<boolean>;
 
   rootPage: any = WelcomePage;
+  public appPages = [
+    {
+      title: 'sidebar.randomQuestion',
+      url: FrontendRoutes.RandomQuestion,
+      class: 'important',
+    },
+    {
+      title: 'sidebar.myQuestions',
+      url: FrontendRoutes.MyQuestions,
+      class: 'important',
+    },
+    {
+      title: 'sidebar.rejectedQuestions',
+      url: FrontendRoutes.MyRejectedQuestions,
+      class: 'important',
+      lines: 'full',
+    },
+    {
+      title: 'sidebar.terms',
+      url: FrontendRoutes.Terms,
+    },
+    {
+      title: 'sidebar.privacy',
+      url: FrontendRoutes.Privacy,
+    },
+    {
+      title: 'sidebar.imprint',
+      url: FrontendRoutes.Imprint,
+    },
+    {
+      title: 'sidebar.licenses',
+      url: FrontendRoutes.Licenses,
+    },
+  ];
 
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public translate: TranslateService,
-    public tagsHelper: TagsHelper,
     private storage: Storage,
     private router: Router,
     private store: Store,
@@ -62,12 +94,10 @@ export class AppComponent {
         .dispatch(new UserActions.ValidateToken());
 
       this.router.navigate([
-        FrontendRoutes.Tabs,
         FrontendRoutes.RandomQuestion,
       ]);
     } else {
       this.router.navigate([
-        FrontendRoutes.Tabs,
         FrontendRoutes.Onboarding,
       ]);
     }
