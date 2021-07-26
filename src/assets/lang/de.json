@@ -190,6 +190,7 @@
   },
   "questionBubble": {
     "peopleAsking": "Personen fragen",
-    "notInterested": "Interessiert mich nicht"
+    "notInterested": "Interessiert mich nicht",
+    "report": "Frage melden"
   }
 }

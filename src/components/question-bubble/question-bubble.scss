@@ -44,3 +44,8 @@
 .transparent-button ion-icon {
   padding-right: 10px;
 }
+
+ion-content::part(scroll) {
+  display: flex;
+  align-items: center;
+}
