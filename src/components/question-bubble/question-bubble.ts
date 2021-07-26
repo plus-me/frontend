@@ -4,6 +4,8 @@ import {GlobalState} from '@plusme/libs/interfaces/global.state';
 import {Observable} from 'rxjs';
 import {TagModel} from '@plusme/libs/models/tag.model';
 import {TranslateService} from '@ngx-translate/core';
+import { QuestionModel } from '@plusme/libs/models/question.model';
+import { QuestionActions } from '@plusme/libs/actions/questions.action';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -14,38 +16,45 @@ import {TranslateService} from '@ngx-translate/core';
 })
 
 export class QuestionBubbleComponent {
-  @Select((state: GlobalState) => state.tags)
-  @ViewChild('questionbubble') questionBubble;
-  @Input() question: any;
-  @Input() enableDownvote = true;
-  @Input() enableUpvote = true;
-  @Output() textClick = new EventEmitter<any>();
-  @Output() tagClick = new EventEmitter<any>();
-  @Output() upvote = new EventEmitter<any>();
-  @Output() downvote = new EventEmitter<any>();
-  @Output() voting = new EventEmitter<boolean>();
+  @Input()
+  question: QuestionModel;
 
-  public tags$: Observable<TagModel[]>;
+  @Input()
+  enableDownvote = true;
 
-  private _panState = 'idle';
+  @Input()
+  enableUpvote = true;
 
   constructor(
     private translator: TranslateService,
-  ) {
-  }
+    private store: Store,
+  ) {}
 
-  downvoteQuestion() {
-    if (this.enableDownvote && this.question.voted === null) {
-      this.downvote.emit(this.question);
-      this.question.voted = false;
-    }
+  public downvoteQuestion() {
+    this
+      .store
+      .dispatch(new QuestionActions.DownvoteQuestionAction(
+        this.question
+      ))
+      .subscribe(() => this.store.dispatch(new QuestionActions.GetRandomQuestionAction()));
   }
 
   upvoteQuestion() {
-    if (this.enableUpvote && !this.question.voted) {
-      this.upvote.emit(this.question);
-      this.question.voted = true;
-      this.question.upvotes += 1;
-    }
+    this
+      .store
+      .dispatch(new QuestionActions.UpvoteQuestionAction(
+        this.question,
+      ))
+      .subscribe(() => this.store.dispatch(new QuestionActions.GetRandomQuestionAction()));
   }
+
+  public search(text: string) {
+    this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
+  }
+
+  public reportQuestion() {
+
+  }
+
+
 }

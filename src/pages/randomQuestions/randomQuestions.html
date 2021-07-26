@@ -1,18 +1,15 @@
 <app-navbar title="TABS.MATCH"></app-navbar>
 
 <ion-content padding>
-  <ion-grid ion-fixed>
-    <ion-row no-lines>
-      <a class="report" translate (click)="reportQuestion(questions[0])">QUESTION.REPORT</a>
-    </ion-row>
-    <ion-row class="spacer"></ion-row>
-    <ion-row>
-      <app-question-bubble [question]="questions[0]" *ngIf="questions.length > 0"
-                       (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)"
-                       (downvote)="downvote($event)" (upvote)="upvote($event)">
-      </app-question-bubble>
-      <h2 class="hint" translate *ngIf="!(questions && questions.length)">RANDOM.EMPTY</h2>
-    </ion-row>
-    <ion-row class="spacer"></ion-row>
-  </ion-grid>
+  <app-question-bubble
+    [question]="question | async"
+    *ngIf="question | async">
+  </app-question-bubble>
+  <h2
+    class="hint"
+    translate
+    *ngIf="!(question | async)">
+    RANDOM.EMPTY
+  </h2>
+
 </ion-content>

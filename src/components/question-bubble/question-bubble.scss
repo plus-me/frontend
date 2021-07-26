@@ -1,11 +1,4 @@
 
-.question-bubble-container {
-  position: absolute;
-  bottom: 10vh;
-  left: 10px;
-  right: 10px;
-}
-
 .question-bubble {
   border-radius: 40px;
 }
@@ -15,16 +8,16 @@
   font-size: 3em;
 }
 
-.question {
-  font-size: 1.5em;
-  color: black;
+// .question {
+//   font-size: 1.5em;
+//   color: black;
 
-  --padding-top: 20px;
-  --padding-bottom: 20px;
-  --min-height: 100px;
-  --max-height: 100px;
-  overflow-y: auto;
-}
+//   --padding-top: 20px;
+//   --padding-bottom: 20px;
+//   --min-height: 100px;
+//   --max-height: 100px;
+//   overflow-y: auto;
+// }
 
 .tag-chip {
   --background: black;

@@ -16,8 +16,8 @@
 
       <ion-chip
         class="tag-chip"
-        *ngFor="let tag of tags$ | async"
-        (click)="tagClick.emit(tag)">
+        *ngFor="let tag of question.tags"
+        (click)="search(tag.text)">
         #{{tag.text}}
       </ion-chip>
 
@@ -30,8 +30,10 @@
         class="upvote-button"
         size="large"
         expand="block">
-        <ion-text color="dark" class="upvote ion-text-lowercase">
-          <b>+me</b>
+        <ion-text
+          color="dark"
+          class="upvote ion-text-lowercase">
+          +me
         </ion-text>
       </ion-button>
     </ion-card-content>
@@ -43,5 +45,13 @@
     class="transparent-button"
     expand="block">
       <ion-icon name="close-outline"></ion-icon>{{ 'questionBubble.notInterested' | translate }}
+  </ion-button>
+
+  <ion-button
+    (click)="reportQuestion()"
+    fill="clear"
+    class="transparent-button"
+    expand="block">
+      <ion-icon name="close-outline"></ion-icon>{{ 'questionBubble.report' | translate }}
   </ion-button>
 </div>
