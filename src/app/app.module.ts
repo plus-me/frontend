@@ -49,6 +49,8 @@ import { UserState } from '@plusme/libs/states/user.state';
 import { TagState } from '@plusme/libs/states/tag.state';
 import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
+import { QuestionState } from '@plusme/libs/states/question.state';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -73,6 +75,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     TabsPage,
     WelcomePage,
     OnboardingComponent,
+    CreateQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,10 +104,16 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
         useHash: true,
       }
     ),
-    NgxsModule.forRoot([
-      UserState,
-      TagState,
-    ]),
+    NgxsModule.forRoot(
+      [
+        UserState,
+        TagState,
+        QuestionState,
+      ],
+      {
+        developmentMode: true,
+      },
+    ),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
       key: [
@@ -131,6 +140,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     TabsPage,
     WelcomePage,
     OnboardingComponent,
+    CreateQuestionComponent,
   ],
   providers: [
     StatusBar,

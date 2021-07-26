@@ -1,13 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import urlcat from 'urlcat';
 import { API_ENDPOINT } from '@plusme/app/app.config';
 import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { QuestionModel } from '@plusme/libs/models/question.model';
+import { ValidationError } from '../errors/validation.error';
+import { UnknownHttpError } from '../errors/unknown-http.error';
+import { UnknownError } from '../errors/unknown.error';
 
 interface QuestionStateInterface {
   randomQuestion: QuestionModel;
@@ -35,6 +38,22 @@ export class QuestionState {
         JSON.stringify({
           text: action.text,
           tags: action.tags.map(item => item.id),
+        }),
+      )
+      .pipe(
+        catchError((error: unknown) => {
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 400) {
+              throw new ValidationError({
+                ...error.error,
+              });
+            }
+
+            throw new UnknownHttpError(error);
+
+          }
+
+          throw new UnknownError(error);
         }),
       );
   }
