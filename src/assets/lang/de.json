@@ -187,5 +187,9 @@
       "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
       "unknownError": "Irgendwas ist schief gegangen 🤷"
     }
+  },
+  "questionBubble": {
+    "people_asking": "Personen fragen",
+    "not_interested": "Interessiert mich nicht"
   }
 }
