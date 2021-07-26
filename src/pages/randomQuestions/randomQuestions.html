@@ -3,12 +3,12 @@
 <ion-content padding>
   <app-question-bubble
     [question]="question | async"
-    *ngIf="question | async">
+    *ngIf="(question | async) !== undefined">
   </app-question-bubble>
   <h2
     class="hint"
     translate
-    *ngIf="!(question | async)">
+    *ngIf="(question | async) === undefined">
     RANDOM.EMPTY
   </h2>
 

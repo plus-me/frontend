@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
-import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
-import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { QuestionModel } from '@plusme/libs/models/question.model';
 import { GlobalState } from '@plusme/libs/interfaces/global.state';
 import { Select, Store } from '@ngxs/store';
@@ -15,13 +13,10 @@ import { QuestionActions } from '@plusme/libs/actions/questions.action';
   templateUrl: 'randomQuestions.html'
 })
 export class RandomQuestionsPage {
-  questions = [];
-
   @Select((store: GlobalState) => store.questions.randomQuestion)
   public question: Observable<QuestionModel>;
 
   constructor(
-    private navCtrl: NavController,
     private loadCtrl: LoadingController,
     private store: Store,
   ) { }
