@@ -1,0 +1,14 @@
+app-page-randomquestions {
+  ion-content::part(scroll) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  app-question-bubble {
+    flex-grow: 1;
+  }
+
+
+}
