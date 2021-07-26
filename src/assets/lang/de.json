@@ -189,7 +189,7 @@
     }
   },
   "questionBubble": {
-    "people_asking": "Personen fragen",
-    "not_interested": "Interessiert mich nicht"
+    "peopleAsking": "Personen fragen",
+    "notInterested": "Interessiert mich nicht"
   }
 }
