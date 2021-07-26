@@ -173,5 +173,19 @@
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "licenses": "Lizenzen"
+  },
+  "createQuestion": {
+    "title": "Deine Frage an alle Parteien",
+    "question": "Stelle deine Frage",
+    "tags": "#Schlagwörter",
+    "tagsHelp": "Damit andere deine Frage besser finden",
+    "submit": "Senden",
+    "respect": "Bitte sei freundlich und respektvoll, denn kein Mensch mag Trolle 😉",
+    "success": "Deine Frage wurde erfolgreich eingereicht.",
+    "errors": {
+      "text": "Deine Frage ist zu lange. Bitte gebe maximal 250 Zeichen für die Frage an.",
+      "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
+      "unknownError": "Irgendwas ist schief gegangen 🤷"
+    }
   }
 }

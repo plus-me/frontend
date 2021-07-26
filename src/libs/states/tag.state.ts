@@ -25,31 +25,13 @@ export class TagState {
     return this
       .http
       .get<unknown[]>(`${API_ENDPOINT}/Tags`)
-    .pipe(
-      map(data => plainToClass(TagModel, data, {
-        excludeExtraneousValues: true,
-      })),
-      tap((data) => {
-        ctx.setState(data);
-      }),
-    );
-  }
-
-  @Action(TagsActions.CreateTag)
-  public create(
-    _ctx: StateContext<TagModel[]>,
-    action: TagsActions.CreateTag,
-  ) {
-    return this
-      .http
-    .post(
-      `${API_ENDPOINT}/Tags`,
-      JSON.stringify({
-        text: action.text,
-      })
-    )
-    .pipe(
-      tap(() => this.store.dispatch(new TagsActions.RefreshTags())),
-    );
+      .pipe(
+        map(data => plainToClass(TagModel, data, {
+          excludeExtraneousValues: true,
+        })),
+        tap((data) => {
+          ctx.setState(data);
+        }),
+      );
   }
 }

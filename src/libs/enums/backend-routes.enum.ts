@@ -1,7 +1,7 @@
 export enum BackendRoutes {
-  Questions = '/questions/',
-  RandomQuestion = '/questions/random/',
-  MyQuestions = '/questions/my/',
-  UpvoteQuestion = '/questions/:id/upvote/',
-  DownvoteQuestion = '/questions/:id/downvote/',
+  Questions = '/Questions/',
+  RandomQuestion = '/Questions/random/',
+  MyQuestions = '/Questions/my/',
+  UpvoteQuestion = '/Questions/:id/upvote/',
+  DownvoteQuestion = '/Questions/:id/downvote/',
 }

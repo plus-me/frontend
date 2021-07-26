@@ -1,0 +1,64 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title class="ion-text-wrap">{{ 'createQuestion.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close-outline" style="color: black;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="authForm" (ngSubmit)="submit()">
+    <ion-list class="input-area">
+      <ion-item lines="full" class="respect">
+        <ion-label class="ion-text-wrap">
+        {{ 'createQuestion.respect' | translate }}
+        </ion-label>
+      </ion-item>
+      <ion-item
+        [class.error]="!question.valid && question.touched"
+        lines="full">
+        <ion-label
+          position="stacked">
+          {{ 'createQuestion.question' | translate }}
+        </ion-label>
+        <ion-textarea
+          (ionInput)="textChange($event)"
+          formControlName="question">
+        </ion-textarea>
+        <ion-note slot="end">
+          <span style="color: {{ lengthColor }};">{{ question.value.length }}</span> / 250
+        </ion-note>
+      </ion-item>
+      <ion-item lines="full"
+        [class.error]="!tags.valid && tags.touched">
+        <ion-label position="stacked">
+          {{ 'createQuestion.tags' | translate }}
+        </ion-label>
+        <ion-select
+          [placeholder]="'createQuestion.tagsHelp' | translate"
+          formControlName="tags"
+          multiple>
+          <ng-template
+            ngFor
+            let-tag
+            [ngForOf]="tags$ | async"
+            let-i="index">
+            <ion-select-option [value]="tag">
+              {{ tag.text }}
+            </ion-select-option>
+          </ng-template>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <div class="button-area">
+      <ion-button
+        expand="block"
+        type="submit">
+        {{ 'createQuestion.submit' | translate }}
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

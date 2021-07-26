@@ -47,6 +47,8 @@ import { NavbarComponent } from '@plusme/components/navbar/navbar.component';
 import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
 import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
+import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
+import { QuestionState } from '@plusme/libs/states/question.state';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -73,6 +75,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    CreateQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,10 +104,16 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
         useHash: true,
       }
     ),
-    NgxsModule.forRoot([
-      UserState,
-      TagState,
-    ]),
+    NgxsModule.forRoot(
+      [
+        UserState,
+        TagState,
+        QuestionState,
+      ],
+      {
+        developmentMode: true,
+      },
+    ),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
       key: [
@@ -132,6 +141,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    CreateQuestionComponent,
   ],
   providers: [
     StatusBar,
