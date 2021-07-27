@@ -78,8 +78,10 @@ export class QuestionState {
           }
           const allTags = this.store.selectSnapshot((state: GlobalState) => state.tags);
           const questionTags: TagModel[] = [];
-          if (typeof data === 'object' && data !== null && Array.isArray(data.tags)) {
-            for(const id of data.tags) {
+          // eslint-disable-next-line @typescript-eslint/dot-notation
+          if (typeof data === 'object' && data !== null && Array.isArray(data['tags'])) {
+            // eslint-disable-next-line @typescript-eslint/dot-notation
+            for(const id of data['tags']) {
               if (typeof id === 'number') {
                 questionTags.push(allTags.find(item => item.id === id));
               }
