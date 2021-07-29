@@ -1,0 +1,52 @@
+.unread-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.unread {
+  background: rgba(21, 225, 174, 1);
+  height: 1.8em;
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+.question {
+  font-size: large;
+  color: black;
+}
+
+.question-list-item {
+  width: 100vw;
+  flex-basis: 100%;
+}
+
+.question-list-item-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tags ion-text {
+  padding-right: 10px;
+}
+
+.meta ion-col ion-icon {
+  padding-right: 5px;
+}
+
+.meta ion-col ion-chip {
+  height: 1.8em;
+  padding-left: 0;
+  padding-right: 3px;
+
+  ion-icon {
+    margin-left: 3px;
+  }
+}
+
+.mine {
+  background: rgba(14, 153, 118, 1);
+  color: white;
+}

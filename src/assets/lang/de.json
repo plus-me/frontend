@@ -192,5 +192,15 @@
     "peopleAsking": "Personen fragen",
     "notInterested": "Interessiert mich nicht",
     "report": "Frage melden"
+  },
+  "myQuestions": {
+    "title": "Meine Fragen"
+  },
+  "questionListItem": {
+    "unread": "Ungelesen",
+    "followers": "folgen",
+    "answers": "Antworten",
+    "mine": "meine Frage",
+    "following": "folge ich"
   }
 }

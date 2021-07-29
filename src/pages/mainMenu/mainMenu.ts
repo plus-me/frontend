@@ -5,7 +5,7 @@ import { QuestionServiceProvider } from '@plusme/providers/question-service/ques
 
 import { OpenQuestionsPage } from '@plusme/pages/openQuestions/openQuestions';
 import { NewsPage } from '@plusme/pages/news/news';
-import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
+import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -15,7 +15,7 @@ import { NavController } from '@ionic/angular';
 export class MainMenuPage {
 
   openQuestionsView = OpenQuestionsPage;
-  answeredQuestionsView = AnsweredQuestionsPage;
+  answeredQuestionsView = MyQuestionsPage;
   newsView = NewsPage;
   unseenAnswered = 0;
   unseenNews = 0;

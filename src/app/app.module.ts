@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { AnswerBubbleComponent } from '@plusme/components/answer-bubble/answer-bubble';
 import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
 
-import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
+import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 import { AnswersPage} from '@plusme/pages/answers/answers';
 import { ContactPage } from '@plusme/pages/contact/contact';
 import { FaqPage } from '@plusme/pages/faq/faq';
@@ -49,6 +49,7 @@ import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
 import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
 import { QuestionState } from '@plusme/libs/states/question.state';
+import {QuestionListItemComponent} from "@plusme/components/question-list-item/question-list-item";
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -58,7 +59,8 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AppComponent,
     AnswerBubbleComponent,
     QuestionBubbleComponent,
-    AnsweredQuestionsPage,
+    QuestionListItemComponent,
+    MyQuestionsPage,
     AnswersPage,
     ContactPage,
     FaqPage,
@@ -125,7 +127,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
   bootstrap: [AppComponent],
   entryComponents: [
     AppComponent,
-    AnsweredQuestionsPage,
+    MyQuestionsPage,
     AnswersPage,
     ContactPage,
     FaqPage,

@@ -1,0 +1,45 @@
+<ion-grid class="question-list-item">
+  <ion-row class="unread-row">
+    <ion-chip class="unread">
+      <ion-text color="white">{{ "questionListItem.unread" | translate}}</ion-text>
+    </ion-chip>
+
+  </ion-row>
+  <ion-row>
+    <ion-col class="tags">
+      <ion-text color="medium">#Einwanderung</ion-text>
+      <ion-text color="medium">#Sozialgesetzgebung</ion-text>
+      <ion-text color="medium">#Sozial</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-text class="question ion-text-center"><b>{{question.text}}</b></ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="meta">
+    <ion-col class="votes">
+      <ion-chip color="white">
+        <ion-icon name="thumbs-up" color="medium"></ion-icon>
+        <ion-text color="medium">{{question.upvotes | number}} {{ 'questionListItem.followers' | translate}}</ion-text>
+      </ion-chip>
+    </ion-col>
+    <ion-col>
+      <ion-chip color="white">
+        <ion-icon name="chatbubbles" color="medium"></ion-icon>
+        <ion-text color="medium">{{question.answers | number}} {{ 'questionListItem.answers' | translate}}</ion-text>
+      </ion-chip>
+    </ion-col>
+    <ion-col>
+      <ion-chip class="status-chip following" color="white">
+        <ion-icon name="person-circle" color="medium"></ion-icon>
+        <ion-text color="medium">{{ 'questionListItem.following' | translate}}</ion-text>
+      </ion-chip>
+      <ion-chip class="status-chip mine">
+        <ion-icon name="person-circle" color="white"></ion-icon>
+        <ion-text color="white">{{ 'questionListItem.mine' | translate}}</ion-text>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+</ion-grid>
