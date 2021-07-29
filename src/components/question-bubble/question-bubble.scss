@@ -1,181 +1,53 @@
-$animation-duration: 300ms;
 
-question-bubble {
-  width: 100%;
+.question-bubble {
+  border-radius: 40px;
+}
 
-  $bubble: (
-    radius: 6px,
-    answer-height: 30px,
-  );
+.votes {
+  color: rgba(21, 225, 174, 1);
+  font-size: 3em;
+}
 
-  img {
-    pointer-events: none;
-  }
+.question {
+  text-align: center;
+  display: flex;
+  height: 40vh;
+  font-size: 16px;
+  color: black;
+  padding-top: 20px;
 
-  .invisible {
-    display: none;
-  }
-
-  .tags {
-    font-weight: bold;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .message {
-    font-size: medium;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-  }
-
-  .answers {
-    position: relative;
-    bottom: map-get($bubble, answer-height);
-    margin: auto;
-    margin-top: 0;
-    margin-bottom: -1 * map-get($bubble, answer-height);
-    width: 8em;
-    background-color: color($colors, danger);
-    color: white;
-    text-align: center;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 2px;
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.6);
-  }
-
-  .question-bubble {
-    z-index: 1;
-    border-top-left-radius: map-get($bubble, radius);
-    border-top-right-radius: map-get($bubble, radius);
-    border-bottom-right-radius: map-get($bubble, radius);
-    padding: 10px 18px;
-    position: relative;
-    margin-bottom: map-get($bubble, answer-height);
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 4px;
-    background-color: color($colors, light);
-    border: 1px solid darken(color($colors, light), 10%);
-    box-shadow: 0px 5px 3px -3px rgba(0, 0, 0, 0.3);
-
-    .lasche {
-      position: absolute;
-      bottom: -29px;
-      width: 36px;
-      fill: color($colors, light);
-      stroke: darken(color($colors, light), 10%);
-      left: -1px;
-    }
-  }
-
-  .question-bubble.upvoted {
-    transition: $animation-duration linear;
-    background-color: color($colors, primary);
-    border: 1px solid darken(color($colors, primary), 10%);
-    border-bottom-left-radius: map-get($bubble, radius);
-    border-bottom-right-radius: initial;
-
-    .lasche {
-      transition: $animation-duration linear;
-      fill: color($colors, primary);
-      stroke: darken(color($colors, primary), 10%);
-      left: 100%;
-      transform: translateX(-97%) scale(-1,1);
-    }
-  }
-
-  .votebar {
-    position: relative;
-    width: 100%;
-    height: 60px;
-
-    .downvote, .upvote, .community, .me {
-       position: absolute;
-    }
-
-    .downvote, .me {
-      opacity: 0;
-    }
-
-    .downvote, .upvote {
-      margin-top: 9px;
-      height: 49px;
-      line-height: 49px;
-      width: 45%;
-      font-size: 80%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      img { vertical-align: middle; }
-    }
-
-    .downvote {
-      border-radius: 24px 0 0 24px;
-      color: color($colors, danger);
-      background: linear-gradient(to left, #fff , color($colors, answerNeg));
-      text-align: left;
-      left: 0;
-
-      img {
-        padding-left: 15px;
-      }
-    }
-
-    .upvote {
-      border-radius: 0 24px 24px 0;
-      color: color($colors, greenDark);
-      background: linear-gradient(to right, #fff , color($colors, answerPos));
-      text-align: right;
-      right: 0;
-
-      img {
-        padding-right: 15px;
-      }
-    }
-
-    .community {
-      left: 0%;
-      text  { fill: color($colors, yellowElem); }
-    }
-
-    .me {
-      right: 0;
-      text  { fill: color($colors, yellowElem); }
-    }
-  }
-
-  .votebar.downvoted {
-    .community {
-      text {
-        transition: $animation-duration linear;
-        opacity: 0;
-      }
-    }
-  }
-
-  .votebar.upvoted {
-    .upvote {
-      transition: $animation-duration linear;
-      -webkit-transition: $animation-duration linear;
-      opacity: 0;
-    }
-
-    .community {
-      transition: all $animation-duration linear;
-      -webkit-transition: all $animation-duration linear;
-      opacity: 0;
-      left: 100%;
-      transform: translateX(-50%);
-    }
-
-    .me {
-      transition: $animation-duration linear;
-      -webkit-transition: $animation-duration linear;
-      opacity: 1;
-    }
+  b {
+    width:100%;
+    max-width: 89vw;
+    max-height: 70vh;
+    overflow: scroll;
   }
 }
+
+.tag-chip {
+  --background: black;
+  --color: white;
+  height: 1.5em;
+  font-weight: 700;
+}
+
+// TODO: This applies to all question related submit buttons:
+.upvote {
+  font-size: 1.5em;
+  color: black;
+}
+
+.upvote-button {
+  --box-shadow: none;
+}
+
+// /TODO
+
+.transparent-button {
+  --color: black;
+}
+
+.transparent-button ion-icon {
+  padding-right: 10px;
+}
+
