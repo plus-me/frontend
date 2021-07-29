@@ -14,7 +14,7 @@ import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
 import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
-import {MyQuestionsPage} from "@plusme/pages/myQuestions/myQuestions";
+import {MyQuestionsPage} from '@plusme/pages/myQuestions/myQuestions';
 
 export const AppRoutes: Routes = [
   {

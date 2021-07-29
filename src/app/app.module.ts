@@ -49,7 +49,7 @@ import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
 import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
 import { QuestionState } from '@plusme/libs/states/question.state';
-import {QuestionListItemComponent} from "@plusme/components/question-list-item/question-list-item";
+import {QuestionListItemComponent} from '@plusme/components/question-list-item/question-list-item';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');

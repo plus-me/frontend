@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {LoadingController} from '@ionic/angular';
 import {QuestionServiceProvider} from '@plusme/providers/question-service/question-service';
-import {Select, Store} from "@ngxs/store";
-import {GlobalState} from "@plusme/libs/interfaces/global.state";
+import {Select, Store} from '@ngxs/store';
+import {GlobalState} from '@plusme/libs/interfaces/global.state';
 
-import {QuestionActions} from "@plusme/libs/actions/questions.action";
-import {Observable} from "rxjs";
-import {QuestionModel} from "@plusme/libs/models/question.model";
-import {TagModel} from "@plusme/libs/models/tag.model";
+import {QuestionActions} from '@plusme/libs/actions/questions.action';
+import {Observable} from 'rxjs';
+import {QuestionModel} from '@plusme/libs/models/question.model';
+import {TagModel} from '@plusme/libs/models/tag.model';
 
 @Component({
   selector: 'app-page-myquestions',
@@ -16,9 +16,9 @@ import {TagModel} from "@plusme/libs/models/tag.model";
 })
 export class MyQuestionsPage {
   @Select((store: GlobalState) => store.questions.questions)
-  public questions: Observable<QuestionModel>
+  public questions: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
-  public tags: Observable<TagModel>
+  public tags: Observable<TagModel>;
 
   constructor(
     private loadCtrl: LoadingController,
@@ -44,10 +44,10 @@ export class MyQuestionsPage {
   }
 
   loadAnswerPage($event) {
-    console.log("GOANSWERS-Event:", $event);
+    console.log('GOANSWERS-Event:', $event);
   }
 
   loadSearchPage($event) {
-    console.log("GOSEARCH-Event:", $event);
+    console.log('GOSEARCH-Event:', $event);
   }
 }
