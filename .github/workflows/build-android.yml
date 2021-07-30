@@ -2,7 +2,7 @@ name: Build Android
 
 on:
   push:
-    branches: [ develop, main, fix/android-build-1 ]
+    branches: [ develop, main ]
 
 jobs:
   build:
