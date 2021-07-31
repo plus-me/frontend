@@ -1,0 +1,10 @@
+{
+    "android": {
+        "release": {
+            "keystore": "android.keystore",
+            "alias": "plusme-keystore",
+            "password": "",
+            "storePassword": ""
+        }
+    }
+}
