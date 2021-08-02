@@ -10,6 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "ionic": "ionic",
+    "ng": "ng",
     "cordova": "cordova",
     "patch-package": "patch-package",
     "postinstall": "patch-package",
