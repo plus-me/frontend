@@ -1,37 +1,64 @@
 <ion-content fullscreen class="onboarding">
-  <ion-card>
-    <ion-slides pager="true">
+  <ion-card class="card">
+    <ion-slides
+      class="ion-slides-onboarding"
+      [pager]="activeSlide !== 0"
+      (ionSlideDidChange)="slideChanged()"
+    >
       <ion-slide>
         <div class="slide">
-          <img src="assets/icon/onboarding/page1.svg">
-          <span [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE1' | translate }}</h1>
+          <img src="assets/icon/onboarding/page1.png">
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
         </div>
       </ion-slide>
       <ion-slide>
         <div class="slide">
-        <img src="assets/icon/onboarding/page2.svg">
-        <span [innerHTML]="'ONBOARDING.PAGE2' | translate"></span>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE2' | translate }}</h1>
+          <img src="assets/icon/onboarding/page1.png">
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE2' | translate"></span>
         </div>
       </ion-slide>
       <ion-slide>
         <div class="slide">
-          <img src="assets/icon/onboarding/page3.svg">
-          <span [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE3' | translate }}</h1>
+          <img src="assets/icon/onboarding/page1.png">
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
         </div>
       </ion-slide>
       <ion-slide>
         <div class="slide">
-          <img src="assets/icon/onboarding/page4.svg">
-          <span [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE4' | translate }}</h1>
+          <img src="assets/icon/onboarding/page1.png">
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="slide">
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE5' | translate }}</h1>
+          <img src="assets/icon/onboarding/page1.png">
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE5' | translate"></span>
           <ion-button
+            class="finish-button"
             block
-            (click)="finish()">
+            (click)="finish()"
+          >
             {{ 'ONBOARDING.OK_GO' | translate }}
           </ion-button>
         </div>
       </ion-slide>
     </ion-slides>
   </ion-card>
+  <div
+    class="skip-wrapper"
+    (click)="skipOnboarding()"
+    [ngClass]="{'hide-skip': activeSlide === 4}"
+  >
+    <svg class="skip-cross" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.8007 0.710703C13.4107 0.320703 12.7807 0.320703 12.3907 0.710703L7.5007 5.5907L2.6107 0.700703C2.2207 0.310703 1.5907 0.310703 1.2007 0.700703C0.810703 1.0907 0.810703 1.7207 1.2007 2.1107L6.0907 7.0007L1.2007 11.8907C0.810703 12.2807 0.810703 12.9107 1.2007 13.3007C1.5907 13.6907 2.2207 13.6907 2.6107 13.3007L7.5007 8.4107L12.3907 13.3007C12.7807 13.6907 13.4107 13.6907 13.8007 13.3007C14.1907 12.9107 14.1907 12.2807 13.8007 11.8907L8.9107 7.0007L13.8007 2.1107C14.1807 1.7307 14.1807 1.0907 13.8007 0.710703Z" fill="white" fill-opacity="0.87"/>
+    </svg>
+    <h2>{{ 'ONBOARDING.SKIP_ONBOARDING' | translate }}</h2>
+  </div>
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="blur-svg">
     <defs><filter id="blur-filter"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
   </svg>
