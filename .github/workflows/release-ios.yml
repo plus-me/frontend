@@ -33,11 +33,6 @@ jobs:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
         FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-    - name: Archive Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: "Store IPA"
-        path: builds/+me.ipa
     - run: bundle exec fastlane ios store
       env:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}

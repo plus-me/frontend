@@ -34,9 +34,4 @@ jobs:
         ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
     - run: npm run cordova -- platform add android
     - run: npm run ionic -- cordova build android --release
-    - name: Archive Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: "Android Release AAB"
-        path: platforms/android/app/build/outputs/bundle/release/app-release.aab
     - run: bundle exec fastlane android beta
