@@ -13,7 +13,6 @@ import { UnknownHttpError } from '../errors/unknown-http.error';
 import { UnknownError } from '../errors/unknown.error';
 import { TagModel } from '../models/tag.model';
 import { GlobalState } from '../interfaces/global.state';
-import { noUndefined } from '@angular/compiler/src/util';
 
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
@@ -72,30 +71,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.RandomQuestion),
       )
       .pipe(
-        map((data: unknown) => {
-          if (data === null) {
-            return undefined;
-          }
-          const allTags = this.store.selectSnapshot((state: GlobalState) => state.tags);
-          const questionTags: TagModel[] = [];
-          // eslint-disable-next-line @typescript-eslint/dot-notation
-          if (typeof data === 'object' && data !== null && Array.isArray(data['tags'])) {
-            // eslint-disable-next-line @typescript-eslint/dot-notation
-            for(const id of data['tags']) {
-              if (typeof id === 'number') {
-                questionTags.push(allTags.find(item => item.id === id));
-              }
-            }
-          }
-          const question =  plainToClass(
-            QuestionModel,
-            data,
-            { excludeExtraneousValues: true });
-
-          question.tags = questionTags;
-
-          return question;
-        }),
+        map(this.convertDataIntoQuestionWithTags),
         tap(question => {
           ctx.patchState({
             randomQuestion: question,
@@ -114,11 +90,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.MyQuestions),
       )
       .pipe(
-        map((data: unknown[]) => plainToClass(
-          QuestionModel,
-          data,
-          { excludeExtraneousValues: true },
-        )),
+        map((data: unknown[]) => data.map(this.convertDataIntoQuestionWithTags)),
         tap(questions => {
           ctx.patchState({
             questions,
@@ -138,11 +110,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.Questions, { search: action.searchText  }),
       )
       .pipe(
-        map((data: unknown[]) => plainToClass(
-          QuestionModel,
-          data,
-          { excludeExtraneousValues: true },
-        )),
+        map((data: unknown[]) => data.map(this.convertDataIntoQuestionWithTags)),
         tap(questions => {
           ctx.patchState({
             questions,
@@ -183,6 +151,31 @@ export class QuestionState {
         ),
         '',
       );
+  }
+
+  private convertDataIntoQuestionWithTags(data: unknown) {
+    if (data === null) {
+      return undefined;
+    }
+    const allTags = this.store.selectSnapshot((state: GlobalState) => state.tags);
+    const questionTags: TagModel[] = [];
+    // eslint-disable-next-line @typescript-eslint/dot-notation
+    if (typeof data === 'object' && data !== null && Array.isArray(data['tags'])) {
+      // eslint-disable-next-line @typescript-eslint/dot-notation
+      for (const id of data['tags']) {
+        if (typeof id === 'number') {
+          questionTags.push(allTags.find(item => item.id === id));
+        }
+      }
+    }
+    const question = plainToClass(
+      QuestionModel,
+      data,
+      { excludeExtraneousValues: true });
+
+    question.tags = questionTags;
+
+    return question;
   }
 
 }
