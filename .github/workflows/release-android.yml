@@ -2,7 +2,7 @@ name: Release Android
 
 on:
   push:
-    branches: [ ci/do-release ]
+    tags: [ 'v*' ]
 
 jobs:
   build:
