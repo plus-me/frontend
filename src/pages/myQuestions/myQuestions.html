@@ -2,12 +2,12 @@
 
 
 <ion-content padding>
-  <h2 class="hint" translate ion-fixed *ngIf="!(questions && questions.length)">ANSWERED_QUESTIONS.EMPTY</h2>
+  <h2 class="hint" translate ion-fixed *ngIf="!((questions.length | async) === 0)">ANSWERED_QUESTIONS.EMPTY</h2>
 
-  <ion-list no-lines>
-    <ion-item *ngFor="let question of questions | async">
-      <app-question-list-item [question]="question" [enableDownvote]="false" [enableUpvote]="false"
-                       (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)">
+  <ion-list no-lines class="wrapping-list">
+    <ion-item class="question" *ngFor="let question of questions | async">
+      <app-question-list-item [question]="question"> <!-- [enableDownvote]="false" [enableUpvote]="false"
+                       (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)"> -->
       </app-question-list-item>
     </ion-item>
   </ion-list>

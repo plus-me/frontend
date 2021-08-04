@@ -8,6 +8,10 @@ export class QuestionModel {
   public text: string;
   @Expose()
   public upvotes: number;
-
+  @Expose()
+  public own: boolean;
+  @Expose()
+  public answers: Object[];
+  @Expose()
   public tags: TagModel[] = [];
 }

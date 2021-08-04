@@ -12,7 +12,8 @@ import {TagModel} from '@plusme/libs/models/tag.model';
 @Component({
   selector: 'app-page-myquestions',
   providers: [QuestionServiceProvider],
-  templateUrl: 'myQuestions.html'
+  templateUrl: 'myQuestions.html',
+  styleUrls: ['myQuestions.scss']
 })
 export class MyQuestionsPage {
   @Select((store: GlobalState) => store.questions.questions)

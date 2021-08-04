@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Select, Store} from '@ngxs/store';
 import {GlobalState} from '@plusme/libs/interfaces/global.state';
 import {Observable} from 'rxjs';
 import {TagModel} from '@plusme/libs/models/tag.model';
 import {TranslateService} from '@ngx-translate/core';
+import {QuestionActions} from '@plusme/libs/actions/questions.action';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -15,6 +16,8 @@ import {TranslateService} from '@ngx-translate/core';
 
 export class QuestionListItemComponent {
   @Select((state: GlobalState) => state.tags)
+  public tags: Observable<TagModel>;
+
   @ViewChild('questionlistitem') questionListItem;
   @Input() question: any;
   @Input() enableDownvote = true;
@@ -27,10 +30,9 @@ export class QuestionListItemComponent {
 
   public tags$: Observable<TagModel[]>;
 
-  private _panState = 'idle';
-
   constructor(
     private translator: TranslateService,
+    private store: Store,
   ) {
   }
 
@@ -47,5 +49,14 @@ export class QuestionListItemComponent {
       this.question.voted = true;
       this.question.upvotes += 1;
     }
+  }
+
+  public search(text: string) {
+    this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
+  }
+
+  getTagText(tagId) {
+    // Hier alle tags nach dem passenden durckkramen und den text zurückgeben.
+    // Oder halt - wie bei random-question - die questions in der action mit tags augmentieren.
   }
 }

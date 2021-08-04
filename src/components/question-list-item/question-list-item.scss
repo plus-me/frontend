@@ -15,11 +15,7 @@
 .question {
   font-size: large;
   color: black;
-}
-
-.question-list-item {
-  width: 100vw;
-  flex-basis: 100%;
+  word-break: break-word;
 }
 
 .question-list-item-container {
@@ -28,8 +24,12 @@
   flex-wrap: wrap;
 }
 
-.tags ion-text {
-  padding-right: 10px;
+.tags {
+  overflow-x: auto;
+
+  ion-text {
+    padding-right: 10px;
+  }
 }
 
 .meta ion-col ion-icon {
@@ -46,7 +46,19 @@
   }
 }
 
+.stats-label {
+  padding-right: 0.5em;
+}
+
 .mine {
   background: rgba(14, 153, 118, 1);
   color: white;
+}
+
+.likes {
+  text-align: center;
+}
+
+.status-chip {
+  text-align-last: end;
 }
