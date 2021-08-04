@@ -1,7 +1,12 @@
 platform :android do
   desc "Upload a beta build to the google playstore"
   lane :beta do
-    upload_to_play_store(track: 'internal', aab: "platforms/android/app/build/outputs/bundle/release/app-release.aab", json_key: "/tmp/playstore_key.json", package_name: "com.flyacts.plusme")
+    upload_to_play_store(
+      track: 'internal',
+      aab: "platforms/android/app/build/outputs/bundle/release/app-release.aab",
+      json_key: "/tmp/playstore_key.json",
+      package_name: "com.flyacts.plusme"
+  )
   end
 end
 
