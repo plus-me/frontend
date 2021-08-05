@@ -150,7 +150,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build"
+              "browserTarget": "app:build:production"
             }
           }
         },
