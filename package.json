@@ -10,9 +10,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "ionic": "ionic",
+    "ng": "ng",
     "cordova": "cordova",
     "patch-package": "patch-package",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "apply-version": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }'  node -r ts-node/register ci/apply-version",
+    "replace-keystore-passwd": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' node -r ts-node/register ci/replace-keystore-passwd"
   },
   "dependencies": {
     "@angular-ru/common": "15.273.0",
@@ -62,6 +65,8 @@
     "@ionic/app-scripts": "3.2.4",
     "@ionic/cli": "6.16.3",
     "@ngxs/devtools-plugin": "3.7.2",
+    "@types/shelljs": "0.8.9",
+    "@types/xmldom": "0.1.31",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "cordova": "10.0.0",
@@ -74,7 +79,10 @@
     "eslint-plugin-jsdoc": "30.7.6",
     "eslint-plugin-prefer-arrow": "1.2.2",
     "patch-package": "6.4.7",
-    "typescript": "4.3.4"
+    "shelljs": "0.8.4",
+    "ts-node": "10.1.0",
+    "typescript": "4.3.4",
+    "xmldom": "0.6.0"
   },
   "description": "Making democracy digital",
   "cordova": {

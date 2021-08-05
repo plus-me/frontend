@@ -1,0 +1,37 @@
+name: Release Android
+
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.17.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.17.1
+        cache: 'npm'
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+        bundler-cache: true
+    - name: set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - run: echo "${{ secrets.ANDROID_KEYSTORE  }}" | base64 -d > android.keystore
+    - run: echo '${{ secrets.PLAYSTORE_ACCESS_TOKEN }}' > /tmp/playstore_key.json
+    - run: npm ci
+    # create www folder to satisfy cordova
+    - run: mkdir -p www
+    - run: npm run apply-version
+    - run: npm run replace-keystore-passwd
+      env:
+        ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+    - run: npm run cordova -- platform add android
+    - run: npm run ionic -- cordova build android --release
+    - run: bundle exec fastlane android beta
