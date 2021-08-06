@@ -10,23 +10,47 @@ import { IonSlides } from '@ionic/angular';
 export class OnboardingComponent {
   @ViewChild(IonSlides) slides: IonSlides;
   activeSlide = 0;
+
+  sliderOptions = {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    }
+  };
   public constructor(
     private store: Store,
   ) {}
+
+
+  public async ionViewDidEnter() {
+    this.slides.getSwiper().then(swiper => {
+      swiper.pagination.destroy();
+    });
+  }
 
   public finish() {
     this.store.dispatch(new UserActions.FinishedOnboarding());
   }
 
   public skipOnboarding() {
-    if(this.activeSlide !== 4)
       this.store.dispatch(new UserActions.FinishedOnboarding());
   }
 
+  public nextSlide() {
+    this.slides.slideNext();
+  }
+
   public slideChanged() {
-    this.slides.lockSwipeToPrev(true);
     this.slides.getActiveIndex().then(index => {
       this.activeSlide = index;
+
+      this.slides.getSwiper().then(swiper => {
+        if (index === 0) {
+          swiper.pagination.destroy();
+        } else {
+          swiper.pagination.init();
+        }
+      });
     });
   }
 }
