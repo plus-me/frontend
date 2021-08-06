@@ -14,7 +14,7 @@ import {
   map,
   tap,
 } from 'rxjs/operators';
-import {API_ENDPOINT} from '../../app/app.config';
+import {API_ENDPOINT} from '@plusme/app/app.config';
 import {Storage} from '@ionic/storage';
 
 /*

@@ -67,11 +67,16 @@
   },
 
   "MENU": {
+    "INBOX": "Neue Fragen für dich",
+    "MINE": "Meine Fragen",
+    "DISMISSED": "Abgelehnte Fragen",
+    "PRIVACY": "Datenschutz",
+    "LICENSES": "Lizenzen",
     "ANSWERS": "Antworten",
     "CONTACT": "Kontakt",
     "FAQ": "Häufig gestellte Fragen",
     "IMPRINT": "Impressum",
-    "MENU": "Menü",
+    "MENU": "Mein Profil",
     "ONBOARDING": "Einführung",
     "LOGOUT": "Abmelden"
   },
@@ -92,11 +97,19 @@
   },
 
   "ONBOARDING": {
-    "PAGE1": "<h1>Fragen folgen mit Wisch-Geste.</h1><p>Swipe nach rechts zu +me, wenn dich eine Frage interessiert.</p><p>Je mehr +me Votes, desto schneller wird die Frage von den Politikern beantwortet.</p>",
-    "PAGE2": "<h1>Eigene Fragen stellen.</h1><p>Hast du genügend Fragen bewertet, kannst du selber Fragen stellen!</p><p>Erhalten deine Fragen viele +me Votes gehen sie direkt an alle Kandidaten.</p>",
-    "PAGE3": "<h1>Antworten bekommen und bewerten.</h1><p>Lies die Antworten der Kandidaten und bewerte sie mit einer Wisch-Geste.</p><p>Danach erfährst du von wem die Antwort ist.</p>",
-    "PAGE4": "<h1>Und hier unten geht es los!</h1><p>Entdecke und bewerte spannende Fragen aus der Community.</p><p>Oder schau dir die Top Fragen an.</p>",
-    "OK_GO": "OK, los!"
+    "SKIP_ONBOARDING": "Überspringen",
+    "BEGIN_ONBOARDING": "Wie funktioniert's?",
+    "HEADLINE_PAGE1": "Willkommen bei +me",
+    "PAGE1": "+me ist eine App zur Bundestagswahl mit deren Hilfe du die Fragen stellen kannst, die dir wirklich wichtig sind.",
+    "HEADLINE_PAGE2": "Fragen stellen",
+    "PAGE2": "Bei +me kannst du deine Fragen an die Parteien stellen. Wenn genug Menschen deine Frage unterstützen geht sie an alle Parteien, die bei +me mitmachen.",
+    "HEADLINE_PAGE3": "Fragen unterstützen",
+    "PAGE3": "Du kannst aber auch einfach nur die Fragen anderer durch einen Tap auf “+me” unterstützen und dafür sorgen, dass die richtigen Fragen gestellt werden.",
+    "HEADLINE_PAGE4": "Antworten erhalten",
+    "PAGE4": "Jeden Tag wird die am meisten unterstützte Frage an die Parteien weitergeleitet und beantwortet. Wenn eine neue Antwort da ist wirst du benachrichtigt.",
+    "HEADLINE_PAGE5": "Antworten bewerten",
+    "PAGE5": "Damit wir nicht in unserer jeweiligen Parteienblase versinken musst du eine Antwort immer zuerst bewerten bevor du sie lesen darfst. Deine Bewertung ist natürlich anonym.",
+    "OK_GO": "Los geht’s"
   },
 
   "RANDOM": {
@@ -149,13 +162,43 @@
     "ME": "Ich"
   },
 
-  "AGB": {
-    "TITLE": "Nutzungsbedingungen",
-    "MESSAGE": "<h3>+me Codex</h3><p>Auf +me geht es um Dialog und konstruktiven Austausch. Das wollen wir durch das Frage-Antwort-Prinzip der App ermöglichen. Am Ende soll die App dir helfen, Antworten auf für dich wichtige Fragen zu bekommen und dir deine Wahlentscheidung  bei der Bundestagswahl 2017 zu erleichtern.</p><p>Damit das funktioniert, müssen alle Nutzer ein paar Regeln einhalten. Bitte <ul><li>stell keine Fragen, die sexistisch, gewaltverherrlichend, rassistisch, homophob, diskriminierend oder beleidigend sind</li><li>stell keine Fragen mit Beschimpfungen, Bedrohungen oder menschenverachtenden Inhalt</li><li>stell keine Fragen zum Privatleben oder Fragen, die unter die berufliche Schweigepflicht fallen</li><li>triff keine bloße Meinungsäußerung. Stell eine  Frage, für deren Antwort du dich wirklich interessierst</li></ul></p><p>Wie stelle ich eine gute Frage?<ul><li>formuliere möglichst kurz und knapp eine konkrete Frage</li><li>stelle deine Frage zu einem konkreten Thema, aber nicht an eine konkrete Person oder Partei. Bei +me geht es darum, von allen Parteien vergleichbare Antworten zu bekommen</li><li>stelle keine Suggestivfrage, also unterstelle nicht, dass du die Antwort bereits weißt</li><li>es geht nicht um die eigene Meinung, sondern um die Antworten auf Fragen, die dir wichtig sind</li><li>auf gute Fragen gibt es auch oft bessere Antworten</li></ul></p>"
+  "terms": {
+    "title": "+me codex"
   },
 
-  "PRIVACY": {
-    "TITLE": "Datenschutzrichtlinien",
-    "MESSAGE": "<p>Die Betreiber dieser App nehmen den Schutz deiner persönlichen Daten sehr ernst. Wir behandeln deine personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Damit du dich bei der Nutzung unserer App sicher fühlst, möchten wir dich hier zusätzlich zu den gesetzlichen Bestimmungen darüber informieren, welche Daten wir erheben und wie wir diese verarbeiten und nutzen.</p><h3>Verantwortliche Stelle</h3><p>Verantwortliche Stelle für die Erhebung, Verarbeitung und Nutzung deier personenbezogenen Daten im Sinne des Bundesdatenschutzgesetzes ist die Initiative wepublic, wie im Impressum angegeben. Sofern du der Erhebung, Verarbeitung oder Nutzung deiner Daten durch wepublic nach Maßgabe dieser Datenschutzbestimmungen insgesamt oder für einzelne Maßnahmen widersprechen willst, kannst du deinen Widerspruch per E-Mail oder Brief an folgende Kontaktdaten senden: Simon Gogolin, Adriana Groh, Julia Riederer, Cornelia Kolb, Alex Bär, Marius Schulz, Tim Zeidler, GbR: Schloßstraße 96, 60486 Frankfurt/M; Mobil: 0176-82979447; E-Mail: hello@wepublic.me.</p><h3>Personenbezogene Daten</h3><p>Personenbezogene Daten sind Einzelangaben über sachliche oder persönliche Verhältnisse einer bestimmten oder bestimmbaren natürlichen Person. Unser Ziel ist es so wenig wie möglich personenbezogene Daten zu erheben, zu verarbeiten und zu nutzen.</p><p>Wir bieten bieten nach Registrierung einen individuellen, direkten und passwortgeschützen Zugang zu unserer App +me. Du verpflichtest dich, die persönlichen Zugangsdaten vertraulich zu behandeln und keinem unbefugten Dritten zugänglich zu machen. Wepublic kann keine Haftung für missbräuchlich verwendete Passwörter übernehmen, es sei denn, der Missbrauch ist von uns zu vertreten. Sofern du dich nicht abmeldest, bleibst du automatisch eingeloggt. Diese Funktion ermöglicht dir die Nutzung eines Teils unserer Dienste ohne dich jedes Mal erneut einloggen zu müssen. Aus Sicherheitsgründen könntest du jedoch nochmals zur Eingabe deines Passworts aufgefordert werden.</p><p>Deine personenbezogenen Daten werden ohne deine ausdrückliche Zustimmung nicht an Dritte weitergegeben. Deine E-Mail-Adresse benötigen wir, damit wir mit dir kommunizieren können. Wir nutzen diese zudem für deine Identifikation für die Benutzung unserer App +me. Eine Löschung deiner personenbezogenen Daten erfolgt, sofern gesetzliche Aufbewahrungspflichten dem nicht entgegenstehen und du einen Löschungsanspruch geltend gemacht hast, wenn die Daten zur Erfüllung des mit der Speicherung verfolgten Zwecks nicht mehr erforderlich sind oder wenn deine Speicherung aus sonstigen gesetzlichen Gründen unzulässig ist.</p><p>22.08.2017</p>"
+  "privacy": {
+    "title": "Datenschutzrichtlinien"
+  },
+  "imprint": {
+    "title": "Impressum"
+  },
+  "sidebar": {
+    "profile": "Mein Profil",
+    "randomQuestion": "Neue Fragen für dich",
+    "myQuestions": "Meine Fragen",
+    "rejectedQuestions": "Abgelehnte Fragen",
+    "terms": "+me codex",
+    "privacy": "Datenschutz",
+    "imprint": "Impressum",
+    "licenses": "Lizenzen"
+  },
+  "createQuestion": {
+    "title": "Deine Frage an alle Parteien",
+    "question": "Stelle deine Frage",
+    "tags": "#Schlagwörter",
+    "tagsHelp": "Damit andere deine Frage besser finden",
+    "submit": "Senden",
+    "respect": "Bitte sei freundlich und respektvoll, denn kein Mensch mag Trolle 😉",
+    "success": "Deine Frage wurde erfolgreich eingereicht.",
+    "errors": {
+      "text": "Deine Frage ist zu lange. Bitte gebe maximal 280 Zeichen für die Frage an.",
+      "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
+      "unknownError": "Irgendwas ist schief gegangen 🤷"
+    }
+  },
+  "questionBubble": {
+    "peopleAsking": "Personen fragen",
+    "notInterested": "Interessiert mich nicht",
+    "report": "Frage melden"
   }
 }

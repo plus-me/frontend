@@ -1,11 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonContent, IonRefresher } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { EnterQuestionPage } from '../enterQuestion/enterQuestion';
-import {QuestionServiceProvider} from '../../providers/question-service/question-service';
-import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
-import {TagsHelper} from '../../utils/TagsHelper';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import {QuestionServiceProvider} from '@plusme/providers/question-service/question-service';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 @Component({
   selector: 'app-page-open-questions',
@@ -16,7 +14,6 @@ export class OpenQuestionsPage {
   @ViewChild(IonContent) content: IonContent;
   @ViewChild(IonRefresher) refresher: IonRefresher;
 
-  enterQuestionView = EnterQuestionPage;
   public questions: Array<any>;
   public allTags;
 
@@ -25,10 +22,7 @@ export class OpenQuestionsPage {
     public questionService: QuestionServiceProvider,
     public storage: Storage,
     private notifier: TranslatedNotificationController,
-    public tagsHelper: TagsHelper,
-  ) {
-    this.allTags = this.storage.get('allTags');
-  }
+  ) { }
 
   ionViewDidEnter() {
     this.loadQuestions();
@@ -56,7 +50,7 @@ export class OpenQuestionsPage {
   }
 
   loadTags(question) {
-    return this.tagsHelper.getTagObjects(question.tags);
+
   }
 
   loadAnswerPage(question) {

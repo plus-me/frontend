@@ -1,3 +1,36 @@
 <ion-app>
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-split-pane contentId="main">
+    <ion-menu contentId="main" type="overlay">
+      <ion-content>
+        <ion-list>
+          <ion-list-header routerLink="/profile">
+            <ion-item lines="none">
+              <ion-icon src="assets/icon/profile.svg" slot="start"></ion-icon>
+              <ion-label>
+                {{ 'sidebar.profile' | translate }}
+              </ion-label>
+            </ion-item>
+          </ion-list-header>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item
+              [class]="p.class ?? ''"
+              routerDirection="root"
+              [routerLink]="[p.url]"
+              [lines]="p.lines ?? 'none'"
+              detail="false"
+              routerLinkActive="selected">
+              <ion-label>{{ p.title | translate }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="(isLoggedIn | async) && (hasOnboardingFinished | async)">
+    <ion-fab-button (click)="showCreateQuestionModal()">
+      <ion-icon name="chatbox-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-app>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
-import {API_ENDPOINT} from '../../app/app.config';
+import {API_ENDPOINT} from '@plusme/app/app.config';
 import {
   zip,
   from,

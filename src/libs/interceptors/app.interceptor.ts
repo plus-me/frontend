@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { of, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { GlobalState } from '../interfaces/global.state';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
 /**
  * Interceptor for authentication
@@ -34,6 +34,8 @@ export class AppInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
+    req.headers.set('Content-Type', 'application/json');
+
     return of(
       this
         .store
@@ -44,6 +46,7 @@ export class AppInterceptor implements HttpInterceptor {
             return req
               .clone({
                 setHeaders: {
+                  'content-type': 'application/json',
                   authorization: `Token ${token}`,
                 },
               });

@@ -1,8 +1,8 @@
 {
-  "name": "wepublic",
+  "name": "plusme",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "plusme development team",
+  "homepage": "http://plus-me.de/",
   "private": true,
   "scripts": {
     "start": "ng serve",
@@ -10,9 +10,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "ionic": "ionic",
+    "ng": "ng",
     "cordova": "cordova",
     "patch-package": "patch-package",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "apply-version": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }'  node -r ts-node/register ci/apply-version",
+    "replace-keystore-passwd": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' node -r ts-node/register ci/replace-keystore-passwd"
   },
   "dependencies": {
     "@angular-ru/common": "15.273.0",
@@ -31,19 +34,20 @@
     "@ionic/storage-angular": "3.0.6",
     "@ngx-translate/core": "13.0.0",
     "@ngx-translate/http-loader": "6.0.0",
+    "@ngxs/router-plugin": "3.7.2",
     "@ngxs/storage-plugin": "3.7.2",
     "@ngxs/store": "3.7.2",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
-    "cordova-android": "9.1.0",
     "cordova-ios": "6.2.0",
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-whitelist": "1.3.4",
+    "cordova-plugin-whitelist": "1.3.5",
     "ionicons": "5.5.2",
     "rxjs": "6.5.3",
+    "urlcat": "2.0.4",
     "zone.js": "0.11.4"
   },
   "devDependencies": {
@@ -61,36 +65,41 @@
     "@ionic/app-scripts": "3.2.4",
     "@ionic/cli": "6.16.3",
     "@ngxs/devtools-plugin": "3.7.2",
+    "@types/shelljs": "0.8.9",
+    "@types/xmldom": "0.1.31",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "cordova": "10.0.0",
-    "cordova-plugin-console": "^1.1.0",
+    "cordova-android": "10.0.1",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
+    "cordova-plugin-ionic-webview": "5.0.0",
+    "cordova-res": "0.15.3",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
     "eslint-plugin-prefer-arrow": "1.2.2",
-    "ionic-plugin-keyboard": "^2.2.1",
     "patch-package": "6.4.7",
-    "typescript": "4.3.4"
+    "shelljs": "0.8.4",
+    "ts-node": "10.1.0",
+    "typescript": "4.3.4",
+    "xmldom": "0.6.0"
   },
-  "description": "An Ionic project",
+  "description": "Making democracy digital",
   "cordova": {
     "plugins": {
-      "cordova-plugin-console": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
-      "ionic-plugin-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-ionic-webview": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   },
-  "config": {
-    "ionic_copy": "./config/copy.config.js",
-    "ionic_sass": "./config/sass.config.js",
-    "custom_icons": "./config/custom-icons.config.js"
-  }
+  "browserslist": [
+    "> 5%"
+  ]
 }

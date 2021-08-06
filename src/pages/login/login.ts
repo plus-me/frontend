@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { TranslatedNotificationController } from '../../utils/TranslatedNotificationController';
-import {UserServiceProvider} from '../../providers/user-service/user-service';
-import { FrontendRoutes } from '../../enums/frontend-routes.enum';
-import { Router } from '@angular/router';
-import { UserState } from 'src/libs/states/user.state';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { UserActions } from 'src/libs/actions/users.actions';
+import { UserActions } from '@plusme/libs/actions/users.actions';
 
 @Component({
   selector: 'app-page-login',
-  providers: [UserServiceProvider],
   templateUrl: 'login.html'
 })
 export class LoginPage {
@@ -22,8 +21,6 @@ export class LoginPage {
   constructor(
     private store: Store,
     private fb: FormBuilder,
-    private notifier: TranslatedNotificationController,
-
   ) {
     this.authForm = this.fb.group({
       email: ['', Validators.compose([Validators.required])],

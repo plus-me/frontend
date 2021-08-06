@@ -1,0 +1,93 @@
+<ion-content fullscreen class="onboarding">
+  <ion-card class="ion-text-center card">
+    <ion-slides
+      class="ion-slides-onboarding"
+      [pager]="true"
+      [options]="sliderOptions"
+      (ionSlideDidChange)="slideChanged()"
+    >
+      <ion-slide>
+        <ion-card-content>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE1' | translate }}</h1>
+          <br>
+          <img src="assets/icon/onboarding/page1.png">
+          <br>
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE1' | translate"></span>
+          <br>
+          <ion-button
+            shape="round"
+            size="large"
+            expand="block"
+            align="bottom"
+            class="begin-button"
+            (click)="nextSlide()"
+          >
+            {{ 'ONBOARDING.BEGIN_ONBOARDING' | translate }}
+          </ion-button>
+        </ion-card-content>
+      </ion-slide>
+      <ion-slide>
+        <ion-card-content>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE2' | translate }}</h1>
+          <br>
+          <img src="assets/icon/onboarding/page1.png">
+          <br>
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE2' | translate"></span>
+        </ion-card-content>
+      </ion-slide>
+      <ion-slide>
+        <ion-card-content>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE3' | translate }}</h1>
+          <br>
+          <img src="assets/icon/onboarding/page1.png">
+          <br>
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE3' | translate"></span>
+        </ion-card-content>
+      </ion-slide>
+      <ion-slide>
+        <ion-card-content>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE4' | translate }}</h1>
+          <br>
+          <img src="assets/icon/onboarding/page1.png">
+          <br>
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE4' | translate"></span>
+        </ion-card-content>
+      </ion-slide>
+      <ion-slide>
+        <ion-card-content>
+          <h1 class="headline">{{ 'ONBOARDING.HEADLINE_PAGE5' | translate }}</h1>
+          <br>
+          <img src="assets/icon/onboarding/page1.png">
+          <br>
+          <span class="description" [innerHTML]="'ONBOARDING.PAGE5' | translate"></span>
+          <br>
+          <ion-button
+            class="finish-button"
+            shape="round"
+            size="large"
+            expand="block"
+            align="bottom"
+            (click)="finish()"
+          >
+            {{ 'ONBOARDING.OK_GO' | translate }}
+          </ion-button>
+        </ion-card-content>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <div
+    class="skip-wrapper"
+    (click)="skipOnboarding()"
+    [ngClass]="{'hide-skip': activeSlide === 4}"
+  >
+
+    <h2><ion-icon name="close"></ion-icon>{{ 'ONBOARDING.SKIP_ONBOARDING' | translate }}</h2>
+  </div>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="blur-svg">
+    <defs>
+      <filter id="blur-filter">
+        <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+      </filter>
+    </defs>
+  </svg>
+</ion-content>

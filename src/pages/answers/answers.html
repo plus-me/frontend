@@ -12,9 +12,9 @@
     <a class="report" translate (click)="reportQuestion(question)">QUESTION.REPORT</a>
   </ion-item>
   <ion-item no-lines>
-    <question-bubble [question]="question"               [enableDownvote]="false"
+    <app-question-bubble [question]="question"               [enableDownvote]="false"
                      (tagClick)="loadSearchPage($event)" [enableUpvote]="false">
-    </question-bubble>
+    </app-question-bubble>
   </ion-item>
   <ion-item *ngFor="let answer of answers" no-lines>
     <answer-bubble [answer]="answer" (downvote)="downvote($event)" (upvote)="upvote($event)"></answer-bubble>

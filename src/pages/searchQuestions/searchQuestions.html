@@ -24,9 +24,9 @@
   </ion-refresher>
   <ion-list no-lines>
     <ion-item *ngFor="let question of questions">
-      <question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="refresher.state === 'inactive'"
+      <app-question-bubble [question]="question" [enableDownvote]="false" [enableUpvote]="refresher.state === 'inactive'"
                        (tagClick)="selectedTags = [$event.id]" (upvote)="upvoteQuestion($event)" (voting)="voting=$event">
-      </question-bubble>
+      </app-question-bubble>
     </ion-item>
   </ion-list>
 </ion-content>

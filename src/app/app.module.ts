@@ -14,39 +14,42 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-
 import { AppComponent } from './app.component';
-import { AnswerBubbleComponent } from '../components/answer-bubble/answer-bubble';
-import { QuestionBubbleComponent } from '../components/question-bubble/question-bubble';
+import { AnswerBubbleComponent } from '@plusme/components/answer-bubble/answer-bubble';
+import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
 
-import { AnsweredQuestionsPage } from '../pages/answeredQuestions/answeredQuestions';
-import { AnswersPage} from '../pages/answers/answers';
-import { ContactPage } from '../pages/contact/contact';
-import { EnterQuestionPage } from '../pages/enterQuestion/enterQuestion';
-import { FaqPage } from '../pages/faq/faq';
-import { LoginPage } from '../pages/login/login';
-import { MainMenuPage } from '../pages/mainMenu/mainMenu';
-import { OpenQuestionsPage } from '../pages/openQuestions/openQuestions';
-import { NewsPage } from '../pages/news/news';
-import { RandomQuestionsPage } from '../pages/randomQuestions/randomQuestions';
-import { SearchQuestionsPage } from '../pages/searchQuestions/searchQuestions';
-import { SignUpPage } from '../pages/signUp/signUp';
-import { TabsPage } from '../pages/tabs/tabs';
-import { WelcomePage } from '../pages/welcome/welcome';
+import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
+import { AnswersPage} from '@plusme/pages/answers/answers';
+import { ContactPage } from '@plusme/pages/contact/contact';
+import { FaqPage } from '@plusme/pages/faq/faq';
+import { LoginPage } from '@plusme/pages/login/login';
+import { MainMenuPage } from '@plusme/pages/mainMenu/mainMenu';
+import { OpenQuestionsPage } from '@plusme/pages/openQuestions/openQuestions';
+import { NewsPage } from '@plusme/pages/news/news';
+import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
+import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
+import { SignUpPage } from '@plusme/pages/signUp/signUp';
+import { WelcomePage } from '@plusme/pages/welcome/welcome';
 
-import { NewsServiceProvider } from '../providers/news-service/news-service';
-import { QuestionServiceProvider } from '../providers/question-service/question-service';
-import { UserServiceProvider } from '../providers/user-service/user-service';
-import { TagsServiceProvider } from '../providers/tags-service/tags-service';
-
-import { TagsHelper } from '../utils/TagsHelper';
-import { TranslatedNotificationController } from '../utils/TranslatedNotificationController';
+import { NewsServiceProvider } from '@plusme/providers/news-service/news-service';
+import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
+import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { AppRoutes } from './app-routing';
-import { AppInterceptor } from '../libs/interceptors/app.interceptor';
+import { AppInterceptor } from '@plusme/libs/interceptors/app.interceptor';
 import { Drivers } from '@ionic/storage';
 import { NgxsModule, Store } from '@ngxs/store';
-import { UserState } from 'src/libs/states/user.state';
-import { TagState } from 'src/libs/states/tag.state';
+import { UserState } from '@plusme/libs/states/user.state';
+import { TagState } from '@plusme/libs/states/tag.state';
+import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NavbarComponent } from '@plusme/components/navbar/navbar.component';
+import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
+import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
+import { TermsPage } from '@plusme/pages/terms/terms.page';
+import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
+import { QuestionState } from '@plusme/libs/states/question.state';
+
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
@@ -58,7 +61,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AnsweredQuestionsPage,
     AnswersPage,
     ContactPage,
-    EnterQuestionPage,
     FaqPage,
     LoginPage,
     MainMenuPage,
@@ -67,8 +69,13 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     RandomQuestionsPage,
     SearchQuestionsPage,
     SignUpPage,
-    TabsPage,
     WelcomePage,
+    OnboardingComponent,
+    NavbarComponent,
+    ImprintPage,
+    PrivacyPage,
+    TermsPage,
+    CreateQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,17 +100,27 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     }),
     RouterModule.forRoot(
       AppRoutes,
+      {
+        useHash: true,
+      }
     ),
-    NgxsModule.forRoot([
-      UserState,
-      TagState,
-    ]),
+    NgxsModule.forRoot(
+      [
+        UserState,
+        TagState,
+        QuestionState,
+      ],
+      {
+        developmentMode: true,
+      },
+    ),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
       key: [
         UserState,
       ]
-    })
+    }),
+    NgxsRouterPluginModule.forRoot(),
   ],
   bootstrap: [AppComponent],
   entryComponents: [
@@ -111,7 +128,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AnsweredQuestionsPage,
     AnswersPage,
     ContactPage,
-    EnterQuestionPage,
     FaqPage,
     LoginPage,
     MainMenuPage,
@@ -120,16 +136,18 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     RandomQuestionsPage,
     SearchQuestionsPage,
     SignUpPage,
-    TabsPage,
     WelcomePage,
+    OnboardingComponent,
+    ImprintPage,
+    PrivacyPage,
+    TermsPage,
+    CreateQuestionComponent,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    TagsHelper,
     UserServiceProvider,
     QuestionServiceProvider,
-    TagsServiceProvider,
     NewsServiceProvider,
     TranslatedNotificationController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

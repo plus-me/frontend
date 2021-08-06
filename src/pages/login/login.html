@@ -1,11 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ 'LOGIN.LOGIN' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar title="LOGIN.LOGIN"></app-navbar>
 
 <ion-content text-center>
   <form [formGroup]="authForm" (ngSubmit)="login()">

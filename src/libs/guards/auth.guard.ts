@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
-import { FrontendRoutes } from 'src/enums/frontend-routes.enum';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { Store } from '@ngxs/store';
-import { GlobalState } from '../interfaces/global.state';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
 
 /**
@@ -33,7 +33,6 @@ export class AuthGuard implements CanActivate {
                 canActivate = true;
             } else {
                 await this.router.navigate([
-                  FrontendRoutes.Tabs,
                   FrontendRoutes.Welcome,
                 ]);
                 canActivate = false;

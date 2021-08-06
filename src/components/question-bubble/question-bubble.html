@@ -1,27 +1,57 @@
-<div class="question-bubble" [class.downvoted]="question.voted === false" [class.upvoted]="question.voted" (pan)="panEvent($event)" #questionbubble>
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="29" width="30" class="lasche" #lasche>
-    <filter id="dropshadow" height="130%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/> <!-- stdDeviation is how much to blur -->
-    </filter>
-    <path style="filter:url(#dropshadow)" d="m 19.779181,0.5004292 v 0 c -2.50318,0.1043 -4.69502,1.53631 -5.92219,3.76774 l -2.525,4.825 C 8.3861611,14.722329 8.3861611,14.722329 3.7658811,23.551929 c -0.34061,0.59607 -0.89967,0.94807 -1.56588,0.94807 -0.92386,0 -1.70106173,-0.776141 -1.69999999,-1.7 L 0.52562438,0.5041545"/>
-    <path d="m 1,0 H 18.5 V 1 H 1 z" style="stroke:none" />
-    <path d="m 19.779181,0.5004292 v 0 c -2.50318,0.1043 -4.69502,1.53631 -5.92219,3.76774 l -2.525,4.825 C 8.3861611,14.722329 8.3861611,14.722329 3.7658811,23.551929 c -0.34061,0.59607 -0.89967,0.94807 -1.56588,0.94807 -0.92386,0 -1.70106173,-0.776141 -1.69999999,-1.7 L 0.52562438,0.5041545"/>
-  </svg>
-  <div class="tags"><span *ngFor="let tag of loadTags(question)" (click)="tagClick.emit(tag)">#{{tag.text}} </span></div>
-  <div class="message" (click)="textClick.emit(question)">{{question.text}}</div>
-</div>
-<div class="answers" *ngIf="question.answers.length > 0" translate [translateParams]="{value: question.answers.length}" (click)="textClick.emit(question)">
-  {{question.answers.length === 1 ? 'QUESTION.ANSWER' : 'QUESTION.ANSWERS'}}
-</div>
-<div class="votebar" [class.downvoted]="question.voted === undefined" [class.upvoted]="question.voted" (pan)="panEvent($event)" #votebar>
-  <a class="downvote" (click)="downvoteQuestion()" translate><img src="assets/icon/xIcon.svg"> QUESTION.BAD</a>
-  <a class="upvote" [class.invisible]="!enableUpvote" (click)="upvoteQuestion()" translate>QUESTION.GOOD <img src="assets/icon/+icon.svg"></a>
-  <svg class="me" (click)="upvoteQuestion()" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 104 58" height="58px" width="104px">
-    <text x="51" y="14" text-anchor="end" fill="#ffce0f">{{question.upvotes - 1}}</text>
-    <image xlink:href="assets/icon/99999+me.svg" width="104" height="58" />
-  </svg>
-  <svg class="community" (click)="downvoteQuestion()" xmlns="http://www.w3.org/2000/svg" version="1.1" width="104px" height="58px" viewBox="0 0 104 58" #community>
-    <text x="54" y="14">{{question.upvotes}}</text>
-    <image xlink:href="assets/icon/99999.svg" width="104" height="58" />
-  </svg>
+<div class="question-bubble-container">
+  <ion-card class="ion-text-center question-bubble">
+    <ion-card-header>
+      <span class="votes">
+        <b>
+          {{question.upvotes | number}}
+        </b>
+      </span>
+      <br>
+      {{ 'questionBubble.peopleAsking' | translate }}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text class="question ion-text-center"><b>{{question.text}}</b></ion-text>
+
+      <br>
+
+      <ion-chip
+        class="tag-chip"
+        *ngFor="let tag of question.tags"
+        (click)="search(tag.text)">
+        #{{tag.text}}
+      </ion-chip>
+
+      <br>
+
+      <ion-button
+        (click)="upvoteQuestion()"
+        align="bottom"
+        shape="round"
+        class="upvote-button"
+        size="large"
+        expand="block">
+        <ion-text
+          color="dark"
+          class="upvote ion-text-lowercase">
+          +me
+        </ion-text>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    (click)="downvoteQuestion()"
+    fill="clear"
+    class="transparent-button"
+    expand="block">
+      <ion-icon name="close-outline"></ion-icon>{{ 'questionBubble.notInterested' | translate }}
+  </ion-button>
+
+  <ion-button
+    (click)="reportQuestion()"
+    fill="clear"
+    class="transparent-button"
+    expand="block">
+      <ion-icon name="alert-circle-outline"></ion-icon>{{ 'questionBubble.report' | translate }}
+  </ion-button>
 </div>
