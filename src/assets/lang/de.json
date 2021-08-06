@@ -97,11 +97,19 @@
   },
 
   "ONBOARDING": {
-    "PAGE1": "<h1>Fragen folgen mit Wisch-Geste.</h1><p>Swipe nach rechts zu +me, wenn dich eine Frage interessiert.</p><p>Je mehr +me Votes, desto schneller wird die Frage von den Politikern beantwortet.</p>",
-    "PAGE2": "<h1>Eigene Fragen stellen.</h1><p>Hast du genügend Fragen bewertet, kannst du selber Fragen stellen!</p><p>Erhalten deine Fragen viele +me Votes gehen sie direkt an alle Kandidaten.</p>",
-    "PAGE3": "<h1>Antworten bekommen und bewerten.</h1><p>Lies die Antworten der Kandidaten und bewerte sie mit einer Wisch-Geste.</p><p>Danach erfährst du von wem die Antwort ist.</p>",
-    "PAGE4": "<h1>Und hier unten geht es los!</h1><p>Entdecke und bewerte spannende Fragen aus der Community.</p><p>Oder schau dir die Top Fragen an.</p>",
-    "OK_GO": "OK, los!"
+    "SKIP_ONBOARDING": "Überspringen",
+    "BEGIN_ONBOARDING": "Wie funktioniert's?",
+    "HEADLINE_PAGE1": "Willkommen bei +me",
+    "PAGE1": "+me ist eine App zur Bundestagswahl mit deren Hilfe du die Fragen stellen kannst, die dir wirklich wichtig sind.",
+    "HEADLINE_PAGE2": "Fragen stellen",
+    "PAGE2": "Bei +me kannst du deine Fragen an die Parteien stellen. Wenn genug Menschen deine Frage unterstützen geht sie an alle Parteien, die bei +me mitmachen.",
+    "HEADLINE_PAGE3": "Fragen unterstützen",
+    "PAGE3": "Du kannst aber auch einfach nur die Fragen anderer durch einen Tap auf “+me” unterstützen und dafür sorgen, dass die richtigen Fragen gestellt werden.",
+    "HEADLINE_PAGE4": "Antworten erhalten",
+    "PAGE4": "Jeden Tag wird die am meisten unterstützte Frage an die Parteien weitergeleitet und beantwortet. Wenn eine neue Antwort da ist wirst du benachrichtigt.",
+    "HEADLINE_PAGE5": "Antworten bewerten",
+    "PAGE5": "Damit wir nicht in unserer jeweiligen Parteienblase versinken musst du eine Antwort immer zuerst bewerten bevor du sie lesen darfst. Deine Bewertung ist natürlich anonym.",
+    "OK_GO": "Los geht’s"
   },
 
   "RANDOM": {
@@ -183,7 +191,7 @@
     "respect": "Bitte sei freundlich und respektvoll, denn kein Mensch mag Trolle 😉",
     "success": "Deine Frage wurde erfolgreich eingereicht.",
     "errors": {
-      "text": "Deine Frage ist zu lange. Bitte gebe maximal 250 Zeichen für die Frage an.",
+      "text": "Deine Frage ist zu lange. Bitte gebe maximal 280 Zeichen für die Frage an.",
       "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
       "unknownError": "Irgendwas ist schief gegangen 🤷"
     }
