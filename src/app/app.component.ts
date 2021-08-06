@@ -24,6 +24,9 @@ export class AppComponent {
   @Select((state: GlobalState) => state.user.isLoggedIn)
   public isLoggedIn: Observable<boolean>;
 
+  @Select((state: GlobalState) => state.user.hasOnboardingFinished)
+  public hasOnboardingFinished: Observable<boolean>;
+
   rootPage: any = WelcomePage;
   public appPages = [
     {

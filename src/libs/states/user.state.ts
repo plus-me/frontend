@@ -106,6 +106,25 @@ export class UserState {
       );
   }
 
+  @Action(UserActions.FinishedOnboarding)
+  public finishedOnboarding(
+    ctx: StateContext<UserStateInterface>,
+  ) {
+      ctx.patchState({
+        hasOnboardingFinished: true
+      });
+
+      if (ctx.getState().isLoggedIn === true) {
+        this.store.dispatch(new Navigate([
+          FrontendRoutes.RandomQuestion,
+        ]));
+      } else {
+        this.store.dispatch(new Navigate([
+          FrontendRoutes.Welcome,
+        ]));
+      }
+  }
+
   @Action(UserActions.ValidateToken)
   public validateToken(
     ctx: StateContext<UserStateInterface>,
