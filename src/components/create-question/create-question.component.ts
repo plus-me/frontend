@@ -47,8 +47,8 @@ export class CreateQuestionComponent {
     this.tags = this.authForm.controls.tags;
   }
 
-  public textChange(event: CustomEvent<InputEvent>) {
-    const textarea = event.detail.target as HTMLTextAreaElement;
+  public textChange(event: Event) {
+    const textarea = (event as CustomEvent<InputEvent>).detail.target as HTMLTextAreaElement;
     if (textarea.value.length > 280) {
       this.lengthColor = 'red';
     } else if (textarea.value.length > 200) {
