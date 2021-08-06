@@ -10,6 +10,7 @@ export enum FrontendRoutes {
   SignUp = 'signup',
   News = 'news',
   Onboarding = 'onboarding',
+  Inbox = 'inbox',
   MyQuestions = 'my-questions',
   MyRejectedQuestions = 'my-rejected-questions',
   Privacy = 'privacy',

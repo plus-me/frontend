@@ -1,5 +1,5 @@
 <ion-grid>
-  <ion-row class="unread-row">
+  <ion-row class="unread-row" *ngIf="question.own === true">
     <ion-chip class="unread">
       <ion-text color="white">{{ "questionListItem.unread" | translate}}</ion-text>
     </ion-chip>

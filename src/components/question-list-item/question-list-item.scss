@@ -32,10 +32,6 @@
   }
 }
 
-.meta ion-col ion-icon {
-  padding-right: 5px;
-}
-
 .meta ion-col ion-chip {
   height: 1.8em;
   padding-left: 0;
@@ -53,6 +49,9 @@
 .mine {
   background: rgba(14, 153, 118, 1);
   color: white;
+  ion-text {
+    white-space: nowrap;
+  }
 }
 
 .likes {

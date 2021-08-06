@@ -1,20 +1,22 @@
-import { Routes } from '@angular/router';
-import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
-import { FrontendRoutes } from '@plusme/libs//enums/frontend-routes.enum';
-import { AuthGuard } from '@plusme/libs/guards/auth.guard';
-import { ContactPage } from '@plusme/pages/contact/contact';
-import { FaqPage } from '@plusme/pages/faq/faq';
-import { LoginPage } from '@plusme/pages/login/login';
-import { MainMenuPage } from '@plusme/pages/mainMenu/mainMenu';
-import { NewsPage } from '@plusme/pages/news/news';
-import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
-import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
-import { SignUpPage } from '@plusme/pages/signUp/signUp';
-import { WelcomePage } from '@plusme/pages/welcome/welcome';
-import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
-import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
-import { TermsPage } from '@plusme/pages/terms/terms.page';
+import {Routes} from '@angular/router';
+import {OnboardingComponent} from '@plusme/pages/onboarding/onboarding.component';
+import {FrontendRoutes} from '@plusme/libs//enums/frontend-routes.enum';
+import {AuthGuard} from '@plusme/libs/guards/auth.guard';
+import {ContactPage} from '@plusme/pages/contact/contact';
+import {FaqPage} from '@plusme/pages/faq/faq';
+import {LoginPage} from '@plusme/pages/login/login';
+import {MainMenuPage} from '@plusme/pages/mainMenu/mainMenu';
+import {NewsPage} from '@plusme/pages/news/news';
+import {RandomQuestionsPage} from '@plusme/pages/randomQuestions/randomQuestions';
+import {SearchQuestionsPage} from '@plusme/pages/searchQuestions/searchQuestions';
+import {SignUpPage} from '@plusme/pages/signUp/signUp';
+import {WelcomePage} from '@plusme/pages/welcome/welcome';
+import {ImprintPage} from '@plusme/pages/imprint/imprint.page';
+import {PrivacyPage} from '@plusme/pages/privacy/privacy.page';
+import {TermsPage} from '@plusme/pages/terms/terms.page';
 import {MyQuestionsPage} from '@plusme/pages/myQuestions/myQuestions';
+import {InboxPage} from '@plusme/pages/inbox/inbox';
+import {AnswersPage} from '@plusme/pages/answers/answers';
 
 export const AppRoutes: Routes = [
   {
@@ -44,9 +46,18 @@ export const AppRoutes: Routes = [
     component: MyQuestionsPage,
   },
   {
+    path: FrontendRoutes.Answers,
+    component: AnswersPage,
+  },
+  {
     path: FrontendRoutes.SearchQuestions,
     component: SearchQuestionsPage,
     // canActivate: [AuthGuard],
+  },
+  {
+    path: FrontendRoutes.Inbox,
+    component: InboxPage,
+    canActivate: [AuthGuard],
   },
   {
     path: FrontendRoutes.Contact,

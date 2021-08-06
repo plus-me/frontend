@@ -1,0 +1,20 @@
+app-question-list-item {
+  width: 100%;
+}
+
+.app-tab-row {
+  background: white;
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  top: 52px;
+  left: 0;
+
+  ion-tab-button {
+    font-size: large;
+  }
+}
+
+.app-tab-active {
+  border-bottom: rgba(14, 153, 118, 1) solid 2px;
+}

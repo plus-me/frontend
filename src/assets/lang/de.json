@@ -203,5 +203,16 @@
     "answer": "Antwort",
     "mine": "meine Frage",
     "following": "folge ich"
+  },
+  "inbox": {
+    "title": "Posteingang",
+    "mine": "meine",
+    "all": "alle"
+  },
+  "myQuestionsListComponent": {
+    "myQuestions": "Hier siehst Du alle Deine Fragen"
+  },
+  "allAnsweredQuestionsListComponent": {
+    "allQuestions": "Hier siehst Du alle beantworteten Fragen"
   }
 }
