@@ -24,9 +24,9 @@ jobs:
     # create www folder to satisfy cordova
     - run: mkdir -p www
     - run: npm run apply-version
+    - run: npm run ionic -- cordova resources ios
     - run: npm run cordova -- platform add ios
     - run: npm run ng -- run app:ionic-cordova-build:production --platform=ios
-    - run: npm run ionic -- cordova resources ios
     - run: npm run cordova -- prepare ios --prod
     - run: bundle exec fastlane ios build
       env:
