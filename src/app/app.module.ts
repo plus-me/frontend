@@ -18,16 +18,10 @@ import { AppComponent } from './app.component';
 import { AnswerBubbleComponent } from '@plusme/components/answer-bubble/answer-bubble';
 import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
 
-import { AnsweredQuestionsPage } from '@plusme/pages/answeredQuestions/answeredQuestions';
-import { AnswersPage} from '@plusme/pages/answers/answers';
 import { ContactPage } from '@plusme/pages/contact/contact';
 import { FaqPage } from '@plusme/pages/faq/faq';
 import { LoginPage } from '@plusme/pages/login/login';
-import { MainMenuPage } from '@plusme/pages/mainMenu/mainMenu';
-import { OpenQuestionsPage } from '@plusme/pages/openQuestions/openQuestions';
-import { NewsPage } from '@plusme/pages/news/news';
 import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
-import { SearchQuestionsPage } from '@plusme/pages/searchQuestions/searchQuestions';
 import { SignUpPage } from '@plusme/pages/signUp/signUp';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 
@@ -58,16 +52,10 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AppComponent,
     AnswerBubbleComponent,
     QuestionBubbleComponent,
-    AnsweredQuestionsPage,
-    AnswersPage,
     ContactPage,
     FaqPage,
     LoginPage,
-    MainMenuPage,
-    OpenQuestionsPage,
-    NewsPage,
     RandomQuestionsPage,
-    SearchQuestionsPage,
     SignUpPage,
     WelcomePage,
     OnboardingComponent,
@@ -125,16 +113,10 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
   bootstrap: [AppComponent],
   entryComponents: [
     AppComponent,
-    AnsweredQuestionsPage,
-    AnswersPage,
     ContactPage,
     FaqPage,
     LoginPage,
-    MainMenuPage,
-    OpenQuestionsPage,
-    NewsPage,
     RandomQuestionsPage,
-    SearchQuestionsPage,
     SignUpPage,
     WelcomePage,
     OnboardingComponent,
