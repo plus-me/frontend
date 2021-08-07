@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane contentId="main">
-    <ion-menu contentId="main" type="overlay">
+    <ion-menu contentId="main" type="overlay" [disabled]="(hasOnboardingFinished | async) === false">
       <ion-content>
         <ion-list>
           <ion-list-header routerLink="/profile">
