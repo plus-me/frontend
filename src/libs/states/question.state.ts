@@ -71,7 +71,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.RandomQuestion),
       )
       .pipe(
-        map(this.convertDataIntoQuestionWithTags),
+        map((item ) => this.convertDataIntoQuestionWithTags(item)),
         tap(question => {
           ctx.patchState({
             randomQuestion: question,
@@ -90,7 +90,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.MyQuestions),
       )
       .pipe(
-        map((data: unknown[]) => data.map(this.convertDataIntoQuestionWithTags)),
+        map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
             questions,
@@ -110,7 +110,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.Questions, { search: action.searchText  }),
       )
       .pipe(
-        map((data: unknown[]) => data.map(this.convertDataIntoQuestionWithTags)),
+        map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
             questions,
