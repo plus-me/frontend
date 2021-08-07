@@ -11,7 +11,7 @@ export class QuestionModel {
   @Expose()
   public own: boolean;
   @Expose()
-  public answers: Object[];
+  public answers: object[];
   @Expose()
   public tags: TagModel[] = [];
 }
