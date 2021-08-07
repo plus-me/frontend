@@ -28,6 +28,7 @@ jobs:
     - run: npm ci
     # create www folder to satisfy cordova
     - run: mkdir -p www
+    - run: npm run ionic -- cordova resources android
     - run: npm run apply-version
     - run: npm run replace-keystore-passwd
       env:
