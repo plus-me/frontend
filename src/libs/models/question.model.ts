@@ -1,5 +1,6 @@
 import { TagModel } from '@plusme/libs/models/tag.model';
 import { Expose } from 'class-transformer';
+import {QuestionAnswersModel} from '@plusme/libs/models/question-answers.model';
 
 export class QuestionModel {
   @Expose()
@@ -11,7 +12,7 @@ export class QuestionModel {
   @Expose()
   public own: boolean;
   @Expose()
-  public answers: Object[];
+  public answers: QuestionAnswersModel[] = [];
   @Expose()
   public tags: TagModel[] = [];
 }

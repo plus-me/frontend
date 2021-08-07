@@ -1,3 +1,20 @@
 app-question-list-item {
   width: 100%;
 }
+
+
+.question {
+  --border-radius: 20px;
+}
+
+.wrapping-list {
+  background: transparent;
+  padding: 10px;
+  ion-item {
+    padding-bottom: 10px;
+  }
+
+  ion-item:last-child {
+    padding-bottom: 80px;
+  }
+}
