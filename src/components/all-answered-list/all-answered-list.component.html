@@ -2,7 +2,7 @@
 
 <ion-list no-lines class="wrapping-list">
   <ion-item class="question" *ngFor="let question of questions | async">
-    <app-question-list-item [question]="question"> <!-- [enableDownvote]="false" [enableUpvote]="false"
+    <app-question-list-item [question]="question" [hideRelation]="true"> <!-- [enableDownvote]="false" [enableUpvote]="false"
                      (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)"> -->
     </app-question-list-item>
   </ion-item>

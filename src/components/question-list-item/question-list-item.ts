@@ -17,6 +17,7 @@ import {QuestionActions} from '@plusme/libs/actions/questions.action';
 export class QuestionListItemComponent {
   @Select((state: GlobalState) => state.tags)
   public tags: Observable<TagModel>;
+  @Input() hideRelation: Boolean = true;
 
   @ViewChild('questionlistitem') questionListItem;
   @Input() question: any;

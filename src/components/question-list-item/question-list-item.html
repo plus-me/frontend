@@ -39,7 +39,7 @@
                   *ngIf="question.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text>
       </ion-chip>
     </ion-col>
-    <ion-col class="status-chip">
+    <ion-col class="status-chip" *ngIf="!hideRelation">
       <ion-chip class="status-chip following" color="white" *ngIf="question.own === false">
         <ion-icon name="person-circle" color="medium"></ion-icon>
         <ion-text color="medium">{{ 'questionListItem.following' | translate}}</ion-text>
