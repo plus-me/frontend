@@ -20,8 +20,8 @@ export class MyQuestionsListComponent {
   public questions: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;
-  @Input('only-answered')
-  public onlyAnswered: Boolean;
+  @Input()
+  public onlyAnswered: boolean;
 
   constructor(
 

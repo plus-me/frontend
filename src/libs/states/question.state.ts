@@ -131,7 +131,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.AnsweredQuestions),
       )
       .pipe(
-        map((data: unknown[]) => data['results'].map((item) => this.convertDataIntoQuestionWithTags(item))),
+        map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
             answered: questions,

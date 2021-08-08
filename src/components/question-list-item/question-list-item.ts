@@ -17,7 +17,7 @@ import {QuestionActions} from '@plusme/libs/actions/questions.action';
 export class QuestionListItemComponent {
   @Select((state: GlobalState) => state.tags)
   public tags: Observable<TagModel>;
-  @Input() hideRelation: Boolean = true;
+  @Input() hideRelation: true;
 
   @ViewChild('questionlistitem') questionListItem;
   @Input() question: any;
@@ -54,10 +54,5 @@ export class QuestionListItemComponent {
 
   public search(text: string) {
     this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
-  }
-
-  getTagText(tagId) {
-    // Hier alle tags nach dem passenden durckkramen und den text zurückgeben.
-    // Oder halt - wie bei random-question - die questions in der action mit tags augmentieren.
   }
 }
