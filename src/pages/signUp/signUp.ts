@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { ContactPage } from '@plusme/pages/contact/contact';
@@ -7,6 +7,8 @@ import { LoginPage } from '@plusme/pages/login/login';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { Store } from '@ngxs/store';
 import { UserActions } from '@plusme/libs/actions/users.actions';
+import { PrivacyPage } from '../privacy/privacy.page';
+import { TermsPage } from '../terms/terms.page';
 
 @Component({
   selector: 'app-page-signup',
@@ -32,6 +34,7 @@ export class SignUpPage {
     private toastCtrl: ToastController,
     private translate: TranslateService,
     private store: Store,
+    private modalCtrl: ModalController,
   ) { }
 
   checkInputs(){
@@ -56,21 +59,25 @@ export class SignUpPage {
   }
 
   public async showUsageConditions() {
-    const alert = await this.alertCtrl.create({
-      header: this.translate.instant('AGB.TITLE'),
-      message: this.translate.instant('AGB.MESSAGE'),
-      buttons: [this.translate.instant('SIGNUP.OK')]
+    const modal = await this.modalCtrl.create({
+      component: TermsPage,
+      componentProps: {
+        isModal: true,
+      }
     });
-    await alert.present();
+
+    await modal.present();
   }
 
   public async showPrivacy() {
-    const alert = await this.alertCtrl.create({
-      header: this.translate.instant('PRIVACY.TITLE'),
-      message: this.translate.instant('PRIVACY.MESSAGE'),
-      buttons: [this.translate.instant('SIGNUP.OK')]
+    const modal = await this.modalCtrl.create({
+      component: PrivacyPage,
+      componentProps: {
+        isModal: true,
+      }
     });
-    await alert.present();
+
+    await modal.present();
   }
 
   public goToWelcome() {

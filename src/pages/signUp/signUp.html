@@ -1,44 +1,64 @@
-<app-navbar title="SIGNUP.TITLE"></app-navbar>
+<app-navbar title="signup.title"></app-navbar>
 
 <ion-content text-center>
-  <div class="title">
-    {{ 'SIGNUP.WELCOME' | translate }}<br>{{ 'SIGNUP.GREETER' | translate }}
-  </div>
-  <div class="subtitle">{{ 'SIGNUP.SUBTITLE' | translate }}</div>
-  <ion-list class="input-area" middle no-lines>
-    <ion-item class="input-item" no-lines>
-      <ion-label stacked>{{ 'SIGNUP.EMAIL' | translate }}</ion-label>
-      <ion-input [(ngModel)]="email" type="email">
-      </ion-input>
-    </ion-item>
-    <ion-item class="input-item" no-lines>
-      <ion-label stacked>{{ 'SIGNUP.PASSWORD' | translate }}</ion-label>
-      <ion-input [(ngModel)]="password" type="password">
-      </ion-input>
-    </ion-item>
-    <ion-item class="input-item" no-lines>
-      <ion-label stacked>{{ 'SIGNUP.REPEAT_PW' | translate }}</ion-label>
-      <ion-input type="password" [(ngModel)]="passwordRepeat">
-      </ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-label class="notice">
-    {{ 'SIGNUP.CONFIRMLABEL1' | translate }}
-    <a (click)="showUsageConditions()">{{ 'AGB.TITLE' | translate }}</a>
-    {{ 'SIGNUP.CONFIRMLABEL2' | translate }}
-    <a (click)="showPrivacy()">{{ 'PRIVACY.TITLE' | translate }}</a>
-  </ion-label>
-  <div class="button-area">
-    <ion-button
-      expand="block"
-      (click)="signUp()">
-      {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
-    </ion-button>
-    <ion-button
-      expand="block"
-      fill="outline"
-      (click)="goToWelcome()">
-      {{ 'SIGNUP.CANCEL' | translate }}
-    </ion-button>
-  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-list class="input-area" middle no-lines>
+        <ion-item lines="none">
+          {{ 'signup.welcome' | translate }}
+        </ion-item>
+        <ion-item lines="none">
+            {{ 'signup.greeter' | translate }}
+        </ion-item>
+        <ion-item lines="none" class="ion-padding-bottom">
+            {{ 'signup.subtitle' | translate }}
+        </ion-item>
+        <ion-item >
+          <ion-input
+            [(ngModel)]="email"
+            type="email"
+            placeholder="{{ 'signup.email' | translate }}"
+            >
+          </ion-input>
+        </ion-item>
+        <ion-item class="input-item" no-lines>
+          <ion-input
+            [(ngModel)]="password"
+            type="password"
+            placeholder="{{ 'signup.password' | translate }}"
+            >
+          </ion-input>
+        </ion-item>
+        <ion-item class="ion-padding-bottom">
+          <ion-input
+            type="password"
+            [(ngModel)]="passwordRepeat"
+            placeholder="{{ 'signup.repeatPassword' | translate }}"
+            >
+          </ion-input>
+        </ion-item>
+        <ion-item lines="none" class="ion-padding-bottom">
+          <ion-label class="ion-text-wrap">
+          {{ 'signup.confirmlabel1' | translate }}
+          <a (click)="showUsageConditions()">{{ 'terms.title' | translate }}</a>
+          {{ 'signup.confirmlabel2' | translate }}
+          <a (click)="showPrivacy()">{{ 'privacy.title' | translate }}</a>.
+          </ion-label>
+        </ion-item>
+        <ion-button
+          class="ion-padding-start"
+          expand="block"
+          (click)="signUp()">
+          {{ 'signup.submitSignup' | translate }}
+        </ion-button>
+        <ion-button
+          class="ion-padding-start"
+          expand="block"
+          fill="outline"
+          (click)="goToWelcome()">
+          {{ 'signup.cancel' | translate }}
+        </ion-button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
