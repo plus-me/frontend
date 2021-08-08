@@ -1,9 +1,12 @@
-<h2 class="hint" translate ion-fixed *ngIf="!((questions.length | async) === 0)">myQuestionsListComponent.myQuestions</h2>
+<h2 class="hint" translate ion-fixed *ngIf="!((questions.length | async) === 0)">
+  myQuestionsListComponent.myQuestions</h2>
 
 <ion-list no-lines class="wrapping-list">
-  <ion-item class="question" *ngFor="let question of questions | async">
-    <app-question-list-item [question]="question"> <!-- [enableDownvote]="false" [enableUpvote]="false"
+  <ng-container class="item-wrapper" *ngFor="let question of questions | async">
+    <ion-item class="question" *ngIf="!onlyAnswered || (question.answers.length > 0)" >
+      <app-question-list-item [question]="question" [hideRelation]="false"> <!-- [enableDownvote]="false" [enableUpvote]="false"
                      (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)"> -->
-    </app-question-list-item>
-  </ion-item>
+      </app-question-list-item>
+    </ion-item>
+  </ng-container>
 </ion-list>

@@ -17,7 +17,7 @@
       </ion-row>
     </ion-header-bar>
   </ion-header>
-  <app-my-questions-list *ngIf="mode === 'mine'"></app-my-questions-list>
+  <app-my-questions-list [only-answered]="true" *ngIf="mode === 'mine'"></app-my-questions-list>
 
   <app-all-answered-list *ngIf="mode === 'all'"></app-all-answered-list>
 </ion-content>

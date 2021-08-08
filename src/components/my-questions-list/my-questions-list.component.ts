@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {LoadingController} from '@ionic/angular';
 import {QuestionServiceProvider} from '@plusme/providers/question-service/question-service';
 import {Select, Store} from '@ngxs/store';
@@ -20,6 +20,8 @@ export class MyQuestionsListComponent {
   public questions: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;
+  @Input('only-answered')
+  public onlyAnswered: Boolean;
 
   constructor(
 
