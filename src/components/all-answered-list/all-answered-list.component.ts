@@ -14,7 +14,7 @@ import {TagModel} from '@plusme/libs/models/tag.model';
   styleUrls: ['all-answered-list.component.scss']
 })
 export class AllAnsweredListComponent {
-  @Select((store: GlobalState) => store.questions.questions)
+  @Select((store: GlobalState) => store.questions.answered)
   public questions: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;

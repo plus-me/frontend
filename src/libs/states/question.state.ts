@@ -17,6 +17,7 @@ import { GlobalState } from '../interfaces/global.state';
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
   questions: QuestionModel[];
+  answered: QuestionModel[];
 }
 
 @State<QuestionStateInterface>({
@@ -114,6 +115,26 @@ export class QuestionState {
         tap(questions => {
           ctx.patchState({
             questions,
+          });
+        }),
+      );
+  }
+
+  @Action(QuestionActions.GetAllAnsweredQuestionsAction)
+  public getAllAnsweredQuestions(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.GetAllAnsweredQuestionsAction,
+  ) {
+    return this
+      .http
+      .get(
+        urlcat(API_ENDPOINT, BackendRoutes.AnsweredQuestions),
+      )
+      .pipe(
+        map((data: unknown[]) => data['results'].map((item) => this.convertDataIntoQuestionWithTags(item))),
+        tap(questions => {
+          ctx.patchState({
+            answered: questions,
           });
         }),
       );
