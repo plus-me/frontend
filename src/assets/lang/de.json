@@ -190,6 +190,7 @@
   },
   "questionBubble": {
     "peopleAsking": "Personen fragen",
+    "personAsking": "Person fragt",
     "notInterested": "Interessiert mich nicht",
     "report": "Frage melden"
   },
@@ -199,6 +200,7 @@
   "questionListItem": {
     "unread": "Ungelesen",
     "followers": "folgen",
+    "follows": "folgt",
     "answers": "Antworten",
     "answer": "Antwort",
     "mine": "meine Frage",

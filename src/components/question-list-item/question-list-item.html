@@ -11,7 +11,7 @@
         color="white"
         class="tag-chip"
         (click)="search(tag)">
-        #{{getTagText(tag) | async}}
+        #{{ tag.text }}
       </ion-chip>
     </ion-col>
   </ion-row>
@@ -26,7 +26,14 @@
       <ion-chip color="white">
         <ion-icon name="thumbs-up" color="medium"></ion-icon>
         <ion-text class="stats-label" color="medium">{{question.upvotes | number}}</ion-text>
-        <ion-text color="medium">{{ 'questionListItem.followers' | translate}}</ion-text>
+        <ion-text color="medium"
+                  *ngIf="question.upvotes !== 1">
+          {{ 'questionListItem.followers' | translate}}
+        </ion-text>
+        <ion-text color="medium"
+                  *ngIf="question.upvotes === 1">
+          {{ 'questionListItem.follows' | translate}}
+        </ion-text>
       </ion-chip>
     </ion-col>
     <ion-col class="likes">
@@ -34,7 +41,7 @@
         <ion-icon name="chatbubbles" color="medium"></ion-icon>
         <ion-text class="stats-label" color="medium">{{question.answers.length | number}}</ion-text>
         <ion-text color="medium"
-                  *ngIf="question.answers.length === 0 || question.answers.length > 1">{{ 'questionListItem.answers' | translate}}</ion-text>
+                  *ngIf="question.answers.length !== 1">{{ 'questionListItem.answers' | translate}}</ion-text>
         <ion-text color="medium"
                   *ngIf="question.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text>
       </ion-chip>
