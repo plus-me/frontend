@@ -20,6 +20,6 @@
 
   <div class="navbar-buffer"></div>
 
-  <app-my-questions-list [answeredOnly]="true" *ngIf="mode === 'mine'"></app-my-questions-list>
+  <app-my-questions-list [answeredOnly]="false" *ngIf="mode === 'mine'"></app-my-questions-list>
   <app-all-answered-list *ngIf="mode === 'all'"></app-all-answered-list>
 </ion-content>
