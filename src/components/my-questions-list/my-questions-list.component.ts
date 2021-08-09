@@ -1,13 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {LoadingController} from '@ionic/angular';
 import {QuestionServiceProvider} from '@plusme/providers/question-service/question-service';
-import {Select, Store} from '@ngxs/store';
+import {Select} from '@ngxs/store';
 import {GlobalState} from '@plusme/libs/interfaces/global.state';
-
-import {QuestionActions} from '@plusme/libs/actions/questions.action';
 import {Observable} from 'rxjs';
 import {QuestionModel} from '@plusme/libs/models/question.model';
-import {TagModel} from '@plusme/libs/models/tag.model';
 
 @Component({
   selector: 'app-my-questions-list',
@@ -17,9 +13,7 @@ import {TagModel} from '@plusme/libs/models/tag.model';
 })
 export class MyQuestionsListComponent {
   @Select((store: GlobalState) => store.questions.questions)
-  public questions: Observable<QuestionModel>;
-  @Select((store: GlobalState) => store.tags)
-  public tags: Observable<TagModel>;
+  public questions: Observable<QuestionModel[]>;
   @Input()
   public onlyAnswered: boolean;
 

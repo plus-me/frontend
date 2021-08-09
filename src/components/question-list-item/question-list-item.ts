@@ -17,7 +17,7 @@ import {QuestionActions} from '@plusme/libs/actions/questions.action';
 export class QuestionListItemComponent {
   @Select((state: GlobalState) => state.tags)
   public tags: Observable<TagModel>;
-  @Input() hideRelation: true;
+  @Input() hideRelation = true;
 
   @ViewChild('questionlistitem') questionListItem;
   @Input() question: any;
@@ -32,7 +32,6 @@ export class QuestionListItemComponent {
   public tags$: Observable<TagModel[]>;
 
   constructor(
-    private translator: TranslateService,
     private store: Store,
   ) {
   }
