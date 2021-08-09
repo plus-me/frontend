@@ -48,7 +48,7 @@ import {MyQuestionsListComponent} from '@plusme/components/my-questions-list/my-
 import {AllAnsweredListComponent} from '@plusme/components/all-answered-list/all-answered-list.component';
 import {InboxPage} from '@plusme/pages/inbox/inbox';
 import {MyQuestionsPage} from '@plusme/pages/myQuestions/myQuestions';
-
+import { ProfilePage } from '@plusme/pages/profile/profile.page';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
@@ -70,6 +70,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    ProfilePage,
     MyQuestionsPage,
     CreateQuestionComponent,
     MyQuestionsListComponent,
@@ -134,6 +135,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    ProfilePage,
     MyQuestionsPage,
     CreateQuestionComponent,
     MyQuestionsListComponent,

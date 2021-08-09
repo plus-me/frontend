@@ -2,6 +2,7 @@
   "OK": "OK",
   "CANCEL": "Abbrechen",
   "CONNERROR": "Verbindung zum Server fehlgeschlagen, bitte überprüfe deine Internetverbindung.",
+  "WIP": "Dieses feature steht noch nicht zur Verfügung.",
 
   "QUESTION": {
     "ANSWER": "{{value}} Antwort",
@@ -202,6 +203,14 @@
     "personAsking": "Person fragt",
     "notInterested": "Interessiert mich nicht",
     "report": "Frage melden"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "cardTitle": "Profilwartung",
+    "logout": "Ausloggen",
+    "logoutLabel": "Du kannst Dich von +me abmelden:",
+    "delete": "Profil löschen",
+    "deleteLabel": "Du kannst auch Dein Profil (unwiderbringlich!) löschen:"
   },
   "myQuestions": {
     "title": "Meine Fragen"

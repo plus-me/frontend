@@ -11,6 +11,7 @@ import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
 import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
+import { ProfilePage } from '@plusme/pages/profile/profile.page';
 import { InboxPage } from '@plusme/pages/inbox/inbox';
 import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 
@@ -64,5 +65,10 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.Terms,
     component: TermsPage,
+  },
+  {
+    path: FrontendRoutes.Profile,
+    component: ProfilePage,
+    canActivate: [AuthGuard]
   }
 ];
