@@ -18,12 +18,12 @@ import {AppComponent} from './app.component';
 import {AnswerBubbleComponent} from '@plusme/components/answer-bubble/answer-bubble';
 import {QuestionBubbleComponent} from '@plusme/components/question-bubble/question-bubble';
 
-import { ContactPage } from '@plusme/pages/contact/contact';
-import { FaqPage } from '@plusme/pages/faq/faq';
-import { LoginPage } from '@plusme/pages/login/login';
-import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';
-import { SignUpPage } from '@plusme/pages/signUp/signUp';
-import { WelcomePage } from '@plusme/pages/welcome/welcome';
+import {ContactPage} from '@plusme/pages/contact/contact';
+import {FaqPage} from '@plusme/pages/faq/faq';
+import {LoginPage} from '@plusme/pages/login/login';
+import {RandomQuestionsPage} from '@plusme/pages/randomQuestions/randomQuestions';
+import {SignUpPage} from '@plusme/pages/signUp/signUp';
+import {WelcomePage} from '@plusme/pages/welcome/welcome';
 
 import {NewsServiceProvider} from '@plusme/providers/news-service/news-service';
 import {QuestionServiceProvider} from '@plusme/providers/question-service/question-service';
@@ -46,7 +46,8 @@ import {QuestionState} from '@plusme/libs/states/question.state';
 import {QuestionListItemComponent} from '@plusme/components/question-list-item/question-list-item';
 import {MyQuestionsListComponent} from '@plusme/components/my-questions-list/my-questions-list.component';
 import {AllAnsweredListComponent} from '@plusme/components/all-answered-list/all-answered-list.component';
-import { InboxPage } from '@plusme/pages/inbox/inbox';
+import {InboxPage} from '@plusme/pages/inbox/inbox';
+import {MyQuestionsPage} from '@plusme/pages/myQuestions/myQuestions';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -69,6 +70,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    MyQuestionsPage,
     CreateQuestionComponent,
     MyQuestionsListComponent,
     AllAnsweredListComponent,
@@ -132,6 +134,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    MyQuestionsPage,
     CreateQuestionComponent,
     MyQuestionsListComponent,
     AllAnsweredListComponent

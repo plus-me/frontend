@@ -15,7 +15,7 @@ export class MyQuestionsListComponent {
   @Select((store: GlobalState) => store.questions.questions)
   public questions: Observable<QuestionModel[]>;
   @Input()
-  public onlyAnswered: boolean;
+  public answeredOnly: boolean;
 
   constructor(
 
