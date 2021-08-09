@@ -200,5 +200,11 @@
     "peopleAsking": "Personen fragen",
     "notInterested": "Interessiert mich nicht",
     "report": "Frage melden"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "cardtitle": "Profilwartung",
+    "logout": "Ausloggen",
+    "delete": "Profil löschen"
   }
 }

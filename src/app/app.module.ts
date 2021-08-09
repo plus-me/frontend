@@ -43,6 +43,7 @@ import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
 import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
 import { QuestionState } from '@plusme/libs/states/question.state';
+import { ProfilePage } from '@plusme/pages/profile/profile.page';
 
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -63,6 +64,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    ProfilePage,
     CreateQuestionComponent,
   ],
   imports: [
@@ -123,6 +125,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ImprintPage,
     PrivacyPage,
     TermsPage,
+    ProfilePage,
     CreateQuestionComponent,
   ],
   providers: [
