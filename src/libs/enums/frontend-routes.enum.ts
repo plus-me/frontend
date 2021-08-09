@@ -8,6 +8,7 @@ export enum FrontendRoutes {
   FAQ = 'faq',
   SignUp = 'signup',
   Onboarding = 'onboarding',
+  Inbox = 'inbox',
   MyQuestions = 'my-questions',
   MyRejectedQuestions = 'my-rejected-questions',
   Privacy = 'privacy',

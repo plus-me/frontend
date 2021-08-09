@@ -199,7 +199,31 @@
   },
   "questionBubble": {
     "peopleAsking": "Personen fragen",
+    "personAsking": "Person fragt",
     "notInterested": "Interessiert mich nicht",
     "report": "Frage melden"
+  },
+  "myQuestions": {
+    "title": "Meine Fragen"
+  },
+  "questionListItem": {
+    "unread": "Ungelesen",
+    "followers": "folgen",
+    "follows": "folgt",
+    "answers": "Antworten",
+    "answer": "Antwort",
+    "mine": "meine Frage",
+    "following": "folge ich"
+  },
+  "inbox": {
+    "title": "Posteingang",
+    "mine": "meine",
+    "all": "alle"
+  },
+  "myQuestionsListComponent": {
+    "myQuestions": "Hier siehst Du alle Deine Fragen"
+  },
+  "allAnsweredQuestionsListComponent": {
+    "allQuestions": "Hier siehst Du alle beantworteten Fragen"
   }
 }

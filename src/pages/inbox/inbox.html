@@ -1,0 +1,25 @@
+<app-navbar title="inbox.title"></app-navbar>
+
+<ion-content>
+  <ion-header class="ion-no-border">
+    <div class="bar-subheader ion-no-border" color="white">
+      <ion-row class="app-tab-row">
+        <ion-col [ngClass]="{'app-tab-active': mode === 'mine'}">
+          <ion-tab-button (click)="select_mine()">
+            {{ 'inbox.mine' | translate}}
+          </ion-tab-button>
+        </ion-col>
+        <ion-col [ngClass]="{'app-tab-active': mode === 'all'}">
+          <ion-tab-button (click)="select_all()">
+            {{ 'inbox.all' | translate}}
+          </ion-tab-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-header>
+
+  <div class="navbar-buffer"></div>
+
+  <app-my-questions-list [answeredOnly]="false" *ngIf="mode === 'mine'"></app-my-questions-list>
+  <app-all-answered-list *ngIf="mode === 'all'"></app-all-answered-list>
+</ion-content>

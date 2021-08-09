@@ -19,6 +19,10 @@ export namespace QuestionActions {
     public static readonly type = '[Questions] Get My Question';
   }
 
+  export class GetAllAnsweredQuestionsAction {
+    public static readonly type = '[Questions] Get All Answered Questions';
+  }
+
   export class SearchQuestionsAction {
     public static readonly type = '[Questions] Search Question';
 
