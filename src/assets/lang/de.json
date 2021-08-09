@@ -2,6 +2,7 @@
   "OK": "OK",
   "CANCEL": "Abbrechen",
   "CONNERROR": "Verbindung zum Server fehlgeschlagen, bitte überprüfe deine Internetverbindung.",
+  "WIP": "Dieses feature steht noch nicht zur Verfügung.",
 
   "QUESTION": {
     "ANSWER": "{{value}} Antwort",
@@ -203,8 +204,10 @@
   },
   "profile": {
     "title": "Mein Profil",
-    "cardtitle": "Profilwartung",
+    "cardTitle": "Profilwartung",
     "logout": "Ausloggen",
-    "delete": "Profil löschen"
+    "logoutLabel": "Du kannst Dich von +me abmelden:",
+    "delete": "Profil löschen",
+    "deleteLabel": "Du kannst auch Dein Profil (unwiderbringlich!) löschen:"
   }
 }

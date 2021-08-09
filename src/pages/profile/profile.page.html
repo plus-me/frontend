@@ -3,11 +3,21 @@
 <ion-content class="staticcontent">
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ "profile.cardtitle" | translate}}</ion-card-title>
+      <ion-card-title>{{ "profile.cardTitle" | translate}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-button>{{ "profile.logout" | translate }}}</ion-button>
-      <ion-button>{{ "profile.delete" | translate  }}</ion-button>
+      <ion-text>{{ "profile.logoutLabel" | translate}}</ion-text>
+      <ion-button (click)="logout()"
+                  size="large"
+                  expand="block">
+        {{ "profile.logout" | translate }}
+      </ion-button>
+      <ion-text>{{ "profile.deleteLabel" | translate}}</ion-text>
+      <ion-button (click)="deleteAccount()"
+                  expand="block"
+                  color="danger">
+        {{ "profile.delete" | translate  }}
+      </ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -87,8 +87,8 @@ export class UserState {
   ) {
     return this
       .http
-      .post<any>(
-        API_ENDPOINT + '/Users/logout',
+      .get<any>(
+        API_ENDPOINT + '/Users/logout/',
         {}
       )
       .pipe(
