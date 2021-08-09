@@ -1,9 +1,6 @@
 <app-navbar title="SIGNUP.TITLE"></app-navbar>
 
 <ion-content text-center>
-  <div class="logo-area">
-    <custom-icon set="logo" name="me-logo" padding text-center></custom-icon>
-  </div>
   <div class="title">
     {{ 'SIGNUP.WELCOME' | translate }}<br>{{ 'SIGNUP.GREETER' | translate }}
   </div>
@@ -34,8 +31,6 @@
   <div class="button-area">
     <ion-button
       expand="block"
-      (repeat)="checkEntries()"
-      (change)="checkEntries()"
       (click)="signUp()">
       {{ 'SIGNUP.SUBMIT_SIGNUP' | translate }}
     </ion-button>

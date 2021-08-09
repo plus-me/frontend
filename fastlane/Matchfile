@@ -1,0 +1,4 @@
+git_url("git@github.com:plus-me/frontend-secrets.git")
+git_branch("master")
+storage_mode("git")
+type("appstore")

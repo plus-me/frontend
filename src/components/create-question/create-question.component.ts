@@ -35,7 +35,7 @@ export class CreateQuestionComponent {
     this.authForm = this.formBuilder.group({
       question: ['', Validators.compose([
         Validators.required,
-        Validators.maxLength(250),
+        Validators.maxLength(280),
       ])],
       tags: ['', Validators.compose([
         Validators.required,
@@ -47,9 +47,9 @@ export class CreateQuestionComponent {
     this.tags = this.authForm.controls.tags;
   }
 
-  public textChange(event: CustomEvent<InputEvent>) {
-    const textarea = event.detail.target as HTMLTextAreaElement;
-    if (textarea.value.length > 250) {
+  public textChange(event: Event) {
+    const textarea = (event as CustomEvent<InputEvent>).detail.target as HTMLTextAreaElement;
+    if (textarea.value.length > 280) {
       this.lengthColor = 'red';
     } else if (textarea.value.length > 200) {
       this.lengthColor = 'yellow';

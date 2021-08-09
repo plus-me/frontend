@@ -1,0 +1,41 @@
+name: Release iOS
+
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.17.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.17.1
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+        bundler-cache: true
+    - uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: npm ci
+    # create www folder to satisfy cordova
+    - run: mkdir -p www
+    - run: npm run apply-version
+    - run: npm run ionic -- cordova resources ios
+    - run: npm run cordova -- platform add ios
+    - run: npm run ng -- run app:ionic-cordova-build:production --platform=ios
+    - run: npm run cordova -- prepare ios --prod
+    - run: bundle exec fastlane ios build
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+        FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+    - run: bundle exec fastlane ios store
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+        FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD  }}
