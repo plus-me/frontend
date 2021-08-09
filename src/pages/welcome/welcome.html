@@ -1,28 +1,32 @@
-<app-navbar title=""></app-navbar>
+<app-navbar title="welcome.title"></app-navbar>
 
-<ion-content>
-  <ion-grid no-padding ion-fixed>
-    <ion-row class="logo-area">
-      <ion-col></ion-col>
-      <ion-col align-self-end><img class="logo" src="/assets/icons/logo/me-logo.svg"></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-    <ion-row class="subtitle">
-      <ion-col text-center align-self-center>
-        {{ 'WELCOME.SUBTITLE' | translate }}
-      </ion-col>
-    </ion-row>
-    <ion-row class="button-area">
-      <ion-col>
-        <ion-button expand="block" (click)="goToSignup()">
-          {{ 'WELCOME.SIGNUP' | translate }}
-        </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button ion-button expand="block" fill="outline" (click)="goToLogin()">
-          {{ 'WELCOME.LOGIN' | translate }}
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="staticcontent">
+  <ion-card>
+    <ion-card-content>
+      <ion-grid no-padding ion-fixed>
+        <ion-row class="subtitle">
+          <ion-col text-center align-self-center>
+            {{ 'welcome.subtitle' | translate }}
+          </ion-col>
+        </ion-row>
+        <ion-row class="subtitle">
+          <ion-col text-center align-self-center>
+            {{ 'welcome.instructions' | translate }}
+          </ion-col>
+        </ion-row>
+        <ion-row class="button-area">
+          <ion-col>
+            <ion-button expand="block" (click)="goToSignup()">
+              {{ 'welcome.signup' | translate }}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button ion-button expand="block" fill="outline" (click)="goToLogin()">
+              {{ 'welcome.login' | translate }}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
