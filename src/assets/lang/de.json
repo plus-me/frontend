@@ -49,12 +49,12 @@
     "ERROR_SHORT_TEXT": "Die Frage ist zu kurz."
   },
 
-  "WELCOME": {
-    "WELCOME": "WePublic",
-    "SUBTITLE": "Unterstütze Fragen, die dich interessieren und mache sie zu deinen Fragen.",
-    "LOGIN": "Login",
-    "LOGINFB": "Login mit Facebook",
-    "SIGNUP": "Konto anlegen"
+  "welcome": {
+    "title": "+me",
+    "subtitle": "Unterstütze Fragen, die dich interessieren und mache sie zu deinen Fragen.",
+    "instructions": "Um loslegen zu können musst du entweder ein Konto erstellen oder falls du schon ein Konto hast dich anmelden.",
+    "login": "Anmelden",
+    "signup": "Konto erstellen"
   },
 
   "LOGIN": {
@@ -135,21 +135,22 @@
     "YOUR_PROFILE": "Dein Profil"
   },
 
-  "SIGNUP": {
-    "OK": "Verstanden",
-    "WRONGINPUTS": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 8 Zeichen.",
-    "CHECKEMAIL": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
-    "NAME": "Name",
-    "EMAIL": "E-Mail",
-    "PASSWORD": "Passwort",
-    "REPEAT_PW": "Passwort bestätigen",
-    "WELCOME": "Willkommen!",
-    "GREETER": "Schön, dass du dabei bist.",
-    "SUBTITLE": "Ein paar Infos brauchen wir um deinen Account anzulegen.",
-    "SUBMIT_SIGNUP": "Jetzt Konto anlegen!",
-    "CANCEL": "Abbrechen",
-    "CONFIRMLABEL1": "Durch Fortfahren akzeptierst Du unsere ",
-    "CONFIRMLABEL2": "und"
+  "signup": {
+    "title": "Konto erstellen",
+    "ok": "Verstanden",
+    "wronginputs": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 8 Zeichen.",
+    "checkEmail": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
+    "name": "Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "repeatPassword": "Passwort bestätigen",
+    "welcome": "Willkommen!",
+    "greeter": "Schön, dass du dabei bist.",
+    "subtitle": "Ein paar Infos brauchen wir um deinen Account anzulegen.",
+    "submitSignup": "Jetzt Konto anlegen!",
+    "cancel": "Abbrechen",
+    "confirmlabel1": "Durch Fortfahren akzeptierst Du unseren ",
+    "confirmlabel2": " und die "
   },
 
   "TABS": {
@@ -199,6 +200,7 @@
   },
   "questionBubble": {
     "peopleAsking": "Personen fragen",
+    "personAsking": "Person fragt",
     "notInterested": "Interessiert mich nicht",
     "report": "Frage melden"
   },
@@ -209,5 +211,28 @@
     "logoutLabel": "Du kannst Dich von +me abmelden:",
     "delete": "Profil löschen",
     "deleteLabel": "Du kannst auch Dein Profil (unwiderbringlich!) löschen:"
+  },
+  "myQuestions": {
+    "title": "Meine Fragen"
+  },
+  "questionListItem": {
+    "unread": "Ungelesen",
+    "followers": "folgen",
+    "follows": "folgt",
+    "answers": "Antworten",
+    "answer": "Antwort",
+    "mine": "meine Frage",
+    "following": "folge ich"
+  },
+  "inbox": {
+    "title": "Posteingang",
+    "mine": "meine",
+    "all": "alle"
+  },
+  "myQuestionsListComponent": {
+    "myQuestions": "Hier siehst Du alle Deine Fragen"
+  },
+  "allAnsweredQuestionsListComponent": {
+    "allQuestions": "Hier siehst Du alle beantworteten Fragen"
   }
 }

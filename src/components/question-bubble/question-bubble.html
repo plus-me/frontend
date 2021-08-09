@@ -7,7 +7,8 @@
         </b>
       </span>
       <br>
-      {{ 'questionBubble.peopleAsking' | translate }}
+      <ion-text *ngIf="question.upvotes !== 1">{{ 'questionBubble.peopleAsking' | translate }}</ion-text>
+      <ion-text *ngIf="question.upvotes === 1">{{ 'questionBubble.personAsking' | translate }}</ion-text>
     </ion-card-header>
     <ion-card-content>
       <ion-text class="question ion-text-center"><b>{{question.text}}</b></ion-text>

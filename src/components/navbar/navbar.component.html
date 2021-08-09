@@ -1,8 +1,21 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons *ngIf="isModal === false" slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="gotoSearch()">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+      <ion-button (click)="gotoInbox()">
+        <ion-icon name="file-tray"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{ title | translate }}</ion-title>
+    <ion-buttons *ngIf="isModal === true" slot="end">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close-outline" style="color: black;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>

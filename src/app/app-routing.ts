@@ -12,6 +12,8 @@ import { ImprintPage } from '@plusme/pages/imprint/imprint.page';
 import { PrivacyPage } from '@plusme/pages/privacy/privacy.page';
 import { TermsPage } from '@plusme/pages/terms/terms.page';
 import { ProfilePage } from '@plusme/pages/profile/profile.page';
+import { InboxPage } from '@plusme/pages/inbox/inbox';
+import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 
 export const AppRoutes: Routes = [
   {
@@ -29,6 +31,15 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.RandomQuestion,
     component: RandomQuestionsPage,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: FrontendRoutes.MyQuestions,
+    component: MyQuestionsPage,
+  },
+  {
+    path: FrontendRoutes.Inbox,
+    component: InboxPage,
     canActivate: [AuthGuard],
   },
   {
