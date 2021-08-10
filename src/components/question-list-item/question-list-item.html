@@ -36,8 +36,8 @@
         </ion-text>
       </ion-chip>
     </ion-col>
-    <ion-col class="likes">
-      <ion-chip color="white">
+    <ion-col class="answers">
+      <ion-chip color="white" (click)="gotoAnswers(question)">
         <ion-icon name="chatbubbles" color="medium"></ion-icon>
         <ion-text class="stats-label" color="medium">{{question.answers.length | number}}</ion-text>
         <ion-text color="medium"

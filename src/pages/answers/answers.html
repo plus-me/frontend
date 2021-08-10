@@ -1,0 +1,18 @@
+<app-navbar title="answers.title"></app-navbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let answer of (answers | async)">
+      <ion-card>
+        <ion-card-header>Antwort:</ion-card-header>
+        <ion-card-content>
+          <ion-text>{{answer.text}}</ion-text>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+  </ion-list>
+  <pre>
+    {{ answers | async | json}}
+  </pre>
+</ion-content>

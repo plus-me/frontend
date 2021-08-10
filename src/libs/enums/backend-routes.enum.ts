@@ -4,6 +4,8 @@ export enum BackendRoutes {
   MyQuestions = '/Questions/my/',
   UpvoteQuestion = '/Questions/:id/upvote/',
   DownvoteQuestion = '/Questions/:id/downvote/',
-  Answers = '/Answers/:id/',
-  AnsweredQuestions = '/Questions/?answered=true&ordering=-closed_date'
+  AnsweredQuestions = '/Questions/?answered=true&ordering=-closed_date',
+  Answers = '/Answers/question/:id/',
+  UpVoteAnswer = '/Answers/:id/upvote/',
+  DownVoteAnswer = '/Answers/:id/downvote/',
 }
