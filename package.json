@@ -65,6 +65,7 @@
     "@ionic/app-scripts": "3.2.4",
     "@ionic/cli": "6.16.3",
     "@ngxs/devtools-plugin": "3.7.2",
+    "@types/node": "16.4.13",
     "@types/shelljs": "0.8.9",
     "@types/xmldom": "0.1.31",
     "@typescript-eslint/eslint-plugin": "4.16.1",
@@ -81,6 +82,7 @@
     "patch-package": "6.4.7",
     "shelljs": "0.8.4",
     "ts-node": "10.1.0",
+    "type-fest": "2.0.0",
     "typescript": "4.3.4",
     "xmldom": "0.6.0"
   },
