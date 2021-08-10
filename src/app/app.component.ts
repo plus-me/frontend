@@ -14,6 +14,9 @@ import { GlobalState } from '@plusme/libs/interfaces/global.state';
 import { Observable } from 'rxjs';
 import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
 import { TagsActions } from '@plusme/libs/actions/tags.actions';
+import { PackageJson } from 'type-fest';
+
+const packageJSON = require('../../package.json') as PackageJson;
 
 @Component({
   selector: 'app-root',
@@ -26,6 +29,8 @@ export class AppComponent {
 
   @Select((state: GlobalState) => state.user.hasOnboardingFinished)
   public hasOnboardingFinished: Observable<boolean>;
+
+  public readonly version = packageJSON.version;
 
   rootPage: any = WelcomePage;
   public appPages = [

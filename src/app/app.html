@@ -3,13 +3,19 @@
     <ion-menu contentId="main" type="overlay" [disabled]="(hasOnboardingFinished | async) === false">
       <ion-content>
         <ion-list>
-          <ion-list-header routerLink="/profile">
-            <ion-item lines="none">
-              <ion-icon src="assets/icon/profile.svg" slot="start"></ion-icon>
-              <ion-label>
-                {{ 'sidebar.profile' | translate }}
-              </ion-label>
-            </ion-item>
+          <ion-list-header>
+            <ion-menu-toggle auto-hide="false">
+              <ion-item
+                routerDirection="root"
+                detail="false"
+                routerLink="/profile"
+                lines="none">
+                <ion-icon src="assets/icon/profile.svg" slot="start"></ion-icon>
+                <ion-label>
+                  {{ 'sidebar.profile' | translate }}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
           </ion-list-header>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
@@ -23,6 +29,9 @@
               <ion-label>{{ p.title | translate }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-note detail="false" lines="none">
+            Version: {{ version }}
+          </ion-note>
         </ion-list>
       </ion-content>
     </ion-menu>
