@@ -5,9 +5,11 @@ import {GlobalState} from '@plusme/libs/interfaces/global.state';
 
 import {AnswerActions } from '@plusme/libs/actions/answers.action';
 import {Observable} from 'rxjs';
-import {QuestionModel} from '@plusme/libs/models/question.model';
 import {TagModel} from '@plusme/libs/models/tag.model';
 import { ActivatedRoute } from '@angular/router';
+import { AnswerModel } from '@plusme/libs/models/answer.model';
+import { QuestionActions } from '@plusme/libs/actions/questions.action';
+import { QuestionModel } from '@plusme/libs/models/question.model';
 
 @Component({
   selector: 'app-page-answers',
@@ -16,7 +18,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AnswersPage {
   @Select((store: GlobalState) => store.answers.answers)
-  public answers: Observable<QuestionModel>;
+  public answers: Observable<AnswerModel>;
+  @Select((store: GlobalState) => store.questions.answeredQuestion)
+  public question: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;
 
@@ -39,7 +43,17 @@ export class AnswersPage {
           await loading.dismiss();
         },
         async () => {
-          console.log('ERROR');
+          await loading.dismiss();
+        },
+      );
+    this
+      .store
+      .dispatch(new QuestionActions.GetQuestion(this.activatedRoute.snapshot.params.id))
+      .subscribe(
+        async () => {
+          await loading.dismiss();
+        },
+        async () => {
           await loading.dismiss();
         },
       );

@@ -23,6 +23,14 @@ export namespace QuestionActions {
     public static readonly type = '[Questions] Get All Answered Questions';
   }
 
+  export class GetQuestion {
+    public static readonly type = '[Questions] Get Question';
+
+    public constructor(
+      public questionId: number,
+    ) {}
+  }
+
   export class SearchQuestionsAction {
     public static readonly type = '[Questions] Search Question';
 

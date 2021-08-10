@@ -1,6 +1,9 @@
 <app-navbar title="answers.title"></app-navbar>
 
 <ion-content>
+  <ion-card>
+    {{ (question | async)?.text }}
+  </ion-card>
   <ion-list>
     <ion-item *ngFor="let answer of (answers | async)">
       <ion-card>
