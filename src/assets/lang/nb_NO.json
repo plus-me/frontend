@@ -53,5 +53,10 @@
     "TABS": {
         "SEARCH": "Toppspørsmål",
         "HOME": "Hjem"
+    },
+    "SETTINGS": {
+        "YOUR_PROFILE": "Din profil",
+        "SAVE_SETTINGS": "Lagre",
+        "REPEAT_PW": "Gjenta passord"
     }
 }
