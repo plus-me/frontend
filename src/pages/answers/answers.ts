@@ -18,7 +18,7 @@ import { QuestionModel } from '@plusme/libs/models/question.model';
 })
 export class AnswersPage {
   @Select((store: GlobalState) => store.answers.answers)
-  public answers: Observable<AnswerModel>;
+  public answers: Observable<AnswerModel[]>;
   @Select((store: GlobalState) => store.questions.answeredQuestion)
   public question: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
