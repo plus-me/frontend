@@ -1,1 +1,57 @@
-{}
+{
+    "MENU": {
+        "LOGOUT": "Logg ut",
+        "MENU": "Min profil",
+        "LICENSES": "Lisens",
+        "MINE": "Mine spørsmål",
+        "INBOX": "Nye spørsmål til deg",
+        "FAQ": "Ofte stilte spørsmål",
+        "ANSWERS": "Svar",
+        "CONTACT": "Kontakt"
+    },
+    "LOGIN": {
+        "INVALID_USER": "Ukjent e-postadresse.",
+        "FORGOTPW": "Glemt passordet?",
+        "SIGNIN": "Logg inn",
+        "PASSWORD": "Passord",
+        "LOGIN": "Innlogging",
+        "FAILED": "Kunne ikke logge inn",
+        "EMAIL": "E-post"
+    },
+    "welcome": {
+        "signup": "Registrering",
+        "login": "Logg inn"
+    },
+    "signup": {
+        "submitSignup": "Opprett konto",
+        "cancel": "Avbryt",
+        "welcome": "Velkommen",
+        "repeatPassword": "Bekreft passord",
+        "password": "Passord",
+        "email": "E-post",
+        "name": "Navn"
+    },
+    "allAnsweredQuestionsListComponent": {
+        "allQuestions": "Her ser du alle dine besvarte spørsmål"
+    },
+    "myQuestionsListComponent": {
+        "myQuestions": "Her ser du alle dine spørsmål"
+    },
+    "FAQ": {
+        "TITLE": "Ofte stilte spørsmål"
+    },
+    "QUESTION": {
+        "REPORT": "Rapporter dette spørsmålet",
+        "BAD": "dårlig spørsmål",
+        "GOOD": "godt spørsmål",
+        "ANSWERS": "{{value}} svar",
+        "ANSWER": "{{value}} svar"
+    },
+    "CONNERROR": "Kunne ikke koble til tjeneren. Sjekk din tilkobling til Internett.",
+    "CANCEL": "Avbryt",
+    "OK": "OK",
+    "TABS": {
+        "SEARCH": "Toppspørsmål",
+        "HOME": "Hjem"
+    }
+}
