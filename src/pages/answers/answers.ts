@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {LoadingController} from '@ionic/angular';
-import {Select, Store} from '@ngxs/store';
-import {GlobalState} from '@plusme/libs/interfaces/global.state';
+import { Component } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
+import { Select, Store } from '@ngxs/store';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
-import {AnswerActions } from '@plusme/libs/actions/answers.action';
-import {Observable} from 'rxjs';
-import {TagModel} from '@plusme/libs/models/tag.model';
+import { AnswerActions } from '@plusme/libs/actions/answers.action';
+import { Observable } from 'rxjs';
+import { TagModel } from '@plusme/libs/models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerModel } from '@plusme/libs/models/answer.model';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
@@ -23,6 +23,10 @@ export class AnswersPage {
   public question: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;
+
+  // TODO: The alreadyVoted function along with this.voted was a temporary potemkin-hack
+  public voted: number[] = [];
+  public questionExpanded = false;
 
   constructor(
     private loadCtrl: LoadingController,
@@ -59,11 +63,20 @@ export class AnswersPage {
       );
   }
 
-  loadAnswerPage($event) {
-    console.log('GOANSWERS-Event:', $event);
+  alreadyVoted(answerId) {
+    // TODO: The alreadyVoted function was a temporary potemkin-hack
+    return answerId in this.voted;
   }
 
-  loadSearchPage($event) {
-    console.log('GOSEARCH-Event:', $event);
+  upVote(answerId) {
+    // TODO: This only updoots and does not vote.
+    console.log('Updooted answer:', answerId);
+    this.voted.push(answerId);
+  }
+
+  downVote(answerId) {
+    // TODO: This only downdoots and does not vote.
+    console.log('Downdooted answer:', answerId);
+    this.voted.push(answerId);
   }
 }
