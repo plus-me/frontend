@@ -100,6 +100,26 @@ export class QuestionState {
       );
   }
 
+  @Action(QuestionActions.GetQuestionsByTagAction)
+  public getQuestionsByTag(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.GetQuestionsByTagAction,
+  ) {
+    return this
+      .http
+      .get(
+        urlcat(API_ENDPOINT, BackendRoutes.QuestionsByTag, { id: action.tag.id  }),
+      )
+      .pipe(
+        map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
+        tap(questions => {
+          ctx.patchState({
+            questions,
+          });
+        }),
+      );
+  }
+
   @Action(QuestionActions.SearchQuestionsAction)
   public searchQuestions(
     ctx: StateContext<QuestionStateInterface>,
@@ -111,7 +131,7 @@ export class QuestionState {
         urlcat(API_ENDPOINT, BackendRoutes.Questions, { search: action.searchText  }),
       )
       .pipe(
-        map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
+        map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
             questions,

@@ -51,7 +51,7 @@ export class QuestionListItemComponent {
     }
   }
 
-  public search(text: string) {
-    this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
+  public getQuestionsByTag(tag: TagModel) {
+    this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 }

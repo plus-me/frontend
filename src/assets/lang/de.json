@@ -120,7 +120,8 @@
   "SEARCH": {
     "TITLE": "Suche",
     "EMPTY": "Zu diesem Suchbegriff gibt es noch keine Fragen.",
-    "SELECT_TAGS": "Bitte #Tags auswählen"
+    "SELECT_TAGS": "Bitte #Tags auswählen",
+    "NotEnoughSearchCharacters": "Bitte gib noch ein paar mehr Zeichen ein."
   },
 
   "SETTINGS": {
