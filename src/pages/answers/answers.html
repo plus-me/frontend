@@ -77,8 +77,8 @@
           <ion-row>
             <ion-col class="down-vote">
               <!-- TODO: The alreadyVoted function was a temporary potemkin-hack -->
-              <ion-fab-button (click)="downvote(answer)" *ngIf="answer.voted === undefined">
-                <ion-icon name="thumbs-down"></ion-icon>
+              <ion-fab-button [disabled]="answer.voted !== undefined" (click)="downvote(answer)" *ngIf="answer.voted === 'downvote' || answer.voted === undefined">
+                👎
               </ion-fab-button>
             </ion-col>
             <ion-col class="submitter">
@@ -88,8 +88,8 @@
             </ion-col>
             <ion-col class="up-vote">
               <div>
-                <ion-fab-button (click)="upvote(answer)" *ngIf="answer.voted === undefined">
-                  <ion-icon name="thumbs-up"></ion-icon>
+                <ion-fab-button [disabled]="answer.voted !== undefined" (click)="upvote(answer)" *ngIf="answer.voted === 'upvote' || answer.voted === undefined">
+                  👍
                 </ion-fab-button>
               </div>
             </ion-col>
