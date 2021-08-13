@@ -1,7 +1,7 @@
 export enum FrontendRoutes {
   Contact = 'contact',
   Login = 'login',
-  Answers = 'answers',
+  Answers = 'answers/:id',
   SearchQuestions = 'search-questions',
   RandomQuestion = 'random-question',
   Welcome = 'welcome',
