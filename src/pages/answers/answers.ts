@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AnswerModel } from '@plusme/libs/models/answer.model';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import { QuestionModel } from '@plusme/libs/models/question.model';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-page-answers',
@@ -24,8 +25,6 @@ export class AnswersPage {
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;
 
-  // TODO: The alreadyVoted function along with this.voted was a temporary potemkin-hack
-  public voted: number[] = [];
   public questionExpanded = false;
 
   constructor(
@@ -42,17 +41,13 @@ export class AnswersPage {
     this
       .store
       .dispatch(new AnswerActions.GetAnswersAction(this.activatedRoute.snapshot.params.id))
-      .subscribe(
-        async () => {
-          await loading.dismiss();
-        },
-        async () => {
-          await loading.dismiss();
-        },
-      );
-    this
-      .store
-      .dispatch(new QuestionActions.GetQuestion(this.activatedRoute.snapshot.params.id))
+      .pipe(
+        switchMap(() => {
+          return this
+            .store
+            .dispatch(new QuestionActions.GetQuestion(this.activatedRoute.snapshot.params.id));
+        }),
+      )
       .subscribe(
         async () => {
           await loading.dismiss();
@@ -63,20 +58,16 @@ export class AnswersPage {
       );
   }
 
-  alreadyVoted(answerId) {
-    // TODO: The alreadyVoted function was a temporary potemkin-hack
-    return answerId in this.voted;
-  }
-
-  upVote(answerId) {
+  upvote(answer: AnswerModel) {
     // TODO: This only updoots and does not vote.
-    console.log('Updooted answer:', answerId);
-    this.voted.push(answerId);
+    console.log('Updooted answer:', answer);
+    answer.hasVote = 'upvote';
   }
 
-  downVote(answerId) {
+  downvote(answer: AnswerModel) {
     // TODO: This only downdoots and does not vote.
-    console.log('Downdooted answer:', answerId);
-    this.voted.push(answerId);
+    console.log('Downdooted answer:', answer);
+
+    answer.hasVote = 'downvote';
   }
 }

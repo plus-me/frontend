@@ -1,4 +1,4 @@
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 
 export class PartyModel {
   @Expose()
@@ -17,5 +17,9 @@ export class AnswerModel {
   @Expose()
   public votes: number;
   @Expose()
+  @Type(() => PartyModel)
   public party: PartyModel;
+
+  @Expose()
+  public hasVote?: 'upvote' | 'downvote';
 }

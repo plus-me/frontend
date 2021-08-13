@@ -77,18 +77,18 @@
           <ion-row>
             <ion-col class="down-vote">
               <!-- TODO: The alreadyVoted function was a temporary potemkin-hack -->
-              <ion-fab-button (click)="downVote(answer.id)" *ngIf="!alreadyVoted(answer.id)">
+              <ion-fab-button (click)="downvote(answer)" *ngIf="answer.hasVote === undefined">
                 <ion-icon name="thumbs-down"></ion-icon>
               </ion-fab-button>
             </ion-col>
             <ion-col class="submitter">
-              <ion-text class="vote-to-see" *ngIf="!alreadyVoted(answer.id)">{{ "answers.reveal" | translate }}</ion-text>
+              <ion-text class="vote-to-see" *ngIf="answer.hasVote === undefined">{{ "answers.reveal" | translate }}</ion-text>
               <ion-text class="revealed" color="dark"
-                        *ngIf="alreadyVoted(answer.id)">{{answer.party.short_name}}</ion-text>
+                        *ngIf="answer.hasVote !== undefined">{{answer.party.short_name}}</ion-text>
             </ion-col>
             <ion-col class="up-vote">
               <div>
-                <ion-fab-button (click)="upVote(answer.id)" *ngIf="!alreadyVoted(answer.id)">
+                <ion-fab-button (click)="upvote(answer)" *ngIf="answer.hasVote === undefined">
                   <ion-icon name="thumbs-up"></ion-icon>
                 </ion-fab-button>
               </div>

@@ -114,7 +114,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
         AnswerState,
       ],
       {
-        developmentMode: true,
+        developmentMode: false,
       },
     ),
     NgxsReduxDevtoolsPluginModule.forRoot(),

@@ -20,7 +20,6 @@ export interface AnswerStateInterface {
 export class AnswerState {
   public constructor(
     private http: HttpClient,
-    private store: Store,
   ) {
   }
 
