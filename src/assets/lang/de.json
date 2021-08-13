@@ -235,5 +235,9 @@
   },
   "allAnsweredQuestionsListComponent": {
     "allQuestions": "Hier siehst Du alle beantworteten Fragen"
+  },
+  "answers": {
+    "title": "Antworten bewerten",
+    "reveal": "Bewerten um Absender zu sehen"
   }
 }

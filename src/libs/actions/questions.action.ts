@@ -32,6 +32,14 @@ export namespace QuestionActions {
 
   }
 
+  export class GetQuestion {
+    public static readonly type = '[Questions] Get Question';
+
+    public constructor(
+      public questionId: number,
+    ) {}
+  }
+
   export class SearchQuestionsAction {
     public static readonly type = '[Questions] Search Question';
 

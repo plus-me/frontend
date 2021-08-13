@@ -5,6 +5,9 @@ import {Observable} from 'rxjs';
 import {TagModel} from '@plusme/libs/models/tag.model';
 import {TranslateService} from '@ngx-translate/core';
 import {QuestionActions} from '@plusme/libs/actions/questions.action';
+import { QuestionModel } from '@plusme/libs/models/question.model';
+import { Navigate } from '@ngxs/router-plugin';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -53,5 +56,13 @@ export class QuestionListItemComponent {
 
   public getQuestionsByTag(tag: TagModel) {
     this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
+  }
+
+  public gotoAnswers(question: QuestionModel) {
+    this.store.dispatch(new Navigate([FrontendRoutes.Answers, {id: question.id}]));
+  }
+
+  public search(text: string) {
+    this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
   }
 }

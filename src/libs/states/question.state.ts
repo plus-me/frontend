@@ -18,6 +18,7 @@ export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
   questions: QuestionModel[];
   answered: QuestionModel[];
+  answeredQuestion: QuestionModel;
 }
 
 @State<QuestionStateInterface>({
@@ -76,6 +77,26 @@ export class QuestionState {
         tap(question => {
           ctx.patchState({
             randomQuestion: question,
+          });
+        }),
+      );
+  }
+
+  @Action(QuestionActions.GetQuestion)
+  public getQuestion(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.GetQuestion
+  ) {
+    return this
+      .http
+      .get(
+        urlcat(API_ENDPOINT, BackendRoutes.Question, {id: action.questionId}),
+      )
+      .pipe(
+        map((item ) => this.convertDataIntoQuestionWithTags(item)),
+        tap(question => {
+          ctx.patchState({
+            answeredQuestion: question,
           });
         }),
       );
