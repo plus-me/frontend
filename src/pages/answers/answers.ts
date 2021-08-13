@@ -42,11 +42,9 @@ export class AnswersPage {
       .store
       .dispatch(new AnswerActions.GetAnswersAction(this.activatedRoute.snapshot.params.id))
       .pipe(
-        switchMap(() => {
-          return this
+        switchMap(() => this
             .store
-            .dispatch(new QuestionActions.GetQuestion(this.activatedRoute.snapshot.params.id));
-        }),
+            .dispatch(new QuestionActions.GetQuestion(this.activatedRoute.snapshot.params.id))),
       )
       .subscribe(
         async () => {
