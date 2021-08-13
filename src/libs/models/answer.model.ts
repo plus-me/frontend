@@ -1,4 +1,4 @@
-import { Expose, Type } from 'class-transformer';
+import { Expose, Transform, Type } from 'class-transformer';
 
 export class PartyModel {
   @Expose()
@@ -21,5 +21,6 @@ export class AnswerModel {
   public party: PartyModel;
 
   @Expose()
-  public hasVote?: 'upvote' | 'downvote';
+  @Transform(({ value }) => value === true ? 'upvote' : value === false ? 'downvote' : undefined , { toClassOnly: true })
+  public voted?: 'upvote' | 'downvote';
 }

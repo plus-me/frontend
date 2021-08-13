@@ -9,12 +9,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { AnswerModel } from '@plusme/libs/models/answer.model';
 
-export interface AnswerStateInterface {
-  answers: AnswerModel[];
-}
-
-@State<AnswerStateInterface>({
-  name: 'answers'
+@State<AnswerModel[]>({
+  name: 'answers',
+  defaults: [],
 })
 @Injectable()
 export class AnswerState {
@@ -25,7 +22,7 @@ export class AnswerState {
 
   @Action(AnswerActions.GetAnswersAction)
   public getAnswers(
-    ctx: StateContext<AnswerStateInterface>,
+    ctx: StateContext<AnswerModel[]>,
     action: AnswerActions.GetAnswersAction
   ) {
     return this
@@ -40,16 +37,15 @@ export class AnswerState {
           { excludeExtraneousValues: true },
         )),
         tap(answers => {
-          ctx.patchState({
-            answers,
-          });
+          answers.sort(this.sort);
+          ctx.setState(answers);
         }),
       );
   }
 
   @Action(AnswerActions.UpvoteAnswerAction)
   public upvoteAnswer(
-    _ctx: StateContext<AnswerStateInterface>,
+    ctx: StateContext<AnswerModel[]>,
     action: AnswerActions.UpvoteAnswerAction,
   ) {
     return this
@@ -61,12 +57,30 @@ export class AnswerState {
           { id: action.answer.id },
         ),
         '',
+      )
+      .pipe(
+        tap(() => {
+          const answers = ctx.getState().filter(item => item.id !== action.answer.id);
+
+          const answer = new AnswerModel();
+          Object.assign(answer, action.answer);
+          answer.voted = 'upvote';
+
+          const newAnswers = [
+            ...answers,
+            answer,
+          ];
+
+          newAnswers.sort(this.sort);
+
+          ctx.setState(newAnswers);
+        }),
       );
   }
 
   @Action(AnswerActions.DownvoteAnswerAction)
   public downvoteAnswer(
-    _ctx: StateContext<AnswerStateInterface>,
+    _ctx: StateContext<AnswerModel[]>,
     action: AnswerActions.DownvoteAnswerAction,
   ) {
     return this
@@ -78,6 +92,28 @@ export class AnswerState {
           { id: action.answer.id },
         ),
         '',
-      );
+      )
+    .pipe(
+      tap(() => {
+          const answers = _ctx.getState().filter(item => item.id !== action.answer.id);
+
+          const answer = new AnswerModel();
+          Object.assign(answer, action.answer);
+          answer.voted = 'downvote';
+
+          const newAnswers = [
+            ...answers,
+            answer,
+          ];
+
+          newAnswers.sort(this.sort);
+
+          _ctx.setState(newAnswers);
+        }),
+    );
+  }
+
+  private sort(a: AnswerModel, b: AnswerModel) {
+    return a.id - b.id;
   }
 }

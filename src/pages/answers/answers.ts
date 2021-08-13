@@ -18,7 +18,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['answers.scss']
 })
 export class AnswersPage {
-  @Select((store: GlobalState) => store.answers.answers)
+  @Select((store: GlobalState) => store.answers)
   public answers: Observable<AnswerModel[]>;
   @Select((store: GlobalState) => store.questions.answeredQuestion)
   public question: Observable<QuestionModel>;
@@ -59,15 +59,10 @@ export class AnswersPage {
   }
 
   upvote(answer: AnswerModel) {
-    // TODO: This only updoots and does not vote.
-    console.log('Updooted answer:', answer);
-    answer.hasVote = 'upvote';
+    this.store.dispatch(new AnswerActions.UpvoteAnswerAction(answer));
   }
 
   downvote(answer: AnswerModel) {
-    // TODO: This only downdoots and does not vote.
-    console.log('Downdooted answer:', answer);
-
-    answer.hasVote = 'downvote';
+    this.store.dispatch(new AnswerActions.DownvoteAnswerAction(answer));
   }
 }
