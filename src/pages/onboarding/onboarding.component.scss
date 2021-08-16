@@ -3,7 +3,6 @@
     width: 90%;
     height: 80vh;
     border-radius: 40px;
-    margin: 0;
     margin-inline: 0;
     margin: 10% auto 0 auto;
     overflow: visible;
@@ -13,7 +12,7 @@
       //height: 108%;
       ion-card-content {
         br {
-          lin-height: 0;
+          line-height: 0;
         }
 
         display: flex;
@@ -45,6 +44,7 @@
           font-weight: 700;
           margin-bottom: 10px;
           margin-top: 0;
+          text-transform: none;
         }
 
         .finish-button {
