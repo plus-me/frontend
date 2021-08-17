@@ -15,4 +15,6 @@ export class QuestionModel {
   public answers: QuestionAnswersModel[] = [];
   @Expose()
   public tags: TagModel[] = [];
+  @Expose()
+  public voted: boolean;
 }

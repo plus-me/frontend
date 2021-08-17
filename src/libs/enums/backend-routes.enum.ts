@@ -10,4 +10,5 @@ export enum BackendRoutes {
   Answers = '/Answers/question/:id/',
   UpVoteAnswer = '/Answers/:id/upvote/',
   DownVoteAnswer = '/Answers/:id/downvote/',
+  MyVotes = '/Questions/myvotes/',
 }

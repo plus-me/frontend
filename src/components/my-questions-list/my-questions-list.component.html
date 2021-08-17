@@ -2,10 +2,10 @@
 
 <ion-list no-lines class="wrapping-list">
   <ng-container class="item-wrapper" *ngFor="let question of (questions | async)">
-    <ion-item class="question" *ngIf="!answeredOnly || (question.answers.length > 0)" >
-      <app-question-list-item [question]="question" [hideRelation]="false"> <!-- [enableDownvote]="false" [enableUpvote]="false"
-                     (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)"> -->
+    <ng-container *ngIf="!answeredOnly || (question.answers.length > 0)" >
+      <app-question-list-item [question]="question" [hideRelation]="false" [enableDownvote]="false" [enableUpvote]="false"
+                     (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)">
       </app-question-list-item>
-    </ion-item>
+    </ng-container>
   </ng-container>
 </ion-list>

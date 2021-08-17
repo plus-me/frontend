@@ -1,60 +1,94 @@
-<ion-grid>
-  <ion-row class="unread-row" *ngIf="question.own === true">
-    <ion-chip class="unread">
-      <ion-text color="white">{{ "questionListItem.unread" | translate}}</ion-text>
-    </ion-chip>
+<ion-item [hidden]="hidden" class="question">
+  <ion-grid>
+    <ion-row class="unread-row" *ngIf="checkIfUnread()">
+      <ion-chip class="unread">
+        <ion-text color="white">{{ "questionListItem.unread" | translate}}</ion-text>
+      </ion-chip>
 
-  </ion-row>
-  <ion-row class="tags">
-    <ion-col *ngFor="let tag of question.tags">
-      <ion-chip
-        color="white"
-        class="tag-chip"
-        (click)="getQuestionsByTag(tag)">
-        #{{ tag.text }}
-      </ion-chip>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-label class="question ion-text-wrap"><b>{{question.text}}</b></ion-label>
-    </ion-col>
-  </ion-row>
+    </ion-row>
+    <ion-row class="tags">
+      <ion-col *ngFor="let tag of question.tags">
+        <ion-chip
+          color="white"
+          class="tag-chip"
+          (click)="getQuestionsByTag(tag)">
+          #{{ tag.text }}
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="question-detail ion-text-wrap"><b>{{question.text}}</b></ion-label>
+      </ion-col>
+    </ion-row>
 
-  <ion-row class="meta">
-    <ion-col class="votes">
-      <ion-chip color="white">
-        <ion-icon name="thumbs-up" color="medium"></ion-icon>
-        <ion-text class="stats-label" color="medium">{{question.upvotes | number}}</ion-text>
-        <ion-text color="medium"
-                  *ngIf="question.upvotes !== 1">
-          {{ 'questionListItem.followers' | translate}}
-        </ion-text>
-        <ion-text color="medium"
-                  *ngIf="question.upvotes === 1">
-          {{ 'questionListItem.follows' | translate}}
-        </ion-text>
-      </ion-chip>
-    </ion-col>
-    <ion-col class="answers">
-      <ion-chip color="white" (click)="gotoAnswers(question)">
-        <ion-icon name="chatbubbles" color="medium"></ion-icon>
-        <ion-text class="stats-label" color="medium">{{question.answers.length | number}}</ion-text>
-        <ion-text color="medium"
-                  *ngIf="question.answers.length !== 1">{{ 'questionListItem.answers' | translate}}</ion-text>
-        <ion-text color="medium"
-                  *ngIf="question.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text>
-      </ion-chip>
-    </ion-col>
-    <ion-col class="status-chip" *ngIf="!hideRelation">
-      <ion-chip class="status-chip following" color="white" *ngIf="question.own === false">
-        <ion-icon name="person-circle" color="medium"></ion-icon>
-        <ion-text color="medium">{{ 'questionListItem.following' | translate}}</ion-text>
-      </ion-chip>
-      <ion-chip class="status-chip mine" *ngIf="question.own === undefined">
-        <ion-icon name="person-circle" color="white"></ion-icon>
-        <ion-text color="white">{{ 'questionListItem.mine' | translate}}</ion-text>
-      </ion-chip>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+    <ion-row class="meta">
+      <ion-col class="votes">
+        <ion-chip color="white">
+          <ion-icon name="thumbs-up" color="medium"></ion-icon>
+          <ion-text class="stats-label" color="medium">{{question.upvotes | number}}</ion-text>
+          <ion-text color="medium"
+                    *ngIf="question.upvotes !== 1">
+            {{ 'questionListItem.followers' | translate}}
+          </ion-text>
+          <ion-text color="medium"
+                    *ngIf="question.upvotes === 1">
+            {{ 'questionListItem.follows' | translate}}
+          </ion-text>
+        </ion-chip>
+      </ion-col>
+      <ion-col class="answers">
+        <ion-chip color="white" (click)="gotoAnswers(question)">
+          <ion-icon name="chatbubbles" color="medium"></ion-icon>
+          <ion-text class="stats-label" color="medium">{{question.answers.length | number}}</ion-text>
+          <ion-text color="medium"
+                    *ngIf="question.answers.length !== 1">{{ 'questionListItem.answers' | translate}}</ion-text>
+          <ion-text color="medium"
+                    *ngIf="question.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text>
+        </ion-chip>
+      </ion-col>
+      <ion-col class="status-chip" *ngIf="!hideRelation">
+        <ion-chip class="status-chip following" color="white" *ngIf="question.own === false && question.voted === true">
+          <ion-icon name="person-circle" color="medium"></ion-icon>
+          <ion-text color="medium">{{ 'questionListItem.following' | translate}}</ion-text>
+        </ion-chip>
+        <ion-chip class="status-chip mine" *ngIf="question.own === true">
+          <ion-icon name="person-circle" color="white"></ion-icon>
+          <ion-text color="white">{{ 'questionListItem.mine' | translate}}</ion-text>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          (click)="upvoteQuestion()"
+          *ngIf="enableUpvote && question.voted === null"
+          align="bottom"
+          shape="round"
+          class="upvote-button"
+          size="large"
+          expand="block">
+          <ion-text
+            color="dark"
+            class="upvote ion-text-lowercase">
+            +me
+          </ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          (click)="downvoteQuestion()"
+          *ngIf="enableDownvote && question.voted === null"
+          fill="clear"
+          color="dark"
+          class="transparent-button"
+          expand="block">
+          <ion-icon name="close-outline"></ion-icon>
+          {{ 'questionBubble.notInterested' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>
