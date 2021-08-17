@@ -41,13 +41,13 @@ platform :ios do
             clean: true,
             output_directory: "./builds",
             output_name: "plusme.ipa",
-            codesigning_identity: "Apple Distribution: FLYACTS GmbH (J57B9MEY55)",
+            codesigning_identity: "Apple Distribution: WTF Kooperative eG (5V8UJLB8H3)",
             xcargs: {
-                :PROVISIONING_PROFILE_SPECIFIER => "match AppStore com.flyacts.plusme"
+                :PROVISIONING_PROFILE_SPECIFIER => "match AppStore de.wtfeg.plusme"
             },
             export_options: {
               provisioningProfiles: {
-                "com.flyacts.plusme" => "match AppStore com.flyacts.plusme"
+                "de.wtfeg.plusme" => "match AppStore de.wtfeg.plusme"
               }
             }
         )
