@@ -1,14 +1,17 @@
 import {
+    HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { of, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { GlobalState } from '@plusme/libs/interfaces/global.state';
+import { UserActions } from '../actions/users.actions';
 
 /**
  * Interceptor for authentication
@@ -35,11 +38,11 @@ export class AppInterceptor implements HttpInterceptor {
     }
 
     req.headers.set('Content-Type', 'application/json');
-
-    return of(
-      this
+    const token = this
         .store
-        .selectSnapshot((state: GlobalState) => state.user.token))
+        .selectSnapshot((state: GlobalState) => state.user.token);
+
+    return of(token)
       .pipe(
         map((token) => {
           if (typeof token === 'string') {
@@ -54,7 +57,13 @@ export class AppInterceptor implements HttpInterceptor {
             return req;
           }
         }),
-        switchMap(switchReq => next.handle(switchReq))
+        switchMap(switchReq => next.handle(switchReq)),
+        catchError((error) => {
+          if ((error instanceof HttpErrorResponse) && (error.status === 403) && (typeof token === 'string')) {
+            return this.store.dispatch(new UserActions.LogoutAction());
+          }
+          throw error;
+        }),
       );
   }
 }

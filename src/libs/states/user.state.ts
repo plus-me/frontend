@@ -92,7 +92,21 @@ export class UserState {
         {}
       )
       .pipe(
+        catchError(() => {
+          ctx.patchState({
+            isLoggedIn: false,
+            token: undefined,
+            user: undefined,
+          });
+
+          this.store.dispatch(new Navigate([
+            FrontendRoutes.Welcome,
+          ]));
+
+          return of();
+        }),
         tap(() => {
+          console.dir('tap');
           ctx.patchState({
             isLoggedIn: false,
             token: undefined,
