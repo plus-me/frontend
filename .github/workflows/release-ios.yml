@@ -20,6 +20,7 @@ jobs:
     - uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: echo '${{ secrets.PLAYSTORE_ACCESS_TOKEN }}' > /tmp/AuthKey_FLMC3H9H8X.p8
     - run: npm ci
     # create www folder to satisfy cordova
     - run: mkdir -p www
