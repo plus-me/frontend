@@ -44,7 +44,7 @@ export class AppInterceptor implements HttpInterceptor {
 
     return of(token)
       .pipe(
-        map((token) => {
+        map(() => {
           if (typeof token === 'string') {
             return req
               .clone({
