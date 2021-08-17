@@ -5,14 +5,14 @@
     <ion-card-content>
       <form [formGroup]="authForm" (ngSubmit)="login()">
         <ion-list class="input-area">
-          <ion-item [class.error]="!email.valid && email.touched">
+          <div [class.error]="!email.valid && email.touched">
             <ion-input
               placeholder="{{ 'LOGIN.EMAIL' | translate   }}"
               formControlName="email"
               type="email">
             </ion-input>
-          </ion-item>
-          <ion-item
+          </div>
+          <div
             class="ion-padding-bottom"
             [class.error]="!password.valid && password.touched">
             <ion-input
@@ -20,7 +20,7 @@
               formControlName="password"
               type="password">
             </ion-input>
-          </ion-item>
+          </div>
           <ion-button
             class="ion-padding-start"
             expand="block"
