@@ -151,7 +151,9 @@
     "submitSignup": "Jetzt Konto anlegen!",
     "cancel": "Abbrechen",
     "confirmlabel1": "Durch Fortfahren akzeptierst Du unseren ",
-    "confirmlabel2": " und die "
+    "confirmlabel2": " und die ",
+    "unknownSignupError": "Die Registrierung hat leider nicht geklappt. Bitte kontaktiere uns, falls Du denkst, dies ist ein Fehler auf unserer Seite.",
+    "retry": "Nochmal versuchen"
   },
 
   "TABS": {

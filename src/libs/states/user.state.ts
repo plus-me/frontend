@@ -47,7 +47,8 @@ export class UserState {
     private translate: TranslateService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-  ) { }
+  ) {
+  }
 
   @Action(UserActions.LoginAction)
   public login(
@@ -82,7 +83,7 @@ export class UserState {
             token: undefined,
           });
 
-          this.notifier.showToast('LOGIN.FAILED');
+          await this.notifier.showToast('LOGIN.FAILED');
         }),
       );
   }
@@ -130,19 +131,19 @@ export class UserState {
   public finishedOnboarding(
     ctx: StateContext<UserStateInterface>,
   ) {
-      ctx.patchState({
-        hasOnboardingFinished: true
-      });
+    ctx.patchState({
+      hasOnboardingFinished: true
+    });
 
-      if (ctx.getState().isLoggedIn === true) {
-        this.store.dispatch(new Navigate([
-          FrontendRoutes.RandomQuestion,
-        ]));
-      } else {
-        this.store.dispatch(new Navigate([
-          FrontendRoutes.Welcome,
-        ]));
-      }
+    if (ctx.getState().isLoggedIn === true) {
+      this.store.dispatch(new Navigate([
+        FrontendRoutes.RandomQuestion,
+      ]));
+    } else {
+      this.store.dispatch(new Navigate([
+        FrontendRoutes.Welcome,
+      ]));
+    }
   }
 
   @Action(UserActions.ValidateToken)
@@ -151,7 +152,7 @@ export class UserState {
   ) {
     return this
       .http
-      .get<unknown>(`${API_ENDPOINT}/Users/me/`)
+      .get<unknown>(`${ API_ENDPOINT }/Users/me/`)
       .pipe(
         map(data => plainToClass(
           UserModel,
@@ -211,13 +212,29 @@ export class UserState {
           await alert.present();
         }),
         catchError(async (error: Error | HttpErrorResponse) => {
-          const message = (error instanceof HttpErrorResponse ?
+          const unknown = (error instanceof HttpErrorResponse ?
+            error.statusText === 'Unknown Error' : false);
+          let message = (error instanceof HttpErrorResponse ?
             error.error.message :
             error.message);
-
+          if (unknown === true || message === undefined || message === '') {
+            message = this.translate.instant('signup.unknownSignupError');
+          }
           const toast = await this.toastCtrl.create({
             message,
-            duration: 3000
+            duration: 30000,
+            buttons: [
+              {
+                side: 'end',
+                icon: 'retry',
+                text: this.translate.instant('signup.retry'),
+                handler: () => {
+                  this.store.dispatch(new Navigate([
+                    FrontendRoutes.SignUp,
+                  ]));
+                }
+              }
+            ]
           });
 
           await toast.present();
