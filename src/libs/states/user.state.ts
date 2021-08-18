@@ -17,12 +17,16 @@ import { UserModel } from '@plusme/libs/models/user.model';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Navigate } from '@ngxs/router-plugin';
+import urlcat from 'urlcat';
+import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
 
 export interface UserStateInterface {
   isLoggedIn: boolean;
   token?: string;
   user?: UserModel;
   hasOnboardingFinished: boolean;
+  votes: { [id: number]: boolean};
+  seen: number[];
 }
 
 @State<UserStateInterface>({
@@ -30,6 +34,8 @@ export interface UserStateInterface {
   defaults: {
     isLoggedIn: false,
     hasOnboardingFinished: false,
+    votes: {},
+    seen: []
   }
 })
 @Injectable()
@@ -221,5 +227,38 @@ export class UserState {
           ]));
         }),
       );
+  }
+
+  @Action(UserActions.GetVotes)
+  public getVotes(
+    ctx: StateContext<UserStateInterface>,
+  ) {
+    return this
+      .http
+      .get(
+        urlcat(API_ENDPOINT, BackendRoutes.MyVotes),
+      )
+      .pipe(
+        map((x: {question: number;up: boolean}[]) => {
+          const normalizedObject: any = {};
+          for (const element of x) {
+            normalizedObject[element.question] = element.up;
+          }
+          return normalizedObject;
+        }),
+        tap(userVotes => {
+          ctx.patchState({votes: userVotes});
+        }),
+      );
+  }
+
+  @Action(UserActions.MarkSeen)
+  public markSeen(
+    ctx: StateContext<UserStateInterface>,
+    action: UserActions.MarkSeen,
+  ) {
+    const state = ctx.getState();
+    state.seen.push(action.questionId);
+    ctx.patchState(state);
   }
 }

@@ -50,6 +50,7 @@ import { AllAnsweredListComponent } from '@plusme/components/all-answered-list/a
 import { InboxPage } from '@plusme/pages/inbox/inbox';
 import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 import { ProfilePage } from '@plusme/pages/profile/profile.page';
+import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -78,6 +79,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     CreateQuestionComponent,
     MyQuestionsListComponent,
     AllAnsweredListComponent,
+    SearchQuestionsPage,
   ],
   imports: [
     BrowserModule,
@@ -144,7 +146,8 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AnswersPage,
     CreateQuestionComponent,
     MyQuestionsListComponent,
-    AllAnsweredListComponent
+    AllAnsweredListComponent,
+    SearchQuestionsPage,
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,47 @@
+app-question-list-item {
+  width: 100%;
+}
+
+.app-tab-row {
+  background: white;
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  top: 52px;
+  left: 0;
+
+  ion-tab-button {
+    font-size: large;
+  }
+  ion-col:first-child{
+    text-align: center;
+    vertical-align: center;
+  }
+}
+
+.app-tab-active {
+  border-bottom: rgba(14, 153, 118, 1) solid 2px;
+}
+
+.navbar-buffer {
+  height: 60px;
+  width: 100%;
+}
+
+
+.wrapping-list {
+  background: transparent;
+  padding: 10px;
+  ion-item {
+    padding-bottom: 10px;
+  }
+
+  ion-item:last-child {
+    padding-bottom: 80px;
+  }
+}
+
+.search-icon {
+  padding-top: 10px;
+  font-size: 20px;
+}

@@ -13,6 +13,10 @@
 }
 
 .question {
+  --border-radius: 20px;
+  padding-bottom: 10px;
+}
+.question-detail {
   font-size: large;
   color: black;
   word-break: break-word;

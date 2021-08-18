@@ -16,6 +16,10 @@
           <ion-text color="dark">
             <b>
               {{ (question | async)?.text | slice:0:(questionExpanded ? 280 : 80)}}
+            </b>
+          </ion-text>
+          <ion-text color="dark" *ngIf="(question | async)?.text.length > 280">
+            <b>
               {{ "..." | slice:0:(questionExpanded ? 0 : 3)}}
             </b>
           </ion-text>

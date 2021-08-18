@@ -21,6 +21,18 @@ export namespace UserActions {
     ) {}
   }
 
+  export class MarkSeen {
+    public static readonly type = '[Users] Get votes of user';
+
+    public constructor(
+      public questionId: number,
+    ) {}
+  }
+
+  export class GetVotes {
+    public static readonly type = '[Users] Get votes of user';
+  }
+
   export class ValidateToken {
     public static readonly type = '[Users] Validate Token';
   }

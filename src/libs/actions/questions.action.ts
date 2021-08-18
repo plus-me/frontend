@@ -23,6 +23,15 @@ export namespace QuestionActions {
     public static readonly type = '[Questions] Get All Answered Questions';
   }
 
+  export class GetQuestionsByTagAction {
+    public static readonly type = '[Questions] Get Question by tagId';
+
+    public constructor(
+      public tag: TagModel,
+    ) {}
+
+  }
+
   export class GetQuestion {
     public static readonly type = '[Questions] Get Question';
 

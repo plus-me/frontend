@@ -14,6 +14,7 @@ import { TermsPage } from '@plusme/pages/terms/terms.page';
 import { ProfilePage } from '@plusme/pages/profile/profile.page';
 import { InboxPage } from '@plusme/pages/inbox/inbox';
 import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
+import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
 
 export const AppRoutes: Routes = [
@@ -73,7 +74,12 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: FrontendRoutes.SearchQuestions,
+    component: SearchQuestionsPage,
+  },
+  {
     path: FrontendRoutes.Answers,
     component: AnswersPage,
+
   }
 ];

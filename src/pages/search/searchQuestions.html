@@ -1,0 +1,34 @@
+<app-navbar title="SEARCH.TITLE"></app-navbar>
+<ion-content>
+
+  <ion-header class="ion-no-border">
+    <div class="bar-subheader ion-no-border" color="white">
+      <ion-row class="app-tab-row">
+        <ion-col size="1">
+          <ion-icon class="search-icon" name="search"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" debounce="1000" (ionChange)="search()" [(ngModel)]="searchText"></ion-input>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-header>
+
+  <div class="navbar-buffer"></div>
+
+  <h2 class="hint" translate ion-fixed *ngIf="(questions | async)?.length === 0">SEARCH.EMPTY</h2>
+
+  <ion-list no-lines class="wrapping-list" *ngIf="(questions | async)?.length > 0">
+    <ng-container *ngFor="let question of (questions | async)">
+      <app-question-list-item
+        [question]="question"
+        [hideRelation]="false"
+        [enableDownvote]="true"
+        [enableUpvote]="true"
+        [voted]="(user | async).votes[question.id]"
+        (textClick)="loadAnswerPage($event)"
+        (tagClick)="loadSearchPage($event)">
+      </app-question-list-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

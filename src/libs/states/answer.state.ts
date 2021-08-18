@@ -8,6 +8,7 @@ import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
 import { catchError, map, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { AnswerModel } from '@plusme/libs/models/answer.model';
+import { UserActions } from '@plusme/libs/actions/users.actions';
 
 @State<AnswerModel[]>({
   name: 'answers',
@@ -39,6 +40,7 @@ export class AnswerState {
         tap(answers => {
           answers.sort(this.sort);
           ctx.setState(answers);
+          ctx.dispatch(new UserActions.MarkSeen(action.questionId));
         }),
       );
   }
