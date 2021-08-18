@@ -15,7 +15,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { AppComponent } from './app.component';
-import { AnswerBubbleComponent } from '@plusme/components/answer-bubble/answer-bubble';
 import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
 
 import { ContactPage } from '@plusme/pages/contact/contact';
@@ -25,9 +24,6 @@ import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestio
 import { SignUpPage } from '@plusme/pages/signUp/signUp';
 import { WelcomePage } from '@plusme/pages/welcome/welcome';
 
-import { NewsServiceProvider } from '@plusme/providers/news-service/news-service';
-import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
-import { UserServiceProvider } from '@plusme/providers/user-service/user-service';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { AppRoutes } from './app-routing';
 import { AppInterceptor } from '@plusme/libs/interceptors/app.interceptor';
@@ -58,7 +54,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
 @NgModule({
   declarations: [
     AppComponent,
-    AnswerBubbleComponent,
     QuestionBubbleComponent,
     ContactPage,
     FaqPage,
@@ -152,9 +147,6 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
   providers: [
     StatusBar,
     SplashScreen,
-    UserServiceProvider,
-    QuestionServiceProvider,
-    NewsServiceProvider,
     TranslatedNotificationController,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
