@@ -190,10 +190,10 @@ export class UserState {
       .pipe(
         tap(async () => {
           const alert = await this.alertCtrl.create({
-            message: this.translate.instant('SIGNUP.CHECKEMAIL'),
+            message: this.translate.instant('signup.checkEmail'),
             backdropDismiss: false,
             buttons: [{
-              text: this.translate.instant('SIGNUP.OK'),
+              text: this.translate.instant('signup.ok'),
               handler: () => {
                 this.store.dispatch(new Navigate([
                   FrontendRoutes.Login,

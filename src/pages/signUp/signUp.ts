@@ -45,7 +45,7 @@ export class SignUpPage {
   public async signUp() {
     if (!this.checkInputs()) {
       const toast = await this.toastCtrl.create({
-        message: this.translate.instant('SIGNUP.WRONGINPUTS'),
+        message: this.translate.instant('signup.wrongInputs'),
         duration: 3000
       });
       await toast.present();
