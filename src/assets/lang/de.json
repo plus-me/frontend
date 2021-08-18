@@ -138,7 +138,7 @@
   "signup": {
     "title": "Konto erstellen",
     "ok": "Verstanden",
-    "wronginputs": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 8 Zeichen.",
+    "wrongInputs": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 8 Zeichen.",
     "checkEmail": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
     "name": "Name",
     "email": "E-Mail",
