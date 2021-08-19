@@ -18,7 +18,6 @@
     "replace-keystore-passwd": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' node -r ts-node/register ci/replace-keystore-passwd"
   },
   "dependencies": {
-    "@angular-ru/common": "15.273.0",
     "@angular/common": "12.1.0",
     "@angular/core": "12.1.0",
     "@angular/forms": "12.1.0",
