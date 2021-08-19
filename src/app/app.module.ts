@@ -17,7 +17,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { AppComponent } from './app.component';
 import { QuestionBubbleComponent } from '@plusme/components/question-bubble/question-bubble';
 
-import { ContactPage } from '@plusme/pages/contact/contact';
+import { ContactPage } from '@plusme/pages/contact/contact.page';
 import { FaqPage } from '@plusme/pages/faq/faq';
 import { LoginPage } from '@plusme/pages/login/login';
 import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';

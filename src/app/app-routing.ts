@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { OnboardingComponent } from '@plusme/pages/onboarding/onboarding.component';
 import { FrontendRoutes } from '@plusme/libs//enums/frontend-routes.enum';
 import { AuthGuard } from '@plusme/libs/guards/auth.guard';
-import { ContactPage } from '@plusme/pages/contact/contact';
+import { ContactPage } from '@plusme/pages/contact/contact.page';
 import { FaqPage } from '@plusme/pages/faq/faq';
 import { LoginPage } from '@plusme/pages/login/login';
 import { RandomQuestionsPage } from '@plusme/pages/randomQuestions/randomQuestions';

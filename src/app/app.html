@@ -11,7 +11,7 @@
                 routerLink="/profile"
                 lines="none">
                 <ion-icon src="assets/icon/profile.svg" slot="start"></ion-icon>
-                <ion-label>
+                <ion-label class="my-profile">
                   {{ 'sidebar.profile' | translate }}
                 </ion-label>
               </ion-item>
@@ -29,10 +29,10 @@
               <ion-label>{{ p.title | translate }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-note detail="false" lines="none">
-            Version: {{ version }}
-          </ion-note>
         </ion-list>
+        <ion-note class="version" detail="false" lines="none">
+          {{ 'sidebar.version' | translate }}: {{ version }}
+        </ion-note>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main"></ion-router-outlet>

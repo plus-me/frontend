@@ -11,6 +11,10 @@ ion-item.important {
   font-weight: bold;
 }
 
+ion-item ion-label {
+  color: rgba(0, 0, 0, 0.6);
+}
+
 ion-menu ion-list-header {
   margin-top: 35px;
   margin-bottom: 35px;
@@ -58,7 +62,11 @@ ion-menu.md ion-item {
 }
 
 ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+  --background: rgba(var(--ion-color-primary-rgb), 0.08);
+
+  ion-label {
+    color: rgba(14, 153, 118, 1);
+  }
 }
 
 ion-menu.md ion-item.selected ion-icon {
@@ -69,8 +77,17 @@ ion-menu.md ion-item ion-icon {
   color: #616e7e;
 }
 
-ion-menu.md ion-item ion-label {
-  font-weight: 500;
+.my-profile {
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.version {
+  font-size: small;
+}
+
+ion-menu ion-item.important ion-label {
+  font-weight: 600;
 }
 
 ion-menu.ios ion-content {
