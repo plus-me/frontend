@@ -35,3 +35,33 @@ page-main {
   }
 
 }
+
+ion-card {
+  border-radius: 20px;
+}
+
+
+.transparent-button {
+  --color: black;
+}
+
+.transparent-button ion-icon {
+  padding-right: 10px;
+}
+
+.upvote {
+  font-size: 1.5em;
+  color: black;
+}
+
+.upvote-button {
+  --box-shadow: none;
+}
+
+ion-content ion-card:last-child {
+  margin-bottom: 50px;
+}
+
+ion-content ion-card {
+  padding: 10px;
+}

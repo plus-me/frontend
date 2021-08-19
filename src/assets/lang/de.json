@@ -74,12 +74,23 @@
     "PRIVACY": "Datenschutz",
     "LICENSES": "Lizenzen",
     "ANSWERS": "Antworten",
-    "CONTACT": "Kontakt",
     "FAQ": "Häufig gestellte Fragen",
     "IMPRINT": "Impressum",
     "MENU": "Mein Profil",
     "ONBOARDING": "Einführung",
     "LOGOUT": "Abmelden"
+  },
+
+  "contact": {
+    "header": "So kannst Du uns kontaktieren:",
+    "title": "Kontakt",
+    "instagram": "plusme_app",
+    "instagramUrl": "https://www.instagram.com/plusme_app/",
+    "twitter": "@plusme_app",
+    "twitterUrl": "https://twitter.com/plusme_app",
+    "mail": "contact@plus-me.de",
+    "github": "@plus-me",
+    "githubUrl": "https://github.com/plus-me"
   },
 
   "ANSWERS": {
@@ -185,7 +196,9 @@
     "terms": "+me codex",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
-    "licenses": "Lizenzen"
+    "licenses": "Lizenzen",
+    "contact": "Kontakt",
+    "version": "Version"
   },
   "createQuestion": {
     "title": "Deine Frage an alle Parteien",

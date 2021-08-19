@@ -16,12 +16,18 @@
         </ion-row>
         <ion-row class="button-area">
           <ion-col>
-            <ion-button expand="block" (click)="goToSignup()">
+            <ion-button
+              expand="block"
+              shape="round"
+              (click)="goToSignup()">
               {{ 'welcome.signup' | translate }}
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button ion-button expand="block" fill="outline" (click)="goToLogin()">
+            <ion-button shape="round"
+                        expand="block"
+                        fill="outline"
+                        (click)="goToLogin()">
               {{ 'welcome.login' | translate }}
             </ion-button>
           </ion-col>

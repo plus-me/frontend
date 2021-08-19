@@ -62,9 +62,13 @@ export class AppComponent {
       title: 'sidebar.imprint',
       url: FrontendRoutes.Imprint,
     },
-    {
+    /*{
       title: 'sidebar.licenses',
       url: FrontendRoutes.Licenses,
+    },*/
+    {
+      title: 'sidebar.contact',
+      url: FrontendRoutes.Contact,
     },
   ];
 

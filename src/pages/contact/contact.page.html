@@ -1,0 +1,65 @@
+<app-navbar title="contact.title"></app-navbar>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      {{ 'contact.header' | translate}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-button class="transparent-button" size="large" color="transparent" expand="block"
+                      href="{{ 'contact.instagramUrl' | translate}}">
+            <ion-col size="3">
+              <ion-icon name="logo-instagram" item-left></ion-icon>
+            </ion-col>
+            <ion-col>
+              <ion-text>
+                {{ 'contact.instagram' | translate }}
+              </ion-text>
+            </ion-col>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-button class="transparent-button" size="large" color="transparent" expand="block"
+                      href="{{ 'contact.twitterUrl' | translate}}">
+            <ion-col size="3">
+              <ion-icon name="logo-twitter" item-left></ion-icon>
+            </ion-col>
+            <ion-col>
+              <ion-text>
+                {{ 'contact.twitter' | translate}}
+              </ion-text>
+            </ion-col>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-button class="transparent-button" size="large" color="transparent" expand="block"
+                      href="{{ 'contact.githubUrl' | translate}}">
+            <ion-col size="3">
+              <ion-icon name="logo-github" item-left></ion-icon>
+            </ion-col>
+            <ion-col>
+              <ion-text>
+                {{ 'contact.github' | translate}}
+              </ion-text>
+            </ion-col>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-button class="transparent-button" size="large" color="transparent" expand="block"
+                      href="mailto:{{ 'contact.mail' | translate}}">
+            <ion-col size="3">
+              <ion-icon name="mail" item-left></ion-icon>
+            </ion-col>
+            <ion-col>
+              <ion-text>
+                {{ 'contact.mail' | translate}}
+              </ion-text>
+            </ion-col>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
