@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
-import { ContactPage } from '@plusme/pages/contact/contact';
-import { LoginPage } from '@plusme/pages/login/login';
-import { WelcomePage } from '@plusme/pages/welcome/welcome';
 import { Store } from '@ngxs/store';
 import { UserActions } from '@plusme/libs/actions/users.actions';
 import { PrivacyPage } from '../privacy/privacy.page';
@@ -15,17 +12,10 @@ import { TermsPage } from '../terms/terms.page';
   templateUrl: 'signUp.html'
 })
 export class SignUpPage {
-  password;
-  email;
-  passwordRepeat;
-  sex; //m/w
-  birthYear; //YYYY
-  plz; //2 numbers
+  password = '';
+  email = '';
+  passwordRepeat = '';
   inputsValid = false;
-
-  contactView = ContactPage;
-  loginView = LoginPage;
-  welcomeView = WelcomePage;
 
   public constructor(
     private alertCtrl: AlertController,
