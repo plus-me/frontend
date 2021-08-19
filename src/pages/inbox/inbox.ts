@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {LoadingController} from '@ionic/angular';
-import {QuestionServiceProvider} from '@plusme/providers/question-service/question-service';
 import {Select, Store} from '@ngxs/store';
 import {GlobalState} from '@plusme/libs/interfaces/global.state';
 
@@ -11,7 +10,6 @@ import {TagModel} from '@plusme/libs/models/tag.model';
 
 @Component({
   selector: 'app-page-inbox',
-  providers: [QuestionServiceProvider],
   templateUrl: 'inbox.html',
   styleUrls: ['inbox.scss']
 })

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import { QuestionServiceProvider } from '@plusme/providers/question-service/question-service';
 import { QuestionModel } from '@plusme/libs/models/question.model';
 import { GlobalState } from '@plusme/libs/interfaces/global.state';
 import { Select, Store } from '@ngxs/store';
@@ -9,7 +8,6 @@ import { QuestionActions } from '@plusme/libs/actions/questions.action';
 
 @Component({
   selector: 'app-page-randomquestions',
-  providers: [QuestionServiceProvider],
   templateUrl: 'randomQuestions.html'
 })
 export class RandomQuestionsPage {
