@@ -19,6 +19,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Navigate } from '@ngxs/router-plugin';
 import urlcat from 'urlcat';
 import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
+import { uniq } from 'lodash';
 
 export interface UserStateInterface {
   isLoggedIn: boolean;
@@ -275,7 +276,18 @@ export class UserState {
     action: UserActions.MarkSeen,
   ) {
     const state = ctx.getState();
-    state.seen.push(action.questionId);
-    ctx.patchState(state);
+    if (!Array.isArray(state.seen)) {
+      ctx.patchState({
+        seen: [action.questionId],
+      });
+    } else {
+      const seen = uniq([
+        ...state.seen,
+        action.questionId,
+      ]);
+      ctx.patchState({
+        seen,
+      });
+    }
   }
 }
