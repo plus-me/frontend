@@ -3,6 +3,7 @@ import {Store} from '@ngxs/store';
 import {Navigate} from '@ngxs/router-plugin';
 import {FrontendRoutes} from '@plusme/libs/enums/frontend-routes.enum';
 import { ModalController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +14,15 @@ export class NavbarComponent {
   public title = '';
 
   @Input()
+  public onlyBack = false;
+
+  @Input()
   public isModal = false;
 
   constructor(
     private store: Store,
-    private modalControler: ModalController,
+    private location: Location,
+    private modalController: ModalController,
   ) {}
 
   gotoInbox() {
@@ -32,7 +37,11 @@ export class NavbarComponent {
     ]));
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   public dismissModal() {
-    this.modalControler.dismiss();
+    this.modalController.dismiss();
   }
 }

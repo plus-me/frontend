@@ -1,5 +1,5 @@
 <ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar *ngIf="!onlyBack">
     <ion-buttons *ngIf="isModal === false" slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -17,5 +17,13 @@
         <ion-icon slot="icon-only" name="close-outline" style="color: black;"></ion-icon>
       </ion-button>
     </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="onlyBack">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
