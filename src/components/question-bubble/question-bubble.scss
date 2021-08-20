@@ -1,8 +1,6 @@
 
 .question-bubble {
   border-radius: 40px;
-  margin-top: 10vh;
-  max-height: 70vh;
 }
 
 .votes {
@@ -13,10 +11,9 @@
 .question {
   text-align: center;
   display: flex;
-  height: 40vh;
+  height: 20vh;
   font-size: 16px;
   color: black;
-  padding-top: 20px;
   word-break: break-word;
   max-height: 29vh;
   overflow: auto;
@@ -32,4 +29,5 @@
   --color: white;
   height: 1.5em;
   font-weight: 700;
+  white-space: nowrap;
 }
