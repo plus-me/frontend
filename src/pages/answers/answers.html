@@ -12,16 +12,16 @@
         <ion-col size="1">
           <ion-icon name="help-circle" color="primary" size="large"></ion-icon>
         </ion-col>
-        <ion-col>
+        <ion-col (click)="questionExpanded = !questionExpanded">
           <ion-text color="dark">
             <b>
               {{ (question | async)?.text | slice:0:(questionExpanded ? 280 : 80)}}
             </b>
           </ion-text>
-          <ion-text color="dark" *ngIf="(question | async)?.text.length > 280">
-            <b>
-              {{ "..." | slice:0:(questionExpanded ? 0 : 3)}}
-            </b>
+          <ion-text color="dark" *ngIf="(question | async)?.text.length >= 80 && !questionExpanded">
+              <b>
+              ...
+              </b>
           </ion-text>
         </ion-col>
         <ion-col size="1"  (click)="questionExpanded = !questionExpanded">
@@ -80,7 +80,6 @@
         <ion-card-content>
           <ion-row>
             <ion-col class="down-vote">
-              <!-- TODO: The alreadyVoted function was a temporary potemkin-hack -->
               <ion-fab-button [disabled]="answer.voted !== undefined" (click)="downvote(answer)" *ngIf="answer.voted === 'downvote' || answer.voted === undefined">
                 👎
               </ion-fab-button>
