@@ -11,10 +11,10 @@ export class TranslatedNotificationController {
     private translate: TranslateService,
   ) {}
 
-  public async showToast(text: string) {
+  public async showToast(text: string, showDuration: number=3000) {
     const toast = await this.toastCtrl.create({
       message: this.translate.instant(text),
-      duration: 3000,
+      duration: showDuration,
     });
 
     await toast.present();
