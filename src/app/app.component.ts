@@ -38,6 +38,7 @@ export class AppComponent {
       title: 'sidebar.randomQuestion',
       url: FrontendRoutes.RandomQuestion,
       class: 'important',
+      lines: 'none',
     },
     {
       title: 'sidebar.myQuestions',
