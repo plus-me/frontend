@@ -1,1 +1,1 @@
-export const API_ENDPOINT = 'https://api.plusmestag.fcio.net/v1';
+export const API_ENDPOINT = 'https://api.plusme.fcio.net/v1';
