@@ -38,18 +38,19 @@ export class AppComponent {
       title: 'sidebar.randomQuestion',
       url: FrontendRoutes.RandomQuestion,
       class: 'important',
+      lines: 'none',
     },
     {
       title: 'sidebar.myQuestions',
       url: FrontendRoutes.MyQuestions,
       class: 'important',
     },
-    {
+    /*{
       title: 'sidebar.rejectedQuestions',
       url: FrontendRoutes.MyRejectedQuestions,
       class: 'important',
       lines: 'full',
-    },
+    },*/
     {
       title: 'sidebar.terms',
       url: FrontendRoutes.Terms,
