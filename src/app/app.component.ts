@@ -44,12 +44,12 @@ export class AppComponent {
       url: FrontendRoutes.MyQuestions,
       class: 'important',
     },
-    {
+    /*{
       title: 'sidebar.rejectedQuestions',
       url: FrontendRoutes.MyRejectedQuestions,
       class: 'important',
       lines: 'full',
-    },
+    },*/
     {
       title: 'sidebar.terms',
       url: FrontendRoutes.Terms,
