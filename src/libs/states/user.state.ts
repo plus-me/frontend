@@ -20,11 +20,17 @@ import { Navigate } from '@ngxs/router-plugin';
 import urlcat from 'urlcat';
 import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
 import { uniq } from 'lodash';
+import { PackageJson } from 'type-fest';
+
+const semver = require('semver');
+
+const packageJSON = require('../../../package.json') as PackageJson;
 
 export interface UserStateInterface {
   isLoggedIn: boolean;
   token?: string;
   user?: UserModel;
+  Version?: string;
   hasOnboardingFinished: boolean;
   votes: { [id: number]: boolean};
   seen: number[];
@@ -41,6 +47,8 @@ export interface UserStateInterface {
 })
 @Injectable()
 export class UserState {
+  private appVersion = packageJSON.version;
+
   public constructor(
     private http: HttpClient,
     private notifier: TranslatedNotificationController,
@@ -56,6 +64,7 @@ export class UserState {
     ctx: StateContext<UserStateInterface>,
     action: UserActions.LoginAction,
   ) {
+
     return this
       .http
       .post<any>(
@@ -63,6 +72,7 @@ export class UserState {
         {
           email: action.email,
           password: action.password,
+          version: this.appVersion
         },
       )
       .pipe(
@@ -71,6 +81,7 @@ export class UserState {
             isLoggedIn: true,
             token: data.Token,
           });
+          this.semVerCheck(data);
           return this.store.dispatch(new UserActions.ValidateToken());
         }),
         tap(() => {
@@ -83,6 +94,7 @@ export class UserState {
             isLoggedIn: false,
             token: undefined,
           });
+          console.error(_err);
 
           await this.notifier.showToast('LOGIN.FAILED');
         }),
@@ -163,6 +175,7 @@ export class UserState {
           ctx.patchState({
             user,
           });
+          this.semVerCheck(user);
         }),
         catchError((error: unknown) => {
           ctx.patchState({
@@ -170,6 +183,7 @@ export class UserState {
             user: undefined,
             token: undefined,
           });
+          console.error(error);
 
           return of(error);
         })
@@ -288,6 +302,12 @@ export class UserState {
       ctx.patchState({
         seen,
       });
+    }
+  }
+
+  public semVerCheck(data) {
+    if (semver.gte(this.appVersion, data.Version) === false) {
+      this.notifier.showToast('newVersion', 10000);
     }
   }
 }
