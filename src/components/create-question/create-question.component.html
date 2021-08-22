@@ -27,6 +27,7 @@
               {{ 'createQuestion.question' | translate }}
             </ion-label>
             <ion-textarea
+              autoGrow="true"
               (ionInput)="textChange($event)"
               formControlName="question">
             </ion-textarea>
