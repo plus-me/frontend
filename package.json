@@ -73,6 +73,7 @@
     "@typescript-eslint/parser": "4.16.1",
     "cordova": "10.0.0",
     "cordova-android": "10.0.1",
+    "cordova-plugin-app-name": "1.0.7",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-res": "0.15.3",
@@ -95,7 +96,10 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-ionic-webview": {}
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-app-name": {
+        "APP_NAME": "+me"
+      }
     },
     "platforms": [
       "ios",
