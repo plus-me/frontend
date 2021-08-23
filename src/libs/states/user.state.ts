@@ -101,6 +101,99 @@ export class UserState {
       );
   }
 
+  @Action(UserActions.ResetPassword)
+  public resetPassword(
+    ctx: StateContext<UserStateInterface>,
+    action: UserActions.ResetPassword,
+  ) {
+
+    return this
+      .http
+      .post<any>(
+        API_ENDPOINT + '/Users/reset_password/',
+        {
+          email: action.email
+        },
+      )
+      .pipe(
+        tap(() => {
+          this.notifier.showToast('profile.resetLinkSent');
+        }),
+        catchError(async (_err) => {
+          console.error(_err);
+
+          await this.notifier.showToast('profile.resetLinkError');
+        }),
+      );
+  }
+
+  @Action(UserActions.UpdatePassword)
+  public updatePassword(
+    ctx: StateContext<UserStateInterface>,
+    action: UserActions.UpdatePassword,
+  ) {
+
+    return this
+      .http
+      .post<any>(
+        API_ENDPOINT + '/Users/change_password/',
+        {
+          email: ctx.getState().user.email,
+          password: action.password,
+          new_password: action.new_password
+        },
+      )
+      .pipe(
+        tap(() => {
+          this.notifier.showToast('profile.changedPassword');
+        }),
+        catchError(async (_err) => {
+          console.error(_err);
+
+          await this.notifier.showToast('profile.changePasswordFailed');
+        }),
+      );
+  }
+
+  @Action(UserActions.DeleteAction)
+  public delete(
+    ctx: StateContext<UserStateInterface>,
+  ) {
+    return this
+      .http
+      .delete<any>(
+        API_ENDPOINT + '/Users/',
+        {}
+      )
+      .pipe(
+        catchError(() => {
+          ctx.patchState({
+            isLoggedIn: false,
+            token: undefined,
+            user: undefined,
+          });
+
+          this.store.dispatch(new Navigate([
+            FrontendRoutes.Welcome,
+          ]));
+
+          return of();
+        }),
+        tap(() => {
+          console.dir('tap');
+          ctx.patchState({
+            isLoggedIn: false,
+            token: undefined,
+            user: undefined,
+          });
+
+          this.store.dispatch(new Navigate([
+            FrontendRoutes.Welcome,
+          ]));
+        })
+      );
+  }
+
   @Action(UserActions.LogoutAction)
   public logout(
     ctx: StateContext<UserStateInterface>,

@@ -13,6 +13,9 @@ import { UnknownHttpError } from '../errors/unknown-http.error';
 import { UnknownError } from '../errors/unknown.error';
 import { TagModel } from '../models/tag.model';
 import { GlobalState } from '../interfaces/global.state';
+import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
+import { Navigate } from '@ngxs/router-plugin';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
@@ -29,6 +32,7 @@ export class QuestionState {
   public constructor(
     private http: HttpClient,
     private store: Store,
+    private notifier: TranslatedNotificationController,
   ) {}
 
   @Action(QuestionActions.CreateQuestionAction)
@@ -97,6 +101,30 @@ export class QuestionState {
         tap(question => {
           ctx.patchState({
             answeredQuestion: question,
+          });
+        }),
+      );
+  }
+
+  @Action(QuestionActions.ReportQuestion)
+  public reportQuestion(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.ReportQuestion
+  ) {
+    return this
+      .http
+      .post(
+        urlcat(API_ENDPOINT, BackendRoutes.ReportQuestion, {id: action.questionId}),
+        JSON.stringify({
+          reason: action.reason
+        }),
+      )
+      .pipe(
+        tap(question => {
+          this.notifier.showToast('QUESTION.REPORT_CONFIRM');
+          this.store.dispatch(new Navigate([FrontendRoutes.RandomQuestion]));
+          ctx.patchState({
+            answeredQuestion: null,
           });
         }),
       );

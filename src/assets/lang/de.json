@@ -206,7 +206,7 @@
     "tags": "#Schlagwörter",
     "tagsHelp": "Damit andere deine Frage besser finden",
     "submit": "Senden",
-    "respect": "Bitte sei freundlich und respektvoll, denn kein Mensch mag Trolle 😉",
+    "respect": "Bitte sei freundlich und respektvoll und überprüfe, ob es deine Frage schon gibt",
     "success": "Deine Frage wurde erfolgreich eingereicht.",
     "errors": {
       "text": "Deine Frage ist zu lange. Bitte gebe maximal 280 Zeichen für die Frage an.",
@@ -222,11 +222,24 @@
   },
   "profile": {
     "title": "Mein Profil",
-    "cardTitle": "Profilwartung",
+    "changePasswordTitle": "Passwort ändern",
+    "changePasswordLabel": "Du kannst Dein aktuelles Passwort ändern:",
+    "currentPassword": "Bitte gib Dein aktuelles Passwort ein",
+    "newPassword": "Neues Passwort eingeben",
+    "changedPassword": "Dein Passwort wurde aktualisiert! Bitte logge Dich neu ein.",
+    "changePasswordFailed": "Das hat leider nicht geklappt.",
+    "update": "Aktualisieren",
+    "logoutTitle": "Ausloggen",
     "logout": "Ausloggen",
     "logoutLabel": "Du kannst Dich von +me abmelden:",
     "delete": "Profil löschen",
-    "deleteLabel": "Du kannst auch Dein Profil (unwiderbringlich!) löschen:"
+    "deleteLabel": "Du kannst auch Dein Profil (unwiderbringlich!) löschen:",
+    "deleteConfirmMessage": "Bist Du sicher? Dies löscht unwiderbringlich Deinen Nutzeraccount.",
+    "deleteConfirmTitle": "Profil wirklich löschen?",
+    "deleteConfirmButton": "Ja, ich möchte mein Profil löschen",
+    "deleteAbortButton": "Nein danke",
+    "resetLinkSent": "Ein link zum Zurücksetzen Deines Passwortes wurde an Deine Email-Adresse geschickt.",
+    "resetLinkError": "Leider hat das nicht geklappt."
   },
   "myQuestions": {
     "title": "Meine Fragen"
