@@ -16,4 +16,5 @@ export enum FrontendRoutes {
   Licenses = 'licenses',
   Terms = 'terms',
   Profile = 'profile',
+  ReportQuestion = 'report/:id',
 }
