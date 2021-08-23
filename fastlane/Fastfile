@@ -60,7 +60,14 @@ platform :ios do
         )
 
         upload_to_testflight(
-            ipa: "./builds/plusme.ipa"
+            ipa: "./builds/plusme.ipa",
+            beta_app_feedback_email: "tim@datenknoten.me",
+            beta_app_description: "Der Chat zur Bundestagswahl","
+            demo_account_required: false,
+            notify_external_testers: true,
+            distribute_external: true,
+            groups: "Externe Tester",
+            changelog: "diverse fixes & features"
         )
     end
 end
