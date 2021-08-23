@@ -3,7 +3,37 @@
 <ion-content class="staticcontent">
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ "profile.cardTitle" | translate}}</ion-card-title>
+      <ion-card-title>{{ "profile.changePasswordTitle" | translate}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
+        <ion-text>{{ "profile.changePasswordLabel" | translate}}</ion-text>
+        <div [class.error]="!password.valid && password.touched">
+          <ion-input type="password"
+                     formControlName="password"
+                     placeholder="{{ 'profile.currentPassword' | translate}}">
+          </ion-input>
+        </div>
+        <div [class.error]="!password.valid && password.touched">
+          <ion-input type="password"
+                     formControlName="passwordNew"
+                     placeholder="{{ 'profile.newPassword' | translate}}">
+          </ion-input>
+        </div>
+        <ion-button [disabled]="!passwordForm.valid"
+                    type="submit"
+                    size="large"
+                    shape="round"
+                    expand="block">
+          {{ "profile.update" | translate }}
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ "profile.logoutTitle" | translate}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-text>{{ "profile.logoutLabel" | translate}}</ion-text>
@@ -13,7 +43,15 @@
                   expand="block">
         {{ "profile.logout" | translate }}
       </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
       <ion-text>{{ "profile.deleteLabel" | translate}}</ion-text>
+    </ion-card-header>
+    <ion-card-content>
       <ion-button (click)="deleteAccount()"
                   expand="block"
                   shape="round"

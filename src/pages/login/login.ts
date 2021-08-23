@@ -46,13 +46,12 @@ export class LoginPage {
     return false;
   }
 
-  forgotPW() {
+  forgotPassword() {
     console.log('forgot PW');
-    // this.userService.forgotPW(this.email.value)
-    // .subscribe(
-    //   res => this.notifier.showAlert('', 'SIGNUP.RESETMAIL', 'OK'),
-    //   err => this.notifier.showToast('LOGIN.INVALID_USER')
-    // );
+    this.store.dispatch(new UserActions.ResetPassword(
+      this.email.value
+    ));
+
     return false;
   }
 }
