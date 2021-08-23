@@ -34,5 +34,5 @@ jobs:
       env:
         ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
     - run: npm run cordova -- platform add android
-    - run: npm run ionic -- cordova build android --release
+    - run: npm run ionic -- cordova build android --release --prod
     - run: bundle exec fastlane android beta

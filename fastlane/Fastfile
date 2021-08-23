@@ -2,11 +2,10 @@ platform :android do
   desc "Upload a beta build to the google playstore"
   lane :beta do
     upload_to_play_store(
-      track: 'internal',
+      track: 'beta',
       aab: "platforms/android/app/build/outputs/bundle/release/app-release.aab",
       json_key: "/tmp/playstore_key.json",
-      package_name: "de.wtfeg.plusme",
-      release_status: 'draft'
+      package_name: "de.wtfeg.plusme"
   )
   end
 end
