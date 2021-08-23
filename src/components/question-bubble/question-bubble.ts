@@ -6,6 +6,8 @@ import {TagModel} from '@plusme/libs/models/tag.model';
 import {TranslateService} from '@ngx-translate/core';
 import { QuestionModel } from '@plusme/libs/models/question.model';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
+import { Navigate } from '@ngxs/router-plugin';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -53,7 +55,7 @@ export class QuestionBubbleComponent {
   }
 
   public reportQuestion() {
-
+    this.store.dispatch(new Navigate([FrontendRoutes.ReportQuestion, {id: this.question.id}]));
   }
 
 

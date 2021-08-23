@@ -16,6 +16,7 @@ import { InboxPage } from '@plusme/pages/inbox/inbox';
 import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
+import { ReportQuestionPage } from '@plusme/pages/report/report';
 
 export const AppRoutes: Routes = [
   {
@@ -80,6 +81,10 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.Answers,
     component: AnswersPage,
-
+  },
+  {
+    path: FrontendRoutes.ReportQuestion,
+    component: ReportQuestionPage,
+    canActivate: [AuthGuard]
   }
 ];

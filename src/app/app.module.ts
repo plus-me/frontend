@@ -48,6 +48,7 @@ import { MyQuestionsPage } from '@plusme/pages/myQuestions/myQuestions';
 import { ProfilePage } from '@plusme/pages/profile/profile.page';
 import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
+import { ReportQuestionPage } from '@plusme/pages/report/report';
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
@@ -75,6 +76,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     MyQuestionsListComponent,
     AllAnsweredListComponent,
     SearchQuestionsPage,
+    ReportQuestionPage,
   ],
   imports: [
     BrowserModule,
@@ -143,6 +145,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     MyQuestionsListComponent,
     AllAnsweredListComponent,
     SearchQuestionsPage,
+    ReportQuestionPage,
   ],
   providers: [
     StatusBar,

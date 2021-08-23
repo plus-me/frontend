@@ -40,6 +40,14 @@ export namespace QuestionActions {
     ) {}
   }
 
+  export class ReportQuestion {
+    public static readonly type = '[Questions] Report a Question';
+
+    public constructor(
+      public questionId: number,
+      public reason: string,
+    ) {}
+  }
   export class SearchQuestionsAction {
     public static readonly type = '[Questions] Search Question';
 
