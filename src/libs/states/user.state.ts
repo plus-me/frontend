@@ -87,7 +87,7 @@ export class UserState {
         tap(() => {
           this.store.dispatch(new Navigate([
             FrontendRoutes.RandomQuestion,
-          ]));
+          ], undefined, { replaceUrl: true }));
         }),
         catchError(async (_err) => {
           ctx.patchState({
@@ -175,12 +175,11 @@ export class UserState {
 
           this.store.dispatch(new Navigate([
             FrontendRoutes.Welcome,
-          ]));
+          ], undefined, { replaceUrl: true }));
 
           return of();
         }),
         tap(() => {
-          console.dir('tap');
           ctx.patchState({
             isLoggedIn: false,
             token: undefined,
@@ -189,7 +188,7 @@ export class UserState {
 
           this.store.dispatch(new Navigate([
             FrontendRoutes.Welcome,
-          ]));
+          ], undefined, { replaceUrl: true }));
         })
       );
   }
@@ -214,12 +213,11 @@ export class UserState {
 
           this.store.dispatch(new Navigate([
             FrontendRoutes.Welcome,
-          ]));
+          ], undefined, { replaceUrl: true }));
 
           return of();
         }),
         tap(() => {
-          console.dir('tap');
           ctx.patchState({
             isLoggedIn: false,
             token: undefined,
@@ -228,7 +226,7 @@ export class UserState {
 
           this.store.dispatch(new Navigate([
             FrontendRoutes.Welcome,
-          ]));
+          ], undefined, { replaceUrl: true }));
         })
       );
   }
@@ -312,7 +310,7 @@ export class UserState {
               handler: () => {
                 this.store.dispatch(new Navigate([
                   FrontendRoutes.Login,
-                ]));
+                ], undefined, { replaceUrl: true }));
               }
             }]
           });
@@ -339,7 +337,7 @@ export class UserState {
                 handler: () => {
                   this.store.dispatch(new Navigate([
                     FrontendRoutes.SignUp,
-                  ]));
+                  ], undefined, { replaceUrl: true }));
                 }
               }
             ]
