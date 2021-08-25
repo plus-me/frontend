@@ -1,4 +1,4 @@
-<h2 class="hint" translate *ngIf="(questions | async) === false || (questions | async) === undefined || (questions | async)?.length === 0">myQuestionsListComponent.myQuestions</h2>
+<h2 class="hint" translate *ngIf="(questions | async) === undefined || (questions | async)?.length === 0">myQuestionsListComponent.myQuestions</h2>
 
 <ion-list no-lines class="wrapping-list">
   <ng-container class="item-wrapper" *ngFor="let question of (questions | async)">
