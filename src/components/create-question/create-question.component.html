@@ -35,7 +35,7 @@
               formControlName="question">
             </ion-textarea>
             <ion-note slot="end">
-              <span style="color: {{ lengthColor }};">{{ question.value.length }}</span> / 280
+              <span style="color:{{ lengthColor }};">{{ question.value.length }}</span> / 280
             </ion-note>
           </ion-item>
           <ion-item lines="full"
@@ -62,6 +62,7 @@
         <div class="button-area">
           <ion-button
             expand="block"
+            shape="round"
             type="submit">
             {{ 'createQuestion.submit' | translate }}
           </ion-button>

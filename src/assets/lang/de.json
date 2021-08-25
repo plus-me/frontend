@@ -209,8 +209,11 @@
     "respect": "Bitte sei freundlich und respektvoll und überprüfe, ob es deine Frage schon gibt.",
     "codexLink": "Hier gibts Tips zum Frage stellen.",
     "success": "Deine Frage wurde erfolgreich eingereicht.",
+    "error": "Deine Frage kann so leider nicht gestellt werden:",
     "errors": {
       "text": "Deine Frage ist zu lange. Bitte gebe maximal 280 Zeichen für die Frage an.",
+      "noText": "Deine Frage ist leer.",
+      "tooManyTags": "Du hast zuviele Schlagwörter ausgewählt. Bitte wähle maximal drei Schlagwörter.",
       "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
       "unknownError": "Irgendwas ist schief gegangen 🤷"
     }
