@@ -239,15 +239,9 @@ export class UserState {
       hasOnboardingFinished: true
     });
 
-    if (ctx.getState().isLoggedIn === true) {
-      this.store.dispatch(new Navigate([
-        FrontendRoutes.RandomQuestion,
-      ]));
-    } else {
-      this.store.dispatch(new Navigate([
-        FrontendRoutes.Welcome,
-      ]));
-    }
+    this.store.dispatch(new Navigate([
+      FrontendRoutes.RandomQuestion,
+    ]));
   }
 
   @Action(UserActions.ValidateToken)

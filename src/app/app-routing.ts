@@ -34,11 +34,11 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.RandomQuestion,
     component: RandomQuestionsPage,
-    canActivate: [AuthGuard],
   },
   {
     path: FrontendRoutes.MyQuestions,
     component: MyQuestionsPage,
+    canActivate: [AuthGuard],
   },
   {
     path: FrontendRoutes.Inbox,

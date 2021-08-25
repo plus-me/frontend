@@ -214,6 +214,12 @@ export class QuestionState {
     _ctx: StateContext<QuestionStateInterface>,
     action: QuestionActions.UpvoteQuestionAction,
   ) {
+    const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
+
+    if (!isLoggedIn) {
+      return this.store.dispatch(new Navigate([FrontendRoutes.Welcome]));
+    }
+
     return this
       .http
       .post(
@@ -231,6 +237,12 @@ export class QuestionState {
     _ctx: StateContext<QuestionStateInterface>,
     action: QuestionActions.DownvoteQuestionAction,
   ) {
+    const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
+
+    if (!isLoggedIn) {
+      return this.store.dispatch(new Navigate([FrontendRoutes.Welcome]));
+    }
+
     return this
       .http
       .post(
