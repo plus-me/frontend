@@ -165,6 +165,7 @@ export class QuestionState {
           ctx.patchState({
             questions,
           });
+          this.store.dispatch(new Navigate([FrontendRoutes.SearchQuestions]));
         }),
       );
   }
@@ -185,6 +186,7 @@ export class QuestionState {
           ctx.patchState({
             questions,
           });
+          this.store.dispatch(new Navigate([FrontendRoutes.SearchQuestions]));
         }),
       );
   }

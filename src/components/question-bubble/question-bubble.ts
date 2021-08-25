@@ -50,8 +50,8 @@ export class QuestionBubbleComponent {
       .subscribe(() => this.store.dispatch(new QuestionActions.GetRandomQuestionAction()));
   }
 
-  public search(text: string) {
-    this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
+  public search(tag: TagModel) {
+    this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 
   public reportQuestion() {
