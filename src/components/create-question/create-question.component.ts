@@ -71,6 +71,25 @@ export class CreateQuestionComponent {
 
   public async submit() {
     if (!this.authForm.valid) {
+      let messageContent = this.translator.instant('createQuestion.error');
+      if (this.tags.value.length > 3) {
+        messageContent = messageContent + '<br>' + this.translator.instant('createQuestion.errors.tooManyTags');
+      }
+      if (this.question.value.length === 0) {
+        messageContent = messageContent + '<br>' + this.translator.instant('createQuestion.errors.noText');
+      }
+      if (this.question.value.length > 280) {
+        messageContent = messageContent + '<br>' + this.translator.instant('createQuestion.errors.text');
+      }
+
+      const toast = await this.toaster.create({
+        message: messageContent,
+        color: 'warning',
+        position: 'top',
+        duration: 2000,
+      });
+      await toast.present();
+
       return;
     }
 
