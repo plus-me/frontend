@@ -56,6 +56,10 @@ export class AnswersPage {
       );
   }
 
+  public getQuestionsByTag(tag: TagModel) {
+    this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
+  }
+
   upvote(answer: AnswerModel) {
     this.store.dispatch(new AnswerActions.UpvoteAnswerAction(answer));
   }
