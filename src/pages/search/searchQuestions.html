@@ -25,6 +25,7 @@
         [hideRelation]="false"
         [enableDownvote]="true"
         [enableUpvote]="true"
+        [enableReporting]="true"
         [voted]="(user | async).votes[question.id]"
         (textClick)="loadAnswerPage($event)"
         (tagClick)="loadSearchPage($event)">

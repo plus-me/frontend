@@ -25,6 +25,7 @@ export class QuestionListItemComponent {
   @Input() question: QuestionModel;
   @Input() enableDownvote = true;
   @Input() enableUpvote = true;
+  @Input() enableReporting = true;
   @Input() voted = false;
   @Input() hideRelation = true;
   @Output() textClick = new EventEmitter<any>();
@@ -75,5 +76,9 @@ export class QuestionListItemComponent {
 
   public search(text: string) {
     this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
+  }
+
+  public reportQuestion() {
+    this.store.dispatch(new Navigate([FrontendRoutes.ReportQuestion, {id: this.question.id}]));
   }
 }
