@@ -1,20 +1,20 @@
-<app-navbar [onlyBack]="true" title="SEARCH.TITLE"></app-navbar>
+<app-navbar title="SEARCH.TITLE" [isModal]="true" [hasSearch]="true" ></app-navbar>
 <ion-content>
 
-  <ion-header class="ion-no-border">
-    <div class="bar-subheader ion-no-border" color="white">
-      <ion-row class="app-tab-row">
-        <ion-col size="1">
-          <ion-icon class="search-icon" name="search"></ion-icon>
-        </ion-col>
-        <ion-col>
-          <ion-input type="text" debounce="1000" (ionChange)="search()" [(ngModel)]="searchText"></ion-input>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-header>
+  <!-- <ion-header class="ion-no-border"> -->
+  <!--   <div class="bar-subheader ion-no-border" color="white"> -->
+  <!--     <ion-row class="app-tab-row"> -->
+  <!--       <ion-col size="1"> -->
+  <!--         <ion-icon class="search-icon" name="search"></ion-icon> -->
+  <!--       </ion-col> -->
+  <!--       <ion-col> -->
+  <!--         <ion-input type="text" debounce="1000" (ionChange)="search()" [(ngModel)]="searchText"></ion-input> -->
+  <!--       </ion-col> -->
+  <!--     </ion-row> -->
+  <!--   </div> -->
+  <!-- </ion-header> -->
 
-  <div class="navbar-buffer"></div>
+  <!-- <div class="navbar-buffer"></div> -->
 
   <h2 class="hint" translate ion-fixed *ngIf="(questions | async)?.length === 0">SEARCH.EMPTY</h2>
 
