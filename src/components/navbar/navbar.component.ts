@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import {Store} from '@ngxs/store';
+import {Actions, ofActionSuccessful, Store} from '@ngxs/store';
 import {Navigate} from '@ngxs/router-plugin';
 import {FrontendRoutes} from '@plusme/libs/enums/frontend-routes.enum';
 import { IonSearchbar, LoadingController, ModalController } from '@ionic/angular';
@@ -32,15 +32,28 @@ export class NavbarComponent implements AfterViewInit {
     private location: Location,
     private modalController: ModalController,
     private loadController: LoadingController,
+    private actions: Actions,
   ) { }
 
   public ngAfterViewInit() {
     if (this.searchBar instanceof IonSearchbar) {
       setTimeout(() => this.searchBar.setFocus(), 200);
     }
+
+    this
+      .actions
+      .pipe(
+        ofActionSuccessful(QuestionActions.GetQuestionsByTagAction)
+      )
+      .subscribe((action: QuestionActions.GetQuestionsByTagAction ) => {
+        if (this.searchBar instanceof IonSearchbar) {
+          this.searchBar.value = action.tag.text;
+        }
+      });
   }
 
   gotoInbox() {
+    this.store.dispatch(new QuestionActions.ResetSearchQuestionsAction());
     this.store.dispatch(new Navigate([
       FrontendRoutes.Inbox,
     ]));
@@ -48,11 +61,11 @@ export class NavbarComponent implements AfterViewInit {
 
   public async search(event: Event) {
     const searchText = (event.target as any).value;
-    console.dir(searchText);
 
     if (searchText.length < 3) {
       return;
     }
+
     const loading = await this.loadController.create();
     await loading.present();
 
@@ -73,6 +86,10 @@ export class NavbarComponent implements AfterViewInit {
     if (this.isModal === true) {
       return;
     }
+
+    this.store.dispatch(
+      new QuestionActions.ResetSearchQuestionsAction(),
+    );
 
     const searchModal = await this.modalController.create({
       component: SearchQuestionsPage,

@@ -20,6 +20,7 @@ import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
   questions: QuestionModel[];
+  searchQuestions: QuestionModel[];
   answered: QuestionModel[];
   answeredQuestion: QuestionModel;
 }
@@ -149,26 +150,6 @@ export class QuestionState {
       );
   }
 
-  @Action(QuestionActions.GetQuestionsByTagAction)
-  public getQuestionsByTag(
-    ctx: StateContext<QuestionStateInterface>,
-    action: QuestionActions.GetQuestionsByTagAction,
-  ) {
-    return this
-      .http
-      .get(
-        urlcat(API_ENDPOINT, BackendRoutes.QuestionsByTag, { id: action.tag.id  }),
-      )
-      .pipe(
-        map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
-        tap(questions => {
-          ctx.patchState({
-            questions,
-          });
-        }),
-      );
-  }
-
   @Action(QuestionActions.SearchQuestionsAction)
   public searchQuestions(
     ctx: StateContext<QuestionStateInterface>,
@@ -183,8 +164,9 @@ export class QuestionState {
         map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
-            questions,
+            searchQuestions: questions,
           });
+          // this.store.dispatch(new Navigate([FrontendRoutes.SearchQuestions]));
         }),
       );
   }
@@ -253,6 +235,15 @@ export class QuestionState {
         ),
         '',
       );
+  }
+
+  @Action(QuestionActions.ResetSearchQuestionsAction)
+  public resetSearchQuestions(
+    ctx: StateContext<QuestionStateInterface>,
+  ) {
+    ctx.patchState({
+      searchQuestions: [],
+    });
   }
 
   private convertDataIntoQuestionWithTags(data: unknown) {

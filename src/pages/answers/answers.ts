@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { Select, Store } from '@ngxs/store';
 import { GlobalState } from '@plusme/libs/interfaces/global.state';
 
@@ -11,6 +11,7 @@ import { AnswerModel } from '@plusme/libs/models/answer.model';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import { QuestionModel } from '@plusme/libs/models/question.model';
 import { switchMap } from 'rxjs/operators';
+import { SearchQuestionsPage } from '../search/searchQuestions';
 
 @Component({
   selector: 'app-page-answers',
@@ -31,6 +32,7 @@ export class AnswersPage {
     private loadCtrl: LoadingController,
     private store: Store,
     private activatedRoute: ActivatedRoute,
+    private modalController: ModalController,
   ) {
   }
 
@@ -54,6 +56,17 @@ export class AnswersPage {
           await loading.dismiss();
         },
       );
+  }
+
+  public async getQuestionsByTag(tag: TagModel) {
+    const searchModal = await this.modalController.create({
+      component: SearchQuestionsPage,
+      animated: false,
+    });
+
+    await searchModal.present();
+
+    this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 
   upvote(answer: AnswerModel) {

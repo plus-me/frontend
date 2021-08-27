@@ -16,7 +16,7 @@ import { UserStateInterface } from '@plusme/libs/states/user.state';
   styleUrls: ['searchQuestions.scss']
 })
 export class SearchQuestionsPage {
-  @Select((store: GlobalState) => store.questions.questions)
+  @Select((store: GlobalState) => store.questions.searchQuestions)
   public questions: Observable<QuestionModel[]>;
   @Select((store: GlobalState) => store.user)
   public user: Observable<UserStateInterface>;
@@ -27,8 +27,7 @@ export class SearchQuestionsPage {
     private loadCtrl: LoadingController,
     private store: Store,
     private notifier: TranslatedNotificationController,
-  ) {
-  }
+  ) { }
 
   public async ionViewDidEnter() {
     this.store.dispatch(new UserActions.GetVotes());

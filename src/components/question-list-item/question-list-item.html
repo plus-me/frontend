@@ -90,5 +90,17 @@
         </ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          (click)="reportQuestion()"
+          *ngIf="enableReporting"
+          fill="clear"
+          class="transparent-button"
+          expand="block">
+          <ion-icon name="alert-circle-outline"></ion-icon>{{ 'questionBubble.report' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-item>
