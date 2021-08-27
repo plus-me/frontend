@@ -69,7 +69,6 @@
     "@types/lodash": "4.14.172",
     "@types/node": "16.4.13",
     "@types/shelljs": "0.8.9",
-    "@types/xmldom": "0.1.31",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "cordova": "10.0.0",
@@ -87,7 +86,7 @@
     "ts-node": "10.1.0",
     "type-fest": "2.0.0",
     "typescript": "4.3.4",
-    "xmldom": "0.6.0"
+    "@xmldom/xmldom": "0.7.2"
   },
   "description": "Making democracy digital",
   "cordova": {

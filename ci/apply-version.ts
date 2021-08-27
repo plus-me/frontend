@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as xmldom from 'xmldom';
+import * as xmldom from '@xmldom/xmldom';
 
 const parser = new xmldom.DOMParser();
 
