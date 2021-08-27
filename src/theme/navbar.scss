@@ -1,0 +1,11 @@
+app-navbar {
+  ion-searchbar {
+    padding: 0px !important;
+    --background: transparent !important;
+    --box-shadow: none !important;
+  }
+
+  ion-buttons.ios {
+    padding-top: 10px;
+  }
+}

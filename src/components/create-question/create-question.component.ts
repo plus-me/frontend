@@ -9,6 +9,8 @@ import { ValidationError } from '@plusme/libs/errors/validation.error';
 import { GlobalState } from '@plusme/libs/interfaces/global.state';
 import { TagModel } from '@plusme/libs/models/tag.model';
 import { Observable } from 'rxjs';
+import { Navigate } from '@ngxs/router-plugin';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 
 @Component({
   selector: 'app-create-question',
@@ -58,6 +60,10 @@ export class CreateQuestionComponent {
     }
   }
 
+  public goToCodex() {
+    this.store.dispatch(new Navigate([FrontendRoutes.Terms]));
+    this.modalControler.dismiss();
+  }
 
   public dismissModal() {
     this.modalControler.dismiss();
@@ -65,6 +71,25 @@ export class CreateQuestionComponent {
 
   public async submit() {
     if (!this.authForm.valid) {
+      let messageContent = this.translator.instant('createQuestion.error');
+      if (this.tags.value.length > 3) {
+        messageContent = messageContent + '<br>' + this.translator.instant('createQuestion.errors.tooManyTags');
+      }
+      if (this.question.value.length === 0) {
+        messageContent = messageContent + '<br>' + this.translator.instant('createQuestion.errors.noText');
+      }
+      if (this.question.value.length > 280) {
+        messageContent = messageContent + '<br>' + this.translator.instant('createQuestion.errors.text');
+      }
+
+      const toast = await this.toaster.create({
+        message: messageContent,
+        color: 'warning',
+        position: 'top',
+        duration: 2000,
+      });
+      await toast.present();
+
       return;
     }
 
@@ -121,6 +146,4 @@ export class CreateQuestionComponent {
 
             await toast.present();
   }
-
-
 }
