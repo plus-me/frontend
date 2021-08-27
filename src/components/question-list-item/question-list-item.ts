@@ -9,6 +9,8 @@ import { QuestionModel } from '@plusme/libs/models/question.model';
 import { Navigate } from '@ngxs/router-plugin';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { UserStateInterface } from '@plusme/libs/states/user.state';
+import { ModalController } from '@ionic/angular';
+import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -38,6 +40,7 @@ export class QuestionListItemComponent {
 
   constructor(
     private store: Store,
+    private modalController: ModalController,
   ) {
   }
 
@@ -66,19 +69,41 @@ export class QuestionListItemComponent {
     return this.question.answers.length > 0;
   }
 
-  public getQuestionsByTag(tag: TagModel) {
+  public async getQuestionsByTag(tag: TagModel) {
+    const isModal = await this.isModal();
+
+    if (!isModal) {
+      const searchModal = await this.modalController.create({
+        component: SearchQuestionsPage,
+        animated: false,
+      });
+      await searchModal.present();
+    }
+
     this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 
   public gotoAnswers(question: QuestionModel) {
+    this.hideModal()
     this.store.dispatch(new Navigate([FrontendRoutes.Answers, { id: question.id }]));
   }
 
-  public search(text: string) {
-    this.store.dispatch(new QuestionActions.SearchQuestionsAction(text));
+  public reportQuestion() {
+    this.hideModal();
+    this.store.dispatch(new Navigate([FrontendRoutes.ReportQuestion, {id: this.question.id}]));
   }
 
-  public reportQuestion() {
-    this.store.dispatch(new Navigate([FrontendRoutes.ReportQuestion, {id: this.question.id}]));
+  private async isModal() {
+    const overlay = await this.modalController.getTop();
+
+    return typeof overlay !== 'undefined';
+  }
+
+  private async hideModal() {
+    const overlay = await this.modalController.getTop();
+
+    if (typeof overlay !== 'undefined') {
+      await overlay.dismiss();
+    }
   }
 }

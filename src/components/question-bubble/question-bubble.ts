@@ -8,6 +8,8 @@ import { QuestionModel } from '@plusme/libs/models/question.model';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import { Navigate } from '@ngxs/router-plugin';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
+import { ModalController } from '@ionic/angular';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -28,8 +30,8 @@ export class QuestionBubbleComponent {
   enableUpvote = true;
 
   constructor(
-    private translator: TranslateService,
     private store: Store,
+    private modalController: ModalController,
   ) {}
 
   public downvoteQuestion() {
@@ -50,7 +52,14 @@ export class QuestionBubbleComponent {
       .subscribe(() => this.store.dispatch(new QuestionActions.GetRandomQuestionAction()));
   }
 
-  public search(tag: TagModel) {
+  public async search(tag: TagModel) {
+    const searchModal = await this.modalController.create({
+      component: SearchQuestionsPage,
+      animated: false,
+    });
+
+    await searchModal.present();
+
     this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 
