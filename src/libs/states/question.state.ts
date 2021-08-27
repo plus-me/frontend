@@ -243,7 +243,7 @@ export class QuestionState {
   ) {
     ctx.patchState({
       searchQuestions: [],
-    })
+    });
   }
 
   private convertDataIntoQuestionWithTags(data: unknown) {

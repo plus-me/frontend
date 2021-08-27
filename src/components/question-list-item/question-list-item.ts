@@ -84,7 +84,7 @@ export class QuestionListItemComponent {
   }
 
   public gotoAnswers(question: QuestionModel) {
-    this.hideModal()
+    this.hideModal();
     this.store.dispatch(new Navigate([FrontendRoutes.Answers, { id: question.id }]));
   }
 
