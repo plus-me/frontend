@@ -7,8 +7,9 @@
 
     </ion-row>
     <ion-row class="tags ion-nowrap">
-      <ion-col *ngFor="let tag of question.tags">
+      <ion-col>
         <ion-chip
+          *ngFor="let tag of question.tags"
           color="white"
           class="tag-chip"
           (click)="getQuestionsByTag(tag)">
@@ -24,27 +25,34 @@
 
     <ion-row class="meta ion-nowrap">
       <ion-col class="votes">
-        <ion-chip color="white">
+        <ion-chip
+          title="{{question.upvotes | number}} {{ (question.upvotes.length !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}"
+          color="white">
           <ion-icon name="thumbs-up" color="medium"></ion-icon>
-          <ion-text class="stats-label" color="medium">{{question.upvotes | number}}</ion-text>
-          <ion-text color="medium"
-                    *ngIf="question.upvotes !== 1">
-            {{ 'questionListItem.followers' | translate}}
-          </ion-text>
-          <ion-text color="medium"
-                    *ngIf="question.upvotes === 1">
-            {{ 'questionListItem.follows' | translate}}
+          <ion-text
+            class="stats-label"
+            color="medium">
+            {{question.upvotes | number}}
           </ion-text>
         </ion-chip>
       </ion-col>
       <ion-col class="answers">
-        <ion-chip color="white" (click)="gotoAnswers(question)">
-          <ion-icon name="chatbubbles" color="medium"></ion-icon>
-          <ion-text class="stats-label" color="medium">{{question.answers.length | number}}</ion-text>
-          <ion-text color="medium"
-                    *ngIf="question.answers.length !== 1">{{ 'questionListItem.answers' | translate}}</ion-text>
-          <ion-text color="medium"
-                    *ngIf="question.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text>
+        <ion-chip
+          color="white"
+          title="{{question.answers.length | number}} {{ (question.answers.length !== 1 ? 'questionListItem.answers' : 'questionListItem.answer')  | translate}} "
+          (click)="gotoAnswers(question)">
+          <ion-icon
+            name="chatbubbles"
+            color="medium"></ion-icon>
+          <ion-text
+            class="stats-label"
+            color="medium">
+            {{question.answers.length | number}}
+          </ion-text>
+          <!-- <ion-text color="medium" -->
+          <!--           *ngIf="question.answers.length !== 1">{{ 'questionListItem.answers' | translate}}</ion-text> -->
+          <!-- <ion-text color="medium" -->
+          <!--           *ngIf="question.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text> -->
         </ion-chip>
       </ion-col>
       <ion-col class="status-chip" *ngIf="!hideRelation">
