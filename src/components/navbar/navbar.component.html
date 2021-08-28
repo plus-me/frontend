@@ -15,6 +15,7 @@
       debounce="1000"
       *ngIf="hasSearch === true"
       placeholder="Suche..."
+      showClearButton="never"
       (ionChange)="search($event)">
     </ion-searchbar>
     <ion-title *ngIf="hasSearch === false">{{ title | translate }}</ion-title>
