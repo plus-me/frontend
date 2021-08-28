@@ -75,10 +75,6 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: FrontendRoutes.SearchQuestions,
-    component: SearchQuestionsPage,
-  },
-  {
     path: FrontendRoutes.Answers,
     component: AnswersPage,
   },

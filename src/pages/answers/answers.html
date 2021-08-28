@@ -5,7 +5,12 @@
     <ion-card-content>
       <ion-row>
         <ion-col *ngFor="let tag of (question | async)?.tags">
-          <ion-text>#{{tag.text}}</ion-text>
+          <ion-chip
+            color="white"
+            class="tag-chip"
+            (click)="getQuestionsByTag(tag)">
+            #{{ tag.text }}
+          </ion-chip>
         </ion-col>
       </ion-row>
       <ion-row>
