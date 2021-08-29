@@ -44,6 +44,12 @@ export class AppComponent {
       title: 'sidebar.myQuestions',
       url: FrontendRoutes.MyQuestions,
       class: 'important',
+      lines: 'none',
+    },
+    {
+      title: 'sidebar.inbox',
+      url: FrontendRoutes.Inbox,
+      class: 'important',
     },
     /*{
       title: 'sidebar.rejectedQuestions',

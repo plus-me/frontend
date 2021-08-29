@@ -135,6 +135,15 @@ export class QuestionState {
   public getMyQuestions(
     ctx: StateContext<QuestionStateInterface>,
   ) {
+    const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
+
+    if (!isLoggedIn) {
+      ctx.patchState({
+        questions: [],
+      });
+      return;
+    }
+
     return this
       .http
       .get(
