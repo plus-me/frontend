@@ -199,7 +199,8 @@
     "imprint": "Impressum",
     "licenses": "Lizenzen",
     "contact": "Kontakt",
-    "version": "Version"
+    "version": "Version",
+    "inbox": "Antworten"
   },
   "createQuestion": {
     "title": "Deine Frage an alle Parteien",
