@@ -21,6 +21,7 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - run: echo '${{ secrets.APPSTORE_CONNECT_API_KEY }}' > /tmp/AuthKey_FLMC3H9H8X.p8
+    - run: echo '${{ secrets.SENTRY_TOKEN }}' > ./sentry.properties
     - run: npm ci
     # create www folder to satisfy cordova
     - run: mkdir -p www
@@ -34,6 +35,11 @@ jobs:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
         FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+    - name: Archive Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: "iOS Release IPA"
+        path: builds/plusme.ipa
     - run: bundle exec fastlane ios store
       env:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}

@@ -48,6 +48,7 @@
     "lodash": "4.17.21",
     "rxjs": "6.5.3",
     "semver": "^7.3.5",
+    "sentry-cordova": "1.0.0",
     "urlcat": "2.0.4",
     "zone.js": "0.11.4"
   },
@@ -99,7 +100,8 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-app-name": {
         "APP_NAME": "+me"
-      }
+      },
+      "sentry-cordova": {}
     },
     "platforms": [
       "ios",
