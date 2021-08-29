@@ -19,7 +19,8 @@
 .question-detail {
   font-size: large;
   color: black;
-  word-break: break-word;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .question-list-item-container {
@@ -65,4 +66,13 @@
 .status-chip {
   text-align-last: end;
   white-space: nowrap;
+}
+
+ion-item::part(native) {
+  padding-left: 0;
+}
+
+ion-chip {
+  padding-inline-start: 6px;
+  padding-inline-end: 6px;
 }

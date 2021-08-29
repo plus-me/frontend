@@ -1,6 +1,9 @@
 .question {
   border-radius: 16px;
 
+  ion-card-content {
+    padding: 0;
+  }
 }
 
 app-question-list-item {
@@ -37,6 +40,19 @@ app-question-list-item {
     ion-fab-button {
       --box-shadow: none;
     }
+
+    .answer-text {
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .voting {
+      align-items: center;
+    }
+
+    .revealed {
+      font-weight: bold;
+    }
   }
   ion-item:last-child {
     padding-bottom: 70px;
@@ -72,4 +88,9 @@ app-question-list-item {
 
 .status-chip {
   text-align-last: end;
+}
+
+ion-chip {
+  padding-inline-start: 6px;
+  padding-inline-end: 6px;
 }
