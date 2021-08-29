@@ -38,7 +38,7 @@
       <ion-row class="meta" *ngIf="questionExpanded">
         <ion-col class="votes">
           <ion-chip
-            title="{{(question | async).upvotes | number}} {{ ((question | async).upvotes.length !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}"
+            title="{{(question | async).upvotes | number}} {{ ((question | async).upvotes !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}"
             color="white">
             <ion-icon name="thumbs-up" color="medium"></ion-icon>
             <ion-text class="stats-label" color="medium">{{(question | async)?.upvotes | number}}</ion-text>
