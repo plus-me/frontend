@@ -260,9 +260,9 @@
     "following": "folge ich"
   },
   "inbox": {
-    "title": "Posteingang",
-    "mine": "meine",
-    "all": "alle"
+    "title": "Antworten",
+    "mine": "Meine",
+    "all": "Alle"
   },
   "myQuestionsListComponent": {
     "myQuestions": "Hier siehst Du alle Deine Fragen"
