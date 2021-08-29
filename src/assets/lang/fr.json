@@ -1,0 +1,187 @@
+{
+    "signup": {
+        "subtitle": "Nous avons besoin de quelques informations pour créer votre compte.",
+        "greeter": "Contents que vous soyez là.",
+        "welcome": "Bienvenue !",
+        "repeatPassword": "Confirmer le mot de passe",
+        "password": "Mot de passe",
+        "email": "Courriel",
+        "retry": "Réessayer"
+    },
+    "TABS": {
+        "YOUR_QUESTION": "Vos questions",
+        "TRENDING": "Favorites",
+        "SEARCH": "Palmarès des questions",
+        "LIKED": "Intérêts",
+        "MATCH": "Découvrir des questions",
+        "MY": "Les miennes",
+        "HOME": "Accueil",
+        "ME": "Moi"
+    },
+    "terms": {
+        "title": "codex +me"
+    },
+    "sidebar": {
+        "profile": "Ma profil",
+        "randomQuestion": "Nouvelles questions pour vous",
+        "privacy": "Vie privé",
+        "terms": "codex +me",
+        "rejectedQuestions": "Questions rejetées",
+        "myQuestions": "Mes réponses",
+        "version": "Version",
+        "contact": "Contact",
+        "licenses": "Licences",
+        "imprint": "Mentions légales"
+    },
+    "imprint": {
+        "title": "Mentions légales"
+    },
+    "privacy": {
+        "title": "Politique de confidentialité"
+    },
+    "createQuestion": {
+        "question": "Posez votre question",
+        "title": "Votre question à tous les partis",
+        "errors": {
+            "noText": "Votre question est vide.",
+            "text": "Votre question est trop longue. Veuillez saisir un maximum de 280 caractères pour la question.",
+            "tooManyTags": "Vous avez sélectionné trop de mots-clés. Veuillez sélectionner un maximum de trois mots-clés.",
+            "unknownError": "Quelque chose s'est mal passé 🤷",
+            "unknownHttpError": "Quelque chose a mal tourné avec la communication du serveur 🤷"
+        },
+        "error": "Malheureusement, votre question ne peut être posée de cette manière :",
+        "success": "Votre question a été soumise avec succès.",
+        "codexLink": "Vous trouverez ici des conseils pour poser des questions.",
+        "respect": "Veuillez être aimable, faire preuve de respecter et vérifier si votre question n'existe pas déjà.",
+        "submit": "Envoyer",
+        "tagsHelp": "Pour aider les autres à trouver votre question",
+        "tags": "#Mots-clés"
+    },
+    "questionBubble": {
+        "personAsking": "personne demande",
+        "peopleAsking": "personnes demandent",
+        "notInterested": "Ça ne m'intéresse pas",
+        "report": "Signaler la question"
+    },
+    "profile": {
+        "update": "Mettre à jour",
+        "changePasswordFailed": "Malheureusement, ça n'a pas marché.",
+        "changedPassword": "Votre mot de passe a été mis à jour ! Veuillez vous reconnecter.",
+        "newPassword": "Entrez le nouveau mot de passe",
+        "currentPassword": "Veuillez entrer votre mot de passe actuel",
+        "changePasswordLabel": "Vous pouvez modifier votre mot de passe actuel :",
+        "changePasswordTitle": "Changer le mot de passe",
+        "title": "Mon profil",
+        "logoutTitle": "Déconnexion",
+        "deleteLabel": "Vous pouvez également supprimer votre profil (de manière irrévocable !) :",
+        "delete": "Supprimer le profil",
+        "logoutLabel": "Vous pouvez vous désabonner de +me :",
+        "logout": "Se déconnecter",
+        "deleteConfirmMessage": "Dommage que vous partiez ! Vous pouvez toujours créer un nouveau compte.",
+        "resetLinkSent": "Un lien permettant de réinitialiser votre mot de passe a été envoyé à votre adresse courriel.",
+        "deleteAbortButton": "Non merci",
+        "deleteConfirmButton": "Oui, je souhaite supprimer mon profil",
+        "deleteConfirmTitle": "Supprimer définitivement le compte ?",
+        "resetLinkError": "Malheureusement, ça n'a pas marché."
+    },
+    "questionListItem": {
+        "follows": "suivies",
+        "followers": "suivre",
+        "unread": "Non lues",
+        "following": "auxquelles je suis abonné(e)",
+        "mine": "mes questions",
+        "answer": "Réponse",
+        "answers": "Réponses"
+    },
+    "myQuestions": {
+        "title": "Mes questions"
+    },
+    "answers": {
+        "reveal": "Évaluer pour voir les auteurs",
+        "title": "Évaluer les réponses"
+    },
+    "allAnsweredQuestionsListComponent": {
+        "allQuestions": "Vous pouvez voir ici toutes les questions avec des réponses"
+    },
+    "myQuestionsListComponent": {
+        "myQuestions": "Ici vous pouvez voir toutes vos questions"
+    },
+    "inbox": {
+        "all": "toutes",
+        "mine": "le miennes",
+        "title": "Boîte de réception"
+    },
+    "newVersion": "Veuillez mettre à jour l'application +me pour avoir moins d'erreurs et plus de fonctionnalités. Sans mises à jour, nous ne pouvons pas garantir le bon fonctionnement.",
+    "contact": {
+        "instagram": "plusme_app",
+        "title": "Contact",
+        "header": "Vous pouvez nous contacter de cette manière :"
+    },
+    "MENU": {
+        "LOGOUT": "Se déconnecter",
+        "ONBOARDING": "Introduction",
+        "MENU": "Mon profil",
+        "IMPRINT": "Mentions légales",
+        "FAQ": "Foire aux questions",
+        "ANSWERS": "Réponses",
+        "LICENSES": "Licences",
+        "PRIVACY": "Vie privée",
+        "DISMISSED": "Questions rejetées",
+        "MINE": "Mes questions",
+        "INBOX": "Nouvelle question pour vous"
+    },
+    "LOGIN": {
+        "INVALID_USER": "Nous ne connaissons pas cette adresse électronique.",
+        "FORGOTPW": "Mot de passe oublié ?",
+        "SIGNIN": "Se connecter",
+        "PASSWORD": "Mot de passe",
+        "LOGIN": "Connexion",
+        "FAILED": "La connexion a échoué",
+        "EMAIL": "Courriel"
+    },
+    "welcome": {
+        "signup": "Créer un compte",
+        "login": "Se connecter",
+        "loginText": "Si vous avez déjà un compte sur +me, vous pouvez vous connecter ici.",
+        "signupText": "Ici, vous pouvez créer votre compte et commencer tout de suite après avoir confirmé votre adresse courriel.",
+        "subtitle": "Soutenez les questions qui vous intéressent et faites-en vos questions.",
+        "title": "+me"
+    },
+    "ENTERQUESTION": {
+        "ERROR_SHORT_TEXT": "La question est trop courte.",
+        "ERROR_NO_TAGS": "Vous devez attribuer au moins un #tag.",
+        "OF_X_CHARACTERS": "{{x}} sur {{max}} caractères",
+        "OF_X_TAGS": "{{x}} sur {{max}} #tags",
+        "POSTED": "D'autres utilisateurs peuvent maintenant la voir.",
+        "POSTED_TITLE": "Merci de votre question !",
+        "YOUR_QUESTION": "Écrivez votre question ici, mais ne l'adressez pas directement à un politicien ou à un parti, car vous obtiendrez des réponses de chacun d'entre eux !",
+        "TAG_QUESTION": "De un à trois #tags",
+        "ASK_QUESTION": "Poser une question"
+    },
+    "MAINMENU": {
+        "NEWS": "Infos",
+        "ASK": "Poser une question",
+        "ANSWEREDQUESTIONS": "Questions avec réponses",
+        "OPENQUESTIONS": "Questions ouvertes"
+    },
+    "FAQ": {
+        "FAQ13": "Si votre question n'a pas encore trouvé de réponse ici, veuillez nous écrire un courriel sous la rubrique Contact du menu.",
+        "FAQ4": "<h2>Est-ce que +me est politiquement neutre ?</h2><p>Oui, nous offrons à toutes les parties la même possibilité de répondre à vos questions. Toutefois, seuls ont été invités les partis qui ont présenté un candidat principal pour les élections fédérales de 2017 et qui sont représentés dans au moins un parlement d'État. Ainsi, les partis suivants ont émergé :</p><ul><li>Union chrétienne-démocrate d'Allemagne (CDU)</li><li>Parti social-démocrate d'Allemagne (SPD)</li><li>Union chrétienne-sociale en Bavière (CSU)</li><li>Parti démocrate libre (FDP)</li><li>Alternative pour l'Allemagne (AfD)</li><li>Allianz 90/Die Grünen</li><li>Die Linke</li></ul>",
+        "FAQ3": "<h2>Pouvez-vous voir qui a posé quelle question ? </h2> <p>Non. Personne de la communauté ou des politiciens ne peut voir qui a posé quelle question. Vous seul avez une vue d'ensemble des questions que vous vous êtes posées et de celles que vous avez ajoutées</p>",
+        "FAQ2": "<h2>Pourquoi dois-je fournir des données personnelles pour utiliser l'application ?</h2><p>Grâce à ces informations, nous voulons empêcher la création de faux profils et la déformation de l'opinion de la communauté. La collecte de données nécessaire à cet effet est limitée à un niveau minimal</p>",
+        "FAQ1": "<h2>Comment puis-je poser une question sur +me ?</h2><p>Sur l'écran d'accueil, il y a un bouton « Poser une question ». Vous pouvez y saisir votre question et la lier à un maximum de trois hashtags en même temps. Les hashtags aident les autres utilisateurs à trouver des questions sur des sujets qui les intéressent. Pour pouvoir poser vos propres questions, vous devez d'abord évaluer les questions des autres utilisateurs. Veuillez respecter notre Codex +me lorsque vous posez votre question.",
+        "TITLE": "Foire aux questions"
+    },
+    "QUESTION": {
+        "REPORT_CONFIRM": "Nous allons nous pencher sur cette question. Si elle enfreint notre Code +me, elle sera supprimée.",
+        "REPORT": "Signaler cette question",
+        "BAD": "mauvaise question",
+        "GOOD": "bonne question",
+        "ANSWERS": "{{value}} réponses",
+        "ANSWER": "{{value}} réponse"
+    },
+    "WIP": "Cette fonctionnalité n'est pas encore disponible.",
+    "CONNERROR": "La connexion au serveur a échoué, veuillez vérifier votre connexion Internet.",
+    "CANCEL": "Annuler",
+    "OK": "OK"
+}
