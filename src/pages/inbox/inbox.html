@@ -3,18 +3,15 @@
 <ion-content>
   <app-my-questions-list [answeredOnly]="true" *ngIf="mode === 'mine'"></app-my-questions-list>
   <app-all-answered-list *ngIf="mode === 'all'"></app-all-answered-list>
-
-
-  <ion-tabs>
-    <ion-tab-bar slot="tbottom">
-      <ion-tab-button [attr.selected]="mode === 'mine'" selected (click)="select_mine()">
-        <ion-icon name="briefcase-outline"></ion-icon>
-        <ion-label>Meine</ion-label>
-      </ion-tab-button>
-      <ion-tab-button [attr.selected]="mode === 'all'" (click)="select_all()">
-        <ion-icon name="earth-outline"></ion-icon>
-        <ion-label>Alle</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
 </ion-content>
+
+<ion-tab-bar slot="bottom">
+  <ion-tab-button [attr.selected]="mode === 'mine'" selected (click)="select_mine()">
+    <ion-icon name="briefcase-outline"></ion-icon>
+    <ion-label>Meine</ion-label>
+  </ion-tab-button>
+  <ion-tab-button [attr.selected]="mode === 'all'" (click)="select_all()">
+    <ion-icon name="earth-outline"></ion-icon>
+    <ion-label>Alle</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
