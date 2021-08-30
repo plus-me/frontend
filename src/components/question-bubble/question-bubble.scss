@@ -4,24 +4,35 @@
 }
 
 .votes {
-  color: rgba(21, 225, 174, 1);
+  color: var(--ion-color-primary);
   font-size: 3em;
 }
 
 .question {
   text-align: center;
-  display: flex;
+  display: block;
   height: 20vh;
   font-size: 16px;
   color: black;
   word-break: break-word;
   max-height: 29vh;
-  overflow: auto;
+  overflow-y: scroll;
+  hyphens: auto;
 
-  b {
+  span {
+    font-weight: bold;
     width:100%;
     max-width: 89vw;
   }
+}
+
+.question::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+}
+
+.question::-webkit-scrollbar-thumb {
+  background-color: var(--ion-color-primary);
 }
 
 .tag-chip {

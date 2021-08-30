@@ -11,7 +11,7 @@
       <ion-text *ngIf="question.upvotes === 1">{{ 'questionBubble.personAsking' | translate }}</ion-text>
     </ion-card-header>
     <ion-card-content>
-      <ion-text class="question ion-text-center"><b>{{question.text}}</b></ion-text>
+      <ion-text class="question ion-text-center"><span>{{question.text}}</span></ion-text>
 
       <ion-chip
         class="tag-chip"
