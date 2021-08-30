@@ -52,7 +52,8 @@
   "welcome": {
     "title": "+me",
     "subtitle": "Unterstütze Fragen, die dich interessieren und mache sie zu deinen Fragen.",
-    "instructions": "Um loslegen zu können musst du entweder ein Konto erstellen oder falls du schon ein Konto hast dich anmelden.",
+    "signupText": "Hier kannst du dein Konto anlegen und nach der Bestätigung deiner E-mail-Adresse direkt loslegen.",
+    "loginText": "Falls du schon ein Konto bei +me besitzt, kannst du dich hier anmelden.",
     "login": "Anmelden",
     "signup": "Konto erstellen"
   },
@@ -116,11 +117,11 @@
     "HEADLINE_PAGE2": "Fragen stellen",
     "PAGE2": "Was möchtest du von den teilnehmenden Parteien beantwortet haben? Stell deine Frage und sprich die wichtigen Themen an!",
     "HEADLINE_PAGE3": "Fragen unterstützen",
-    "PAGE3": "Oder unterstütze die guten Fragen von anderen! Mit einem Tap auf +me zeigst du, dass dich eine Frage auch interessiert.",
+    "PAGE3": "Oder unterstütze die guten Fragen von anderen! Mit einem Tap auf +me zeigst du, dass dich eine Frage ebenso interessiert.",
     "HEADLINE_PAGE4": "Antworten erhalten",
     "PAGE4": "Die Fragen mit den meisten Unterstützer:innen werden jeden Tag von den Parteien beantwortet - direkt, gleichzeitig und vergleichbar!",
     "HEADLINE_PAGE5": "Antworten bewerten",
-    "PAGE5": "Welche Antwort von welcher Partei kommt siehst du aber erst, nachdem du sie für dich bewertet hast. So erkennst du wer deine Interessen vertritt - und musst am 26. September nur noch wählen gehen!",
+    "PAGE5": "Welche Antwort von welcher Partei kommt siehst du aber erst, nachdem du sie für dich bewertet hast. So erkennst du, wer deine Interessen vertritt - und musst am 26. September nur noch wählen gehen!",
     "OK_GO": "Los geht’s"
   },
 
@@ -157,8 +158,8 @@
     "password": "Passwort",
     "repeatPassword": "Passwort bestätigen",
     "welcome": "Willkommen!",
-    "greeter": "Schön, dass du dabei bist.",
-    "subtitle": "Ein paar Infos brauchen wir um deinen Account anzulegen.",
+    "greeter": "Schön, dass Du dabei bist.",
+    "subtitle": "Ein paar Infos brauchen wir, um deinen Account anzulegen.",
     "submitSignup": "Jetzt Konto anlegen!",
     "cancel": "Abbrechen",
     "confirmlabel1": "Durch Fortfahren akzeptierst Du unseren ",
@@ -198,7 +199,8 @@
     "imprint": "Impressum",
     "licenses": "Lizenzen",
     "contact": "Kontakt",
-    "version": "Version"
+    "version": "Version",
+    "inbox": "Antworten"
   },
   "createQuestion": {
     "title": "Deine Frage an alle Parteien",
@@ -258,9 +260,9 @@
     "following": "folge ich"
   },
   "inbox": {
-    "title": "Posteingang",
-    "mine": "meine",
-    "all": "alle"
+    "title": "Antworten",
+    "mine": "Meine",
+    "all": "Alle"
   },
   "myQuestionsListComponent": {
     "myQuestions": "Hier siehst Du alle Deine Fragen"

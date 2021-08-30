@@ -1,6 +1,6 @@
 {
   "name": "plusme",
-  "version": "0.8.1",
+  "version": "0.9.1",
   "author": "plusme development team",
   "homepage": "http://plus-me.de/",
   "private": true,
@@ -48,6 +48,7 @@
     "lodash": "4.17.21",
     "rxjs": "6.5.3",
     "semver": "^7.3.5",
+    "sentry-cordova": "1.0.0",
     "urlcat": "2.0.4",
     "zone.js": "0.11.4"
   },
@@ -69,7 +70,6 @@
     "@types/lodash": "4.14.172",
     "@types/node": "16.4.13",
     "@types/shelljs": "0.8.9",
-    "@types/xmldom": "0.1.31",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "cordova": "10.0.0",
@@ -87,7 +87,7 @@
     "ts-node": "10.1.0",
     "type-fest": "2.0.0",
     "typescript": "4.3.4",
-    "xmldom": "0.6.0"
+    "@xmldom/xmldom": "0.7.2"
   },
   "description": "Making democracy digital",
   "cordova": {
@@ -100,7 +100,8 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-app-name": {
         "APP_NAME": "+me"
-      }
+      },
+      "sentry-cordova": {}
     },
     "platforms": [
       "ios",

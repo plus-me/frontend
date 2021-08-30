@@ -43,7 +43,6 @@ export const AppRoutes: Routes = [
   {
     path: FrontendRoutes.Inbox,
     component: InboxPage,
-    canActivate: [AuthGuard],
   },
   {
     path: FrontendRoutes.Contact,
@@ -73,10 +72,6 @@ export const AppRoutes: Routes = [
     path: FrontendRoutes.Profile,
     component: ProfilePage,
     canActivate: [AuthGuard]
-  },
-  {
-    path: FrontendRoutes.SearchQuestions,
-    component: SearchQuestionsPage,
   },
   {
     path: FrontendRoutes.Answers,

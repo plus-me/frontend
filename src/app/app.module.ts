@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
   FormsModule,
@@ -49,6 +49,11 @@ import { ProfilePage } from '@plusme/pages/profile/profile.page';
 import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
 import { ReportQuestionPage } from '@plusme/pages/report/report';
+
+import * as Sentry from "sentry-cordova";
+import { SentryIonicErrorHandler } from '@plusme/libs/error-handler/sentry-error.handler';
+
+Sentry.init({ dsn: "https://d55dfb169cbd4aedabc1c9e3b5e82302@sentry.datenknoten.me/3" });
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
@@ -158,6 +163,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
       multi: true,
       deps: [Store],
     },
+    {provide: ErrorHandler, useClass: SentryIonicErrorHandler}
   ]
 })
 export class AppModule {

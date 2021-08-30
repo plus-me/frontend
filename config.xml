@@ -53,6 +53,7 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
+      <hook type="after_prepare" src="ci/patch-ios-project.js" />
         <preference name="target-device" value="handset" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />

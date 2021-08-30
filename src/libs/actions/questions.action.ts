@@ -72,4 +72,8 @@ export namespace QuestionActions {
     ) {}
   }
 
+  export class ResetSearchQuestionsAction {
+    public static readonly type = '[Questions] Reset Search Questions';
+  }
+
 }

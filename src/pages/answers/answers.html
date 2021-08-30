@@ -4,14 +4,20 @@
   <ion-card class="question">
     <ion-card-content>
       <ion-row>
-        <ion-col *ngFor="let tag of (question | async)?.tags">
-          <ion-text>#{{tag.text}}</ion-text>
+        <ion-col>
+          <ion-chip
+            *ngFor="let tag of (question | async)?.tags"
+            color="white"
+            class="tag-chip"
+            (click)="getQuestionsByTag(tag)">
+            #{{ tag.text }}
+          </ion-chip>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="1">
-          <ion-icon name="help-circle" color="primary" size="large"></ion-icon>
-        </ion-col>
+        <!-- <ion-col size="1"> -->
+        <!--   <ion-icon name="help-circle" color="primary" size="large"></ion-icon> -->
+        <!-- </ion-col> -->
         <ion-col (click)="questionExpanded = !questionExpanded">
           <ion-text color="dark">
             <b>
@@ -31,27 +37,19 @@
       </ion-row>
       <ion-row class="meta" *ngIf="questionExpanded">
         <ion-col class="votes">
-          <ion-chip color="white">
+          <ion-chip
+            title="{{(question | async).upvotes | number}} {{ ((question | async).upvotes !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}"
+            color="white">
             <ion-icon name="thumbs-up" color="medium"></ion-icon>
             <ion-text class="stats-label" color="medium">{{(question | async)?.upvotes | number}}</ion-text>
-            <ion-text color="medium"
-                      *ngIf="(question | async)?.upvotes !== 1">
-              {{ 'questionListItem.followers' | translate}}
-            </ion-text>
-            <ion-text color="medium"
-                      *ngIf="(question | async)?.upvotes === 1">
-              {{ 'questionListItem.follows' | translate}}
-            </ion-text>
           </ion-chip>
         </ion-col>
         <ion-col class="answers">
-          <ion-chip color="white">
+          <ion-chip
+            title="{{(question | async).answers.length | number}} {{ ((question | async).answers.length !== 1 ? 'questionListItem.answers' : 'questionListItem.answer')  | translate}} "
+            color="white">
             <ion-icon name="chatbubbles" color="medium"></ion-icon>
             <ion-text class="stats-label" color="medium">{{(question | async)?.answers.length | number}}</ion-text>
-            <ion-text color="medium"
-                      *ngIf="(question | async)?.answers.length !== 1">{{ 'questionListItem.answers' | translate}}</ion-text>
-            <ion-text color="medium"
-                      *ngIf="(question | async)?.answers.length === 1">{{ 'questionListItem.answer' | translate}}</ion-text>
           </ion-chip>
         </ion-col>
         <ion-col class="status-chip">
@@ -70,17 +68,16 @@
   <ion-list class="answer-list">
     <ion-item *ngFor="let answer of (answers | async)">
       <ion-card class="answer">
-        <ion-card-header>
-          <ion-text color="dark">
-            <b>
-              {{ answer.text }}
-            </b>
-          </ion-text>
-        </ion-card-header>
         <ion-card-content>
-          <ion-row>
-            <ion-col class="down-vote">
-              <ion-fab-button [disabled]="answer.voted !== undefined" (click)="downvote(answer)" *ngIf="answer.voted === 'downvote' || answer.voted === undefined">
+          <ion-row class="answer-text">
+            {{ answer.text }}
+          </ion-row>
+          <ion-row class="voting">
+            <ion-col class="ion-align-items-start down-vote">
+              <ion-fab-button
+                [disabled]="answer.voted !== undefined"
+                (click)="downvote(answer)"
+                *ngIf="answer.voted === 'downvote' || answer.voted === undefined">
                 👎
               </ion-fab-button>
             </ion-col>
@@ -89,9 +86,12 @@
               <ion-text class="revealed" color="dark"
                         *ngIf="answer.voted !== undefined">{{answer.party.short_name}}</ion-text>
             </ion-col>
-            <ion-col class="up-vote">
+            <ion-col class="ion-align-items-start down-vote up-vote">
               <div>
-                <ion-fab-button [disabled]="answer.voted !== undefined" (click)="upvote(answer)" *ngIf="answer.voted === 'upvote' || answer.voted === undefined">
+                <ion-fab-button
+                  [disabled]="answer.voted !== undefined"
+                  (click)="upvote(answer)"
+                  *ngIf="answer.voted === 'upvote' || answer.voted === undefined">
                   👍
                 </ion-fab-button>
               </div>
