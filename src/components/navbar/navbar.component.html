@@ -20,6 +20,9 @@
       <ion-button (click)="dismissModal()">
         <ion-icon slot="icon-only" name="close-outline" style="color: black;"></ion-icon>
       </ion-button>
+      <ion-button>
+        <ion-button menu="sort" (click)="presentPopover($event)"><ion-icon name="funnel-outline"></ion-icon></ion-button>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar *ngIf="onlyBack">

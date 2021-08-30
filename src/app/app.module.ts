@@ -49,6 +49,7 @@ import { ProfilePage } from '@plusme/pages/profile/profile.page';
 import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
 import { ReportQuestionPage } from '@plusme/pages/report/report';
+import { SortMenuComponent } from '@plusme/components/navbar/sort.component';
 
 import * as Sentry from "sentry-cordova";
 import { SentryIonicErrorHandler } from '@plusme/libs/error-handler/sentry-error.handler';
@@ -82,6 +83,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AllAnsweredListComponent,
     SearchQuestionsPage,
     ReportQuestionPage,
+    SortMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -151,6 +153,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AllAnsweredListComponent,
     SearchQuestionsPage,
     ReportQuestionPage,
+    SortMenuComponent,
   ],
   providers: [
     StatusBar,

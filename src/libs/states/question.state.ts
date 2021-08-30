@@ -180,6 +180,26 @@ export class QuestionState {
       );
   }
 
+  @Action(QuestionActions.SortBy)
+  public sortQuestions(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.SortBy,
+  ) {
+    let questionsToSort = ctx.getState().searchQuestions;
+    if (action.searchMode === 'answers') {
+      questionsToSort = questionsToSort.sort((a, b) => b.answers.length - a.answers.length);
+    } else if (action.searchMode === 'following') {
+      questionsToSort = questionsToSort.sort((a, b) => Number(b.voted) - Number(a.voted));
+    } else if (action.searchMode === 'upvotes') {
+      questionsToSort = questionsToSort.sort((a, b) => b.upvotes - a.upvotes);
+    } else if (action.searchMode === 'newest') {
+      questionsToSort = questionsToSort.sort((a, b) => b.timeCreated.getTime() - a.timeCreated.getTime());
+    }
+    ctx.patchState({
+      searchQuestions: questionsToSort,
+    });
+  }
+
   @Action(QuestionActions.GetAllAnsweredQuestionsAction)
   public getAllAnsweredQuestions(
     ctx: StateContext<QuestionStateInterface>,
@@ -276,6 +296,8 @@ export class QuestionState {
       { excludeExtraneousValues: true });
 
     question.tags = questionTags;
+    // eslint-disable-next-line @typescript-eslint/dot-notation
+    question.timeCreated = new Date(data['time_created']);
 
     return question;
   }

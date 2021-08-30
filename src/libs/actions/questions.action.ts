@@ -32,6 +32,14 @@ export namespace QuestionActions {
 
   }
 
+  export class SortBy {
+    public static readonly type = '[Questions] Sort by votes, date, following';
+
+    public constructor(
+      public searchMode: string,
+    ) {}
+  }
+
   export class GetQuestion {
     public static readonly type = '[Questions] Get Question';
 

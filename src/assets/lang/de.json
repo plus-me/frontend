@@ -274,5 +274,11 @@
     "title": "Antworten bewerten",
     "reveal": "Bewerten um Absender zu sehen"
   },
+  "sort": {
+    "newest": "Neueste",
+    "upvotes": "Beliebtheit",
+    "following": "Folge ich",
+    "answers": "Beantwortet"
+  },
   "newVersion": "Bitte update die +me App, um weniger Bugs und mehr Funktionalität zu bekommen. Ohne Updates können wir eine ordnungsgemäße Funktion nicht garantieren."
 }
