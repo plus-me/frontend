@@ -70,7 +70,7 @@
       <ion-col>
         <ion-button
           (click)="upvoteQuestion()"
-          *ngIf="enableUpvote && question.voted === null"
+          *ngIf="enableUpvote && question.voted === false"
           align="bottom"
           shape="round"
           class="upvote-button"
@@ -88,7 +88,7 @@
       <ion-col>
         <ion-button
           (click)="downvoteQuestion()"
-          *ngIf="enableDownvote && question.voted === null"
+          *ngIf="enableDownvote && question.voted === true"
           fill="clear"
           color="dark"
           class="transparent-button"

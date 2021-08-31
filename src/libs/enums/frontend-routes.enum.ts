@@ -9,7 +9,7 @@ export enum FrontendRoutes {
   Onboarding = 'onboarding',
   Inbox = 'inbox',
   MyQuestions = 'my-questions',
-  MyRejectedQuestions = 'my-rejected-questions',
+  MyDownVotedQuestions = 'my-downvoted-questions',
   Privacy = 'privacy',
   Imprint = 'imprint',
   Licenses = 'licenses',

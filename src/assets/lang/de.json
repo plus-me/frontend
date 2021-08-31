@@ -200,7 +200,8 @@
     "licenses": "Lizenzen",
     "contact": "Kontakt",
     "version": "Version",
-    "inbox": "Antworten"
+    "inbox": "Antworten",
+    "myDownvotedQuestions": "Abgelehnte Fragen"
   },
   "createQuestion": {
     "title": "Deine Frage an alle Parteien",
@@ -249,6 +250,9 @@
   },
   "myQuestions": {
     "title": "Meine Fragen"
+  },
+  "myDownvotes": {
+    "title": "Meine abgelehnten Fragen"
   },
   "questionListItem": {
     "unread": "Ungelesen",

@@ -17,6 +17,10 @@ export namespace QuestionActions {
 
   export class GetMyQuestionsAction {
     public static readonly type = '[Questions] Get My Question';
+
+    public constructor(
+      public onlyDownVoted: boolean=false,
+    ) {}
   }
 
   export class GetAllAnsweredQuestionsAction {

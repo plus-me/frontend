@@ -134,6 +134,7 @@ export class QuestionState {
   @Action(QuestionActions.GetMyQuestionsAction)
   public getMyQuestions(
     ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.GetMyQuestionsAction
   ) {
     const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
 
@@ -144,10 +145,12 @@ export class QuestionState {
       return;
     }
 
+    const route = action.onlyDownVoted ? BackendRoutes.DownvotedQuestions : BackendRoutes.MyQuestions;
+
     return this
       .http
       .get(
-        urlcat(API_ENDPOINT, BackendRoutes.MyQuestions),
+        urlcat(API_ENDPOINT, route),
       )
       .pipe(
         map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
