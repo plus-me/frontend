@@ -350,6 +350,12 @@ export class UserState {
   public getVotes(
     ctx: StateContext<UserStateInterface>,
   ) {
+    const state = ctx.getState();
+
+    if (state.isLoggedIn === false) {
+      return;
+    }
+
     return this
       .http
       .get(
