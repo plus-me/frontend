@@ -231,7 +231,7 @@ export class QuestionState {
     const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
 
     if (!isLoggedIn) {
-      return this.store.dispatch(new Navigate([FrontendRoutes.Welcome]));
+      return this.store.dispatch(new QuestionActions.GetRandomQuestionAction());
     }
 
     return this
