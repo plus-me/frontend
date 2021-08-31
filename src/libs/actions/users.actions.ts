@@ -50,6 +50,14 @@ export namespace UserActions {
     ) {}
   }
 
+  export class SetSorting {
+    public static readonly type = '[Users] Set the sorting method';
+
+    public constructor(
+      public sorting: string,
+    ) {}
+  }
+
   export class GetVotes {
     public static readonly type = '[Users] Get votes of user';
   }

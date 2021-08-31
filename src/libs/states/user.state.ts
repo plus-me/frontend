@@ -34,6 +34,7 @@ export interface UserStateInterface {
   hasOnboardingFinished: boolean;
   votes: { [id: number]: boolean};
   seen: number[];
+  sorting: string;
 }
 
 @State<UserStateInterface>({
@@ -42,7 +43,8 @@ export interface UserStateInterface {
     isLoggedIn: false,
     hasOnboardingFinished: false,
     votes: {},
-    seen: []
+    seen: [],
+    sorting: 'newest',
   }
 })
 @Injectable()
@@ -388,6 +390,16 @@ export class UserState {
         seen,
       });
     }
+  }
+
+  @Action(UserActions.SetSorting)
+  public setSorting(
+    ctx: StateContext<UserStateInterface>,
+    action: UserActions.SetSorting,
+  ) {
+    ctx.patchState({
+      sorting: action.sorting
+    });
   }
 
   public semVerCheck(data) {
