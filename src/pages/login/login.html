@@ -7,6 +7,7 @@
         <ion-list class="input-area">
           <div [class.error]="!email.valid && email.touched">
             <ion-input
+              autocomplete="username"
               placeholder="{{ 'LOGIN.EMAIL' | translate   }}"
               formControlName="email"
               type="email">
@@ -15,11 +16,14 @@
           <div
             class="ion-padding-bottom"
             [class.error]="!password.valid && password.touched">
-            <ion-input
-              placeholder="{{ 'LOGIN.PASSWORD' | translate }}"
-              formControlName="password"
-              type="password">
-            </ion-input>
+            <app-show-hide-password>
+              <ion-input
+                autocomplete="current-password"
+                placeholder="{{ 'LOGIN.PASSWORD' | translate }}"
+                formControlName="password"
+                type="password">
+              </ion-input>
+            </app-show-hide-password>
           </div>
           <ion-button
             class="ion-padding-start"
