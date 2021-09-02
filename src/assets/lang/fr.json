@@ -6,7 +6,17 @@
         "repeatPassword": "Confirmer le mot de passe",
         "password": "Mot de passe",
         "email": "Courriel",
-        "retry": "Réessayer"
+        "retry": "Réessayer",
+        "unknownSignupError": "Malheureusement, l'inscription n'a pas fonctionné. Veuillez nous contacter si vous pensez qu'il s'agit d'un problème sur notre site.",
+        "confirmlabel2": " et les ",
+        "confirmlabel1": "En continuant, vous acceptez notre ",
+        "cancel": "Annuler",
+        "submitSignup": "Créer un compte maintenant !",
+        "name": "Nom",
+        "checkEmail": "Nous vous avons envoyé un courriel avec un lien pour confirmer. Veuillez cliquer sur ce lien pour continuer.",
+        "wrongInputs": "Les données saisies ne sont pas valides. Veuillez saisir une adresse courriel valide et utiliser un mot de passe d'au moins 8 caractères.",
+        "ok": "Compris",
+        "title": "Créer un compte"
     },
     "TABS": {
         "YOUR_QUESTION": "Vos questions",
@@ -31,7 +41,8 @@
         "version": "Version",
         "contact": "Contact",
         "licenses": "Licences",
-        "imprint": "Mentions légales"
+        "imprint": "Mentions légales",
+        "inbox": "Réponses"
     },
     "imprint": {
         "title": "Mentions légales"
@@ -113,15 +124,21 @@
         "myQuestions": "Ici vous pouvez voir toutes vos questions"
     },
     "inbox": {
-        "all": "toutes",
-        "mine": "le miennes",
-        "title": "Boîte de réception"
+        "all": "Toutes",
+        "mine": "Les miennes",
+        "title": "Réponses"
     },
     "newVersion": "Veuillez mettre à jour l'application +me pour avoir moins d'erreurs et plus de fonctionnalités. Sans mises à jour, nous ne pouvons pas garantir le bon fonctionnement.",
     "contact": {
         "instagram": "plusme_app",
         "title": "Contact",
-        "header": "Vous pouvez nous contacter de cette manière :"
+        "header": "Vous pouvez nous contacter de cette manière :",
+        "githubUrl": "https://github.com/plus-me",
+        "github": "@plus-me",
+        "mail": "contact@plus-me.de",
+        "twitterUrl": "https://twitter.com/plusme_app",
+        "twitter": "@plusme_app",
+        "instagramUrl": "https://www.instagram.com/plusme_app/"
     },
     "MENU": {
         "LOGOUT": "Se déconnecter",
@@ -155,13 +172,13 @@
     },
     "ENTERQUESTION": {
         "ERROR_SHORT_TEXT": "La question est trop courte.",
-        "ERROR_NO_TAGS": "Vous devez attribuer au moins un #tag.",
+        "ERROR_NO_TAGS": "Vous devez attribuer au moins un #mot-clé.",
         "OF_X_CHARACTERS": "{{x}} sur {{max}} caractères",
-        "OF_X_TAGS": "{{x}} sur {{max}} #tags",
+        "OF_X_TAGS": "{{x}} sur {{max}} #mots-clés",
         "POSTED": "D'autres utilisateurs peuvent maintenant la voir.",
         "POSTED_TITLE": "Merci de votre question !",
         "YOUR_QUESTION": "Écrivez votre question ici, mais ne l'adressez pas directement à un politicien ou à un parti, car vous obtiendrez des réponses de chacun d'entre eux !",
-        "TAG_QUESTION": "De un à trois #tags",
+        "TAG_QUESTION": "De un à trois #mots-clés",
         "ASK_QUESTION": "Poser une question"
     },
     "MAINMENU": {
@@ -172,11 +189,19 @@
     },
     "FAQ": {
         "FAQ13": "Si votre question n'a pas encore trouvé de réponse ici, veuillez nous écrire un courriel sous la rubrique Contact du menu.",
-        "FAQ4": "<h2>Est-ce que +me est politiquement neutre ?</h2><p>Oui, nous offrons à toutes les parties la même possibilité de répondre à vos questions. Toutefois, seuls ont été invités les partis qui ont présenté un candidat principal pour les élections fédérales de 2017 et qui sont représentés dans au moins un parlement d'État. Ainsi, les partis suivants ont émergé :</p><ul><li>Union chrétienne-démocrate d'Allemagne (CDU)</li><li>Parti social-démocrate d'Allemagne (SPD)</li><li>Union chrétienne-sociale en Bavière (CSU)</li><li>Parti démocrate libre (FDP)</li><li>Alternative pour l'Allemagne (AfD)</li><li>Allianz 90/Die Grünen</li><li>Die Linke</li></ul>",
+        "FAQ4": "<h2>Est-ce que +me est politiquement neutre ?</h2><p>Oui, nous offrons à toutes les parties la même possibilité de répondre à vos questions. Toutefois, seuls ont été invités les partis qui ont présenté un candidat principal pour les élections fédérales de 2017 et qui sont représentés dans au moins un parlement d'État. Ainsi, les partis suivants ont émergé :</p><ul><li>Union chrétienne-démocrate d'Allemagne (CDU)</li><li>Parti social-démocrate d'Allemagne (SPD)</li><li>Union chrétienne-sociale en Bavière (CSU)</li><li>Parti démocrate libre (FDP)</li><li>Alternative pour l'Allemagne (AfD)</li><li>Allianz 90/Die Grünen</li><li>Die Linke</li></ul>",
         "FAQ3": "<h2>Pouvez-vous voir qui a posé quelle question ? </h2> <p>Non. Personne de la communauté ou des politiciens ne peut voir qui a posé quelle question. Vous seul avez une vue d'ensemble des questions que vous vous êtes posées et de celles que vous avez ajoutées</p>",
         "FAQ2": "<h2>Pourquoi dois-je fournir des données personnelles pour utiliser l'application ?</h2><p>Grâce à ces informations, nous voulons empêcher la création de faux profils et la déformation de l'opinion de la communauté. La collecte de données nécessaire à cet effet est limitée à un niveau minimal</p>",
-        "FAQ1": "<h2>Comment puis-je poser une question sur +me ?</h2><p>Sur l'écran d'accueil, il y a un bouton « Poser une question ». Vous pouvez y saisir votre question et la lier à un maximum de trois hashtags en même temps. Les hashtags aident les autres utilisateurs à trouver des questions sur des sujets qui les intéressent. Pour pouvoir poser vos propres questions, vous devez d'abord évaluer les questions des autres utilisateurs. Veuillez respecter notre Codex +me lorsque vous posez votre question.",
-        "TITLE": "Foire aux questions"
+        "FAQ1": "<h2>Comment puis-je poser une question sur +me ?</h2><p>Sur l'écran d'accueil, il y a un bouton « Poser une question ». Vous pouvez y saisir votre question et la lier à un maximum de trois mots-clés en même temps. Les mots-clés aident les autres utilisateurs à trouver des questions sur des sujets qui les intéressent. Pour pouvoir poser vos propres questions, vous devez d'abord évaluer les questions des autres utilisateurs. Veuillez respecter notre Codex +me lorsque vous posez votre question.",
+        "TITLE": "Foire aux questions",
+        "FAQ9": "<h2>J'ai trouvé une question intéressante, mais malheureusement je l'ai repoussée. Puis-je la retrouver ?</h2><p>Avec la petite loupe de Top Questions, vous pouvez retrouver chaque question, même si vous ne l'avez pas jugée intéressante. Vous pouvez également utiliser les mots-clés pour rechercher le sujet sur lequel porte la question.</p>",
+        "FAQ12": "<h2>Comment le projet est-il financé ?</h2><p>Le projet est géré exclusivement sur une base volontaire. Il n'y a pas de soutien financier. </p>",
+        "FAQ11": "<h2>Pourquoi ma question n'apparaît-elle pas sur +me ?</h2><p>Si une question enfreint le codex de +me, nous la supprimerons. Si vous n'êtes pas d'accord ou si vous pensez qu'il y a eu une erreur technique, écrivez-nous un courriel sous la rubrique Contact du menu.</p>",
+        "FAQ10": "<h2>Y a-t-il un nombre maximal de questions que je peux prendre en charge ?</h2><p>Non. Tout nombre de questions peut être pris en charge.",
+        "FAQ8": "<h2>Qu'advient-il des questions et réponses après l'élection ?</h2><p>L'application sera encore disponible pendant un certain temps après l'élection. Mais nous allons également collecter toutes les questions et réponses et les publier sur notre site web www.wepublic.me.</p>",
+        "FAQ7": "<h2>Les politiciens voient-ils comment leurs réponses sont évaluées ?</h2><p>Oui. Sur demande, nous fournissons aux politiciens des informations sur la façon dont leurs réponses ont été reçues par les utilisateurs de +me. Cependant, il n'y a aucune information sur la manière dont les utilisateurs individuels ont évalué les réponses.</p>",
+        "FAQ6": "<h2>Puis-je supprimer une question ou me retirer ?</h2><p>Non. Dès que vous avez évalué une question comme intéressante, vous suivez cette question. Si vous souhaitez supprimer une question que vous avez posée vous-même, veuillez nous écrire un courriel sous la rubrique Aide du menu Burger.</p>",
+        "FAQ5": "<h2>Est-ce que vous éditez ou modifiez les questions et les réponses ?</h2><p>Non. Nous fixons un nombre maximal de caractères pour les questions et les réponses, au-delà duquel nous n'avons aucune influence sur leur contenu. Veuillez vous assurer que votre question n'enfreint pas le Codex +me, sinon nous devrons la supprimer.</p>"
     },
     "QUESTION": {
         "REPORT_CONFIRM": "Nous allons nous pencher sur cette question. Si elle enfreint notre Code +me, elle sera supprimée.",
@@ -189,5 +214,52 @@
     "WIP": "Cette fonctionnalité n'est pas encore disponible.",
     "CONNERROR": "La connexion au serveur a échoué, veuillez vérifier votre connexion Internet.",
     "CANCEL": "Annuler",
-    "OK": "OK"
+    "OK": "OK",
+    "SEARCH": {
+        "SELECT_TAGS": "Veuillez sélectionner des #mots-clés",
+        "NotEnoughSearchCharacters": "Veuillez saisir quelques caractères supplémentaires.",
+        "EMPTY": "Il n'y a pas encore de questions pour ce terme de recherche.",
+        "TITLE": "Recherche"
+    },
+    "SETTINGS": {
+        "YOUR_PROFILE": "Votre profil",
+        "SAVE_SETTINGS": "Enregistrer",
+        "REPEAT_PW": "Confirmer le mot de passe",
+        "OLD_PW": "Ancien mot de passe",
+        "NEW_PW": "Nouveau mot de passe",
+        "LASTNAME": "Nom de famille",
+        "FIRSTNAME": "Prénom",
+        "EMAIL": "Adresse courriel",
+        "CHANGE_PW": "Changer le mot de passe"
+    },
+    "RANDOM": {
+        "EMPTY": "Il ne reste plus de questions."
+    },
+    "ONBOARDING": {
+        "OK_GO": "C’est parti",
+        "PAGE5": "Mais vous ne pouvez voir quelle réponse vient de quel parti qu'après l'avoir évaluée par vous-même. Vous pourrez ainsi voir qui représente vos intérêts – et tout ce que vous avez à faire est de voter le 26 septembre !",
+        "HEADLINE_PAGE5": "Évaluer les réponses",
+        "PAGE4": "Les parties répondent chaque jour aux questions qui ont le plus de partisans – directement, simultanément et de manière comparable !",
+        "HEADLINE_PAGE4": "Obtenir des réponses",
+        "PAGE3": "Ou soutenez les bonnes questions des autres ! En appuyant sur +moi, vous montrez qu'une question vous intéresse également.",
+        "HEADLINE_PAGE3": "Soutenir les questions",
+        "PAGE2": "Que voulez-vous que les parties participantes répondent ? Posez votre question et abordez les sujets importants !",
+        "HEADLINE_PAGE2": "poser des questions",
+        "PAGE1": "Sur +me, vous pouvez poser vos questions sur des sujets importants à différents partis en même temps jusqu'aux élections fédérales.",
+        "HEADLINE_PAGE1": "Bienvenue sur +me",
+        "BEGIN_ONBOARDING": "Comment ça fonctionne ?",
+        "SKIP_ONBOARDING": "Ignorer"
+    },
+    "ANSWERED_QUESTIONS": {
+        "EMPTY": "Ici, vous pouvez voir toutes vos questions qui ont déjà reçu une réponse."
+    },
+    "OPEN_QUESTIONS": {
+        "EMPTY": "Vous pouvez voir ici toutes les questions que vous avez évaluées positivement et qui n'ont pas encore reçu de réponse."
+    },
+    "ANSWERS": {
+        "NO_ANSWERS": "Il n'y a pas encore de réponses à cette question.",
+        "GOOD": "bonne réponse",
+        "BAD": "mauvaise réponse",
+        "TITLE": "Réponses"
+    }
 }
