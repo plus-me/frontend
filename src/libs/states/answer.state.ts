@@ -39,8 +39,11 @@ export class AnswerState {
         )),
         tap(answers => {
           answers.sort(this.sort);
+          for(const answer of answers) {
+            ctx.dispatch(new UserActions.MarkSeen(answer.id));
+          }
+
           ctx.setState(answers);
-          ctx.dispatch(new UserActions.MarkSeen(action.questionId));
         }),
       );
   }

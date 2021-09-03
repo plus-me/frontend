@@ -1,6 +1,6 @@
 <ion-item [hidden]="hidden" class="question">
   <ion-grid>
-    <ion-row class="unread-row" *ngIf="checkIfUnread()">
+    <ion-row class="unread-row" *ngIf="question.hasUnseenAnswers === true">
       <ion-chip class="unread">
         <ion-text color="white">{{ "questionListItem.unread" | translate}}</ion-text>
       </ion-chip>
