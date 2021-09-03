@@ -1,0 +1,41 @@
+<div class="meta ion-nowrap ion-no-padding">
+  <ion-chip
+    title="{{question.upvotes | number}} {{ (question.upvotes !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}"
+    color="ion-no-padding white">
+    <ion-icon name="thumbs-up" color="medium"></ion-icon>
+    <ion-text
+      class="stats-label"
+      color="medium">
+      {{question.upvotes | number}} {{ (question.upvotes !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}
+    </ion-text>
+  </ion-chip>
+  <ion-chip
+    color="white"
+    title=""
+    class="ion-no-padding"
+    *ngIf="question.answers.length > 0"
+    (click)="gotoAnswers(question)">
+    <ion-icon
+      name="chatbubbles"
+      color="medium"></ion-icon>
+    <ion-text
+      class="stats-label"
+      color="medium">
+      {{question.answers.length | number}} {{ (question.answers.length !== 1 ? 'questionListItem.answers' : 'questionListItem.answer')  | translate}}
+    </ion-text>
+  </ion-chip>
+  <ng-container *ngIf="!hideRelation">
+    <ion-chip
+      class="status-chip following ion-no-padding"
+      color="white" *ngIf="question.own === false && question.voted === true">
+      <ion-icon
+        name="person-circle"
+        color="medium"></ion-icon>
+      <ion-text color="medium">{{ 'questionListItem.following' | translate}}</ion-text>
+    </ion-chip>
+    <ion-chip class="status-chip mine ion-no-padding" *ngIf="question.own === true">
+      <ion-icon name="person-circle" color="white"></ion-icon>
+      <ion-text color="white">{{ 'questionListItem.mine' | translate}}</ion-text>
+    </ion-chip>
+  </ng-container>
+</div>
