@@ -1,9 +1,9 @@
-import { Component, Input } from "@angular/core";
-import { ModalController } from "@ionic/angular";
-import { Navigate } from "@ngxs/router-plugin";
-import { Store } from "@ngxs/store";
-import { FrontendRoutes } from "@plusme/libs/enums/frontend-routes.enum";
-import { QuestionModel } from "@plusme/libs/models/question.model";
+import { Component, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Navigate } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { QuestionModel } from '@plusme/libs/models/question.model';
 
 
 @Component({
