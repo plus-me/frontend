@@ -274,7 +274,9 @@ export class QuestionState {
     const seenAnswers = this.store.selectSnapshot((state: GlobalState) => state.user.seen);
     let hasUnseenAnswers = false;
 
+    // eslint-disable-next-line @typescript-eslint/dot-notation
     if (typeof data === 'object' && data !== null && Array.isArray(data['answers'])) {
+      // eslint-disable-next-line @typescript-eslint/dot-notation
       for(const answer of data['answers']) {
         if (typeof answer === 'object' && 'id' in answer) {
           if (hasUnseenAnswers === false && !seenAnswers.includes(answer.id)) {
