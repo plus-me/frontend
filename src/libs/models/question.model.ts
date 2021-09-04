@@ -17,4 +17,6 @@ export class QuestionModel {
   public tags: TagModel[] = [];
   @Expose()
   public voted: boolean;
+  @Expose()
+  public hasUnseenAnswers = false;
 }

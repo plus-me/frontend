@@ -383,12 +383,12 @@ export class UserState {
     const state = ctx.getState();
     if (!Array.isArray(state.seen)) {
       ctx.patchState({
-        seen: [action.questionId],
+        seen: [action.answerId],
       });
     } else {
       const seen = uniq([
         ...state.seen,
-        action.questionId,
+        action.answerId,
       ]);
       ctx.patchState({
         seen,
