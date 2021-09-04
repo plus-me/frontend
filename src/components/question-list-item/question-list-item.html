@@ -46,20 +46,6 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="enableDownvote && question.voted === null">
-      <ion-col>
-        <ion-button
-          (click)="downvoteQuestion()"
-          fill="clear"
-          color="dark"
-          class="transparent-button"
-          expand="block">
-          <ion-icon name="close-outline"></ion-icon>
-          {{ 'questionBubble.notInterested' | translate }}
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
     <ion-row *ngIf="enableReporting && question.voted === null">
       <ion-col>
         <ion-button
