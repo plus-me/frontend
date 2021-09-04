@@ -46,7 +46,12 @@
           <ion-row class="answer-text">
             {{ answer.text }}
           </ion-row>
-          <ion-row class="voting">
+          <ion-row *ngIf="(isLoggedIn | async) === false" class="voting ion-padding-top">
+            <ion-col>
+              Bitte <a routerLink="/welcome">melde dich an</a> um zu sehen zu welcher Partei diese Antwort gehört
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="(isLoggedIn | async) === true" class="voting">
             <ion-col class="ion-align-items-start down-vote">
               <ion-fab-button
                 [disabled]="answer.voted !== undefined"
