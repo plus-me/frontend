@@ -9,6 +9,7 @@ import { QuestionModel } from '@plusme/libs/models/question.model';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { UserActions } from '@plusme/libs/actions/users.actions';
 import { UserStateInterface } from '@plusme/libs/states/user.state';
+import { TagModel } from '@plusme/libs/models/tag.model';
 
 @Component({
   selector: 'app-page-search-questions',
@@ -20,6 +21,8 @@ export class SearchQuestionsPage {
   public questions: Observable<QuestionModel[]>;
   @Select((store: GlobalState) => store.user)
   public user: Observable<UserStateInterface>;
+  @Select((store: GlobalState) => store.tags)
+  public tags$: Observable<TagModel[]>;
 
   public searchText = '';
 
@@ -33,25 +36,8 @@ export class SearchQuestionsPage {
     this.store.dispatch(new UserActions.GetVotes());
   }
 
-  public async search() {
-    if (this.searchText.length < 3) {
-      await this.notifier.showToast('SEARCH.NotEnoughSearchCharacters');
-      return;
-    }
-    const loading = await this.loadCtrl.create();
-    await loading.present();
-
-    this
-      .store
-      .dispatch(new QuestionActions.SearchQuestionsAction(this.searchText))
-      .subscribe(
-        async () => {
-          await loading.dismiss();
-        },
-        async () => {
-          await loading.dismiss();
-        },
-      );
+  public async search(tag: TagModel) {
+    this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 
   loadAnswerPage($event) {
