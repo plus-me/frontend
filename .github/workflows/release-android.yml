@@ -42,4 +42,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: "Android Release APK"
-        path: platforms/android/app/build/outputs/apk/release/app-release.apk
+        path: /home/runner/work/frontend/frontend/platforms/android/app/build/outputs/bundle/release/app-release.aab
