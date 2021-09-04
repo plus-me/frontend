@@ -1,4 +1,4 @@
-<ion-item [hidden]="hidden" class="question">
+<ion-item [hidden]="hidden" class="question" (click)="gotoAnswers()">
   <ion-grid>
     <ion-row class="unread-row" *ngIf="question.hasUnseenAnswers === true">
       <ion-chip class="unread">
@@ -12,7 +12,7 @@
           *ngFor="let tag of question.tags"
           color="white"
           class="tag-chip ion-no-padding"
-          (click)="getQuestionsByTag(tag)">
+          (click)="getQuestionsByTag($event, tag)">
           #{{ tag.text }}
         </ion-chip>
       </ion-col>
@@ -31,7 +31,7 @@
     <ion-row *ngIf="enableUpvote && question.voted === null">
       <ion-col>
         <ion-button
-          (click)="upvoteQuestion()"
+          (click)="upvoteQuestion($event)"
           align="bottom"
           shape="round"
           class="upvote-button"
@@ -49,7 +49,7 @@
     <ion-row *ngIf="enableReporting && question.voted === null">
       <ion-col>
         <ion-button
-          (click)="reportQuestion()"
+          (click)="reportQuestion($event)"
           fill="clear"
           class="transparent-button"
           expand="block">
