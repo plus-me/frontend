@@ -1,6 +1,6 @@
 {
     "signup": {
-        "subtitle": "Nous avons besoin de quelques informations pour créer votre compte.",
+        "subtitle": "Nous avons besoin de quelques informations pour créer votre compte. Veuillez d'abord saisir une adresse électronique valide, puis choisissez un mot de passe sûr comportant au moins 8 caractères.",
         "greeter": "Contents que vous soyez là.",
         "welcome": "Bienvenue !",
         "repeatPassword": "Confirmer le mot de passe",
@@ -71,7 +71,7 @@
     "questionBubble": {
         "personAsking": "personne demande",
         "peopleAsking": "personnes demandent",
-        "notInterested": "Ça ne m'intéresse pas",
+        "notInterested": "Question suivante",
         "report": "Signaler la question"
     },
     "profile": {
@@ -114,7 +114,7 @@
         "title": "Mes questions"
     },
     "answers": {
-        "reveal": "Évaluer pour voir les auteurs",
+        "reveal": "Évaluer pour voir le parti",
         "title": "Évaluer les réponses"
     },
     "allAnsweredQuestionsListComponent": {
@@ -132,7 +132,7 @@
     "contact": {
         "instagram": "plusme_app",
         "title": "Contact",
-        "header": "Vous pouvez nous contacter de cette manière :",
+        "header": "Voici comment vous pouvez nous contacter",
         "githubUrl": "https://github.com/plus-me",
         "github": "@plus-me",
         "mail": "contact@plus-me.de",
