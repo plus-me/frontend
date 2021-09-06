@@ -4,56 +4,64 @@
   <ion-card>
     <ion-card-content>
       <ion-list class="input-area" middle no-lines>
-        <ion-item lines="none">
+        <ion-item class="ion-no-padding" lines="none">
           {{ 'signup.welcome' | translate }}
         </ion-item>
-        <ion-item lines="none">
-            {{ 'signup.greeter' | translate }}
+        <ion-item class="ion-no-padding" lines="none">
+          {{ 'signup.greeter' | translate }}
         </ion-item>
-        <ion-item lines="none" class="ion-padding-bottom">
-            {{ 'signup.subtitle' | translate }}
+        <ion-item lines="none" class="ion-no-padding ion-padding-bottom">
+          {{ 'signup.subtitle' | translate }}
         </ion-item>
-        <ion-item >
+        <div class="ion-no-padding">
           <ion-input
+            autocomplete="username"
             [(ngModel)]="email"
             type="email"
             placeholder="{{ 'signup.email' | translate }}"
             >
           </ion-input>
-        </ion-item>
-        <ion-item class="input-item" no-lines>
-          <ion-input
-            [(ngModel)]="password"
-            type="password"
-            placeholder="{{ 'signup.password' | translate }}"
-            >
-          </ion-input>
-        </ion-item>
-        <ion-item class="ion-padding-bottom">
-          <ion-input
-            type="password"
-            [(ngModel)]="passwordRepeat"
-            placeholder="{{ 'signup.repeatPassword' | translate }}"
-            >
-          </ion-input>
-        </ion-item>
-        <ion-item lines="none" class="ion-padding-bottom">
+        </div>
+        <div class="ion-no-padding" no-lines>
+          <app-show-hide-password>
+            <ion-input
+              autocomplete="new-password"
+              [(ngModel)]="password"
+              type="password"
+              placeholder="{{ 'signup.password' | translate }}"
+              >
+            </ion-input>
+          </app-show-hide-password>
+        </div>
+        <div class="ion-no-padding ion-padding-bottom">
+          <app-show-hide-password>
+            <ion-input
+              autocomplete="new-password"
+              type="password"
+              [(ngModel)]="passwordRepeat"
+              type="password"
+              placeholder="{{ 'signup.repeatPassword' | translate }}"
+              >
+            </ion-input>
+          </app-show-hide-password>
+        </div>
+        <ion-item lines="none" class="ion-no-padding ion-padding-bottom">
           <ion-label class="ion-text-wrap">
-          {{ 'signup.confirmlabel1' | translate }}
-          <a (click)="showUsageConditions()">{{ 'terms.title' | translate }}</a>
-          {{ 'signup.confirmlabel2' | translate }}
-          <a (click)="showPrivacy()">{{ 'privacy.title' | translate }}</a>.
+            {{ 'signup.confirmlabel1' | translate }}
+            <a (click)="showUsageConditions()">{{ 'terms.title' | translate }}</a>
+            {{ 'signup.confirmlabel2' | translate }}
+            <a (click)="showPrivacy()">{{ 'privacy.title' | translate }}</a>.
           </ion-label>
         </ion-item>
         <ion-button
-          class="ion-padding-start"
+          class="ion-no-padding"
           expand="block"
           shape="round"
           (click)="signUp()">
           {{ 'signup.submitSignup' | translate }}
         </ion-button>
         <ion-button
-          class="ion-padding-start"
+          class="ion-no-padding"
           expand="block"
           fill="outline"
           shape="round"

@@ -44,17 +44,10 @@ export class QuestionListItemComponent {
   ) {
   }
 
-  public downvoteQuestion() {
-    this
-      .store
-      .dispatch(new QuestionActions.DownvoteQuestionAction(
-        this.question
-      )).subscribe(data => {
-      this.hidden = true;
-    });
-  }
-
-  upvoteQuestion() {
+  upvoteQuestion(event: Event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    event.stopPropagation();
     this
       .store
       .dispatch(new QuestionActions.UpvoteQuestionAction(
@@ -69,7 +62,10 @@ export class QuestionListItemComponent {
     return this.question.answers.length > 0;
   }
 
-  public async getQuestionsByTag(tag: TagModel) {
+  public async getQuestionsByTag(event: Event, tag: TagModel) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    event.stopPropagation();
     const isModal = await this.isModal();
 
     if (!isModal) {
@@ -81,14 +77,20 @@ export class QuestionListItemComponent {
     }
 
     this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
+    return false;
   }
 
-  public gotoAnswers(question: QuestionModel) {
-    this.hideModal();
-    this.store.dispatch(new Navigate([FrontendRoutes.Answers, { id: question.id }]));
+  public gotoAnswers() {
+    if (this.question.answers.length > 0) {
+      this.hideModal();
+      this.store.dispatch(new Navigate([FrontendRoutes.Answers, { id: this.question.id }]));
+    }
   }
 
-  public reportQuestion() {
+  public reportQuestion(event: Event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    event.stopPropagation();
     this.hideModal();
     this.store.dispatch(new Navigate([FrontendRoutes.ReportQuestion, {id: this.question.id}]));
   }

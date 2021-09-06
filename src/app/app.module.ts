@@ -53,6 +53,8 @@ import { SortMenuComponent } from '@plusme/components/navbar/sort.component';
 
 import * as Sentry from 'sentry-cordova';
 import { SentryIonicErrorHandler } from '@plusme/libs/error-handler/sentry-error.handler';
+import { ShowHidePasswordComponent } from '@plusme/components/show-hide-password/show-hide-password.component';
+import { QuestionListItemMetaComponent } from '@plusme/components/question-list-item-meta/question-list-item-meta';
 
 Sentry.init({ dsn: 'https://d55dfb169cbd4aedabc1c9e3b5e82302@sentry.datenknoten.me/3' });
 
@@ -67,6 +69,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     LoginPage,
     RandomQuestionsPage,
     QuestionListItemComponent,
+    QuestionListItemMetaComponent,
     InboxPage,
     SignUpPage,
     WelcomePage,
@@ -83,6 +86,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AllAnsweredListComponent,
     SearchQuestionsPage,
     ReportQuestionPage,
+    ShowHidePasswordComponent,
     SortMenuComponent,
   ],
   imports: [

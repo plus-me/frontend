@@ -3,21 +3,18 @@
 <ion-content>
   <ion-card class="question">
     <ion-card-content>
-      <ion-row>
-        <ion-col>
+      <ion-row class="tags ion-nowrap ion-no-padding">
+        <ion-col class="ion-no-padding">
           <ion-chip
             *ngFor="let tag of (question | async)?.tags"
             color="white"
-            class="tag-chip"
+            class="tag-chip ion-no-padding"
             (click)="getQuestionsByTag(tag)">
             #{{ tag.text }}
           </ion-chip>
         </ion-col>
       </ion-row>
       <ion-row>
-        <!-- <ion-col size="1"> -->
-        <!--   <ion-icon name="help-circle" color="primary" size="large"></ion-icon> -->
-        <!-- </ion-col> -->
         <ion-col (click)="questionExpanded = !questionExpanded">
           <ion-text color="dark">
             <b>
@@ -25,9 +22,9 @@
             </b>
           </ion-text>
           <ion-text color="dark" *ngIf="(question | async)?.text.length >= 80 && !questionExpanded">
-              <b>
+            <b>
               ...
-              </b>
+            </b>
           </ion-text>
         </ion-col>
         <ion-col size="1"  (click)="questionExpanded = !questionExpanded">
@@ -35,34 +32,11 @@
           <ion-icon name="chevron-up" *ngIf="questionExpanded"></ion-icon>
         </ion-col>
       </ion-row>
-      <ion-row class="meta" *ngIf="questionExpanded">
-        <ion-col class="votes">
-          <ion-chip
-            title="{{(question | async).upvotes | number}} {{ ((question | async).upvotes !== 1 ? 'questionListItem.followers' : 'questionListItem.follows') | translate}}"
-            color="white">
-            <ion-icon name="thumbs-up" color="medium"></ion-icon>
-            <ion-text class="stats-label" color="medium">{{(question | async)?.upvotes | number}}</ion-text>
-          </ion-chip>
-        </ion-col>
-        <ion-col class="answers">
-          <ion-chip
-            title="{{(question | async).answers.length | number}} {{ ((question | async).answers.length !== 1 ? 'questionListItem.answers' : 'questionListItem.answer')  | translate}} "
-            color="white">
-            <ion-icon name="chatbubbles" color="medium"></ion-icon>
-            <ion-text class="stats-label" color="medium">{{(question | async)?.answers.length | number}}</ion-text>
-          </ion-chip>
-        </ion-col>
-        <ion-col class="status-chip">
-          <ion-chip class="status-chip following" color="white" *ngIf="(question | async)?.own === false">
-            <ion-icon name="person-circle" color="medium"></ion-icon>
-            <ion-text color="medium">{{ 'questionListItem.following' | translate}}</ion-text>
-          </ion-chip>
-          <ion-chip class="status-chip mine" *ngIf="(question | async)?.own === undefined">
-            <ion-icon name="person-circle" color="white"></ion-icon>
-            <ion-text color="white">{{ 'questionListItem.mine' | translate}}</ion-text>
-          </ion-chip>
-        </ion-col>
-      </ion-row>
+      <app-question-list-item-meta
+        *ngIf="questionExpanded"
+        [question]="(question | async)"
+        [hideRelation]="false">
+      </app-question-list-item-meta>
     </ion-card-content>
   </ion-card>
   <ion-list class="answer-list">
@@ -72,7 +46,12 @@
           <ion-row class="answer-text">
             {{ answer.text }}
           </ion-row>
-          <ion-row class="voting">
+          <ion-row *ngIf="(isLoggedIn | async) === false" class="voting ion-padding-top">
+            <ion-col>
+              Bitte <a routerLink="/welcome">melde dich an</a> um zu sehen zu welcher Partei diese Antwort gehört
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="(isLoggedIn | async) === true" class="voting">
             <ion-col class="ion-align-items-start down-vote">
               <ion-fab-button
                 [disabled]="answer.voted !== undefined"

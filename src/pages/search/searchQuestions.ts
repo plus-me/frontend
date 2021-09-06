@@ -6,9 +6,9 @@ import { GlobalState } from '@plusme/libs/interfaces/global.state';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import { Observable } from 'rxjs';
 import { QuestionModel } from '@plusme/libs/models/question.model';
-import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { UserActions } from '@plusme/libs/actions/users.actions';
 import { UserStateInterface } from '@plusme/libs/states/user.state';
+import { TagModel } from '@plusme/libs/models/tag.model';
 
 @Component({
   selector: 'app-page-search-questions',
@@ -20,12 +20,16 @@ export class SearchQuestionsPage {
   public questions: Observable<QuestionModel[]>;
   @Select((store: GlobalState) => store.user)
   public user: Observable<UserStateInterface>;
+  @Select((store: GlobalState) => store.tags)
+  public tags$: Observable<TagModel[]>;
   @Select((state: GlobalState) => state.questions.sorting)
   public sorting: Observable<string>;
   @Select((state: GlobalState) => state.questions.searchPage)
   public page: Observable<number>;
   @Select((state: GlobalState) => state.questions.searchMaximumPages)
   public maximumPages: Observable<number>;
+
+  public searchText = '';
 
   constructor(
     private loadCtrl: LoadingController,
@@ -37,6 +41,10 @@ export class SearchQuestionsPage {
       return;
     }
     this.store.dispatch(new UserActions.GetVotes());
+  }
+
+  public async search(tag: TagModel) {
+    this.store.dispatch(new QuestionActions.GetQuestionsByTagAction(tag));
   }
 
   async loadNextPage() {

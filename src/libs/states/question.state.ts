@@ -335,7 +335,7 @@ export class QuestionState {
     const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
 
     if (!isLoggedIn) {
-      return this.store.dispatch(new Navigate([FrontendRoutes.Welcome]));
+      return this.store.dispatch(new QuestionActions.GetRandomQuestionAction());
     }
 
     return this
@@ -387,14 +387,33 @@ export class QuestionState {
         }
       }
     }
+
+    const seenAnswers = this.store.selectSnapshot((state: GlobalState) => state.user.seen);
+    let hasUnseenAnswers = false;
+
+    // eslint-disable-next-line @typescript-eslint/dot-notation
+    if (typeof data === 'object' && data !== null && Array.isArray(data['answers'])) {
+      // eslint-disable-next-line @typescript-eslint/dot-notation
+      for(const answer of data['answers']) {
+        if (typeof answer === 'object' && 'id' in answer) {
+          if (hasUnseenAnswers === false && !seenAnswers.includes(answer.id)) {
+            hasUnseenAnswers = true;
+          }
+        }
+      }
+    }
+
     const question = plainToClass(
       QuestionModel,
       data,
       { excludeExtraneousValues: true });
 
     question.tags = questionTags;
+    question.hasUnseenAnswers = hasUnseenAnswers;
     // eslint-disable-next-line @typescript-eslint/dot-notation
     question.timeCreated = new Date(data['time_created']);
+
+    console.dir(question);
 
     return question;
   }
