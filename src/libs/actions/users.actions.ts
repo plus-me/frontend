@@ -47,15 +47,8 @@ export namespace UserActions {
 
     public constructor(
       public questionId: number,
-    ) {}
-  }
-
-  export class SetSorting {
-    public static readonly type = '[Users] Set the sorting method';
-
-    public constructor(
-      public sorting: string,
-    ) {}
+    ) {
+    }
   }
 
   export class GetVotes {

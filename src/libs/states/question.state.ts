@@ -20,9 +20,16 @@ import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
   questions: QuestionModel[];
+  myQuestions: QuestionModel[];
   searchQuestions: QuestionModel[];
   answered: QuestionModel[];
   answeredQuestion: QuestionModel;
+  searchPage: number;
+  searchText: string;
+  sorting: string;
+  searchMaximumPages: number;
+  myQuestionsPage: number;
+  myQuestionsMaximumPage: number;
 }
 
 @State<QuestionStateInterface>({
@@ -134,6 +141,7 @@ export class QuestionState {
   @Action(QuestionActions.GetMyQuestionsAction)
   public getMyQuestions(
     ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.GetMyQuestionsAction,
   ) {
     const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
 
@@ -144,60 +152,136 @@ export class QuestionState {
       return;
     }
 
+    let myQuestionsPage = ctx.getState().myQuestionsPage;
+    if (myQuestionsPage === undefined) {
+      myQuestionsPage = 1;
+      ctx.patchState({myQuestionsPage: 1});
+    }
+    let count = 0;
+
+    const parameters = action.answered ? { page: myQuestionsPage, answered: action.answered} : { page: myQuestionsPage };
+
     return this
       .http
       .get(
-        urlcat(API_ENDPOINT, BackendRoutes.MyQuestions),
+        urlcat(API_ENDPOINT, BackendRoutes.MyQuestions, parameters)
       )
       .pipe(
-        map((data: unknown[]) => data.map((item) => this.convertDataIntoQuestionWithTags(item))),
+        // eslint-disable-next-line @typescript-eslint/dot-notation
+        tap(data => { count = data['count']; }),
+        map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
-            questions,
-          });
+              myQuestions: questions,
+              myQuestionsMaximumPage: count / 20
+            }
+          );
         }),
       );
+  }
+
+  @Action(QuestionActions.LoadNextMyQuestionsPage)
+  public loadNextMyQuestionPage(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.LoadNextMyQuestionsPage
+  ) {
+    const currentPage = ctx.getState().myQuestionsPage;
+    ctx.patchState({
+      myQuestionsPage: currentPage + 1
+    });
+    return ctx.dispatch(new QuestionActions.GetMyQuestionsAction(action.answered));
+  }
+
+  @Action(QuestionActions.LoadPreviousMyQuestionsPage)
+  public loadPreviousMyQuestionsPage(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.LoadPreviousMyQuestionsPage
+  ) {
+    const currentPage = ctx.getState().myQuestionsPage;
+    if (currentPage === 1) {
+      return;
+    }
+    ctx.patchState({
+      myQuestionsPage: currentPage - 1
+    });
+    return ctx.dispatch(new QuestionActions.GetMyQuestionsAction(action.answered));
+  }
+
+  @Action(QuestionActions.LoadNextSearchPage)
+  public loadNextPage(
+    ctx: StateContext<QuestionStateInterface>,
+  ) {
+    const currentPage = ctx.getState().searchPage;
+    ctx.patchState({
+      searchPage: currentPage + 1
+    });
+    return ctx.dispatch(new QuestionActions.SearchQuestionsAction());
+  }
+
+  @Action(QuestionActions.LoadPreviousSearchPage)
+  public loadPreviousPage(
+    ctx: StateContext<QuestionStateInterface>,
+  ) {
+    const currentPage = ctx.getState().searchPage;
+    if (currentPage === 1) {
+      return;
+    }
+    ctx.patchState({
+      searchPage: currentPage - 1
+    });
+    return ctx.dispatch(new QuestionActions.SearchQuestionsAction());
   }
 
   @Action(QuestionActions.SearchQuestionsAction)
   public searchQuestions(
     ctx: StateContext<QuestionStateInterface>,
-    action: QuestionActions.SearchQuestionsAction,
   ) {
+
+    const searchText = ctx.getState().searchText;
+    const searchPage = ctx.getState().searchPage;
+    const searchSort = ctx.getState().sorting ? ctx.getState().sorting : 'newest';
+    let count = 0;
+
     return this
       .http
       .get(
-        urlcat(API_ENDPOINT, BackendRoutes.Questions, { search: action.searchText  }),
+        urlcat(API_ENDPOINT, BackendRoutes.Questions, { search: searchText, page: searchPage, ordering: '-' + searchSort }),
       )
       .pipe(
+        // eslint-disable-next-line @typescript-eslint/dot-notation
+        tap(data => { count = data['count']; }),
         map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
         tap(questions => {
           ctx.patchState({
             searchQuestions: questions,
+            searchMaximumPages: count / 20
           });
           // this.store.dispatch(new Navigate([FrontendRoutes.SearchQuestions]));
         }),
       );
   }
 
-  @Action(QuestionActions.SortBy)
-  public sortQuestions(
+  @Action(QuestionActions.SetSearchText)
+  public setSearchText(
     ctx: StateContext<QuestionStateInterface>,
-    action: QuestionActions.SortBy,
+    action: QuestionActions.SetSearchText,
   ) {
-    let questionsToSort = ctx.getState().searchQuestions;
-    if (action.searchMode === 'answers') {
-      questionsToSort = questionsToSort.sort((a, b) => b.answers.length - a.answers.length);
-    } else if (action.searchMode === 'following') {
-      questionsToSort = questionsToSort.sort((a, b) => Number(b.voted) - Number(a.voted));
-    } else if (action.searchMode === 'upvotes') {
-      questionsToSort = questionsToSort.sort((a, b) => b.upvotes - a.upvotes);
-    } else if (action.searchMode === 'newest') {
-      questionsToSort = questionsToSort.sort((a, b) => b.timeCreated.getTime() - a.timeCreated.getTime());
-    }
     ctx.patchState({
-      searchQuestions: questionsToSort,
+      searchText: action.text,
+      searchPage: 1
     });
+    //return ctx.dispatch(new QuestionActions.SearchQuestionsAction());
+  }
+
+  @Action(QuestionActions.SetSorting)
+  public setSorting(
+    ctx: StateContext<QuestionStateInterface>,
+    action: QuestionActions.SetSorting,
+  ) {
+    ctx.patchState({
+      sorting: action.sorting
+    });
+    ctx.dispatch(new QuestionActions.SearchQuestionsAction());
   }
 
   @Action(QuestionActions.GetAllAnsweredQuestionsAction)
@@ -272,6 +356,19 @@ export class QuestionState {
   ) {
     ctx.patchState({
       searchQuestions: [],
+      searchPage: 1,
+      searchMaximumPages: 1
+    });
+  }
+
+  @Action(QuestionActions.ResetMyQuestionsAction)
+  public resetMyQuestions(
+    ctx: StateContext<QuestionStateInterface>,
+  ) {
+    ctx.patchState({
+      myQuestions: [],
+      myQuestionsPage: 1,
+      myQuestionsMaximumPage: 1
     });
   }
 

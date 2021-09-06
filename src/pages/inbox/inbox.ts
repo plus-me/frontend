@@ -34,7 +34,7 @@ export class InboxPage {
 
     this
       .store
-      .dispatch(new QuestionActions.GetMyQuestionsAction())
+      .dispatch(new QuestionActions.GetMyQuestionsAction(true))
       .subscribe(
         async () => {
           await loading.dismiss();
@@ -65,6 +65,7 @@ export class InboxPage {
 
 
   public async ionViewDidEnter() {
+    this.store.dispatch(new QuestionActions.ResetMyQuestionsAction());
     await this.select_mine();
   }
 

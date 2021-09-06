@@ -4,26 +4,23 @@ import { TranslateService } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
 import { GlobalState } from '@plusme/libs/interfaces/global.state';
 import { Observable } from 'rxjs';
-import { UserActions } from '@plusme/libs/actions/users.actions';
+import { QuestionActions } from '@plusme/libs/actions/questions.action';
 
 @Component({
   selector: 'app-sort-menu',
   templateUrl: './sort.component.html',
 })
 export class SortMenuComponent {
-  @Select((state: GlobalState) => state.user.sorting)
+  @Select((state: GlobalState) => state.questions.sorting)
   public sorting: Observable<string>;
 
-  public modes = ['newest', 'upvotes', 'following', 'answers'];
+  public modes = ['newest', 'upvotes'];
 
   constructor(
     private popoverController: PopoverController,
-    private translate: TranslateService,
-    private store: Store
   ) { }
 
   closePopOver(sortBy) {
-    this.store.dispatch(new UserActions.SetSorting(sortBy));
     this.popoverController.dismiss(sortBy);
   }
 }

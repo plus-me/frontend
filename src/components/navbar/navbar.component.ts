@@ -57,6 +57,7 @@ export class NavbarComponent implements AfterViewInit {
 
   gotoInbox() {
     this.store.dispatch(new QuestionActions.ResetSearchQuestionsAction());
+    this.store.dispatch(new QuestionActions.ResetMyQuestionsAction());
     this.store.dispatch(new Navigate([
       FrontendRoutes.Inbox,
     ]));
@@ -69,7 +70,10 @@ export class NavbarComponent implements AfterViewInit {
     });
 
     popover.onDidDismiss().then(sortBy => {
-      this.store.dispatch(new QuestionActions.SortBy(sortBy.data));
+      if (sortBy.data === undefined) {
+        return;
+      }
+      this.store.dispatch(new QuestionActions.SetSorting(sortBy.data));
     });
 
     await popover.present();
@@ -77,17 +81,14 @@ export class NavbarComponent implements AfterViewInit {
 
   public async search(event: Event) {
     const searchText = (event.target as any).value;
-
-    if (searchText.length < 3) {
-      return;
-    }
-
     const loading = await this.loadController.create();
     await loading.present();
 
+    this.store.dispatch(new QuestionActions.SetSearchText(searchText));
+
     this
       .store
-      .dispatch(new QuestionActions.SearchQuestionsAction(searchText))
+      .dispatch(new QuestionActions.SearchQuestionsAction())
       .subscribe(
         async () => {
           await loading.dismiss();
@@ -103,9 +104,7 @@ export class NavbarComponent implements AfterViewInit {
       return;
     }
 
-    this.store.dispatch(
-      new QuestionActions.ResetSearchQuestionsAction(),
-    );
+    this.store.dispatch(new QuestionActions.ResetSearchQuestionsAction());
 
     const searchModal = await this.modalController.create({
       component: SearchQuestionsPage,

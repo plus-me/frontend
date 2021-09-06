@@ -20,38 +20,31 @@ export class SearchQuestionsPage {
   public questions: Observable<QuestionModel[]>;
   @Select((store: GlobalState) => store.user)
   public user: Observable<UserStateInterface>;
-
-  public searchText = '';
+  @Select((state: GlobalState) => state.questions.sorting)
+  public sorting: Observable<string>;
+  @Select((state: GlobalState) => state.questions.searchPage)
+  public page: Observable<number>;
+  @Select((state: GlobalState) => state.questions.searchMaximumPages)
+  public maximumPages: Observable<number>;
 
   constructor(
     private loadCtrl: LoadingController,
     private store: Store,
-    private notifier: TranslatedNotificationController,
   ) { }
 
   public async ionViewDidEnter() {
+    if (this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn) === false) {
+      return;
+    }
     this.store.dispatch(new UserActions.GetVotes());
   }
 
-  public async search() {
-    if (this.searchText.length < 3) {
-      await this.notifier.showToast('SEARCH.NotEnoughSearchCharacters');
-      return;
-    }
-    const loading = await this.loadCtrl.create();
-    await loading.present();
+  async loadNextPage() {
+    this.store.dispatch(new QuestionActions.LoadNextSearchPage());
+  }
 
-    this
-      .store
-      .dispatch(new QuestionActions.SearchQuestionsAction(this.searchText))
-      .subscribe(
-        async () => {
-          await loading.dismiss();
-        },
-        async () => {
-          await loading.dismiss();
-        },
-      );
+  async loadPreviousPage() {
+    this.store.dispatch(new QuestionActions.LoadPreviousSearchPage());
   }
 
   loadAnswerPage($event) {
