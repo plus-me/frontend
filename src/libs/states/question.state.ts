@@ -33,7 +33,21 @@ export interface QuestionStateInterface {
 }
 
 @State<QuestionStateInterface>({
-  name: 'questions'
+  name: 'questions',
+  defaults: {
+    randomQuestion: undefined,
+    questions: [],
+    myQuestions: [],
+    searchQuestions: [],
+    answered: [],
+    answeredQuestion: undefined,
+    searchPage: 1,
+    searchText: '',
+    sorting: 'newest',
+    searchMaximumPages: 0,
+    myQuestionsPage: 1,
+    myQuestionsMaximumPage: 0,
+  }
 })
 @Injectable()
 export class QuestionState {
