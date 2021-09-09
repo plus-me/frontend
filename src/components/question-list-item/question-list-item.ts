@@ -44,6 +44,20 @@ export class QuestionListItemComponent {
   ) {
   }
 
+  public downvoteQuestion(event: Event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    event.stopPropagation();
+    this
+      .store
+      .dispatch(new QuestionActions.DownvoteQuestionAction(
+        this.question
+      )).subscribe(data => {
+      this.hidden = true;
+      this.question.voted = true;
+    });
+  }
+
   upvoteQuestion(event: Event) {
     event.preventDefault();
     event.stopImmediatePropagation();

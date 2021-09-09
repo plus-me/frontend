@@ -28,10 +28,10 @@
 
     <app-question-list-item-meta [question]="question" [hideRelation]="hideRelation"></app-question-list-item-meta>
 
-    <ion-row *ngIf="enableUpvote && question.voted === null">
+    <ion-row *ngIf="enableUpvote">
       <ion-col>
         <ion-button
-          *ngIf="enableUpvote && question.voted === false"
+          *ngIf="enableUpvote"
           (click)="upvoteQuestion($event)"
           align="bottom"
           shape="round"
@@ -50,7 +50,7 @@
       <ion-col>
         <ion-button
           (click)="downvoteQuestion($event)"
-          *ngIf="enableDownvote && question.voted === true"
+          *ngIf="enableDownvote"
           fill="clear"
           color="dark"
           class="transparent-button"
@@ -60,7 +60,7 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="enableReporting && question.voted === null">
+    <ion-row *ngIf="enableReporting && question.own === false && question.answers.length === 0">
       <ion-col>
         <ion-button
           (click)="reportQuestion($event)"
