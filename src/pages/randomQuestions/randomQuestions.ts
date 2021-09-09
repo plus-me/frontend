@@ -17,9 +17,6 @@ export class RandomQuestionsPage {
   @Select((store: GlobalState) => store.questions.randomQuestion)
   public question: Observable<QuestionModel>;
 
-  @Select((store: GlobalState) => store.user.hasConsentedNotifications)
-  public hasConsentedNotifications: Observable<boolean | undefined>;
-
   constructor(
     private loadCtrl: LoadingController,
     private alertCtrl: AlertController,
@@ -47,8 +44,13 @@ export class RandomQuestionsPage {
   }
 
   async askForNotificationConsent() {
-    console.log('test', this.hasConsentedNotifications);
-    if (this.hasConsentedNotifications === undefined) {
+    const hasConsentedNotifications = this
+      .store
+      .selectSnapshot(
+        (state: GlobalState) => state.user.hasConsentedNotifications
+      );
+
+    if (hasConsentedNotifications === undefined) {
       const alert = await this.alertCtrl.create({
         header: this.translate.instant('notifications.askForConsentTitle'),
         message: this.translate.instant('notifications.askForConsentDescription'),
