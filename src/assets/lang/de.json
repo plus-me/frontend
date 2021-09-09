@@ -224,7 +224,8 @@
   "questionBubble": {
     "peopleAsking": "Personen fragen",
     "personAsking": "Person fragt",
-    "notInterested": "Nächste Frage",
+    "notInterested": "Interessiert mich nicht",
+    "nextQuestion": "Nächste Frage",
     "report": "Frage melden"
   },
   "profile": {
