@@ -34,6 +34,7 @@ export interface UserStateInterface {
   hasOnboardingFinished: boolean;
   votes: { [id: number]: boolean};
   seen: number[];
+  hasConsentedNotifications: boolean | undefined;
 }
 
 @State<UserStateInterface>({
@@ -42,7 +43,8 @@ export interface UserStateInterface {
     isLoggedIn: false,
     hasOnboardingFinished: false,
     votes: {},
-    seen: []
+    seen: [],
+    hasConsentedNotifications: undefined
   }
 })
 @Injectable()
@@ -394,6 +396,16 @@ export class UserState {
         seen,
       });
     }
+  }
+
+  @Action(UserActions.SetNotificationPreference)
+  public setNotificationPreference(
+    ctx: StateContext<UserStateInterface>,
+    action: UserActions.SetNotificationPreference,
+  ) {
+    ctx.patchState({
+      hasConsentedNotifications: action.hasNotificationsConsented,
+    });
   }
 
   public semVerCheck(data) {

@@ -84,6 +84,12 @@
         "deleteConfirmTitle": "Supprimer définitivement le compte ?",
         "resetLinkError": "Malheureusement, ça n'a pas marché."
     },
+    "notifications": {
+        "askForConsentTitle": "Souhaitez-vous recevoir des notifications push?",
+        "askForConsentDescription": "Nous utilisons des notifications push pour vous informer de la réception de nouvelles réponses aux questions que vous suivez.",
+        "denyNotifications": "Non",
+        "consentNotifications": "Oui"
+    },
     "questionListItem": {
         "follows": "suivies",
         "followers": "suivre",

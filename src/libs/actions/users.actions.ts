@@ -61,4 +61,16 @@ export namespace UserActions {
   export class FinishedOnboarding {
     public static readonly type = '[Users] Finished Onboarding';
   }
+
+  export class SetNotificationPreference {
+    public static readonly type = '[Users] Set User Preference for Notifications';
+
+    public constructor(
+      public hasNotificationsConsented: boolean,
+    ) {}
+  }
+
+  export class RegisterDeviceForNotification {
+    public static readonly type = '[Users] Register User\'s Device';
+  }
 }

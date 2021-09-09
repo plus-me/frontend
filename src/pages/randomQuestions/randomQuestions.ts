@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { QuestionModel } from '@plusme/libs/models/question.model';
-import { GlobalState } from '@plusme/libs/interfaces/global.state';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Select, Store } from '@ngxs/store';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 import { QuestionActions } from '@plusme/libs/actions/questions.action';
+import { UserActions } from '@plusme/libs/actions/users.actions';
+import { GlobalState } from '@plusme/libs/interfaces/global.state';
+import { QuestionModel } from '@plusme/libs/models/question.model';
+
 
 @Component({
   selector: 'app-page-randomquestions',
@@ -14,8 +17,13 @@ export class RandomQuestionsPage {
   @Select((store: GlobalState) => store.questions.randomQuestion)
   public question: Observable<QuestionModel>;
 
+  @Select((store: GlobalState) => store.user.hasConsentedNotifications)
+  public hasConsentedNotifications: Observable<boolean | undefined>;
+
   constructor(
     private loadCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private translate: TranslateService,
     private store: Store,
   ) { }
 
@@ -34,6 +42,35 @@ export class RandomQuestionsPage {
           await loading.dismiss();
         },
       );
+
+    this.askForNotificationConsent();
+  }
+
+  async askForNotificationConsent() {
+    console.log('test', this.hasConsentedNotifications);
+    if (this.hasConsentedNotifications === undefined) {
+      const alert = await this.alertCtrl.create({
+        header: this.translate.instant('notifications.askForConsentTitle'),
+        message: this.translate.instant('notifications.askForConsentDescription'),
+        buttons: [
+          {
+            text: this.translate.instant('notifications.denyNotifications'),
+            role: 'cancel',
+            handler: () => {
+              this.store.dispatch(new UserActions.SetNotificationPreference(false));
+            }
+          },
+          {
+            text: this.translate.instant('notifications.consentNotifications'),
+            handler: () => {
+              this.store.dispatch(new UserActions.SetNotificationPreference(true));
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    }
   }
 
   // public loadAnswerPage(question) {

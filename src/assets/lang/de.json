@@ -247,6 +247,12 @@
     "resetLinkSent": "Ein link zum Zurücksetzen Deines Passwortes wurde an Deine Email-Adresse geschickt.",
     "resetLinkError": "Leider hat das nicht geklappt."
   },
+  "notifications": {
+    "askForConsentTitle": "Möchtest du Push Nachrichten erhalten?",
+    "askForConsentDescription": "Wir benutzen Push-Nachrichten, um dich zu informieren, wenn neue Antworten zu Fragen, denen du folgst, eingegangen sind.",
+    "denyNotifications": "Nein",
+    "consentNotifications": "Ja"
+  },
   "myQuestions": {
     "title": "Meine Fragen"
   },
