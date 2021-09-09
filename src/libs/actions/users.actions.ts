@@ -43,10 +43,10 @@ export namespace UserActions {
   }
 
   export class MarkSeen {
-    public static readonly type = '[Users] Get votes of user';
+    public static readonly type = '[Users] Mark answer as seen';
 
     public constructor(
-      public questionId: number,
+      public answerId: number,
     ) {}
   }
 

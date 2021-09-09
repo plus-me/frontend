@@ -83,7 +83,7 @@
   },
 
   "contact": {
-    "header": "So kannst Du uns kontaktieren:",
+    "header": "So kannst Du uns kontaktieren",
     "title": "Kontakt",
     "instagram": "plusme_app",
     "instagramUrl": "https://www.instagram.com/plusme_app/",
@@ -159,7 +159,7 @@
     "repeatPassword": "Passwort bestätigen",
     "welcome": "Willkommen!",
     "greeter": "Schön, dass Du dabei bist.",
-    "subtitle": "Ein paar Infos brauchen wir, um deinen Account anzulegen.",
+    "subtitle": "Ein paar Infos brauchen wir, um deinen Account anzulegen. Bitte gib zuerst deine gültige E-Mail-Adresse an und wähle danach ein sicheres Passwort mit mindestens 8 Zeichen.",
     "submitSignup": "Jetzt Konto anlegen!",
     "cancel": "Abbrechen",
     "confirmlabel1": "Durch Fortfahren akzeptierst Du unseren ",
@@ -224,7 +224,7 @@
   "questionBubble": {
     "peopleAsking": "Personen fragen",
     "personAsking": "Person fragt",
-    "notInterested": "Interessiert mich nicht",
+    "notInterested": "Nächste Frage",
     "report": "Frage melden"
   },
   "profile": {
@@ -276,7 +276,7 @@
   },
   "answers": {
     "title": "Antworten bewerten",
-    "reveal": "Bewerten um Absender zu sehen"
+    "reveal": "Bewerten um Partei zu sehen"
   },
   "newVersion": "Bitte update die +me App, um weniger Bugs und mehr Funktionalität zu bekommen. Ohne Updates können wir eine ordnungsgemäße Funktion nicht garantieren."
 }

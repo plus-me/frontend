@@ -25,6 +25,8 @@ export class AnswersPage {
   public question: Observable<QuestionModel>;
   @Select((store: GlobalState) => store.tags)
   public tags: Observable<TagModel>;
+  @Select((store: GlobalState) => store.user.isLoggedIn)
+  public isLoggedIn: Observable<boolean>;
 
   public questionExpanded = false;
 

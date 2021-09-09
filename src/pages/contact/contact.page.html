@@ -3,7 +3,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      {{ 'contact.header' | translate}}
+      <ion-card-title>{{ 'contact.header' | translate}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -60,6 +60,24 @@
           </ion-button>
         </ion-item>
       </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Links zu den App-Stores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Apple</ion-label>
+      <br>
+      <a href="https://apps.apple.com/us/app/me/id1581468844">
+        <img class="qr" src="assets/apple_store_qr.png">
+      </a>
+      <br>
+      <ion-label>Android</ion-label>
+      <br>
+      <a href="https://play.google.com/store/apps/details?id=de.wtfeg.plusme">
+        <img class="qr" src="assets/android_store_qr.png">
+      </a>
     </ion-card-content>
   </ion-card>
 </ion-content>
