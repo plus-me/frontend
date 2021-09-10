@@ -250,7 +250,7 @@
   },
   "notifications": {
     "askForConsentTitle": "Möchtest du Push Nachrichten erhalten?",
-    "askForConsentDescription": "Wir benutzen Push-Nachrichten, um dich zu informieren, wenn neue Antworten zu Fragen, denen du folgst, eingegangen sind.",
+    "askForConsentDescription": "Wir benutzen Push-Nachrichten, um dich zu informieren, wenn neue Antworten zu Fragen, denen du folgst, eingegangen sind. Im nächsten Schritt wird dein Betriebssystem dich nach den Berechtigungen dazu fragen.",
     "denyNotifications": "Nein",
     "consentNotifications": "Ja"
   },
