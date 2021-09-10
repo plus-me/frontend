@@ -34,7 +34,7 @@ export interface UserStateInterface {
   hasOnboardingFinished: boolean;
   votes: { [id: number]: boolean};
   seen: number[];
-  hasConsentedNotifications: boolean | undefined;
+  hasConsentedNotifications?: boolean;
 }
 
 @State<UserStateInterface>({
@@ -44,7 +44,6 @@ export interface UserStateInterface {
     hasOnboardingFinished: false,
     votes: {},
     seen: [],
-    hasConsentedNotifications: undefined
   }
 })
 @Injectable()
