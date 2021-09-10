@@ -10,39 +10,43 @@ export class HighlightPipe implements PipeTransform {
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  transform(list: any, searchText: string): any[] {
-    // @ts-ignore
-    String.prototype.replaceAll = function(_find, _replace, _ignoreCase){
+  public transform(list: string, searchText: string) {
+    if (!list) { return []; }
+    if (!searchText) { return list; }
 
-      const original = this.toString();
+    const value = this.replaceAll(
+      list,
+      searchText,
+      `<span class="highlight-text">${searchText}</span>`,
+      true);
+
+    console.dir(value);
+
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+  }
+
+  private replaceAll(original: string, find: string, replace: string, ignoreCase: boolean) {
       let result = '';
       let substring = original;
       let substringPosition = 0;
       let substringEnd = -1;
-      if(_ignoreCase){ _find = _find.toLowerCase(); substring = original.toLowerCase(); }
 
-      while((substringEnd=substring.indexOf(_find)) > -1)
-      {
-        result += original.substring(substringPosition, substringPosition+substringEnd) + _replace;
-        substring = substring.substring(substringEnd+_find.length, substring.length);
-        substringPosition += substringEnd+_find.length;
+      if (ignoreCase) {
+        find = find.toLowerCase(); substring = original.toLowerCase();
+      }
+
+      while ((substringEnd=substring.indexOf(find)) > -1) {
+        result += original.substring(substringPosition, substringPosition+substringEnd) + replace;
+        substring = substring.substring(substringEnd+find.length, substring.length);
+        substringPosition += substringEnd+find.length;
       }
 
       // Add Leftover
-      if(substring.length>0){ result+=original.substring(original.length-substring.length, original.length); }
+      if (substring.length>0) {
+        result += original.substring(original.length-substring.length, original.length);
+      }
 
       // Return New String
       return result;
     };
-//
-    if (!list) { return []; }
-    if (!searchText) { return list; }
-
-    const value = list.replaceAll(
-      searchText, `<span style="color: #0E9976">${searchText}</span>`, true);
-    console.log('value', value);
-
-    // @ts-ignore
-    return this.sanitizer.bypassSecurityTrustHtml(value);
-  }
 }

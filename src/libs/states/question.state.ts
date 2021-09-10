@@ -23,6 +23,7 @@ export interface QuestionStateInterface {
   searchQuestions: QuestionModel[];
   answered: QuestionModel[];
   answeredQuestion: QuestionModel;
+  searchText?: string;
 }
 
 @State<QuestionStateInterface>({
@@ -174,6 +175,7 @@ export class QuestionState {
         tap(questions => {
           ctx.patchState({
             searchQuestions: questions,
+            searchText: action.searchText,
           });
           // this.store.dispatch(new Navigate([FrontendRoutes.SearchQuestions]));
         }),
@@ -293,8 +295,6 @@ export class QuestionState {
 
     question.tags = questionTags;
     question.hasUnseenAnswers = hasUnseenAnswers;
-
-    console.dir(question);
 
     return question;
   }

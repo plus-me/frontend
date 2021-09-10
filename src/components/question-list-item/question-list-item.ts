@@ -24,8 +24,8 @@ import { QuestionStateInterface } from '@plusme/libs/states/question.state';
 export class QuestionListItemComponent {
   @Select((store: GlobalState) => store.user)
   public user: Observable<UserStateInterface>;
-  @Select((store: GlobalState) => store.questions)
-  public searchText: Observable<QuestionStateInterface>;
+  @Select((store: GlobalState) => store.questions.searchText)
+  public searchText: Observable<string | undefined>;
   @ViewChild('questionlistitem') questionListItem;
   @Input() question: QuestionModel;
   @Input() enableDownvote = true;
