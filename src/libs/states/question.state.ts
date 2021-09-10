@@ -24,8 +24,8 @@ export interface QuestionStateInterface {
   searchQuestions: QuestionModel[];
   answered: QuestionModel[];
   answeredQuestion: QuestionModel;
+  searchText?: string;
   searchPage: number;
-  searchText: string;
   sorting: string;
   searchMaximumPages: number;
   myQuestionsPage: number;
@@ -42,7 +42,6 @@ export interface QuestionStateInterface {
     answered: [],
     answeredQuestion: undefined,
     searchPage: 1,
-    searchText: '',
     sorting: 'newest',
     searchMaximumPages: 0,
     myQuestionsPage: 1,
@@ -268,9 +267,8 @@ export class QuestionState {
         tap(questions => {
           ctx.patchState({
             searchQuestions: questions,
-            searchMaximumPages: count / 20
+            searchMaximumPages: count / 20,
           });
-          // this.store.dispatch(new Navigate([FrontendRoutes.SearchQuestions]));
         }),
       );
   }
@@ -284,7 +282,6 @@ export class QuestionState {
       searchText: action.text,
       searchPage: 1
     });
-    //return ctx.dispatch(new QuestionActions.SearchQuestionsAction());
   }
 
   @Action(QuestionActions.SetSorting)
@@ -301,7 +298,6 @@ export class QuestionState {
   @Action(QuestionActions.GetAllAnsweredQuestionsAction)
   public getAllAnsweredQuestions(
     ctx: StateContext<QuestionStateInterface>,
-    action: QuestionActions.GetAllAnsweredQuestionsAction,
   ) {
     return this
       .http
@@ -426,8 +422,6 @@ export class QuestionState {
     question.hasUnseenAnswers = hasUnseenAnswers;
     // eslint-disable-next-line @typescript-eslint/dot-notation
     question.timeCreated = new Date(data['time_created']);
-
-    console.dir(question);
 
     return question;
   }
