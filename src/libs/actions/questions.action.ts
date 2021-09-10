@@ -17,6 +17,10 @@ export namespace QuestionActions {
 
   export class GetMyQuestionsAction {
     public static readonly type = '[Questions] Get My Question';
+
+    public constructor(
+      public answered: boolean=false,
+    ) {}
   }
 
   export class GetAllAnsweredQuestionsAction {
@@ -30,6 +34,22 @@ export namespace QuestionActions {
       public tag: TagModel,
     ) {}
 
+  }
+
+  export class SetSearchText {
+    public static readonly type = '[Questions] Set text for search';
+
+    public constructor(
+      public text: string,
+    ) {}
+  }
+
+  export class SortBy {
+    public static readonly type = '[Questions] Sort by votes, date, following';
+
+    public constructor(
+      public searchMode: string,
+    ) {}
   }
 
   export class GetQuestion {
@@ -52,7 +72,6 @@ export namespace QuestionActions {
     public static readonly type = '[Questions] Search Question';
 
     public constructor(
-      public searchText: string,
     ) {}
   }
 
@@ -76,4 +95,39 @@ export namespace QuestionActions {
     public static readonly type = '[Questions] Reset Search Questions';
   }
 
+  export class ResetMyQuestionsAction {
+    public static readonly type = '[Questions] Reset My Questions';
+  }
+
+  export class LoadNextSearchPage {
+    public static readonly type ='[Questions] Load next search page';
+  }
+
+  export class LoadPreviousSearchPage {
+    public static readonly type ='[Questions] Load previous search page';
+  }
+
+  export class LoadNextMyQuestionsPage {
+    public static readonly type ='[Questions] Load next my question page';
+
+    public constructor(
+      public answered: boolean=false,
+    ) {}
+  }
+
+  export class LoadPreviousMyQuestionsPage {
+    public static readonly type ='[Questions] Load previous my question page';
+
+    public constructor(
+      public answered: boolean=false,
+    ) {}
+  }
+
+  export class SetSorting {
+    public static readonly type = '[Users] Set the sorting method';
+
+    public constructor(
+      public sorting: string,
+    ) {}
+  }
 }
