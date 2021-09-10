@@ -19,4 +19,6 @@ export class QuestionModel {
   public voted: boolean;
   @Expose()
   public hasUnseenAnswers = false;
+  @Expose()
+  public timeCreated: Date;
 }
