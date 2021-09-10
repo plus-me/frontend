@@ -50,29 +50,31 @@ export class RandomQuestionsPage {
         (state: GlobalState) => state.user.hasConsentedNotifications
       );
 
-    if (hasConsentedNotifications === undefined) {
-      const alert = await this.alertCtrl.create({
-        header: this.translate.instant('notifications.askForConsentTitle'),
-        message: this.translate.instant('notifications.askForConsentDescription'),
-        buttons: [
-          {
-            text: this.translate.instant('notifications.denyNotifications'),
-            role: 'cancel',
-            handler: () => {
-              this.store.dispatch(new UserActions.SetNotificationPreference(false));
-            }
-          },
-          {
-            text: this.translate.instant('notifications.consentNotifications'),
-            handler: () => {
-              this.store.dispatch(new UserActions.SetNotificationPreference(true));
-            }
-          }
-        ]
-      });
-
-      await alert.present();
+    if (typeof hasConsentedNotifications !== 'undefined') {
+      return;
     }
+
+    const alert = await this.alertCtrl.create({
+      header: this.translate.instant('notifications.askForConsentTitle'),
+      message: this.translate.instant('notifications.askForConsentDescription'),
+      buttons: [
+        {
+          text: this.translate.instant('notifications.denyNotifications'),
+          role: 'cancel',
+          handler: () => {
+            this.store.dispatch(new UserActions.SetNotificationPreference(false));
+          }
+        },
+        {
+          text: this.translate.instant('notifications.consentNotifications'),
+          handler: () => {
+            this.store.dispatch(new UserActions.SetNotificationPreference(true));
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   // public loadAnswerPage(question) {
