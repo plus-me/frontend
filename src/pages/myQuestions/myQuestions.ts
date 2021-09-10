@@ -29,6 +29,8 @@ export class MyQuestionsPage {
     const loading = await this.loadCtrl.create();
     await loading.present();
 
+    this.store.dispatch(new QuestionActions.ResetMyQuestionsAction());
+
     this
       .store
       .dispatch(new QuestionActions.GetMyQuestionsAction())
