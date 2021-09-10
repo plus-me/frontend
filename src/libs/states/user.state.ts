@@ -407,7 +407,24 @@ export class UserState {
     });
   }
 
-  public semVerCheck(data) {
+  @Action(UserActions.RegisterDeviceForNotification)
+  public registerDevice(
+    _ctx: StateContext<UserStateInterface>,
+    action: UserActions.RegisterDeviceForNotification,
+  ) {
+    return this
+      .http
+      .post(
+        urlcat(API_ENDPOINT, BackendRoutes.Devices),
+        JSON.stringify({
+          registration_id: action.registrationToken,
+          device_id: action.deviceId,
+          type: action.osType,
+        }),
+      );
+  }
+
+  public semVerCheck(data: any) {
     if (semver.gte(this.appVersion, data.Version) === false) {
       this.notifier.showToast('newVersion', 10000);
     }

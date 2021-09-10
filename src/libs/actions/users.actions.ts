@@ -72,5 +72,11 @@ export namespace UserActions {
 
   export class RegisterDeviceForNotification {
     public static readonly type = '[Users] Register User\'s Device';
+
+    public constructor(
+      public registrationToken: string,
+      public deviceId: string,
+      public osType: 'android' | 'ios',
+    ) {}
   }
 }
