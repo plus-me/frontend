@@ -32,6 +32,7 @@
     <preference name="FadeSplashScreen" value="true" />
     <preference name="orientation" value="portrait" />
     <platform name="android">
+        <resource-file src="google-services.json" target="/app/google-services.json" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -53,7 +54,8 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
-      <hook type="after_prepare" src="ci/patch-ios-project.js" />
+        <resource-file src="GoogleService-Info.plist" />
+        <hook src="ci/patch-ios-project.js" type="after_prepare" />
         <preference name="target-device" value="handset" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />

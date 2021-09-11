@@ -63,6 +63,7 @@
     "@angular/compiler": "12.1.0",
     "@angular/compiler-cli": "12.1.0",
     "@angular/language-service": "12.1.0",
+    "@havesource/cordova-plugin-push": "^2.0.0",
     "@ionic/angular-toolkit": "4.0.0",
     "@ionic/app-scripts": "3.2.4",
     "@ionic/cli": "6.16.3",
@@ -72,6 +73,7 @@
     "@types/shelljs": "0.8.9",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
+    "@xmldom/xmldom": "0.7.2",
     "cordova": "10.0.0",
     "cordova-android": "10.0.1",
     "cordova-plugin-app-name": "1.0.7",
@@ -86,8 +88,7 @@
     "shelljs": "0.8.4",
     "ts-node": "10.1.0",
     "type-fest": "2.0.0",
-    "typescript": "4.3.4",
-    "@xmldom/xmldom": "0.7.2"
+    "typescript": "4.3.4"
   },
   "description": "Making democracy digital",
   "cordova": {
@@ -101,7 +102,11 @@
       "cordova-plugin-app-name": {
         "APP_NAME": "+me"
       },
-      "sentry-cordova": {}
+      "sentry-cordova": {},
+      "@havesource/cordova-plugin-push": {
+        "ANDROID_SUPPORT_V13_VERSION": "28.0.0",
+        "FCM_VERSION": "18.+"
+      }
     },
     "platforms": [
       "ios",
