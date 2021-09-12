@@ -31,9 +31,9 @@ export class PushService {
         response.registrationId,
         await this.uniqueDeviceID.get(),
         this.device.platform.toLowerCase(),
-      )
+      );
 
       this.store.dispatch(action);
-    })
+    });
   }
 }
