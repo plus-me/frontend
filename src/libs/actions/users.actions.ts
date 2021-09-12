@@ -76,7 +76,7 @@ export namespace UserActions {
     public constructor(
       public registrationToken: string,
       public deviceId: string,
-      public osType: 'android' | 'ios',
+      public osType: string,
     ) {}
   }
 }

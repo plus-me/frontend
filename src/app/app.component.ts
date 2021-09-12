@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 import { CreateQuestionComponent } from '@plusme/components/create-question/create-question.component';
 import { TagsActions } from '@plusme/libs/actions/tags.actions';
 import { PackageJson } from 'type-fest';
+import { PushService } from '@plusme/libs/services/push.service';
 
 const packageJSON = require('../../package.json') as PackageJson;
 
@@ -88,6 +89,7 @@ export class AppComponent {
     private router: Router,
     private store: Store,
     private modalCtrl: ModalController,
+    private pushService: PushService,
   ) {
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('de');
@@ -119,6 +121,12 @@ export class AppComponent {
       this.router.navigate([
         FrontendRoutes.Onboarding,
       ]);
+    }
+
+    const hasNotificationsConsented = this.store.selectSnapshot((store: GlobalState) => store.user.hasConsentedNotifications);
+
+    if (hasNotificationsConsented === true) {
+      await this.pushService.setupPushNotifications();
     }
 
     this.splashScreen.hide();

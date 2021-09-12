@@ -21,6 +21,7 @@ import urlcat from 'urlcat';
 import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
 import { uniq } from 'lodash';
 import { PackageJson } from 'type-fest';
+import { PushService } from '@plusme/libs/services/push.service';
 
 const semver = require('semver');
 
@@ -57,6 +58,7 @@ export class UserState {
     private translate: TranslateService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
+    private pushService: PushService,
   ) {
   }
 
@@ -405,6 +407,10 @@ export class UserState {
     ctx.patchState({
       hasConsentedNotifications: action.hasNotificationsConsented,
     });
+
+    if (action.hasNotificationsConsented === true) {
+      return this.pushService.setupPushNotifications();
+    }
   }
 
   @Action(UserActions.RegisterDeviceForNotification)
