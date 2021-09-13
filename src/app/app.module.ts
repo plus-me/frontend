@@ -7,8 +7,10 @@ import {
 } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
+import { Device } from '@ionic-native/device/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -174,6 +176,8 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
       deps: [Store],
     },
     {provide: ErrorHandler, useClass: SentryIonicErrorHandler},
+    Device,
+    UniqueDeviceID,
     PushService,
   ]
 })
