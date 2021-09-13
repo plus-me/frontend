@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Device } from '@ionic-native/device/ngx';
-import '@havesource/cordova-plugin-push/types';
 import { UserActions } from '../actions/users.actions';
 import { Store } from '@ngxs/store';
 
