@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Type definitions for phonegap-plugin-push
 // Project: https://github.com/havesource/cordova-plugin-push
 // Definitions by: Frederico Galvão <https://github.com/fredgalvao>
