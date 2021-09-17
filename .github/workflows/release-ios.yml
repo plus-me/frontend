@@ -22,6 +22,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - run: echo '${{ secrets.APPSTORE_CONNECT_API_KEY }}' > /tmp/AuthKey_FLMC3H9H8X.p8
     - run: echo '${{ secrets.SENTRY_TOKEN }}' > ./sentry.properties
+    - run: echo '${{ secrets.FCM_IOS_PLIST }}' > ./GoogleService-Info.plist
     - run: npm ci
     # create www folder to satisfy cordova
     - run: mkdir -p www
