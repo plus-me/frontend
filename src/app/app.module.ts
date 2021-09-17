@@ -55,6 +55,7 @@ import { SortMenuComponent } from '@plusme/components/navbar/sort.component';
 
 import * as Sentry from 'sentry-cordova';
 import { SentryIonicErrorHandler } from '@plusme/libs/error-handler/sentry-error.handler';
+import { MyDownVotedQuestionsPage } from '@plusme/pages/myDownvotes/myDownvotes';
 import { ShowHidePasswordComponent } from '@plusme/components/show-hide-password/show-hide-password.component';
 import { QuestionListItemMetaComponent } from '@plusme/components/question-list-item-meta/question-list-item-meta';
 import { HighlightPipe } from '@plusme/utils/hilight.pipe';
@@ -93,6 +94,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AllAnsweredListComponent,
     SearchQuestionsPage,
     ReportQuestionPage,
+    MyDownVotedQuestionsPage,
     ShowHidePasswordComponent,
     HighlightPipe,
     SortMenuComponent,
@@ -165,6 +167,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     AllAnsweredListComponent,
     SearchQuestionsPage,
     ReportQuestionPage,
+    MyDownVotedQuestionsPage,
     SortMenuComponent,
   ],
   providers: [

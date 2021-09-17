@@ -201,7 +201,8 @@
     "licenses": "Lizenzen",
     "contact": "Kontakt",
     "version": "Version",
-    "inbox": "Antworten"
+    "inbox": "Antworten",
+    "myDownvotedQuestions": "Abgelehnte Fragen"
   },
   "createQuestion": {
     "title": "Deine Frage an alle Parteien",
@@ -224,7 +225,8 @@
   "questionBubble": {
     "peopleAsking": "Personen fragen",
     "personAsking": "Person fragt",
-    "notInterested": "Nächste Frage",
+    "notInterested": "Interessiert mich nicht",
+    "nextQuestion": "Nächste Frage",
     "report": "Frage melden"
   },
   "profile": {
@@ -256,6 +258,9 @@
   },
   "myQuestions": {
     "title": "Meine Fragen"
+  },
+  "myDownvotes": {
+    "title": "Meine abgelehnten Fragen"
   },
   "questionListItem": {
     "unread": "Ungelesen",

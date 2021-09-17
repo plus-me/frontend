@@ -19,7 +19,7 @@
       <app-question-list-item
         [question]="question"
         [hideRelation]="false"
-        [enableDownvote]="true"
+        [enableDownvote]="!question.own"
         [enableUpvote]="true"
         [enableReporting]="true"
         [voted]="(user | async).votes[question.id]"

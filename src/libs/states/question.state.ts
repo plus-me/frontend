@@ -174,10 +174,12 @@ export class QuestionState {
 
     const parameters = action.answered ? { page: myQuestionsPage, answered: action.answered} : { page: myQuestionsPage };
 
+    const route = action.onlyDownVoted ? BackendRoutes.DownvotedQuestions : BackendRoutes.MyQuestions;
+
     return this
       .http
       .get(
-        urlcat(API_ENDPOINT, BackendRoutes.MyQuestions, parameters)
+        urlcat(API_ENDPOINT, route, parameters)
       )
       .pipe(
         // eslint-disable-next-line @typescript-eslint/dot-notation

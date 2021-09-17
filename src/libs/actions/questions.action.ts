@@ -19,6 +19,7 @@ export namespace QuestionActions {
     public static readonly type = '[Questions] Get My Question';
 
     public constructor(
+      public onlyDownVoted: boolean=false,
       public answered: boolean=false,
     ) {}
   }

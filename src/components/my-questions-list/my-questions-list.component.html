@@ -3,8 +3,8 @@
 <ion-list no-lines class="wrapping-list">
   <ng-container class="item-wrapper" *ngFor="let question of (questions | async)">
     <ng-container *ngIf="!answeredOnly || (question.answers.length > 0)">
-      <app-question-list-item [question]="question" [hideRelation]="false" [enableReporting]="false"
-                              [enableDownvote]="false" [enableUpvote]="false"
+      <app-question-list-item [question]="question" [hideRelation]="false" [enableReporting]="true"
+                              [enableDownvote]="!downvotedOnly && !question.own" [enableUpvote]="downvotedOnly"
                               (textClick)="loadAnswerPage($event)" (tagClick)="loadSearchPage($event)">
       </app-question-list-item>
     </ng-container>

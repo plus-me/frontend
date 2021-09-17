@@ -15,6 +15,8 @@ export class MyQuestionsListComponent {
   public questions: Observable<QuestionModel[]>;
   @Input()
   public answeredOnly: boolean;
+  @Input()
+  public downvotedOnly: boolean;
   @Select((state: GlobalState) => state.questions.myQuestionsPage)
   public page: Observable<number>;
   @Select((state: GlobalState) => state.questions.myQuestionsMaximumPage)
