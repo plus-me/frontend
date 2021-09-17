@@ -60,7 +60,10 @@ import { QuestionListItemMetaComponent } from '@plusme/components/question-list-
 import { HighlightPipe } from '@plusme/utils/hilight.pipe';
 import { PushService } from '@plusme/libs/services/push.service';
 
-Sentry.init({ dsn: 'https://d55dfb169cbd4aedabc1c9e3b5e82302@sentry.datenknoten.me/3' });
+Sentry.init({
+  dsn: 'https://d55dfb169cbd4aedabc1c9e3b5e82302@sentry.datenknoten.me/3',
+  release: `plusme@${require('../../package.json').version}`,
+});
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
 
