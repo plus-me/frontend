@@ -9,4 +9,17 @@
       </app-question-list-item>
     </ng-container>
   </ng-container>
+
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="light" shape="round" *ngIf="(page | async) > 1" (click)="this.loadPreviousPage()">
+        <ion-label>{{ 'SEARCH.previous' | translate}}</ion-label>
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="light" shape="round" (click)="this.loadNextPage()" *ngIf="(maximumPages | async) > (page | async)">
+        <ion-label>{{ 'SEARCH.next' | translate}}</ion-label>
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-list>

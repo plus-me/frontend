@@ -133,7 +133,8 @@
     "TITLE": "Suche",
     "EMPTY": "Zu diesem Suchbegriff gibt es noch keine Fragen.",
     "SELECT_TAGS": "Bitte #Tags auswählen",
-    "NotEnoughSearchCharacters": "Bitte gib noch ein paar mehr Zeichen ein."
+    "next": "Weiter",
+    "previous": "Zurück"
   },
 
   "SETTINGS": {
@@ -278,6 +279,12 @@
   "answers": {
     "title": "Antworten bewerten",
     "reveal": "Bewerten um Partei zu sehen"
+  },
+  "sort": {
+    "newest": "Neueste",
+    "upvotes": "Beliebtheit",
+    "following": "Folge ich",
+    "answers": "Beantwortet"
   },
   "newVersion": "Bitte update die +me App, um weniger Bugs und mehr Funktionalität zu bekommen. Ohne Updates können wir eine ordnungsgemäße Funktion nicht garantieren."
 }

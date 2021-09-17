@@ -42,7 +42,7 @@ export interface UserStateInterface {
     isLoggedIn: false,
     hasOnboardingFinished: false,
     votes: {},
-    seen: []
+    seen: [],
   }
 })
 @Injectable()

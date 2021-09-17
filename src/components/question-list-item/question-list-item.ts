@@ -11,6 +11,7 @@ import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { UserStateInterface } from '@plusme/libs/states/user.state';
 import { ModalController } from '@ionic/angular';
 import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
+import { QuestionStateInterface } from '@plusme/libs/states/question.state';
 
 /*eslint no-underscore-dangle: [0]*/
 
@@ -23,6 +24,8 @@ import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 export class QuestionListItemComponent {
   @Select((store: GlobalState) => store.user)
   public user: Observable<UserStateInterface>;
+  @Select((store: GlobalState) => store.questions.searchText)
+  public searchText: Observable<string | undefined>;
   @ViewChild('questionlistitem') questionListItem;
   @Input() question: QuestionModel;
   @Input() enableDownvote = true;
