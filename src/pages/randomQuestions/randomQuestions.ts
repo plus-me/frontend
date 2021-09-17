@@ -44,6 +44,14 @@ export class RandomQuestionsPage {
   }
 
   async askForNotificationConsent() {
+    const isLoggedIn = this
+      .store
+      .selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
+
+    if (!isLoggedIn) {
+      return;
+    }
+
     const hasConsentedNotifications = this
       .store
       .selectSnapshot(
