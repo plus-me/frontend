@@ -57,6 +57,7 @@
         <resource-file src="GoogleService-Info.plist" />
         <hook src="ci/patch-ios-project.js" type="after_prepare" />
         <preference name="target-device" value="handset" />
+        <preference name="deployment-target" value="11.0" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
