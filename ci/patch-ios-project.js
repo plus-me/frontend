@@ -61,8 +61,8 @@ module.exports = context => {
 
     const podFilePath = path.join(projectDir, 'Podfile')
 
-    if ( fs.existsSync(projectDir) ) {
-      console.log('Patching Podfile!');
+    if ( fs.existsSync(podFilePath) ) {
+      console.log(`Patching Podfile ${podFilePath}!`);
       const podFileContent = fs.readFileSync(path.join(projectDir, 'Podfile'));
 
       fs.writeFile(podFilePath, podFileContent + podFilePatch)
