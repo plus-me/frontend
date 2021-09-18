@@ -35,7 +35,7 @@ platform :ios do
             team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
         )
         cocoapods(
-            podfile: "./platform/ios/Podfile",
+            podfile: "./platforms/ios/Podfile",
             clean_install: true,
             verbose: true
         )
