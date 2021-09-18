@@ -2,6 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const xcode = require('xcode');
 
+const podFilePatch = `
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
+end
+`
+
+
 const shellScript = `
 APP_PATH="\${TARGET_BUILD_DIR}/\${WRAPPER_NAME}"
 
@@ -44,6 +55,12 @@ module.exports = context => {
     const dirContent = fs.readdirSync(projectDir);
     const matchingProjectFiles = dirContent.filter(filePath => /.*\.xcodeproj/gi.test(filePath));
     const projectPath = path.join(projectDir, matchingProjectFiles[0], 'project.pbxproj');
+
+    const podFilePath = path.join(projectDir, 'Podfile')
+
+    const podFileContent = fs.readFileSync(path.join(projectDir, 'Podfile'));
+
+    fs.writeFile(podFilePath, podFileContent + podFilePatch)
 
     const project = xcode.project(projectPath);
 

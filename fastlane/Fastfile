@@ -41,6 +41,7 @@ platform :ios do
             output_directory: "./builds",
             output_name: "plusme.ipa",
             codesigning_identity: "Apple Distribution: WTF Kooperative eG (5V8UJLB8H3)",
+            export_xcargs: "-allowProvisioningUpdates",
             xcargs: {
                 :PROVISIONING_PROFILE_SPECIFIER => "match AppStore de.wtfeg.plusme"
             },
