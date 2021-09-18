@@ -34,6 +34,10 @@ platform :ios do
             path: "./platforms/ios/plusme.xcodeproj",
             team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
         )
+        cocoapods(
+            clean_install: true,
+            verbose: true
+        )
         gym(
             export_method: 'app-store',
             workspace: "./platforms/ios/plusme.xcworkspace",
