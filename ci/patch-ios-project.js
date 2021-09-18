@@ -65,8 +65,10 @@ module.exports = context => {
       console.log(`Patching Podfile ${podFilePath}!`);
       const podFileContent = fs.readFileSync(path.join(projectDir, 'Podfile'));
 
-      fs.writeFileSync(podFilePath, podFileContent + podFilePatch);
-      console.log('Successfully patched Podfile');
+      if (!podFileContent.includes('post_install')) {
+        fs.writeFileSync(podFilePath, podFileContent + podFilePatch);
+        console.log('Successfully patched Podfile');
+      }
     } else {
       console.error('Could not find Podfile');
     }
