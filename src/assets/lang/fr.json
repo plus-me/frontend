@@ -42,7 +42,8 @@
         "contact": "Contact",
         "licenses": "Licences",
         "imprint": "Mentions légales",
-        "inbox": "Réponses"
+        "inbox": "Réponses",
+        "myDownvotedQuestions": "Questions rejetées"
     },
     "imprint": {
         "title": "Mentions légales"
@@ -71,8 +72,9 @@
     "questionBubble": {
         "personAsking": "personne demande",
         "peopleAsking": "personnes demandent",
-        "notInterested": "Question suivante",
-        "report": "Signaler la question"
+        "notInterested": "Je ne suis pas intéressé(e)",
+        "report": "Signaler la question",
+        "nextQuestion": "Question suivante"
     },
     "profile": {
         "update": "Mettre à jour",
@@ -96,7 +98,7 @@
         "resetLinkError": "Malheureusement, ça n'a pas marché."
     },
     "notifications": {
-        "askForConsentTitle": "Souhaitez-vous recevoir des notifications push?",
+        "askForConsentTitle": "Voulez-vous recevoir des notifications push ?",
         "askForConsentDescription": "Nous utilisons des notifications push pour vous informer de la réception de nouvelles réponses aux questions que vous suivez.",
         "denyNotifications": "Non",
         "consentNotifications": "Oui"
@@ -219,7 +221,9 @@
         "SELECT_TAGS": "Veuillez sélectionner des #mots-clés",
         "NotEnoughSearchCharacters": "Veuillez saisir quelques caractères supplémentaires.",
         "EMPTY": "Il n'y a pas encore de questions pour ce terme de recherche.",
-        "TITLE": "Recherche"
+        "TITLE": "Recherche",
+        "previous": "Retour",
+        "next": "Suivant"
     },
     "SETTINGS": {
         "YOUR_PROFILE": "Votre profil",
@@ -261,5 +265,14 @@
         "GOOD": "bonne réponse",
         "BAD": "mauvaise réponse",
         "TITLE": "Réponses"
+    },
+    "sort": {
+        "answers": "Avec des réponses",
+        "following": "Que je suis",
+        "upvotes": "Popularité",
+        "newest": "Les plus récentes"
+    },
+    "myDownvotes": {
+        "title": "Mes questions rejetées"
     }
 }
