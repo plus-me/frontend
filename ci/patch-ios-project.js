@@ -21,15 +21,10 @@ APP_PATH="\${TARGET_BUILD_DIR}/\${WRAPPER_NAME}"
 
 # This script loops through the frameworks embedded in the application and
 # removes unused architectures.
-find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
-do
+FRAMEWORK="Sentry.framework"
 FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
 FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
-[[ ! -r "$FRAMEWORK_EXECUTABLE_PATH" ]] && continue
-[[ "xFBLPromises" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
-[[ "xProtobuff" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
-[[ "xGoogleUtilities" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
-[[ "xnanopb" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
+
 echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
 
 EXTRACTED_ARCHS=()
@@ -48,8 +43,6 @@ rm "\${EXTRACTED_ARCHS[@]}"
 echo "Replacing original executable with thinned version"
 rm "$FRAMEWORK_EXECUTABLE_PATH"
 mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
-
-done
 `;
 
 module.exports = context => {
