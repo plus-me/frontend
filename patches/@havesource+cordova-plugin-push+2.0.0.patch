@@ -1,5 +1,5 @@
 diff --git a/node_modules/@havesource/cordova-plugin-push/plugin.xml b/node_modules/@havesource/cordova-plugin-push/plugin.xml
-index 835c494..7d450c4 100755
+index 835c494..61397c7 100755
 --- a/node_modules/@havesource/cordova-plugin-push/plugin.xml
 +++ b/node_modules/@havesource/cordova-plugin-push/plugin.xml
 @@ -59,7 +59,7 @@
@@ -11,3 +11,12 @@ index 835c494..7d450c4 100755
      </config-file>
  
      <preference name="ANDROID_SUPPORT_V13_VERSION" default="28.0.0"/>
+@@ -91,7 +91,7 @@
+   </platform>
+ 
+   <platform name="ios">
+-    <preference name="IOS_FIREBASE_MESSAGING_VERSION" default="~> 6.32.2"/>
++    <preference name="IOS_FIREBASE_MESSAGING_VERSION" default="~> 7.11.0"/>
+ 
+     <config-file target="config.xml" parent="/*">
+       <feature name="PushNotification">
