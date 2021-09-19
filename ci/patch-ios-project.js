@@ -25,6 +25,11 @@ find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
 do
 FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
 FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
+[[ ! -r "$FRAMEWORK_EXECUTABLE_PATH" ]] && continue
+[[ "xFBLPromises" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
+[[ "xProtobuff" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
+[[ "xGoogleUtilities" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
+[[ "xnanopb" -eq "x$FRAMEWORK_EXECUTABLE_NAME" ]] && continue
 echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
 
 EXTRACTED_ARCHS=()
