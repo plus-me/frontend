@@ -3,11 +3,10 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { UserActions } from '../actions/users.actions';
 import { Store } from '@ngxs/store';
+import { GlobalState } from '../interfaces/global.state';
 
 @Injectable()
 export class PushService {
-  private pushManager?: PhonegapPluginPush.PushNotification;
-
   public constructor(
     private uniqueDeviceID: UniqueDeviceID,
     private device: Device,
@@ -15,24 +14,32 @@ export class PushService {
   ) { }
 
   public async setupPushNotifications() {
-    const hasPermission = await (new Promise<boolean>((resolve, reject) => {
-      PushNotification.hasPermission((data) => resolve(data.isEnabled), () => reject(false));
-    }));
+    const isLoggedIn = this.store.selectSnapshot((state: GlobalState) => state.user.isLoggedIn);
 
-    if (!hasPermission) {
+    if(!isLoggedIn) {
       return;
     }
 
-    this.pushManager = PushNotification.init({});
+    const hasConsented = this.store.selectSnapshot((state: GlobalState) => state.user.hasConsentedNotifications);
 
-    this.pushManager.on('registration', async (response) => {
-      const action = new UserActions.RegisterDeviceForNotification(
-        response.registrationId,
-        await this.uniqueDeviceID.get(),
-        this.device.platform.toLowerCase(),
-      );
+    if (!hasConsented) {
+      return;
+    }
 
-      this.store.dispatch(action);
-    });
+    try {
+      await cordova.plugins.firebase.messaging.requestPermission();
+    } catch(error) {
+      return;
+    }
+
+    const token = await cordova.plugins.firebase.messaging.getToken();
+
+    const action = new UserActions.RegisterDeviceForNotification(
+      token,
+      await this.uniqueDeviceID.get(),
+      this.device.platform.toLowerCase(),
+    );
+
+    this.store.dispatch(action);
   }
 }
