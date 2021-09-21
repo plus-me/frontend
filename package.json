@@ -116,7 +116,8 @@
       "cordova-plugin-firebase-messaging": {
         "ANDROID_FIREBASE_MESSAGING_VERSION": "22.0.+",
         "ANDROIDX_CORE_VERSION": "1.6.+"
-      }
+      },
+      "cordova-plugin-uniquedeviceid": {}
     },
     "platforms": [
       "ios",
