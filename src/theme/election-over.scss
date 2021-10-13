@@ -1,0 +1,16 @@
+app-election-over {
+  ion-content::part(scroll) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  ion-card {
+    flex-grow: 1;
+  }
+
+  ion-card-content p {
+    font-size: 16px !important;
+  }
+}

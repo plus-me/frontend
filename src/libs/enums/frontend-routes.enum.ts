@@ -16,4 +16,5 @@ export enum FrontendRoutes {
   Terms = 'terms',
   Profile = 'profile',
   ReportQuestion = 'report/:id',
+  ElectionOver = 'election-over',
 }
