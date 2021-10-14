@@ -18,6 +18,7 @@ import { SearchQuestionsPage } from '@plusme/pages/search/searchQuestions';
 import { AnswersPage } from '@plusme/pages/answers/answers';
 import { ReportQuestionPage } from '@plusme/pages/report/report';
 import { MyDownVotedQuestionsPage } from '@plusme/pages/myDownvotes/myDownvotes';
+import { ElectionOverPage } from '@plusme/pages/election-over/election-over.page';
 
 export const AppRoutes: Routes = [
   {
@@ -87,5 +88,9 @@ export const AppRoutes: Routes = [
     path: FrontendRoutes.ReportQuestion,
     component: ReportQuestionPage,
     canActivate: [AuthGuard]
+  },
+  {
+    path: FrontendRoutes.ElectionOver,
+    component: ElectionOverPage,
   }
 ];

@@ -60,6 +60,7 @@ import { ShowHidePasswordComponent } from '@plusme/components/show-hide-password
 import { QuestionListItemMetaComponent } from '@plusme/components/question-list-item-meta/question-list-item-meta';
 import { HighlightPipe } from '@plusme/utils/hilight.pipe';
 import { PushService } from '@plusme/libs/services/push.service';
+import { ElectionOverPage } from '@plusme/pages/election-over/election-over.page';
 
 Sentry.init({
   dsn: 'https://d55dfb169cbd4aedabc1c9e3b5e82302@sentry.datenknoten.me/3',
@@ -98,6 +99,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ShowHidePasswordComponent,
     HighlightPipe,
     SortMenuComponent,
+    ElectionOverPage,
   ],
   imports: [
     BrowserModule,
@@ -169,6 +171,7 @@ const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http
     ReportQuestionPage,
     MyDownVotedQuestionsPage,
     SortMenuComponent,
+    ElectionOverPage,
   ],
   providers: [
     StatusBar,

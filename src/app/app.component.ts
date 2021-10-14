@@ -101,6 +101,12 @@ export class AppComponent {
     await this.storage.create();
     this.statusBar.styleDefault();
 
+    this.router.navigate([
+        FrontendRoutes.ElectionOver,
+    ]);
+
+    return;
+
     this.store.dispatch(new TagsActions.RefreshTags());
 
     const hasOnboardingFinished = this
