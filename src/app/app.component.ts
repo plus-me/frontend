@@ -105,6 +105,8 @@ export class AppComponent {
         FrontendRoutes.ElectionOver,
     ]);
 
+    this.splashScreen.hide();
+
     return;
 
     this.store.dispatch(new TagsActions.RefreshTags());
