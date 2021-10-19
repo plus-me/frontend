@@ -1,16 +1,45 @@
 app-election-over {
-  ion-content::part(scroll) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+  .description {
+    p {
+      font-size: 16px !important;
+      margin-bottom: 1em;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
   }
 
-  ion-card {
-    flex-grow: 1;
-  }
+  .question {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      list-style-position: inside;
+    }
 
-  ion-card-content p {
-    font-size: 16px !important;
+    ion-card-title {
+      font-size: 20px;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    li {
+      margin-top: 1em;
+    }
+
+    li:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 16px;
+    }
   }
 }
