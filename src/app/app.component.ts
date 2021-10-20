@@ -101,13 +101,19 @@ export class AppComponent {
     await this.storage.create();
     this.statusBar.styleDefault();
 
-    this.router.navigate([
+    const isElectionOver = true;
+
+    if (isElectionOver) {
+      this.store.dispatch(new UserActions.LogoutAction());
+
+      this.router.navigate([
         FrontendRoutes.ElectionOver,
-    ]);
+      ]);
 
-    this.splashScreen.hide();
+      this.splashScreen.hide();
 
-    return;
+      return;
+    }
 
     this.store.dispatch(new TagsActions.RefreshTags());
 

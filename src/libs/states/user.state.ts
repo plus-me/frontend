@@ -36,7 +36,10 @@ export interface UserStateInterface {
   votes: { [id: number]: boolean};
   seen: number[];
   hasConsentedNotifications?: boolean;
+  isElectionOver: boolean;
 }
+
+const isElectionOver = true;
 
 @State<UserStateInterface>({
   name: 'user',
@@ -45,6 +48,7 @@ export interface UserStateInterface {
     hasOnboardingFinished: false,
     votes: {},
     seen: [],
+    isElectionOver,
   }
 })
 @Injectable()
@@ -60,6 +64,7 @@ export class UserState {
     private toastCtrl: ToastController,
     private pushService: PushService,
   ) {
+
   }
 
   @Action(UserActions.LoginAction)
@@ -200,6 +205,18 @@ export class UserState {
   public logout(
     ctx: StateContext<UserStateInterface>,
   ) {
+    const isElectionOver = true;
+
+    if (isElectionOver === true) {
+      ctx.patchState({
+        isLoggedIn: false,
+        token: undefined,
+        user: undefined,
+      });
+
+      return;
+    }
+
     return this
       .http
       .get<any>(
