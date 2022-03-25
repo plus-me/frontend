@@ -1,0 +1,59 @@
+name: Release Beta iOS
+
+on:
+  push:
+    branch: [ 'develop' ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.17.1
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.17.1
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+        bundler-cache: true
+    - uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: echo '${{ secrets.APPSTORE_CONNECT_API_KEY }}' > /tmp/AuthKey_FLMC3H9H8X.p8
+    - run: echo '${{ secrets.SENTRY_TOKEN }}' > ./sentry.properties
+    - run: echo '${{ secrets.FCM_IOS_PLIST }}' > ./GoogleService-Info.plist
+    - run: npm ci
+    # create www folder to satisfy cordova
+    - run: mkdir -p www
+    - run: npm run apply-version
+    - run: npm run ionic -- cordova resources ios
+    - run: npm run cordova -- platform add ios
+    - run: npm run ng -- run app:ionic-cordova-build:production --platform=ios
+    - run: npm run cordova -- prepare ios --prod
+    - run: bundle exec fastlane ios build
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+        FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+    - name: Archive Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: "iOS Release IPA"
+        path: builds/plusme.ipa
+    - name: upload artefact to App Center
+      uses: wzieba/AppCenter-Github-Action@v1
+      with:
+        appName: plusme-azure-2022-konten.tim.schumacher.im/me-iOS
+        token: ${{secrets.IOS_APP_CENTER_TOKEN}}
+        group: Testers
+        file: builds/plusme.ipa
+        notifyTesters: true
+        debug: false
+
+    # - run: bundle exec fastlane ios store
+    #   env:
+    #     FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+    #     FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+    #     MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+    #     FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD  }}
