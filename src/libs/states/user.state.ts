@@ -39,7 +39,7 @@ export interface UserStateInterface {
   isElectionOver: boolean;
 }
 
-const isElectionOver = true;
+const isElectionOver = false;
 
 @State<UserStateInterface>({
   name: 'user',
@@ -205,9 +205,9 @@ export class UserState {
   public logout(
     ctx: StateContext<UserStateInterface>,
   ) {
-    const isElectionOver = true;
+    const state = ctx.getState();
 
-    if (isElectionOver === true) {
+    if (state.isElectionOver === true) {
       ctx.patchState({
         isLoggedIn: false,
         token: undefined,
