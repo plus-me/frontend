@@ -5,6 +5,7 @@
   "homepage": "http://plus-me.de/",
   "private": true,
   "scripts": {
+    "appcenter": "appcenter",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -77,6 +78,7 @@
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "@xmldom/xmldom": "0.7.2",
+    "appcenter-cli": "2.10.8",
     "cordova": "10.0.0",
     "cordova-android": "10.0.1",
     "cordova-plugin-androidx-adapter": "1.1.3",

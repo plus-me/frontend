@@ -41,19 +41,6 @@ jobs:
       with:
         name: "iOS Release IPA"
         path: builds/plusme.ipa
-    - name: upload artefact to App Center
-      uses: wzieba/AppCenter-Github-Action@v1
-      with:
-        appName: plusme-azure-2022-konten.tim.schumacher.im/me-iOS
-        token: ${{secrets.IOS_APP_CENTER_TOKEN}}
-        group: Testers
-        file: builds/plusme.ipa
-        notifyTesters: true
-        debug: false
-
-    # - run: bundle exec fastlane ios store
-    #   env:
-    #     FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-    #     FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
-    #     MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-    #     FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD  }}
+    - run: npm run appcenter -- distribute release --file "builds/plusme.ipa" --group "Collaborators" --app "plusme-azure-2022-konten.tim.schumacher.im/me-iOS" --token "${APP_CENTER_TOKEN}" --release-notes "${environment}"
+      env:
+        APP_CENTER_TOKEN: ${{secrets.APP_CENTER_TOKEN}}
