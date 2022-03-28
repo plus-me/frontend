@@ -31,7 +31,7 @@ jobs:
     - run: npm run cordova -- platform add ios
     - run: npm run ng -- run app:ionic-cordova-build:production --platform=ios
     - run: npm run cordova -- prepare ios --prod
-    - run: bundle exec fastlane ios build
+    - run: bundle exec fastlane ios appcenter
       env:
         FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
         FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}

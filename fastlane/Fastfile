@@ -11,6 +11,52 @@ platform :android do
 end
 
 platform :ios do
+    desc "Build .ipa for AppCenter"
+    lane :appcenter do
+        create_keychain(
+            name: "CI",
+            password: ENV["MATCH_PASSWORD"],
+            default_keychain: true,
+            unlock: true,
+            timeout: 3600,
+            lock_when_sleeps: false
+        )
+        match(
+            type: "appstore",
+            readonly: true,
+            keychain_name: "CI",
+            keychain_password: ENV["MATCH_PASSWORD"]
+        )
+        sh("security list-keychains -d user")
+        sh("security default-keychain -d user")
+        sh("security find-identity -v -p codesigning CI")
+        disable_automatic_code_signing(
+            path: "./platforms/ios/plusme.xcodeproj",
+            team_id: CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+        )
+        cocoapods(
+            podfile: "./platforms/ios/Podfile",
+            clean_install: true,
+            verbose: true
+        )
+        gym(
+            export_method: 'ah-hoc',
+            workspace: "./platforms/ios/plusme.xcworkspace",
+            clean: true,
+            output_directory: "./builds",
+            output_name: "plusme.ipa",
+            codesigning_identity: "Apple Distribution: WTF Kooperative eG (5V8UJLB8H3)",
+            export_xcargs: "-allowProvisioningUpdates",
+            xcargs: {
+                :PROVISIONING_PROFILE_SPECIFIER => "match AdHoc de.wtfeg.plusme"
+            },
+            export_options: {
+              provisioningProfiles: {
+                "de.wtfeg.plusme" => "match AdHoc de.wtfeg.plusme"
+              }
+            }
+        )
+    end
     desc "Build .ipa for AppStore"
     lane :build do
         create_keychain(
