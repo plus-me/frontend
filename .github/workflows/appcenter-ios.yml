@@ -43,4 +43,4 @@ jobs:
         path: builds/plusme.ipa
     - run: npm run appcenter -- distribute release --file "builds/plusme.ipa" --group "Collaborators" --app "plusme-azure-2022-konten.tim.schumacher.im/me-iOS" --token "${IOS_APPCENTER_TOKEN}" --release-notes "${environment}"
       env:
-        APP_CENTER_TOKEN: ${{secrets.APP_CENTER_TOKEN}}
+        IOS_APPCENTER_TOKEN: ${{secrets.IOS_APPCENTER_TOKEN}}
