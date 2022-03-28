@@ -22,7 +22,7 @@ platform :ios do
             lock_when_sleeps: false
         )
         match(
-            type: "appstore",
+            type: "adhoc",
             readonly: true,
             keychain_name: "CI",
             keychain_password: ENV["MATCH_PASSWORD"]
