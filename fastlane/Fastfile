@@ -40,7 +40,7 @@ platform :ios do
             verbose: true
         )
         gym(
-            export_method: 'ah-hoc',
+            export_method: 'ad-hoc',
             workspace: "./platforms/ios/plusme.xcworkspace",
             clean: true,
             output_directory: "./builds",
