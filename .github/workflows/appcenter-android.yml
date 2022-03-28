@@ -38,6 +38,6 @@ jobs:
     - run: npm run cordova -- platform add android
     - run: npm run ionic -- cordova build android --release --prod
     - run: npm run ionic -- cordova build android --release --prod -- -- --packageType=apk
-    - run: npm run appcenter -- distribute release --file "platforms/android/app/build/outputs/apk/release/app-release.apk" --group "Collaborators" --app "plusme-azure-2022-konten.tim.schumacher.im/me-Android" --token "${APP_CENTER_TOKEN}" --release-notes "${environment}"
+    - run: npm run appcenter -- distribute release --file "platforms/android/app/build/outputs/apk/release/app-release.apk" --group "Collaborators" --app "plusme-azure-2022-konten.tim.schumacher.im/me-Android" --token "${ANDROID_APPCENTER_TOKEN}" --release-notes "${environment}"
       env:
         APP_CENTER_TOKEN: ${{secrets.APP_CENTER_TOKEN}}
