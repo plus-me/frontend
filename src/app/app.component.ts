@@ -101,7 +101,7 @@ export class AppComponent {
     await this.storage.create();
     this.statusBar.styleDefault();
 
-    const isElectionOver = true;
+    const isElectionOver = this.store.selectSnapshot((state: GlobalState) => state.user.isElectionOver);
 
     if (isElectionOver) {
       this.store.dispatch(new UserActions.LogoutAction());
