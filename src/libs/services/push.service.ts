@@ -36,7 +36,7 @@ export class PushService {
       return;
     }
 
-    const token = await cordova.plugins.firebase.messaging.getToken('apns-string');
+    const token = await cordova.plugins.firebase.messaging.getToken();
 
     const action = new UserActions.RegisterDeviceForNotification(
       token,
