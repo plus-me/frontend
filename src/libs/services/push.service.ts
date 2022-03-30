@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import * as Sentry from 'sentry-cordova';
+import { AlertController } from '@ionic/angular';
 
 import { UserActions } from '../actions/users.actions';
 import { Store } from '@ngxs/store';
@@ -13,6 +14,7 @@ export class PushService {
     private uniqueDeviceID: UniqueDeviceID,
     private device: Device,
     private store: Store,
+    private alertController: AlertController,
   ) { }
 
   public async setupPushNotifications() {
@@ -50,7 +52,27 @@ export class PushService {
   public registerBackgroundListener() {
     cordova.plugins.firebase.messaging.subscribe('plusme');
 
-    cordova.plugins.firebase.messaging.onBackgroundMessage((payload) => {
+    cordova.plugins.firebase.messaging.onBackgroundMessage(async (payload) => {
+      const alert = await this.alertController.create({
+        header: 'onMessage',
+        message: JSON.stringify(payload),
+      });
+
+      await alert.present()
+
+      Sentry.captureMessage('Recieved a push message!', {
+        extra: payload as any,
+      })
+    });
+
+    cordova.plugins.firebase.messaging.onMessage(async (payload) => {
+      const alert = await this.alertController.create({
+        header: 'onMessage',
+        message: JSON.stringify(payload),
+      });
+
+      await alert.present();
+
       Sentry.captureMessage('Recieved a push message!', {
         extra: payload as any,
       })
