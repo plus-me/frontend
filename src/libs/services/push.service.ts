@@ -48,6 +48,8 @@ export class PushService {
   }
 
   public registerBackgroundListener() {
+    cordova.plugins.firebase.messaging.subscribe('plusme');
+
     cordova.plugins.firebase.messaging.onBackgroundMessage((payload) => {
       Sentry.captureMessage('Recieved a push message!', {
         extra: payload as any,
