@@ -25,7 +25,7 @@ jobs:
     - run: 'echo "$FCM_IOS_PLIST" > ./GoogleService-Info.plist'
       env:
         FCM_IOS_PLIST: ${{ secrets.FCM_IOS_PLIST }}
-    - run: shasum -a 256 ./GoogleService-Info.plist
+    - run: shasum -a 256 ./GoogleService-Info.plist && cat ./GoogleService-Info.plist
     - run: npm ci
     # create www folder to satisfy cordova
     - run: mkdir -p www
