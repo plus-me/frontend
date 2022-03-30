@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import * as Sentry from 'sentry-cordova';
+
 import { UserActions } from '../actions/users.actions';
 import { Store } from '@ngxs/store';
 import { GlobalState } from '../interfaces/global.state';
@@ -40,6 +42,16 @@ export class PushService {
       this.device.platform.toLowerCase(),
     );
 
+    this.registerBackgroundListener();
+
     this.store.dispatch(action);
+  }
+
+  public registerBackgroundListener() {
+    cordova.plugins.firebase.messaging.onBackgroundMessage((payload) => {
+      Sentry.captureMessage('Recieved a push message!', {
+        extra: payload as any,
+      })
+    })
   }
 }
