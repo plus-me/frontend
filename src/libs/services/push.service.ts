@@ -58,11 +58,11 @@ export class PushService {
         message: JSON.stringify(payload),
       });
 
-      await alert.present()
+      await alert.present();
 
       Sentry.captureMessage('Recieved a push message!', {
         extra: payload as any,
-      })
+      });
     });
 
     cordova.plugins.firebase.messaging.onMessage(async (payload) => {
@@ -75,7 +75,7 @@ export class PushService {
 
       Sentry.captureMessage('Recieved a push message!', {
         extra: payload as any,
-      })
-    })
+      });
+    });
   }
 }
