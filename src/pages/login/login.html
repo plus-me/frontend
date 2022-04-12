@@ -3,7 +3,7 @@
 <ion-content text-center>
   <ion-card>
     <ion-card-content>
-      <form [formGroup]="authForm" (ngSubmit)="login()">
+      <form [formGroup]="authForm" (ngSubmit)="login()" action="https://www.plus-me.de">
         <ion-list class="input-area">
           <div [class.error]="!email.valid && email.touched">
             <ion-input
