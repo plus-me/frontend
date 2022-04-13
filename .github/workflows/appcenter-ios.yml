@@ -2,11 +2,12 @@ name: Release Beta iOS
 
 on:
   push:
-    branch: [ 'develop' ]
+    branches: [ 'develop' ]
 
 jobs:
   build:
     runs-on: macos-latest
+    if: github.ref == 'refs/heads/develop'
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 14.17.1
