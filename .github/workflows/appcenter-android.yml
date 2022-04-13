@@ -1,4 +1,4 @@
-name: Release Android
+name: Release Beta Android
 
 on:
   push:
