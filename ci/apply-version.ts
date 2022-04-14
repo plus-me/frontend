@@ -8,11 +8,11 @@ const configFile = path.join(__dirname, '../config.xml');
 const packageJson = require(path.join(__dirname, '../package.json'));
 const configXml = parser.parseFromString(fs.readFileSync(configFile, 'utf-8'));
 
-const buildNumber = process.env.GITHUB_RUN_NUMBER;
+const buildNumber = (Number.parseInt(process.env.GITHUB_RUN_NUMBER, 10) + 2077887088).toString();
 
 console.log(`Setting ${packageJson.version}.${buildNumber} as version`)
 
-configXml.documentElement.setAttribute('android-versionCode', (2077887088+Number.parseInt(buildNumber).toString()));
+configXml.documentElement.setAttribute('android-versionCode', buildNumber);
 configXml.documentElement.setAttribute('ios-CFBundleVersion', buildNumber);
 configXml.documentElement.setAttribute('version', packageJson.version);
 
