@@ -153,7 +153,7 @@
     "title": "Konto erstellen",
     "ok": "Verstanden",
     "wrongInputs": "Deine Eingaben sind ungültig. Bitte gib eine gültige E-Mail Adresse ein und benutze ein Passwort mit mindestens 8 Zeichen.",
-    "checkEmail": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren.",
+    "checkEmail": "Wir haben dir eine E-Mail mit einem Link zur Bestätigung geschickt. Bitte klicke auf diesen Link um fortzufahren. (Überprüfe bitte auch deinen Spam-Ordner.)",
     "name": "Name",
     "email": "E-Mail",
     "password": "Passwort",
