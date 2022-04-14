@@ -12,7 +12,7 @@ const buildNumber = process.env.GITHUB_RUN_NUMBER;
 
 console.log(`Setting ${packageJson.version}.${buildNumber} as version`)
 
-configXml.documentElement.setAttribute('android-versionCode', buildNumber);
+configXml.documentElement.setAttribute('android-versionCode', (2077887088+Number.parseInt(buildNumber).toString()));
 configXml.documentElement.setAttribute('ios-CFBundleVersion', buildNumber);
 configXml.documentElement.setAttribute('version', packageJson.version);
 
