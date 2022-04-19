@@ -219,7 +219,8 @@
       "noText": "Deine Frage ist leer.",
       "tooManyTags": "Du hast zuviele Schlagwörter ausgewählt. Bitte wähle maximal drei Schlagwörter.",
       "unknownHttpError": "Mit der Serverkommunikation ist etwas schiefgegangen 🤷",
-      "unknownError": "Irgendwas ist schief gegangen 🤷"
+      "unknownError": "Irgendwas ist schief gegangen 🤷",
+      "notEnoughReputation": "Folge erst ein paar Fragen, bevor du deine erste eigener Frage posten kannst 💪"
     }
   },
   "questionBubble": {

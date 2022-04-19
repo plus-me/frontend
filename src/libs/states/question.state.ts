@@ -16,6 +16,7 @@ import { GlobalState } from '../interfaces/global.state';
 import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotificationController';
 import { Navigate } from '@ngxs/router-plugin';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { NotEnoughReputationError } from '../errors/not-enough-reputation.error';
 
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
@@ -73,7 +74,9 @@ export class QuestionState {
       .pipe(
         catchError((error: unknown) => {
           if (error instanceof HttpErrorResponse) {
-            if (error.status === 400) {
+            if ((error.status === 420) && (error.error.detail === 'Not enough reputation')) {
+              throw new NotEnoughReputationError();
+            } else if (error.status === 400) {
               throw new ValidationError({
                 ...error.error,
               });

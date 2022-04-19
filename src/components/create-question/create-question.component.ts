@@ -11,6 +11,7 @@ import { TagModel } from '@plusme/libs/models/tag.model';
 import { Observable } from 'rxjs';
 import { Navigate } from '@ngxs/router-plugin';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
+import { NotEnoughReputationError } from '@plusme/libs/errors/not-enough-reputation.error';
 
 @Component({
   selector: 'app-create-question',
@@ -123,7 +124,9 @@ export class CreateQuestionComponent {
         async (error: unknown) => {
           await loading.dismiss();
 
-          if (error instanceof ValidationError) {
+          if (error instanceof NotEnoughReputationError) {
+            await this.createErrorToast('createQuestion.errors.notEnoughReputation');
+          } else if (error instanceof ValidationError) {
             await this.createErrorToast(`createQuestion.errors.${Object.keys(error.reasons)[0]}`);
           } else if(error instanceof UnknownHttpError) {
             await this.createErrorToast('createQuestion.errors.unknownHttpError');
