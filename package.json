@@ -16,7 +16,8 @@
     "patch-package": "patch-package",
     "postinstall": "patch-package",
     "apply-version": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }'  node -r ts-node/register ci/apply-version",
-    "replace-keystore-passwd": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' node -r ts-node/register ci/replace-keystore-passwd"
+    "replace-keystore-passwd": "TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' node -r ts-node/register ci/replace-keystore-passwd",
+    "sentry-cli": "sentry-cli"
   },
   "dependencies": {
     "@angular/common": "12.1.0",
@@ -71,6 +72,7 @@
     "@ionic/app-scripts": "3.2.4",
     "@ionic/cli": "6.16.3",
     "@ngxs/devtools-plugin": "3.7.2",
+    "@sentry/cli": "2.0.2",
     "@types/cordova": "0.0.34",
     "@types/lodash": "4.14.172",
     "@types/node": "16.4.13",
