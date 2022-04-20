@@ -22,6 +22,7 @@ import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
 import { uniq } from 'lodash';
 import { PackageJson } from 'type-fest';
 import { PushService } from '@plusme/libs/services/push.service';
+import * as Sentry from 'sentry-cordova';
 
 const semver = require('semver');
 
@@ -102,7 +103,12 @@ export class UserState {
             isLoggedIn: false,
             token: undefined,
           });
-          console.error(_err);
+
+          Sentry.captureException(_err, {
+            tags: {
+              area: 'login',
+            },
+          });
 
           await this.notifier.showToast('LOGIN.FAILED');
         }),
