@@ -7,6 +7,7 @@ import {QuestionActions} from '@plusme/libs/actions/questions.action';
 import {Observable} from 'rxjs';
 import {QuestionModel} from '@plusme/libs/models/question.model';
 import {TagModel} from '@plusme/libs/models/tag.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-inbox',
@@ -24,6 +25,7 @@ export class InboxPage {
   constructor(
     private loadCtrl: LoadingController,
     private store: Store,
+    private route: ActivatedRoute,
   ) {
   }
 
@@ -66,14 +68,13 @@ export class InboxPage {
 
   public async ionViewDidEnter() {
     this.store.dispatch(new QuestionActions.ResetMyQuestionsAction());
-    await this.select_mine();
-  }
 
-  loadAnswerPage($event) {
-    console.log('GOANSWERS-Event:', $event);
-  }
+    const mode = this.route.snapshot.queryParams.mode;
 
-  loadSearchPage($event) {
-    console.log('GOSEARCH-Event:', $event);
+    if (mode === 'all') {
+      await this.select_all();
+    } else {
+      await this.select_mine();
+    }
   }
 }

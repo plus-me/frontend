@@ -55,7 +55,7 @@ export class PushService {
 
     cordova.plugins.firebase.messaging.onBackgroundMessage(async (payload) => {
       this.router.navigate([
-        FrontendRoutes.Answers,
+        FrontendRoutes.Inbox,
       ]);
 
       Sentry.captureMessage('Recieved a push message!', {
@@ -65,8 +65,12 @@ export class PushService {
 
     cordova.plugins.firebase.messaging.onMessage(async (payload) => {
       this.router.navigate([
-        FrontendRoutes.Answers,
-      ]);
+        FrontendRoutes.Inbox,
+      ], {
+        queryParams: {
+          mode: 'all',
+        }
+      });
 
       Sentry.captureMessage('Recieved a push message!', {
         extra: payload as any,
