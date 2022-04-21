@@ -47,3 +47,13 @@ jobs:
         FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD  }}
+    - name: Create Sentry release
+      uses: getsentry/action-release@v1
+      env:
+        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+        SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+        SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      with:
+        environment: production
+        version: ${{ GITHUB_REF_NAME }}
+        sourcemaps: './www'
