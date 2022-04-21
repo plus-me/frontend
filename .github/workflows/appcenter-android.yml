@@ -43,3 +43,12 @@ jobs:
     - run: npm run appcenter -- distribute release --file "platforms/android/app/build/outputs/apk/release/app-release.apk" --group "Collaborators" --app "plusme-azure-2022-konten.tim.schumacher.im/me-Android" --token "${ANDROID_APPCENTER_TOKEN}" --release-notes "${environment}"
       env:
         ANDROID_APPCENTER_TOKEN: ${{secrets.ANDROID_APPCENTER_TOKEN}}
+    - name: Create Sentry release
+      uses: getsentry/action-release@v1
+      env:
+        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+        SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+        SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+      with:
+        environment: production
+        sourcemaps: './www'

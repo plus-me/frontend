@@ -45,12 +45,3 @@ jobs:
     - run: npm run appcenter -- distribute release --file "builds/plusme.ipa" --group "Collaborators" --app "plusme-azure-2022-konten.tim.schumacher.im/me-iOS" --token "${IOS_APPCENTER_TOKEN}" --release-notes "${environment}"
       env:
         IOS_APPCENTER_TOKEN: ${{secrets.IOS_APPCENTER_TOKEN}}
-    - name: Create Sentry release
-      uses: getsentry/action-release@v1
-      env:
-        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
-        SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-        SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-      with:
-        environment: production
-        sourcemaps: './www'
