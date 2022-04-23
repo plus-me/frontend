@@ -44,3 +44,14 @@ jobs:
       with:
         name: "Android Release APK"
         path: platforms/android/app/build/outputs/apk/release/app-release.apk
+    - name: Create Sentry release
+      uses: getsentry/action-release@v1
+      env:
+        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+        SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        SENTRY_URL: ${{ secrets.SENTRY_URL  }}
+      with:
+        environment: production
+        version: ${{ GITHUB_REF_NAME }}
+        sourcemaps: './www'
