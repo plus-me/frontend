@@ -64,7 +64,7 @@ import { ElectionOverPage } from '@plusme/pages/election-over/election-over.page
 
 Sentry.init({
   dsn: 'https://d55dfb169cbd4aedabc1c9e3b5e82302@sentry.datenknoten.me/3',
-  release: `plusme@${require('../../package.json').version}`,
+  release: `plusme-app@v${require('../../package.json').version}`,
 });
 
 const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/lang/', '.json');
