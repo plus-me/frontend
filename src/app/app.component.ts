@@ -48,11 +48,6 @@ export class AppComponent {
       lines: 'none',
     },
     {
-      title: 'sidebar.myDownvotedQuestions',
-      url: FrontendRoutes.MyDownVotedQuestions,
-      class: 'important',
-    },
-    {
       title: 'sidebar.inbox',
       url: FrontendRoutes.Inbox,
       class: 'important',
