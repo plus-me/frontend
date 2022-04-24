@@ -13,16 +13,4 @@ import {QuestionModel} from '@plusme/libs/models/question.model';
 export class AllAnsweredListComponent {
   @Select((store: GlobalState) => store.questions.answered)
   public questions: Observable<QuestionModel[]>;
-
-  constructor(
-  ) {
-  }
-
-  loadAnswerPage($event) {
-    console.log('GOANSWERS-Event:', $event);
-  }
-
-  loadSearchPage($event) {
-    console.log('GOSEARCH-Event:', $event);
-  }
 }
