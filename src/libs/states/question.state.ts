@@ -5,7 +5,7 @@ import { QuestionActions } from '@plusme/libs/actions/questions.action';
 import urlcat from 'urlcat';
 import { API_ENDPOINT } from '@plusme/app/app.config';
 import { BackendRoutes } from '@plusme/libs/enums/backend-routes.enum';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { plainToClass } from 'class-transformer';
 import { QuestionModel } from '@plusme/libs/models/question.model';
 import { ValidationError } from '../errors/validation.error';
@@ -17,6 +17,7 @@ import { TranslatedNotificationController } from '@plusme/utils/TranslatedNotifi
 import { Navigate } from '@ngxs/router-plugin';
 import { FrontendRoutes } from '@plusme/libs/enums/frontend-routes.enum';
 import { NotEnoughReputationError } from '../errors/not-enough-reputation.error';
+import { of } from 'rxjs';
 
 export interface QuestionStateInterface {
   randomQuestion: QuestionModel;
@@ -308,14 +309,23 @@ export class QuestionState {
       .http
       .get(
         urlcat(API_ENDPOINT, BackendRoutes.AnsweredQuestions),
+        {
+          observe: 'response',
+        }
       )
       .pipe(
-        map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
-        tap(questions => {
-          ctx.patchState({
-            answered: questions,
-          });
-        }),
+        switchMap(response => {
+          if (response.status === 200) {
+            return of(response.body).pipe(
+              map((data: { results: unknown[] }) => data.results.map((item) => this.convertDataIntoQuestionWithTags(item))),
+              tap(questions => {
+                ctx.patchState({
+                  answered: questions,
+                });
+              }),
+            );
+          }
+        })
       );
   }
 
