@@ -401,6 +401,11 @@ export class QuestionState {
     if (data === null) {
       return undefined;
     }
+
+    if (typeof data === 'undefined') {
+      return undefined;
+    }
+
     const allTags = this.store.selectSnapshot((state: GlobalState) => state.tags);
     const questionTags: TagModel[] = [];
     // eslint-disable-next-line @typescript-eslint/dot-notation

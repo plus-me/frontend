@@ -123,6 +123,7 @@ export class AppComponent {
         .store
         .dispatch(new UserActions.ValidateToken());
 
+      // TODO need to skip if push notification
       this.router.navigate([
         FrontendRoutes.RandomQuestion,
       ]);
