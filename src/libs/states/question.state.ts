@@ -98,11 +98,21 @@ export class QuestionState {
   ) {
     return this
       .http
-      .get(
+      .get<unknown>(
         urlcat(API_ENDPOINT, BackendRoutes.RandomQuestion),
+        {
+          observe: 'response',
+        }
       )
       .pipe(
-        map((item ) => this.convertDataIntoQuestionWithTags(item)),
+        map(response => {
+          if (response.status === 204) {
+            return undefined;
+          } else {
+            return response.body;
+          }
+        }),
+        map((body) => this.convertDataIntoQuestionWithTags(body)),
         tap(question => {
           ctx.patchState({
             randomQuestion: question,
