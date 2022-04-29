@@ -6,7 +6,8 @@ platform :android do
       aab: "platforms/android/app/build/outputs/bundle/release/app-release.aab",
       json_key: "/tmp/playstore_key.json",
       package_name: "de.wtfeg.plusme",
-      changes_not_sent_for_review: true
+      # Now Google does not seem to want now 🤦
+      # changes_not_sent_for_review: true
   )
   end
 end
