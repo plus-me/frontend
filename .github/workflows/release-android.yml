@@ -53,5 +53,5 @@ jobs:
         SENTRY_URL: ${{ secrets.SENTRY_URL  }}
       with:
         environment: production
-        version: ${{ GITHUB_REF_NAME }}
+        version: ${{ github.ref_name }}
         sourcemaps: './www'
