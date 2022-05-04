@@ -13,7 +13,7 @@
         "cancel": "Annuler",
         "submitSignup": "Créer un compte maintenant !",
         "name": "Nom",
-        "checkEmail": "Nous vous avons envoyé un courriel avec un lien pour confirmer. Veuillez cliquer sur ce lien pour continuer.",
+        "checkEmail": "Nous vous avons envoyé un courriel avec un lien pour confirmer. Veuillez cliquer sur ce lien pour continuer. (Vérifiez aussi dans vos indésirables.)",
         "wrongInputs": "Les données saisies ne sont pas valides. Veuillez saisir une adresse courriel valide et utiliser un mot de passe d'au moins 8 caractères.",
         "ok": "Compris",
         "title": "Créer un compte"
@@ -59,7 +59,8 @@
             "text": "Votre question est trop longue. Veuillez saisir un maximum de 280 caractères pour la question.",
             "tooManyTags": "Vous avez sélectionné trop de mots-clés. Veuillez sélectionner un maximum de trois mots-clés.",
             "unknownError": "Quelque chose s'est mal passé 🤷",
-            "unknownHttpError": "Quelque chose a mal tourné avec la communication du serveur 🤷"
+            "unknownHttpError": "Quelque chose a mal tourné avec la communication du serveur 🤷",
+            "notEnoughReputation": "Suis d'abord quelques questions avant de pouvoir poster ta première question personnelle 💪"
         },
         "error": "Malheureusement, votre question ne peut être posée de cette manière :",
         "success": "Votre question a été soumise avec succès.",
