@@ -79,7 +79,7 @@
     "@types/shelljs": "0.8.9",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
-    "@xmldom/xmldom": "0.7.2",
+    "@xmldom/xmldom": "0.7.6",
     "appcenter-cli": "2.10.10",
     "cordova": "10.0.0",
     "cordova-android": "10.0.1",
